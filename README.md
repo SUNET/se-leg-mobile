@@ -1,2 +1,2 @@
 # se-leg-mobile
-se-leg mobile vetting application
+se-leg mobile vetting application.
