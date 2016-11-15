@@ -1,6 +1,6 @@
 {
   "name": "se-leg",
-  "app_id": "",
+  "app_id": "com.amoron.se_leg",
   "gulpStartupTasks": [
     "sass",
     "watch"

@@ -33,5 +33,7 @@
     "ionic-plugin-keyboard",
     "phonegap-plugin-barcodescanner"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "android"
+  ]
 }
