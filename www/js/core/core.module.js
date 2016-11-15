@@ -12,7 +12,7 @@
       'use strict';
       var module = angular.module('app.core', [
         // Yeoman hook. Dependencies section. Do not remove this comment.
-      ]);
+        'app.core.modules']);
 
       module.config(Config);
 

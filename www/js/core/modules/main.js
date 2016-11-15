@@ -8,9 +8,8 @@
 (function () {
   define([
     // Here files modules internal files referencies.
-    // Widgets module instance itself.
     './core.module',
-    // SAM constants Module.
+    // Constants Module.
     './constants/main'
   ], function () {
   });

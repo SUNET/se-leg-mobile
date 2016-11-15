@@ -8,6 +8,7 @@
 (function () {
   define([
     // Here files modules internal files referencies.
+    './scanner.service',
     './scanner.routes',
     './scanner.controller'
       // ...

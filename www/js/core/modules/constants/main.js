@@ -7,7 +7,9 @@
 (function () {
   define([
     // Here files modules internal files referencies.
-    './views.constants'
+    './constants.service',
+    './views.constants',
+    './config.constants'
   ], function () {
   });
 })();

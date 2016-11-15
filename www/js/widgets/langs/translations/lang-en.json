@@ -1,0 +1,13 @@
+{
+  "error": {
+    "service": {
+      "generic": "An internal error has occurred.",
+      "timeout": "{{classname}}:: Error connection timeout:: {{endpoint}}",
+      "unauthorized": "You don't have permission to access the required resource",
+      "networkError": "Connection error. It has not been possible connect to server.",
+      "notFound": "Resource not found",
+      "methodNotAllowed": "Resource method not allowed",
+      "networkDisabled": "Your network is not available. Please, active it."
+    }
+  }
+}

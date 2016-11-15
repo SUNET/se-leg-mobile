@@ -5,7 +5,10 @@
  */
 (function () {
   define([
-    './core.module'// Yeoman hook. Define section. Do not remove this comment.
+    // Core Services.
+    './services/core.common.services',
+    // Core Modules.
+    './modules/main'
   ], function () {
   });
 })();

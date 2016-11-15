@@ -1,0 +1,12 @@
+{
+  "error": {
+    "service": {
+      "generic": "Ha ocurrido un error interno.",
+      "timeout": "{{classname}}:: Error tiempo de espera en conexión: {{endpoint}}",
+      "unauthorized": "No tiene permiso para acceder al recurso solicitado",
+      "networkError": "Error de conexión. No ha sido posible conectar con el servidor.",
+      "notFound": "Recurson no encontrado",
+      "methodNotAllowed": "Método no permitido"
+    }
+  }
+}
