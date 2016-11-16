@@ -16,7 +16,8 @@
       .module(moduleName)
       .constant('CORE_CONFIGS', {
         BACKEND_URL: '',
-        CONNECTION_TIMEOUT: '30000'
+        CONNECTION_TIMEOUT: '30000',
+        DEFAULT_LANGUAGE: 'en'
       });
 
   });

@@ -6,7 +6,7 @@
 (function () {
   define([
     // Core Services.
-    './services/core.common.services',
+    './services/core.common.service',
     // Core Modules.
     './modules/main'
   ], function () {

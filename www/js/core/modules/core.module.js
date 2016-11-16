@@ -16,7 +16,8 @@
     var moduleName = 'app.core.modules';
 
     ng.module(moduleName, [
-      'app.core.constants'
+      'app.core.constants',
+      'app.core.langs'
     ]);
 
     return moduleName;

@@ -12,7 +12,7 @@
     angular.module(module).service('ScannerService', ScannerService);
 
     /* @ngInject */
-    function ScannerService($log, $q, CommonService) {
+    function ScannerService($log, $q, CommonService, SE_LEG_GLOBAL, $state, SE_LEG_VIEWS) {
 
       var service = this;
 
@@ -28,9 +28,9 @@
 
         $log.debug('Scanner to: ');
         CommonService
-          .call('POST', '', token, 'Error into the application.')
+          .call(SE_LEG_GLOBAL.METHODS.POST, '', token, 'Error into the application.')
           .then(function (data) {
-
+            $state.go(SE_LEG_VIEWS.MESSAGE);
           })
           .catch(deferred.reject);
 

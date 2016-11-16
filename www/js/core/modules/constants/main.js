@@ -8,6 +8,8 @@
   define([
     // Here files modules internal files referencies.
     './constants.service',
+    './global.constants',
+    './langs.constants',
     './views.constants',
     './config.constants'
   ], function () {

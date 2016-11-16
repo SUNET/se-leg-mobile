@@ -14,7 +14,7 @@
       .service('CommonService', CommonService);
 
     /* @ngInject */
-    function CommonService($log, $q, $http, $ionicLoading, $translate, $rootScope, $state, CORE_CONFIGS) {
+    function CommonService($log, $q, $http, $ionicLoading, $translate, $rootScope, CORE_CONFIGS) {
       var service = this;
       service.className = '[CommonService]';
 
@@ -104,10 +104,20 @@
 
         $log.error(errorMsg);
         if (response.status === 0 || response.status === 500) {
+          //TODO
           $rootScope.$emit('reportError', response);
         }
         response.errorMessage = errorMsg;
         return response;
+      }
+
+      /**
+       * Shows error message, revoke token and redirects to login page.
+       * @param {type} errorMessageKey - Optional, show generic if not defined.
+       * @returns {undefined}
+       */
+      function kickOut(errorMessageKey) {
+        //TODO
       }
 
       return service;

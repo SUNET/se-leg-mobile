@@ -9,5 +9,6 @@
       "methodNotAllowed": "Resource method not allowed",
       "networkDisabled": "Your network is not available. Please, active it."
     }
-  }
+  },
+  "test": "mytest"
 }

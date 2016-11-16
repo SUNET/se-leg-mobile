@@ -1,5 +1,5 @@
 /**
- * Application view constants.
+ * Global constants.
  *
  * @param {type} angular
  * @author Maria Villalba <mavillalba@emergya.com>
@@ -8,15 +8,18 @@
 (function () {
   define(['./constants.module'], function (moduleName) {
     'use strict';
-    /**
-     * Application views constants.
-     * Here all views state constants.
-     */
+
     angular
       .module(moduleName)
-      .constant('SE_LEG_VIEWS', {
-        SCANNER: 'scanner',
-        MESSAGE: 'message'
+      .constant('SE_LEG_GLOBAL', {
+        METHODS: {
+          POST: 'POST',
+          GET: 'GET',
+          PUT: 'PUT',
+          DELETE: 'DELETE',
+          PATCH: 'PATCH'
+        }
       });
   });
 })();
+

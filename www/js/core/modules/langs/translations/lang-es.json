@@ -8,5 +8,6 @@
       "notFound": "Recurson no encontrado",
       "methodNotAllowed": "Método no permitido"
     }
-  }
+  },
+  "test": "mytest"
 }
