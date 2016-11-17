@@ -11,24 +11,35 @@
   define([
     'angular',
     'ngTranslate',
-    'ngTranslateLoaderStaticFiles'
+    'ngTranslateLoaderStaticFiles',
+    'ngDynamicLocale',
+    'ngTranslateHandlerLog',
+    'ngTranslateStorageLocal',
+    'ngTranslateStorageCookie',
+    'ngCookies'
   ], function (ng) {
     'use strict';
 
     var moduleName = 'app.core.langs';
 
-    ng.module(moduleName, ['pascalprecht.translate'])
+    ng.module(moduleName, ['ngCookies', 'tmh.dynamicLocale', 'pascalprecht.translate'])
       .config(config)
       .run(run);
 
     return moduleName;
 
     /* @ngInject */
-    function config($translateProvider, SE_LEG_LANGS) {
+    function config($translateProvider, tmhDynamicLocaleProvider, CORE_CONFIGS, SE_LEG_GLOBAL) {
       $translateProvider.useSanitizeValueStrategy('sanitizeParameters').useStaticFilesLoader({
-        prefix: SE_LEG_LANGS.LOCATION + SE_LEG_LANGS.PREFIX,
-        suffix: SE_LEG_LANGS.SUFFIX
+        prefix: SE_LEG_GLOBAL.LANGUAGE.LOCATION + SE_LEG_GLOBAL.LANGUAGE.PREFIX,
+        suffix: SE_LEG_GLOBAL.LANGUAGE.SUFFIX
       });
+      $translateProvider.preferredLanguage(CORE_CONFIGS.DEFAULT_LANGUAGE); // on first load
+      $translateProvider.useMissingTranslationHandlerLog();
+      $translateProvider.useLocalStorage();// saves selected language to localStorage
+      // loadING the $locale settings files for angular-dynamic-locale
+      tmhDynamicLocaleProvider.localeLocationPattern(SE_LEG_GLOBAL.LANGUAGE.LOCALE_DEFINITIONS_LOCATION
+        + '/angular-locale_{{locale}}.js');
     }
 
     /**
@@ -40,9 +51,23 @@
      */
 
     /* @ngInject*/
-    function run($translate, LangsService) {
-      var language = LangsService.getLocale();
-
+    function run($translate, CORE_CONFIGS, LangsService) {
+      // default language
+      var language = CORE_CONFIGS.DEFAULT_LANGUAGE;
+      var browserLanguage = LangsService.getBrowserLanguage();
+      if (browserLanguage !== undefined) {
+        var isBrowserLanguageValid = LangsService.isValidLocale(browserLanguage);
+        if (isBrowserLanguageValid) {
+          language = browserLanguage;
+        } else {
+          // if the browser language is not valid, we try to look for the simplified language
+          browserLanguage = browserLanguage.split('_')[0];
+          isBrowserLanguageValid = LangsService.isValidLocale(browserLanguage);
+          if (isBrowserLanguageValid) {
+            language = browserLanguage;
+          }
+        }
+      }
       $translate.use(language);
     }
   });

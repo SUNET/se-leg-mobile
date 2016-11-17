@@ -15,11 +15,8 @@
     angular
       .module(moduleName)
       .constant('SE_LEG_LANGS', {
-        EN: 'en',
-        ES: 'es',
-        LOCATION: 'js/core/modules/langs/translations/',
-        PREFIX: 'lang-',
-        SUFFIX: '.json'
+        en: 'English',
+        es: 'Español'
       });
   });
 })();

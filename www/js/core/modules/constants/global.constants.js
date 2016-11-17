@@ -18,6 +18,12 @@
           PUT: 'PUT',
           DELETE: 'DELETE',
           PATCH: 'PATCH'
+        },
+        LANGUAGE: {
+          LOCATION: 'js/core/modules/langs/translations/',
+          PREFIX: 'lang-',
+          SUFFIX: '.json',
+          LOCALE_DEFINITIONS_LOCATION: 'build/assets/locale/i18n'
         }
       });
   });

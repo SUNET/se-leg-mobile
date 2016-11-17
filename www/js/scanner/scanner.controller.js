@@ -10,10 +10,11 @@
     angular.module(moduleName)
       .controller('ScannerController', ScannerController);
     /* @ngInject */
-    function ScannerController($cordovaBarcodeScanner, $ionicPlatform, ScannerService) {
+    function ScannerController($cordovaBarcodeScanner, $ionicPlatform, ScannerService, $translate) {
 
       var vm = this;
-      vm.scanResults = '';
+      //vm.scanResults = '';
+      vm.scanResults = $translate.instant('error.service.unauthorized');
 
       vm.scan = scan;
 

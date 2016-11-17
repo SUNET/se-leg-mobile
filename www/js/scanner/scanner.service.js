@@ -18,6 +18,8 @@
 
       service.post = post;
 
+      return service;
+
       /**
        *
        * @param {String} barcode token.
