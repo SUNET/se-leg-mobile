@@ -1,0 +1,12 @@
+node_modules/
+platforms/
+www/lib/
+plugins/
+.idea
+www/css/
+nbproject
+dist/
+npm-debug.log
+www/fonts/ionicons.*
+.DS_Store
+reports
