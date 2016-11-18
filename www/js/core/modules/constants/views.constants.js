@@ -15,8 +15,11 @@
     angular
       .module(moduleName)
       .constant('SE_LEG_VIEWS', {
+        LOGO: 'logo',
         SCANNER: 'scanner',
-        MESSAGE: 'message'
+        MESSAGE: 'message',
+        ID: 'identification',
+        TOUCHID: 'touchId'
       });
   });
 })();

@@ -16,13 +16,14 @@
     'ngTranslateHandlerLog',
     'ngTranslateStorageLocal',
     'ngTranslateStorageCookie',
-    'ngCookies'
+    'ngCookies',
+    'ngSanitize'
   ], function (ng) {
     'use strict';
 
     var moduleName = 'app.core.langs';
 
-    ng.module(moduleName, ['ngCookies', 'tmh.dynamicLocale', 'pascalprecht.translate'])
+    ng.module(moduleName, ['ngCookies', 'ngSanitize', 'tmh.dynamicLocale', 'pascalprecht.translate'])
       .config(config)
       .run(run);
 

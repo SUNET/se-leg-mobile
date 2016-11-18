@@ -14,7 +14,7 @@
 
       var vm = this;
       //vm.scanResults = '';
-      vm.scanResults = $translate.instant('error.service.unauthorized');
+      vm.scanResults = 'error.service.unauthorized';
 
       vm.scan = scan;
 

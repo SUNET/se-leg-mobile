@@ -15,7 +15,8 @@
       ngTranslateHandlerLog: '../lib/angular-translate-handler-log/angular-translate-handler-log',
       ngTranslateStorageLocal: '../js/lib/node_modules/angular-translate-storage-local/angular-translate-storage-local.min',
       ngTranslateStorageCookie: '../js/lib/node_modules/angular-translate-storage-cookie/angular-translate-storage-cookie.min',
-      ngCookies: '../js/lib/node_modules/angular-cookies/angular-cookies.min'
+      ngCookies: '../js/lib/node_modules/angular-cookies/angular-cookies.min',
+      ngSanitize: '../lib/angular-sanitize/angular-sanitize.min'
     },
     shim: {
       angular: {
@@ -28,7 +29,8 @@
       ngTranslateHandlerLog: ['ngTranslate'],
       ngTranslateStorageLocal: ['ngTranslate'],
       ngTranslateStorageCookie: ['ngTranslate'],
-      ngCookies: ['angular']
+      ngCookies: ['angular'],
+      ngSanitize: ['angular']
     },
     priority: [
       'angular', 'ngCordova'

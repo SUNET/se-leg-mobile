@@ -12,21 +12,26 @@ var plugins = require('gulp-load-plugins')({lazy: true});
  * @return {Stream}
  */
 gulp.task('sass', function () {
-    plugins.util.log(plugins.util.colors.blue('Compiling SASS'));
-    return gulp.src(config.origin.mainSass)
-        .pipe(plugins.plumber())
-        .pipe(plugins.sass())
-        .pipe(plugins.autoprefixer({browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4']}))
-        .pipe(plugins.concat('styles.css'))
-        .pipe(gulp.dest(config.dest.css))
-        .pipe(plugins.cleanCss())
-        .pipe(plugins.concat('styles.min.css'))
-        .pipe(gulp.dest(config.dest.css));
+  plugins.util.log(plugins.util.colors.blue('Compiling SASS'));
+  return gulp.src(config.origin.mainSass)
+    .pipe(plugins.plumber())
+    .pipe(plugins.sass())
+    .pipe(plugins.autoprefixer({browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4']}))
+    .pipe(plugins.concat('styles.css'))
+    .pipe(gulp.dest(config.dest.css))
+    .pipe(plugins.cleanCss())
+    .pipe(plugins.concat('styles.min.css'))
+    .pipe(gulp.dest(config.dest.css));
 });
 
+gulp.task('copyPlugins', function () {
+  return gulp
+    .src('./node_modules/angular-i18n/*.js')
+    .pipe(gulp.dest('./www/assets/locale/i18n/'));
+});
 
 gulp.task('watch', function () {
-    gulp.watch(config.origin.allSass, ['sass']);
+  gulp.watch(config.origin.allSass, ['sass']);
 });
 
 /**
@@ -34,42 +39,42 @@ gulp.task('watch', function () {
  * @return {Stream}
  */
 gulp.task('analyze', function () {
-    plugins.util.log(plugins.util.colors.blue('Analyzing JSHint and JSCS'));
-    var jshintAnalysis = analyzeJshint();
-    var jscsAnalysis = analyzeJscs();
+  plugins.util.log(plugins.util.colors.blue('Analyzing JSHint and JSCS'));
+  var jshintAnalysis = analyzeJshint();
+  var jscsAnalysis = analyzeJscs();
 
-    return merge(jshintAnalysis, jscsAnalysis);
+  return merge(jshintAnalysis, jscsAnalysis);
 });
 function analyzeJshint() {
-    return gulp.src(config.origin.alljs)
-        .pipe(plugins.if(args.verbose, plugins.print()))
-        .pipe(plugins.jshint())
-        .pipe(plugins.jshint.reporter('jshint-stylish', {verbose: true}))
-        .pipe(plugins.jshint.reporter('fail'));
+  return gulp.src(config.origin.alljs)
+    .pipe(plugins.if(args.verbose, plugins.print()))
+    .pipe(plugins.jshint())
+    .pipe(plugins.jshint.reporter('jshint-stylish', {verbose: true}))
+    .pipe(plugins.jshint.reporter('fail'));
 }
 
 function analyzeJscs() {
-    return gulp.src(config.origin.alljs)
-        .pipe(plugins.jscs())
-        .pipe(plugins.jscsStylish());
+  return gulp.src(config.origin.alljs)
+    .pipe(plugins.jscs())
+    .pipe(plugins.jscsStylish());
 }
 
 gulp.task('install', ['git-check'], function () {
-    return bower.commands.install()
-        .on('log', function (data) {
-            plugins.util.log('bower', plugins.util.colors.cyan(data.id), data.message);
-        });
+  return bower.commands.install()
+    .on('log', function (data) {
+      plugins.util.log('bower', plugins.util.colors.cyan(data.id), data.message);
+    });
 });
 
 gulp.task('git-check', function (done) {
-    if (!sh.which('git')) {
-        console.log(
-            '  ' + plugins.util.colors.red('Git is not installed.'),
-            '\n  Git, the version control system, is required to download Ionic.',
-            '\n  Download git here:', plugins.util.colors.cyan('http://git-scm.com/downloads') + '.',
-            '\n  Once git is installed, run \'' + plugins.util.colors.cyan('gulp install') + '\' again.'
-        );
-        process.exit(1);
-    }
-    done();
+  if (!sh.which('git')) {
+    console.log(
+      '  ' + plugins.util.colors.red('Git is not installed.'),
+      '\n  Git, the version control system, is required to download Ionic.',
+      '\n  Download git here:', plugins.util.colors.cyan('http://git-scm.com/downloads') + '.',
+      '\n  Once git is installed, run \'' + plugins.util.colors.cyan('gulp install') + '\' again.'
+      );
+    process.exit(1);
+  }
+  done();
 });
