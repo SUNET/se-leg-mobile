@@ -10,5 +10,7 @@
       "networkDisabled": "Your network is not available. Please, active it."
     }
   },
-  "test": "mytest"
+  "logo": {
+    "text": "Easy process for in-person vetting"
+  }
 }

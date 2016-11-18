@@ -9,5 +9,7 @@
       "methodNotAllowed": "Método no permitido"
     }
   },
-  "test": "mytest"
+  "logo": {
+    "text": "Fácil proceso de verificación en persona"
+  }
 }

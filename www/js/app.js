@@ -9,6 +9,7 @@
     'angular',
     './core/main',
     // Application modules.
+    './logo/main',
     './scanner/main',
     // Here application widgets
     './widgets/main'// Yeoman hook. Define section. Do not remove this comment.
@@ -21,6 +22,7 @@
       angular.module(moduleName, [
         'ionic',
         'app.core',
+        'app.logo',
         'app.scanner',
         'app.widgets'// Yeoman hook. Dependencies section. Do not remove this comment.
       ])

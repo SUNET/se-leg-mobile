@@ -10,35 +10,33 @@
     angular.module(moduleName)
       .controller('ScannerController', ScannerController);
     /* @ngInject */
-    function ScannerController($cordovaBarcodeScanner, $ionicPlatform, ScannerService, $translate) {
+    function ScannerController($cordovaBarcodeScanner, $ionicPlatform, $state, SE_LEG_VIEWS) {
 
       var vm = this;
-      //vm.scanResults = '';
-      vm.scanResults = 'error.service.unauthorized';
+      vm.scanData = '';
 
       vm.scan = scan;
+
+      activate();
+
+      function activate() {
+        vm.scan();
+      }
 
       /**
        *
        */
       function scan() {
-
         $ionicPlatform.ready(function () {
           $cordovaBarcodeScanner
             .scan()
             .then(function (result) {
-              var token = '';
-              // Success! Barcode data is here
-              vm.scanResults = "We got a barcoden\n" +
-                "Result: " + result.text + "\n" +
-                "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled;
-
-              //token = result.text.split(' ')[1];
-              //ScannerService.post(token.split('"')[1]);
+              // Barcode data is here
+              vm.scanData = result.text.split(' ')[1].split('"')[1];
+              $state.go(SE_LEG_VIEWS.IDENTIFICATION);
             }, function (error) {
               // An error occurred
-              vm.scanResults = 'Error: ' + error;
+              vm.scanData = 'Error: ' + error;
             }),
             {
               "preferFrontCamera": true, // iOS and Android

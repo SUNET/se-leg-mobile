@@ -1,18 +1,18 @@
 /**
- * Scanner service
+ * Identification service
  * @param {type} angular
  * @author Maria Villalba <mavillalba@emergya.com>
  */
 
 
 (function () {
-  define(['./scanner.module'], function (module) {
+  define(['./identification.module'], function (module) {
     'use strict';
 
-    angular.module(module).service('ScannerService', ScannerService);
+    angular.module(module).service('IdentificationService', IdentificationService);
 
     /* @ngInject */
-    function ScannerService($log, $q, CommonService, SE_LEG_GLOBAL, $state, SE_LEG_VIEWS) {
+    function IdentificationService($log, $q, CommonService, SE_LEG_GLOBAL, $state, SE_LEG_VIEWS) {
 
       var service = this;
 
@@ -28,7 +28,7 @@
       function post(token) {
         var deferred = $q.defer();
 
-        $log.debug('Scanner to: ');
+        $log.debug('Identification to: ');
         CommonService
           .call(SE_LEG_GLOBAL.METHODS.POST, '', token, 'Error into the application.')
           .then(function (data) {
@@ -43,3 +43,4 @@
   });
 
 })();
+
