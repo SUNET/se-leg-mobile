@@ -1,5 +1,6 @@
 node_modules/
 platforms/
+www/css/
 www/lib/
 plugins/
 .idea
@@ -7,6 +8,8 @@ www/css/
 nbproject
 dist/
 npm-debug.log
+www/js/main.js
 www/fonts/ionicons.*
 .DS_Store
 reports
+www/js/core/modules/config/config.constants.js
