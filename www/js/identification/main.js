@@ -8,7 +8,10 @@
 (function () {
   define([
     // Here files modules internal files referencies.
-
+    './identification.routes',
+    './identification.controller',
+    './identification.service'
+      // ...
   ], function () {
   });
 })();

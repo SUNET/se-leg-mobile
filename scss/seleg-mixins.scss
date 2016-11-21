@@ -1,0 +1,21 @@
+/**
+ * Mixin to replace compass input-placeholder (not available without ruby sass).
+ */
+@mixin input-placeholder {
+  // used in _base.scss
+  // replaces compass/css/user-interface/input-placeholder()
+  &::-webkit-input-placeholder  {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+    opacity: 1;
+  }
+  &::-moz-placeholder {
+    @content;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}

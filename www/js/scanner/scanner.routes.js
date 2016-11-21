@@ -12,14 +12,17 @@
 
     /* As a angular module config, here it's not possible inject constants services, only providers.*/
     /* @ngInject */
-    function config($stateProvider) {
+    function config($stateProvider, $urlRouterProvider) {
 
       $stateProvider.state('scanner', {
-        url: '/scanner',
+        url: '/',
         template: scannerTemplate,
         controller: 'ScannerController',
         controllerAs: 'scannerCtrl'
       });
+
+      $urlRouterProvider.otherwise('/');
+
     }
   });
 })();

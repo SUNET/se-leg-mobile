@@ -9,7 +9,10 @@
       "methodNotAllowed": "Método no permitido"
     }
   },
-  "logo": {
-    "text": "Fácil proceso de verificación en persona"
+  "identification": {
+    "title": "Texto identificación nacional",
+    "name": "Número de identificación nacional",
+    "tittleInput": "Escribe tu número de identificación nacional",
+    "send": "ENVIAR"
   }
 }

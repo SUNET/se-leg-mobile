@@ -15,7 +15,6 @@
     angular
       .module(moduleName)
       .constant('SE_LEG_VIEWS', {
-        LOGO: 'logo',
         SCANNER: 'scanner',
         MESSAGE: 'message',
         ID: 'identification',

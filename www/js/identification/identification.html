@@ -1,16 +1,24 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-  <head>
-    <title>TODO supply a title</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
-    <div>TODO write content</div>
-  </body>
-</html>
+<ion-content class="first-element">
+
+  <!-- identification content head -->
+  <div class="identification-content-header">
+    <div class="col">
+      <div class="text-center identification-content-title">{{'identification.title'| translate}}</div>
+    </div>
+  </div>
+
+  <!-- Identification content -->
+  <div class="identification-content">
+    <form ng-submit="identificationCtrl.send()">
+      <div class="send-identification-form-container">
+        <label class="item item-input">
+          <input id="new-col-input" type="text" ng-model="identificationCtrl.nationaIdNumber" placeholder="{{'identification.name'| translate  }}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+        </label>
+      </div>
+      <div class="row send-identification-button">
+        <button class="button button-full seleg-button" type="submit" translate="identification.send"></button>
+      </div>
+    </form>
+  </div>
+
+</ion-content>

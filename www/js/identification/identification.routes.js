@@ -16,6 +16,9 @@
 
       $stateProvider.state('identification', {
         url: '/identification',
+        params: {
+          scanner: null
+        },
         template: identificationTemplate,
         controller: 'IdentificationController',
         controllerAs: 'identificationCtrl'

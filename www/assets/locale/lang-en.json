@@ -10,7 +10,10 @@
       "networkDisabled": "Your network is not available. Please, active it."
     }
   },
-  "logo": {
-    "text": "Easy process for in-person vetting"
+  "identification": {
+    "title": "Text National ID",
+    "name": "National ID Number",
+    "tittleInput": "Type your national Id number",
+    "send": "SEND"
   }
 }

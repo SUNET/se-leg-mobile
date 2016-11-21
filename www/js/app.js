@@ -9,8 +9,8 @@
     'angular',
     './core/main',
     // Application modules.
-    './logo/main',
     './scanner/main',
+    './identification/main',
     // Here application widgets
     './widgets/main'// Yeoman hook. Define section. Do not remove this comment.
   ],
@@ -19,18 +19,17 @@
 
       var moduleName = 'app';
 
-      angular.module(moduleName, [
-        'ionic',
-        'app.core',
-        'app.logo',
-        'app.scanner',
-        'app.widgets'// Yeoman hook. Dependencies section. Do not remove this comment.
-      ])
-
+      angular
+        .module(moduleName, [
+          'ionic',
+          'app.core',
+          'app.scanner',
+          'app.identification',
+          'app.widgets'// Yeoman hook. Dependencies section. Do not remove this comment.
+        ])
         .config(Config);
 
-      Config.$inject = ['$ionicConfigProvider'];
-
+      /* @ ngInject */
       function Config($ionicConfigProvider) {
         // Configure the max pages to save in cache
         $ionicConfigProvider.views.maxCache(10);

@@ -33,7 +33,7 @@
             .then(function (result) {
               // Barcode data is here
               vm.scanData = result.text.split(' ')[1].split('"')[1];
-              $state.go(SE_LEG_VIEWS.IDENTIFICATION);
+              $state.go(SE_LEG_VIEWS.ID, {scanner: vm.scanData});
             }, function (error) {
               // An error occurred
               vm.scanData = 'Error: ' + error;

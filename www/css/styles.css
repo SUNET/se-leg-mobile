@@ -9693,3 +9693,109 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+/**
+ * Mixin to replace compass input-placeholder (not available without ruby sass).
+ */
+/*
+    Created on : 18-nov-2016, 12:33:22
+    Author     : mavillalba
+*/
+/*button {
+  height: 44px;
+  width: 44px;
+}
+
+.button {
+  min-width: 47px;
+}
+
+.button.seleg-button {
+  color: #fff;
+  background-color: #059ba8;
+}
+
+.text-button {
+  width: auto;
+  height: auto;
+}*/
+/*
+    Created on : 18-nov-2016, 12:26:30
+    Author     : mavillalba
+*/
+.first-element {
+  background-color: #ececec; }
+
+.identification-content-header {
+  height: 40vh; }
+  .identification-content-header .identification-content-title {
+    color: black;
+    font-size: 25px;
+    height: 23px;
+    margin-top: 50px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 25px 0 25px;
+    font-weight: bold; }
+
+.identification-content label {
+  background: #FFF;
+  margin: 0 auto;
+  width: 70%;
+  padding-bottom: 0; }
+
+.identification-content item-input {
+  padding-bottom: 0px; }
+
+.identification-content input {
+  padding-bottom: 0;
+  padding-right: 0;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.55);
+  font-weight: normal; }
+
+.identification-content::-webkit-input-placeholder {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.55);
+  font-weight: normal; }
+
+.identification-content:-moz-placeholder {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.55);
+  font-weight: normal;
+  opacity: 1; }
+
+.identification-content::-moz-placeholder {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.55);
+  font-weight: normal;
+  opacity: 1; }
+
+.identification-content:-ms-input-placeholder {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.55);
+  font-weight: normal; }
+
+.identification-content .send-identification-form-container {
+  border-bottom: 2px solid #E6E6E6;
+  height: 35vh; }
+
+.identification-content .send-identification-button {
+  height: 84px;
+  padding: 0;
+  margin: 0; }
+  .identification-content .send-identification-button button {
+    background-color: #059ba8;
+    height: 55px;
+    min-height: 55px;
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-top: 24.52px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-size: 14.3px;
+    letter-spacing: 1.19px;
+    margin-bottom: 0;
+    line-height: 55px;
+    font-weight: bold;
+    color: #fff; }
