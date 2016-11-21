@@ -1,0 +1,5 @@
+{
+  "backendUrl": "",
+  "connectionTimeout": 30000,
+  "defaultLanguage": "en"
+}
