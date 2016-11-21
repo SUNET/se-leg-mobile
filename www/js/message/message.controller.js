@@ -10,9 +10,19 @@
     angular.module(moduleName)
       .controller('MessageController', MessageController);
     /* @ngInject */
-    function MessageController() {
+    function MessageController($state, SE_LEG_VIEWS) {
 
       var vm = this;
+
+      // Public methods
+      vm.start = start;
+
+      /**
+       * Start a new vet
+       */
+      function start() {
+        $state.go(SE_LEG_VIEWS.SCANNER);
+      }
 
     }
   });

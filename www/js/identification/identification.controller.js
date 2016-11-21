@@ -38,9 +38,9 @@
 
            */
         }
-
+        $state.go(SE_LEG_VIEWS.MESSAGE);
       }
-      //$state.go(SE_LEG_VIEWS.MESSAGE);
+
 
     }
   });

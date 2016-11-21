@@ -8,7 +8,9 @@
 (function () {
   define([
     // Here files modules internal files referencies.
-
+    './message.routes',
+    './message.controller'
+      // ...
   ], function () {
   });
 })();

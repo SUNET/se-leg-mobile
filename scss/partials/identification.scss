@@ -3,10 +3,6 @@
     Author     : mavillalba
 */
 
-.first-element{
-  background-color: #ececec;
-}
-
 .identification-content-header {
   height: 40vh;
 
@@ -40,20 +36,27 @@
   input {
     padding-bottom: 0;
     padding-right: 0;
-    font-size: 13px;
+    font-size: 15px;
     color: rgba(0, 0, 0, 0.55);
     font-weight: normal;
   }
 
   @include input-placeholder {
-    font-size: 13px;
+    font-size: 15px;
     color: rgba(0, 0, 0, 0.55);
     font-weight: normal;
   }
 
   .send-identification-form-container {
-    border-bottom: 2px solid #E6E6E6;
     height: 35vh;
+
+    .message-form-container{
+      padding-left: 62px;
+      padding-bottom: 10px;
+      color: grey;
+      font-size: 13px;
+    }
+
   }
 
   .send-identification-button {

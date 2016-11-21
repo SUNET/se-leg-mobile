@@ -11,6 +11,7 @@
     // Application modules.
     './scanner/main',
     './identification/main',
+    './message/main',
     // Here application widgets
     './widgets/main'// Yeoman hook. Define section. Do not remove this comment.
   ],
@@ -25,6 +26,7 @@
           'app.core',
           'app.scanner',
           'app.identification',
+          'app.message',
           'app.widgets'// Yeoman hook. Dependencies section. Do not remove this comment.
         ])
         .config(Config);
