@@ -10,12 +10,14 @@
     angular.module(moduleName)
       .controller('ScannerController', ScannerController);
     /* @ngInject */
-    function ScannerController($cordovaBarcodeScanner, $ionicPlatform, $state, SE_LEG_VIEWS) {
+    function ScannerController($cordovaBarcodeScanner, $ionicPlatform, $scope, $state, SE_LEG_VIEWS) {
 
       var vm = this;
       vm.scanData = '';
 
       vm.scan = scan;
+
+      $scope.$on('$ionicView.enter', scan);
 
       activate();
 
@@ -32,7 +34,7 @@
             .scan()
             .then(function (result) {
               // Barcode data is here
-              vm.scanData = result.text.split(' ')[1].split('"')[1];
+              vm.scanData = result.text;
               $state.go(SE_LEG_VIEWS.ID, {scanner: vm.scanData});
             }, function (error) {
               // An error occurred

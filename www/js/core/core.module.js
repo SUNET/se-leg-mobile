@@ -15,8 +15,9 @@
 
     ng.module(moduleName,
       [
-        'app.core.modules'
-      ])
+        'app.core.modules',
+        'app.core.factories'
+      ]);
 
     return moduleName;
   });

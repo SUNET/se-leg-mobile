@@ -7,6 +7,8 @@
   define([
     // Core Services.
     './services/core.common.service',
+    // Core Factories
+    './factories/main',
     // Core Modules.
     './modules/main'
   ], function () {

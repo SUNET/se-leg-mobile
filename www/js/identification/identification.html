@@ -18,7 +18,7 @@
           </label>
         </div>
         <div class="row send-identification-button">
-          <button class="button button-full seleg-button" type="submit" translate="identification.send"></button>
+          <button class="button button-full seleg-button" type="submit" translate="identification.send" ng-disabled="!identificationCtrl.correctFormat()"></button>
         </div>
       </form>
     </div>
