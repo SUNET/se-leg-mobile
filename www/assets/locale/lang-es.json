@@ -19,5 +19,9 @@
     "title": "Mensaje de visualización",
     "message": "El proceso de aprobación ha sido completado con éxito",
     "start": "Iniciar una nueva aprobación"
+  },
+  "back": {
+    "title": "Pantalla inicial",
+    "msg": "Pantalla de cancelar al pulsa volver"
   }
 }

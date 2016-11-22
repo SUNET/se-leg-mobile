@@ -13,9 +13,16 @@
       <form ng-submit="identificationCtrl.send()">
         <div class="send-identification-form-container">
           <div class="text-left message-form-container">{{'identification.message'| translate}}</div>
-          <label class="item item-input">
-            <input id="new-col-input" type="text" ng-model="identificationCtrl.nationaIdNumber" placeholder="{{'identification.name'| translate  }}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-          </label>
+          <div class="row">
+            <div class="col form-col">
+              <label class="item item-input">
+                <input id="new-col-input" type="text" ng-model="identificationCtrl.nationaIdNumber" placeholder="{{'identification.name'| translate  }}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+              </label>
+            </div>
+            <div>
+              <i class="icon ion-ios-checkmark-outline" ng-class="!identificationCtrl.correctFormat() ? 'style-disable' : 'style-not-disable'"></i>
+            </div>
+          </div>
         </div>
         <div class="row send-identification-button">
           <button class="button button-full seleg-button" type="submit" translate="identification.send" ng-disabled="!identificationCtrl.correctFormat()"></button>

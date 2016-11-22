@@ -20,5 +20,9 @@
     "title": "Display Message",
     "message": "The vetting process has been successfully completed",
     "start": "Start a new vet"
+  },
+  "back": {
+    "title": "Starting Screen",
+    "msg": "Cancel screen if trying to go back"
   }
 }

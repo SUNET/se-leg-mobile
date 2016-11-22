@@ -9,7 +9,8 @@
   define([
     // Here files modules internal files referencies.
     // Widgets module instance itself.
-    './core.utils.factory'
+    './core.utils.factory',
+    './core.main.back.factory'
 
   ], function () {
   });

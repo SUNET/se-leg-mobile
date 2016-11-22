@@ -29,26 +29,31 @@
        *
        */
       function scan() {
-        $ionicPlatform.ready(function () {
-          $cordovaBarcodeScanner
-            .scan()
-            .then(function (result) {
-              // Barcode data is here
+//        $ionicPlatform.ready(function () {
+        $cordovaBarcodeScanner
+          .scan()
+          .then(function (result) {
+            // Barcode data is here
+            if (result.cancelled) {
+              //TODO $state.go(pantalla inicio)
+              $state.go(SE_LEG_VIEWS.MESSAGE);
+            } else {
               vm.scanData = result.text;
               $state.go(SE_LEG_VIEWS.ID, {scanner: vm.scanData});
-            }, function (error) {
-              // An error occurred
-              vm.scanData = 'Error: ' + error;
-            }),
-            {
-              "preferFrontCamera": true, // iOS and Android
-              "showFlipCameraButton": true, // iOS and Android
-              "prompt": "Place a barcode inside the scan area", // supported on Android only
-              "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-              "orientation": "landscape" // Android only (portrait|landscape), default unset so it rotates with the device
             }
-          ;
-        });
+          }, function (error) {
+            // An error occurred
+            vm.scanData = 'Error: ' + error;
+          }),
+          {
+            "preferFrontCamera": true, // iOS and Android
+            "showFlipCameraButton": true, // iOS and Android
+            "prompt": "Place a barcode inside the scan area", // supported on Android only
+            "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+            "orientation": "landscape" // Android only (portrait|landscape), default unset so it rotates with the device
+          }
+        ;
+//        });
       }
     }
   });

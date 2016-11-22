@@ -16,6 +16,10 @@
 
       $stateProvider.state('message', {
         url: '/message',
+        params: {
+          errorScreen: false,
+          msg: null
+        },
         template: messageTemplate,
         controller: 'MessageController',
         controllerAs: 'messageCtrl'
