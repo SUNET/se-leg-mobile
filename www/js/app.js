@@ -34,7 +34,7 @@
       /* @ ngInject */
       function Config($ionicConfigProvider) {
         // Configure the max pages to save in cache
-        $ionicConfigProvider.views.maxCache(10);
+        $ionicConfigProvider.views.maxCache(1);
       }
 
       return moduleName;

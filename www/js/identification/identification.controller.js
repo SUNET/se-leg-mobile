@@ -44,7 +44,6 @@
 
            */
         }
-        vm.nationaIdNumber = undefined;
         $state.go(SE_LEG_VIEWS.MESSAGE);
       }
 

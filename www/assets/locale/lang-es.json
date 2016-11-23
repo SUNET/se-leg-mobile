@@ -23,5 +23,8 @@
   "back": {
     "title": "Pantalla inicial",
     "msg": "Pantalla de cancelar al pulsa volver"
+  },
+  "scanner": {
+    "error": "Ha ocurrido un error"
   }
 }

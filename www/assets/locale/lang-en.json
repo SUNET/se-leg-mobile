@@ -24,5 +24,8 @@
   "back": {
     "title": "Starting Screen",
     "msg": "Cancel screen if trying to go back"
+  },
+  "scanner": {
+    "error": "An error has occurred"
   }
 }

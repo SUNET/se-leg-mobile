@@ -17,7 +17,7 @@
 
       vm.scan = scan;
 
-      $scope.$on('$ionicView.enter', scan);
+      //$scope.$on('$ionicView.enter', scan);
 
       activate();
 
@@ -35,8 +35,7 @@
           .then(function (result) {
             // Barcode data is here
             if (result.cancelled) {
-              //TODO $state.go(pantalla inicio)
-              $state.go(SE_LEG_VIEWS.MESSAGE);
+              navigator.app.exitApp();
             } else {
               vm.scanData = result.text;
               $state.go(SE_LEG_VIEWS.ID, {scanner: vm.scanData});
@@ -44,6 +43,7 @@
           }, function (error) {
             // An error occurred
             vm.scanData = 'Error: ' + error;
+            $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'scanner.error'});
           }),
           {
             "preferFrontCamera": true, // iOS and Android
