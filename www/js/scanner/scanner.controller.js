@@ -17,7 +17,7 @@
 
       vm.scan = scan;
 
-      //$scope.$on('$ionicView.enter', scan);
+      $scope.$on('$ionicView.enter', scan);
 
       activate();
 
