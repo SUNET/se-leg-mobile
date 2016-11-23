@@ -6,21 +6,20 @@
  */
 
 (function () {
-    define(['./constants.module'], function (moduleName) {
-        'use strict';
+  define(['./constants.module'], function (moduleName) {
+    'use strict';
 
-        /**
-         * Application basic configurations.
-         */
-        angular
-            .module(moduleName)
-            .constant('CORE_CONFIGS', {
-                BACKEND_URL: '',
-                CONNECTION_TIMEOUT: '30000',
-                DEFAULT_LANGUAGE: 'en'
-            });
+    /**
+     * Application basic configurations.
+     */
+    angular
+      .module(moduleName)
+      .constant('CORE_CONFIGS', {
+        BACKEND_URL: 'http://demo.eperez:444',
+        CONNECTION_TIMEOUT: '30000',
+        DEFAULT_LANGUAGE: 'en'});
 
-    });
+  });
 
 })();
 

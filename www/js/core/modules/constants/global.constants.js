@@ -24,6 +24,9 @@
           PREFIX: 'lang-',
           SUFFIX: '.json',
           LOCALE_DEFINITIONS_LOCATION: 'assets/locale/i18n'
+        },
+        ENDPOINTS: {
+          RESULT: '/op/vetting-result'
         }
       });
   });

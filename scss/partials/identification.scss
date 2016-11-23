@@ -5,17 +5,29 @@
 
 .identification-content-header {
   height: 40vh;
+  text-align: center;
+
+  .seleg-logo{
+    width: 95px;
+    margin-top: 20px;
+  }
 
   .identification-content-title {
     color: black;
     font-size: 24px;
     height: 23px;
-    margin-top: 50px;
+    margin-top: 15px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     padding: 0 25px 0 25px;
     font-weight: bold;
+  }
+
+  .message-content-message{
+    margin-top: 30px;
+    font-size: 18px;
+    padding: 0 32px 0 32px;
   }
 
 }
@@ -49,29 +61,29 @@
   }
 
   .send-identification-form-container {
-    height: 35vh;
+    height:  40vh;
 
     .form-col{
       width: 90%;
     }
 
     .style-not-disable{
-      color: #059ba8;
-      font-size: 45px;
+      color: #22a7f0;
+      font-size: 50px;
       padding-right: 5vw;
     }
 
     .style-disable{
       color: grey;
-      font-size: 45px;
+      font-size: 50px;
       padding-right: 5vw;
     }
 
     .message-form-container{
-      padding-left: 62px;
-      padding-bottom: 10px;
+      padding-left: 57px;
       color: grey;
       font-size: 13px;
+      text-transform: uppercase;
     }
 
   }
@@ -82,20 +94,19 @@
     margin: 0;
 
     button {
-      background-color: #059ba8;
+      background-color: #22a7f0;
       height: 55px;
       min-height: 55px;
       margin-right: 40px;
       margin-left: 40px;
       margin-top: 24.52px;
-      border-radius: 10px;
       text-transform: uppercase;
       font-size: 14.3px;
       letter-spacing: 1.19px;
       margin-bottom: 0;
       line-height: 55px;
       font-weight: bold;
-      color: #fff;
+      color: #ffffff;
     }
   }
 }

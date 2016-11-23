@@ -1,10 +1,12 @@
 <ion-view view-title="Identification">
-  <ion-content class="first-element">
+  <ion-content class="first-element" overflow-scroll="false" scroll="false">
 
     <!-- identification content head -->
     <div class="identification-content-header">
       <div class="col">
+        <img class="seleg-logo" src="img/SE_LEG_Logo.png"/>
         <div class="text-center identification-content-title">{{'identification.title'| translate}}</div>
+        <div class="text-center message-content-message">{{'identification.subtitle'| translate}}</div>
       </div>
     </div>
 
@@ -16,7 +18,7 @@
           <div class="row">
             <div class="col form-col">
               <label class="item item-input">
-                <input id="new-col-input" type="text" ng-model="identificationCtrl.nationaIdNumber" placeholder="{{'identification.name'| translate  }}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+                <input id="new-col-input" type="text" ng-model="identificationCtrl.nationaIdNumber" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
               </label>
             </div>
             <div>

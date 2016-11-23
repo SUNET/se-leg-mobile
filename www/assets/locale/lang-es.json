@@ -10,13 +10,13 @@
     }
   },
   "identification": {
-    "title": "Texto identificación nacional",
-    "name": "Número de identificación nacional",
+    "title": "Identificación nacional",
+    "subtitle": "Inserte el número de identificación nacional.",
     "send": "ENVIAR",
-    "message": "Escribe tu número de identificación nacional"
+    "message": "número de identificación nacional"
   },
   "message": {
-    "title": "Mensaje de visualización",
+    "title": "Proceso completado",
     "message": "El proceso de aprobación ha sido completado con éxito",
     "start": "Iniciar una nueva aprobación"
   },

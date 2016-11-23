@@ -32,18 +32,14 @@
        * Send identification.
        */
       function send() {
-        if (vm.nationaIdNumber) {
-          vm.serviceData.nationalIdNumber = vm.nationaIdNumber;
-          /*IdentificationService.post(vm.serviceData).then(function (result) {
+        /*if (vm.nationaIdNumber) {
+         vm.serviceData.nationalIdNumber = vm.nationaIdNumber;
+         IdentificationService.post(vm.serviceData).then(function (result) {
 
-           }).catch(function (err) {
-           // an error occurred
-           });
-           } else {
-           }
-
-           */
-        }
+         }).catch(function (err) {
+         $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: err});
+         });
+         }*/
         $state.go(SE_LEG_VIEWS.MESSAGE);
       }
 

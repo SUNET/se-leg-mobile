@@ -4,23 +4,37 @@
 */
 .message-ion-content{
   .message-content-header {
-    height: 25vh;
+    height: 44vh;
+    text-align: center;
+
+    .seleg-logo{
+      width: 95px;
+      margin-top: 20px;
+    }
 
     .message-content-title {
       color: black;
       font-size: 24px;
       height: 23px;
-      margin-top: 50px;
+      margin-top: 15px;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
       padding: 0 25px 0 25px;
       font-weight: bold;
     }
+
+    .message-content-message{
+      margin-top: 30px;
+      font-size: 18px;
+      padding: 0 32px 0 32px;
+    }
+
   }
 
   .message-content {
-    height: 55vh;
+    height: 37vh;
+    text-align: center;
 
     .div-col{
       width: 100%;
@@ -29,18 +43,10 @@
     }
 
     i{
-      color: #059ba8;
-      font-size: 150px;
+      color: #22a7f0;
+      font-size: 190px;
     }
 
-    .message-content-message {
-      color: grey;
-      font-size: 20px;
-      height: 20px;
-      margin-top: 50px;
-      padding: 0 25px 0 0;
-      text-align: left;
-    }
   }
 
   .start-button {
@@ -49,22 +55,19 @@
     margin: 0;
 
     button {
-      background-color: transparent;
+      background-color: #22a7f0;
       height: 55px;
       min-height: 55px;
       margin-right: 40px;
       margin-left: 40px;
       margin-top: 24.52px;
-      border-radius: 10px;
       text-transform: uppercase;
       font-size: 14.3px;
       letter-spacing: 1.19px;
       margin-bottom: 0;
       line-height: 55px;
       font-weight: bold;
-      color: #059ba8;
-      border-color: #059ba8;
-      border-width: 1px;
+      color: #ffffff;
     }
   }
 

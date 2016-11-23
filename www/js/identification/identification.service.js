@@ -29,14 +29,14 @@
         var deferred = $q.defer();
 
         $log.debug('Identification to: ');
-        /*CommonService
-         .call(SE_LEG_GLOBAL.METHODS.POST, '', token, 'Error into the application.')
-         .then(function (data) {
-         $state.go(SE_LEG_VIEWS.MESSAGE);
-         })
-         .catch(deferred.reject);*/
+        CommonService
+          .call(SE_LEG_GLOBAL.METHODS.POST, SE_LEG_GLOBAL.ENDPOINTS.RESULT, token, 'Error into the application.')
+          .then(function (data) {
+            $state.go(SE_LEG_VIEWS.MESSAGE);
+          })
+          .catch(deferred.reject);
 
-        $state.go(SE_LEG_VIEWS.MESSAGE);
+        //$state.go(SE_LEG_VIEWS.MESSAGE);
 
         return deferred.promise;
       }

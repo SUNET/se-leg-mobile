@@ -11,13 +11,13 @@
     }
   },
   "identification": {
-    "title": "Text National ID",
-    "name": "National ID Number",
+    "title": "National ID",
+    "subtitle": "Enter the National ID number of the person to be vetted.",
     "send": "SEND",
-    "message": "Type your national Id number"
+    "message": "national id number"
   },
   "message": {
-    "title": "Display Message",
+    "title": "Process completed",
     "message": "The vetting process has been successfully completed",
     "start": "Start a new vet"
   },
