@@ -18,11 +18,13 @@
       vm.d = undefined;
       vm.m = undefined;
       vm.y = undefined;
+      vm.serviceData = undefined;
 
-      vm.serviceData = {
-        code: $state.params.scanner,
-        nationalIdNumber: vm.nationaIdNumber
-      }
+      /*vm.serviceData = {
+       code: $state.params.scanner,
+       nationalIdNumber: vm.nationaIdNumber
+       }*/
+
 
       // Public methods
       vm.send = send;
@@ -32,15 +34,17 @@
        * Send identification.
        */
       function send() {
-        /*if (vm.nationaIdNumber) {
-         vm.serviceData.nationalIdNumber = vm.nationaIdNumber;
-         IdentificationService.post(vm.serviceData).then(function (result) {
-
-         }).catch(function (err) {
-         $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: err});
-         });
-         }*/
-        $state.go(SE_LEG_VIEWS.MESSAGE);
+        if (vm.nationaIdNumber) {
+          //vm.serviceData.nationalIdNumber = vm.nationaIdNumber;
+          vm.serviceData = "identity=" + vm.nationaIdNumber + "&qrcode=" + $state.params.scanner
+          vm.serviceData = vm.serviceData.split(" ").join("");
+          IdentificationService.post(vm.serviceData).then(function (data) {
+            $state.go(SE_LEG_VIEWS.MESSAGE);
+          }).catch(function (err) {
+            $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: err});
+          });
+        }
+        //$state.go(SE_LEG_VIEWS.MESSAGE);
       }
 
 

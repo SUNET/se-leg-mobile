@@ -22,7 +22,7 @@
     "start": "Start a new vet"
   },
   "back": {
-    "title": "Starting Screen",
+    "title": "Error Screen",
     "msg": "Cancel screen if trying to go back"
   },
   "scanner": {

@@ -28,15 +28,12 @@
       function post(token) {
         var deferred = $q.defer();
 
-        $log.debug('Identification to: ');
         CommonService
           .call(SE_LEG_GLOBAL.METHODS.POST, SE_LEG_GLOBAL.ENDPOINTS.RESULT, token, 'Error into the application.')
           .then(function (data) {
-            $state.go(SE_LEG_VIEWS.MESSAGE);
+            deferred.resolve(data);
           })
           .catch(deferred.reject);
-
-        //$state.go(SE_LEG_VIEWS.MESSAGE);
 
         return deferred.promise;
       }

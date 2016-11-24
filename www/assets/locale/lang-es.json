@@ -21,7 +21,7 @@
     "start": "Iniciar una nueva aprobación"
   },
   "back": {
-    "title": "Pantalla inicial",
+    "title": "Pantalla error",
     "msg": "Pantalla de cancelar al pulsa volver"
   },
   "scanner": {
