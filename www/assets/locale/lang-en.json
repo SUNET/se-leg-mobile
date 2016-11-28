@@ -6,20 +6,19 @@
       "unauthorized": "You don't have permission to access the required resource",
       "networkError": "Connection error. It has not been possible connect to server.",
       "notFound": "Resource not found",
-      "methodNotAllowed": "Resource method not allowed",
-      "networkDisabled": "Your network is not available. Please, active it."
+      "methodNotAllowed": "Resource method not allowed"
     }
   },
   "identification": {
-    "title": "National ID",
-    "subtitle": "Enter the National ID number of the person to be vetted.",
-    "send": "SEND",
-    "message": "national id number"
+    "title": "Identity verification",
+    "subtitle": "Enter the national ID number of the person to be verified.",
+    "send": "Send",
+    "message": "National ID number"
   },
   "message": {
-    "title": "Process completed",
-    "message": "The vetting process has been successfully completed",
-    "start": "Start a new vet"
+    "title": "ID control completed",
+    "message": "The identity verification process has been completed",
+    "start": "Start a new identity verification"
   },
   "back": {
     "title": "Error Screen",

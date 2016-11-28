@@ -92,13 +92,15 @@
             case 500:
               errorMsg = $translate.instant('error.service.generic');
               break;
+            default:
+              errorMsg = $translate.instant('error.service.generic');
+              break;
           }
 
         } else if (response.code) {
           switch (response.code) {
             case 19: //NetworkError
               errorMsg = $translate.instant('error.service.networkError');
-              kickOut('error.service.networkError');
               break;
           }
         }
@@ -110,15 +112,6 @@
         }
         response.errorMessage = errorMsg;
         return response;
-      }
-
-      /**
-       * Shows error message, revoke token and redirects to login page.
-       * @param {type} errorMessageKey - Optional, show generic if not defined.
-       * @returns {undefined}
-       */
-      function kickOut(errorMessageKey) {
-        //TODO
       }
 
       return service;

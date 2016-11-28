@@ -16,7 +16,7 @@
       .module(moduleName)
       .constant('SE_LEG_LANGS', {
         en: 'English',
-        es: 'Español'
+        sv: 'svenska'
       });
   });
 })();

@@ -20,31 +20,28 @@
       vm.y = undefined;
       vm.serviceData = undefined;
 
-      /*vm.serviceData = {
-       code: $state.params.scanner,
-       nationalIdNumber: vm.nationaIdNumber
-       }*/
-
 
       // Public methods
       vm.send = send;
       vm.correctFormat = correctFormat;
+
+      /*if (window.cordova && window.cordova.plugins.Keyboard) {
+       window.cordova.plugins.Keyboard.disableScroll(true);
+       }*/
 
       /**
        * Send identification.
        */
       function send() {
         if (vm.nationaIdNumber) {
-          //vm.serviceData.nationalIdNumber = vm.nationaIdNumber;
           vm.serviceData = "identity=" + vm.nationaIdNumber + "&qrcode=" + $state.params.scanner
           vm.serviceData = vm.serviceData.split(" ").join("");
           IdentificationService.post(vm.serviceData).then(function (data) {
             $state.go(SE_LEG_VIEWS.MESSAGE);
           }).catch(function (err) {
-            $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: err});
+            $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: err.errorMessage});
           });
         }
-        //$state.go(SE_LEG_VIEWS.MESSAGE);
       }
 
 

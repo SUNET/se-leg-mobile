@@ -5,7 +5,15 @@
 (function () {
   // Hook to insert paths by a gulp task
   var paths;
-	paths = {"angular":"../lib/ionic/js/ionic.bundle.min","text":"../lib/requirejs-text/text","ngCordova":"../lib/ngCordova/dist/ng-cordova","ngTranslate":"../lib/angular-translate/angular-translate","ngTranslateLoaderStaticFiles":"../lib/angular-translate-loader-static-files/angular-translate-loader-static-files","ngDynamicLocale":"../lib/angular-dynamic-locale/tmhDynamicLocale.min","ngTranslateHandlerLog":"../lib/angular-translate-handler-log/angular-translate-handler-log","ngTranslateStorageLocal":"../js/lib/node_modules/angular-translate-storage-local/angular-translate-storage-local.min","ngTranslateStorageCookie":"../js/lib/node_modules/angular-translate-storage-cookie/angular-translate-storage-cookie.min","ngCookies":"../js/lib/node_modules/angular-cookies/angular-cookies.min","ngSanitize":"../lib/angular-sanitize/angular-sanitize.min"}
+  paths = {"angular": "../lib/ionic/js/ionic.bundle.min", "text": "../lib/requirejs-text/text",
+    "ngCordova": "../lib/ngCordova/dist/ng-cordova", "ngTranslate": "../lib/angular-translate/angular-translate",
+    "ngTranslateLoaderStaticFiles": "../lib/angular-translate-loader-static-files/angular-translate-loader-static-files",
+    "ngDynamicLocale": "../lib/angular-dynamic-locale/tmhDynamicLocale.min",
+    "ngTranslateHandlerLog": "../lib/angular-translate-handler-log/angular-translate-handler-log",
+    "ngTranslateStorageLocal": "../js/lib/node_modules/angular-translate-storage-local/angular-translate-storage-local.min",
+    "ngTranslateStorageCookie": "../js/lib/node_modules/angular-translate-storage-cookie/angular-translate-storage-cookie.min",
+    "ngCookies": "../js/lib/node_modules/angular-cookies/angular-cookies.min",
+    "ngSanitize": "../lib/angular-sanitize/angular-sanitize.min"}
 
   require.config({
     paths: paths,
@@ -41,7 +49,7 @@
           // for form inputs)
           if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            cordova.plugins.Keyboard.disableScroll(true);
+            cordova.plugins.Keyboard.disableScroll(false);
 
           }
 

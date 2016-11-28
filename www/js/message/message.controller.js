@@ -15,14 +15,14 @@
       var vm = this;
 
       vm.errorScreen = $state.params.errorScreen;
-      vm.msg = 'message.message';
+      vm.msg = $translate.instant('message.message');
       vm.title = 'message.title';
 
       activate();
 
       function activate() {
         if (vm.errorScreen) {
-          vm.msg = $state.params.msg;
+          vm.msg = $translate.instant($state.params.msg);
           vm.title = 'back.title';
         }
       }

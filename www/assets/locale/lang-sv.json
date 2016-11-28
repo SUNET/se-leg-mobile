@@ -10,15 +10,15 @@
     }
   },
   "identification": {
-    "title": "Identificación nacional",
-    "subtitle": "Inserte el número de identificación nacional.",
-    "send": "ENVIAR",
-    "message": "número de identificación nacional"
+    "title": "Legitimationskontroll",
+    "subtitle": "Ange personnumret för den person som skall kontrolleras.",
+    "send": "Skicka",
+    "message": "Personnummer"
   },
   "message": {
-    "title": "Proceso completado",
-    "message": "El proceso de aprobación ha sido completado con éxito",
-    "start": "Iniciar una nueva aprobación"
+    "title": "leg-kontroll slutförd",
+    "message": "Processen för leg-kontroll har slutförts",
+    "start": "Starta en ny leg-kontroll"
   },
   "back": {
     "title": "Pantalla error",
