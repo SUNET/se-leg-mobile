@@ -107,7 +107,7 @@ gulp.task('remove-zips', function () {
 
 // Copy the app to the dist folder
 gulp.task('copy-app', gulpsync.sync(['copy-libs', 'copy-fonts', 'inject-css-dev', 'copy-config', 'copy-resources',
-      'copy-js'
+     'copy-android-splash', 'copy-js'
     ]),
     function () {
       return gulp.src(config.origin.devCommons)
@@ -127,6 +127,11 @@ gulp.task('copy-fonts', [], function () {
 gulp.task('copy-resources', [], function () {
   return gulp.src('./resources/**/*')
       .pipe(gulp.dest('dist/build/resources'));
+});
+
+gulp.task('copy-android-splash', [], function () {
+    return gulp.src('./resources/android/splash/**/*')
+        .pipe(gulp.dest('dist/build/www/res/screen/android'));
 });
 
 gulp.task('copy-config', function () {
