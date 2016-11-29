@@ -1,7 +1,6 @@
 node_modules/
 platforms/
 www/css/
-www/lib/
 plugins/
 .idea
 www/css/
