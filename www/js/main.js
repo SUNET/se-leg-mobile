@@ -52,11 +52,6 @@
         // Detect back button to cancel screen if trying to go back (Android only)
         MainBackFactory.init();
 
-
-        $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams, options) {
-          console.log(toState);
-        });
-
       });
 
     // bootstraps angular application. Use this instead of using ng-app

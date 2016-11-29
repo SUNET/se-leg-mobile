@@ -3,6 +3,15 @@
     Author     : mavillalba
 */
 
+body,
+ion-header,
+ion-content,
+ion-footer-bar,
+h1, h2, h3, h4, h5,
+button {
+  font-family: SourceSansProRegular, sans-serif !important;
+}
+
 ion-content{
   background-color: #ececec;
 }
