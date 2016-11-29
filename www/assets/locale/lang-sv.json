@@ -26,5 +26,12 @@
   },
   "scanner": {
     "error": "Ha ocurrido un error"
+  },
+  "permissions": {
+    "error": "Permission error",
+    "invalid": {
+      "generic": "The action cannot be done until you grant the needed permissions.",
+      "camera": "The action cannot be done. You have to grant the camera and storage permissions before doing it."
+    }
   }
 }

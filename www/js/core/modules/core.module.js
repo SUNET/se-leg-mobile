@@ -17,7 +17,8 @@
 
     ng.module(moduleName, [
       'app.core.constants',
-      'app.core.langs'
+      'app.core.langs',
+      'app.core.permissions'
     ]);
 
     return moduleName;

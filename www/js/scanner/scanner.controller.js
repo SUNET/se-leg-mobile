@@ -10,7 +10,7 @@
     angular.module(moduleName)
       .controller('ScannerController', ScannerController);
     /* @ngInject */
-    function ScannerController($cordovaBarcodeScanner, $ionicPlatform, $scope, $state, SE_LEG_VIEWS) {
+    function ScannerController($cordovaBarcodeScanner, $scope, $state, PermissionsHandlerFactory, SE_LEG_VIEWS) {
 
       var vm = this;
       vm.scanData = '';
@@ -26,34 +26,37 @@
       }
 
       /**
-       *
+       * Request camera permission and display the scanner when granted.
        */
       function scan() {
-//        $ionicPlatform.ready(function () {
-        $cordovaBarcodeScanner
-          .scan()
-          .then(function (result) {
-            // Barcode data is here
-            if (result.cancelled) {
-              navigator.app.exitApp();
-            } else {
-              vm.scanData = result.text;
-              $state.go(SE_LEG_VIEWS.ID, {scanner: vm.scanData});
-            }
-          }, function (error) {
-            // An error occurred
-            vm.scanData = 'Error: ' + error;
-            $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'scanner.error'});
-          }),
-          {
-            "preferFrontCamera": true, // iOS and Android
-            "showFlipCameraButton": true, // iOS and Android
-            "prompt": "", // supported on Android only
-            "formats": "QR_CODE",
-            "orientation": "landscape" // Android only (portrait|landscape), default unset so it rotates with the device
-          }
-        ;
-//        });
+
+        PermissionsHandlerFactory.grantPermissionsAndPerformAction({
+          action: 'CAMERA',
+          onSuccess: showBarScanner,
+          onFailureMessage: 'permissions.invalid.camera'
+        });
+
+        /**
+         * Open the scanner.
+         */
+        function showBarScanner() {
+          $cordovaBarcodeScanner
+              .scan()
+              .then(function (result) {
+                // Barcode data is here
+                if (result.cancelled) {
+                  navigator.app.exitApp();
+                } else {
+                  vm.scanData = result.text;
+                  $state.go(SE_LEG_VIEWS.ID, {scanner: vm.scanData});
+                }
+              }, function (error) {
+                // An error occurred
+                vm.scanData = 'Error: ' + error;
+                $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'scanner.error'});
+              });
+        }
+
       }
     }
   });

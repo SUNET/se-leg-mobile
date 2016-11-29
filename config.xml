@@ -2,7 +2,7 @@
 <widget id="com.amoron.se_leg" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>se-leg</name>
   <description>
-  </description>
+    </description>
   <author email="mavillalba@emergya.com" href=" ">
     Maria Villalba
   </author>
@@ -12,16 +12,14 @@
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="16"/>
-  <preference name="phonegap-version" value="cli-6.3.0" />
-  <preference name="orientation" value="all" />
+  <preference name="phonegap-version" value="cli-6.3.0"/>
+  <preference name="orientation" value="all"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="android-build-tool" value="gradle"/>
-
-  <preference name="SplashScreenDelay" value="3000" />
-  <preference name="AutoHideSplashScreen" value="true" />
-  <preference name="SplashScreen" value="www/res/screen/android" />
-  <preference name="SplashMaintainAspectRatio" value="true" />
-
+  <preference name="SplashScreenDelay" value="3000"/>
+  <preference name="AutoHideSplashScreen" value="true"/>
+  <preference name="SplashScreen" value="www/res/screen/android"/>
+  <preference name="SplashMaintainAspectRatio" value="true"/>
   <preference name="Fullscreen" value="false"/>
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
@@ -31,29 +29,32 @@
     <param name="CAMERA_USAGE_DESCRIPTION" value="Allow your camera to scan the QR"/>
   </plugin>
   <plugin name="cordova-plugin-whitelist" source="npm" spec="1.3.0"/>
-  <plugin name="cordova-plugin-splashscreen" spec="~4.0.0" source="npm"/>
+  <plugin name="cordova-plugin-splashscreen" source="npm" spec="~4.0.0"/>
   <plugin name="ionic-plugin-keyboard" source="npm" spec="2.2.1"/>
+  <plugin name="cordova-plugin-permissionScope" source="git" spec="https://github.com/carlosraigadaherrera/cordova-plugin-permissionScope.git"/>
+  <plugin name="cordova-plugin-android-permissions" source="npm" spec="0.10.0"/>
   <platform name="android">
-    <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
-    <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>
-    <icon src="resources/android/icon/drawable-hdpi-icon.png" density="hdpi"/>
-    <icon src="resources/android/icon/drawable-xhdpi-icon.png" density="xhdpi"/>
-    <icon src="resources/android/icon/drawable-xxhdpi-icon.png" density="xxhdpi"/>
-    <icon src="resources/android/icon/drawable-xxxhdpi-icon.png" density="xxxhdpi"/>
-    <splash src="www/res/screen/android/drawable-land-ldpi-screen.png" qualifier="land" density="ldpi"/>
-    <splash src="www/res/screen/android/drawable-land-mdpi-screen.png" qualifier="land" density="mdpi"/>
-    <splash src="www/res/screen/android/drawable-land-hdpi-screen.png" qualifier="land" density="hdpi"/>
-    <splash src="www/res/screen/android/drawable-land-xhdpi-screen.png" qualifier="land" density="xhdpi"/>
-    <splash src="www/res/screen/android/drawable-land-xxhdpi-screen.png" qualifier="land" density="xxhdpi"/>
-    <splash src="www/res/screen/android/drawable-land-xxxhdpi-screen.png" qualifier="land" density="xxxhdpi"/>
-    <splash src="www/res/screen/android/drawable-port-ldpi-screen.png" qualifier="port" density="ldpi"/>
-    <splash src="www/res/screen/android/drawable-port-mdpi-screen.png" qualifier="port" density="mdpi"/>
-    <splash src="www/res/screen/android/drawable-port-hdpi-screen.png" qualifier="port" density="hdpi" />
-    <splash src="www/res/screen/android/drawable-port-xhdpi-screen.png" qualifier="port" density="xhdpi"/>
-    <splash src="www/res/screen/android/drawable-port-xxhdpi-screen.png" qualifier="port" density="xxhdpi"/>
-    <splash src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" qualifier="port" density="xxxhdpi"/>
+    <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png"/>
+    <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png"/>
+    <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png"/>
+    <icon density="xhdpi" src="resources/android/icon/drawable-xhdpi-icon.png"/>
+    <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png"/>
+    <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png"/>
+    <splash density="ldpi" qualifier="land" src="www/res/screen/android/drawable-land-ldpi-screen.png"/>
+    <splash density="mdpi" qualifier="land" src="www/res/screen/android/drawable-land-mdpi-screen.png"/>
+    <splash density="hdpi" qualifier="land" src="www/res/screen/android/drawable-land-hdpi-screen.png"/>
+    <splash density="xhdpi" qualifier="land" src="www/res/screen/android/drawable-land-xhdpi-screen.png"/>
+    <splash density="xxhdpi" qualifier="land" src="www/res/screen/android/drawable-land-xxhdpi-screen.png"/>
+    <splash density="xxxhdpi" qualifier="land" src="www/res/screen/android/drawable-land-xxxhdpi-screen.png"/>
+    <splash density="ldpi" qualifier="port" src="www/res/screen/android/drawable-port-ldpi-screen.png"/>
+    <splash density="mdpi" qualifier="port" src="www/res/screen/android/drawable-port-mdpi-screen.png"/>
+    <splash density="hdpi" qualifier="port" src="www/res/screen/android/drawable-port-hdpi-screen.png"/>
+    <splash density="xhdpi" qualifier="port" src="www/res/screen/android/drawable-port-xhdpi-screen.png"/>
+    <splash density="xxhdpi" qualifier="port" src="www/res/screen/android/drawable-port-xxhdpi-screen.png"/>
+    <splash density="xxxhdpi" qualifier="port" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png"/>
   </platform>
   <platform name="ios">
+    <preference name="deployment-target" value="8.0"/>
     <icon height="57" src="resources/ios/icon/icon.png" width="57"/>
     <icon height="114" src="resources/ios/icon/icon@2x.png" width="114"/>
     <icon height="40" src="resources/ios/icon/icon-40.png" width="40"/>

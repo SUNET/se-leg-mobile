@@ -11,7 +11,9 @@
     './core.module',
     './langs/main',
     // Constants Module.
-    './constants/main'
+    './constants/main',
+    // Permissions
+    './permissions/main'
   ], function () {
   });
 })();

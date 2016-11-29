@@ -6,12 +6,13 @@
  */
 (function () {
   define([
-    // Here files modules internal files referencies.
+    // Here files modules internal files references.
     './constants.service',
     './global.constants',
     './langs.constants',
     './views.constants',
-    './config.constants'
+    './config.constants',
+    './permissions.constants'
   ], function () {
   });
 })();
