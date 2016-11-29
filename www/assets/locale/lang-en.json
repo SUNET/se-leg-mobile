@@ -1,17 +1,17 @@
 {
   "error": {
     "service": {
-      "generic": "An internal error has occurred.",
-      "timeout": "{{classname}}:: Error connection timeout:: {{endpoint}}",
-      "unauthorized": "You don't have permission to access the required resource",
-      "networkError": "Connection error. It has not been possible connect to server.",
+      "generic": "An internal error has occurred. Please restart the application by pressing Restart",
+      "timeout": "The connection has timed out. Please restart the application by pressing Restart",
+      "unauthorized": "You don’t have permission to perform identity verification. Please contact the system administrator",
+      "networkError": "Connection to the server failed. Please try again by pressing Restart",
       "notFound": "Resource not found",
       "methodNotAllowed": "Resource method not allowed"
     }
   },
   "identification": {
     "title": "Identity verification",
-    "subtitle": "Enter the national ID number of the person to be verified.",
+    "subtitle": "Enter the national ID number of the person to be verified",
     "send": "Send",
     "message": "National ID number"
   },
@@ -21,11 +21,11 @@
     "start": "Start a new identity verification"
   },
   "back": {
-    "title": "Error Screen",
-    "msg": "Cancel screen if trying to go back"
+    "title": "Process Cancelled",
+    "msg": "The process has been cancelled. Please try again by pressing Restart"
   },
   "scanner": {
-    "error": "An error has occurred"
+    "error": "The QR code contains invalid data. Please renew the QR code"
   },
   "permissions": {
     "error": "Permission error",
