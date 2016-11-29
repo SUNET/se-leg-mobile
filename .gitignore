@@ -12,4 +12,4 @@ www/fonts/ionicons.*
 .DS_Store
 reports
 www/js/core/modules/config/config.constants.js
-www/lib2
+www/lib
