@@ -1,9 +1,9 @@
 /**
- * Scanner service
+ * Service common calls.
+ *
  * @param {type} angular
  * @author Maria Villalba <mavillalba@emergya.com>
  */
-
 
 (function () {
   define(['./../core.module'], function (moduleName) {
@@ -79,8 +79,7 @@
           switch (response.status) {
             case 0:
               //Connection error message.
-              errorMsg = $translate.instant('error.service.timeout', {classname: service.className, endpoint: endpoint
-              });
+              errorMsg = $translate.instant('error.service.timeout');
               break;
             case 401:
               errorMsg = $translate.instant('error.service.unauthorized');
@@ -106,10 +105,7 @@
         }
 
         $log.error(errorMsg);
-        if (response.status === 0 || response.status === 500) {
-          //TODO
-          $rootScope.$emit('reportError', response);
-        }
+
         response.errorMessage = errorMsg;
         return response;
       }
