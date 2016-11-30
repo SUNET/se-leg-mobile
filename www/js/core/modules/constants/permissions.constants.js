@@ -24,7 +24,12 @@
           IOS: [{
               requestMethod: 'requestCameraPermission',
               permission: 'Camera'
-            }]}
+            }]},
+        FINGERPRINT: {
+          ANDROID: [
+            'android.permission.USE_FINGERPRINT'
+          ]
+        }
       });
   });
 })();

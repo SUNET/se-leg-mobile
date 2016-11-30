@@ -33,5 +33,13 @@
       "generic": "The action cannot be done until you grant the needed permissions.",
       "camera": "The action cannot be done. You have to grant the camera and storage permissions before doing it."
     }
+  },
+  "fingerprint": {
+    "error": {
+      "notAvailable": "Fingerprint authentication not available",
+      "notRegistred": "Fingerprint auth available, but no fingerprint registered on the device",
+      "notDetectFingerprintDevice": "Cannot detect fingerprint device",
+      "cancelled": "Fingerprint cancelled"
+    }
   }
 }

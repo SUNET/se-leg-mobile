@@ -33,5 +33,13 @@
       "generic": "Åtgärden kan inte utföras förrän du beviljar de nödvändiga behörigheter",
       "camera": "Åtgärden kan inte utföras. Du måste först bevilja behörigheter för kamera och lagring."
     }
+  },
+  "fingerprint": {
+    "error": {
+      "notAvailable": "Fingerprint authentication not available",
+      "notRegistred": "Fingerprint auth available, but no fingerprint registered on the device",
+      "notDetectFingerprintDevice": "Cannot detect fingerprint device",
+      "cancelled": "Fingerprint cancelled"
+    }
   }
 }

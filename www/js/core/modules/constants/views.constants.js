@@ -18,7 +18,7 @@
         SCANNER: 'scanner',
         MESSAGE: 'message',
         ID: 'identification',
-        TOUCHID: 'touchId'
+        FINGERPRINT: 'fingerprint'
       });
   });
 })();

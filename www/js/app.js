@@ -12,6 +12,7 @@
     './scanner/main',
     './identification/main',
     './message/main',
+    './fingerprint/main',
     // Here application widgets
     './widgets/main'// Yeoman hook. Define section. Do not remove this comment.
   ],
@@ -27,6 +28,7 @@
           'app.scanner',
           'app.identification',
           'app.message',
+          'app.fingerprint',
           'app.widgets'// Yeoman hook. Dependencies section. Do not remove this comment.
         ])
         .config(Config);

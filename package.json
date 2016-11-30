@@ -43,7 +43,8 @@
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
     "phonegap-plugin-barcodescanner",
-    "cordova-plugin-android-permissions"
+    "cordova-plugin-android-permissions",
+    "cordova-plugin-android-fingerprint-auth"
   ],
   "cordovaPlatforms": [
     "android"

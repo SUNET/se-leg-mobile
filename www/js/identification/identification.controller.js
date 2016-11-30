@@ -37,9 +37,11 @@
           vm.serviceData = "identity=" + vm.nationaIdNumber + "&qrcode=" + $state.params.scanner
           vm.serviceData = vm.serviceData.split(" ").join("");
           IdentificationService.post(vm.serviceData).then(function (data) {
-            $state.go(SE_LEG_VIEWS.MESSAGE);
+            //$state.go(SE_LEG_VIEWS.MESSAGE);
+            $state.go(SE_LEG_VIEWS.FINGERPRINT);
           }).catch(function (err) {
             $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: err.errorMessage});
+            //$state.go(SE_LEG_VIEWS.FINGERPRINT);
           });
         }
       }
