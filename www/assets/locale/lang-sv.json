@@ -28,10 +28,10 @@
     "error": "QR-koden innehåller felaktig data. Vänligen förnya QR-koden"
   },
   "permissions": {
-    "error": "Permission error",
+    "error": "Behörighetsproblem",
     "invalid": {
-      "generic": "The action cannot be done until you grant the needed permissions.",
-      "camera": "The action cannot be done. You have to grant the camera and storage permissions before doing it."
+      "generic": "Åtgärden kan inte utföras förrän du beviljar de nödvändiga behörigheter",
+      "camera": "Åtgärden kan inte utföras. Du måste först bevilja behörigheter för kamera och lagring."
     }
   }
 }

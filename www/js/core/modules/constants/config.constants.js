@@ -15,7 +15,7 @@
         angular
             .module(moduleName)
             .constant('CORE_CONFIGS', {
-                BACKEND_URL: 'https://front.se-leg.se',
+                BACKEND_URL: 'http://10.35.1.123:444/op',
                 CONNECTION_TIMEOUT: '30000',
                 DEFAULT_LANGUAGE: 'en'
             });
