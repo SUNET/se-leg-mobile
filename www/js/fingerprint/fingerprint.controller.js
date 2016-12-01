@@ -22,38 +22,15 @@
 
 
       function fingerprint() {
-        FingerprintAuth.isAvailable(isAvailableSuccess, isAvailableError);
-      }
-
-      /**
-       * @return {
-       *      isAvailable:boolean,
-       *      isHardwareDetected:boolean,
-       *      hasEnrolledFingerprints:boolean
-       *   }
-       */
-      function isAvailableSuccess(result) {
         // it is available
         var client_id = "Your client ID";
         var client_secret = "A very secret client secret (once per device)";
-        console.log("FingerprintAuth available: " + JSON.stringify(result));
-        if (result.isAvailable) {
-          if (result.hasEnrolledFingerprints) {
-            FingerprintAuth.show({
-              clientId: client_id,
-              clientSecret: client_secret
-            }, successCallback, errorCallback);
-          }
-        } else {
-          console.log("Fingerprint auth available, but no fingerprint registered on the device");
-          $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'fingerprint.error.notRegistred'});
-        }
-      }
 
-      function isAvailableError(message) {
-        // fingerprint auth isn't available
-        console.log("isAvailableError(): " + message);
-        $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'fingerprint.error.notDetectFingerprintDevice'});
+        FingerprintAuth.show({
+          clientId: client_id,
+          clientSecret: client_secret,
+          disableBackup: true
+        }, successCallback, errorCallback);
       }
 
       /**

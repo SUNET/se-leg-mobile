@@ -48,6 +48,17 @@
                 navigator.app.exitApp();
               }
               break;
+            case SE_LEG_VIEWS.MESSAGE:
+              var message = $ionicHistory.currentView().stateParams.msg;
+
+              if (message === "fingerprint.error.notFingerprint") {
+                if (navigator && navigator.app) {
+                  navigator.app.exitApp();
+                }
+              } else {
+                $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'back.msg'});
+              }
+              break;
 
             default:
               $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'back.msg'});

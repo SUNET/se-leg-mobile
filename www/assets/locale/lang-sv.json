@@ -18,7 +18,8 @@
   "message": {
     "title": "leg-kontroll slutförd",
     "message": "Processen för leg-kontroll har slutförts",
-    "start": "Starta en ny leg-kontroll"
+    "start": "Starta en ny leg-kontroll",
+    "close": "Close App"
   },
   "back": {
     "title": "Processen har avbrutits",
@@ -39,7 +40,8 @@
       "notAvailable": "Fingerprint authentication not available",
       "notRegistred": "Fingerprint auth available, but no fingerprint registered on the device",
       "notDetectFingerprintDevice": "Cannot detect fingerprint device",
-      "cancelled": "Fingerprint cancelled"
+      "cancelled": "Fingerprint cancelled",
+      "notFingerprint": "Not detect fingerprint device"
     }
   }
 }

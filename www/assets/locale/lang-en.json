@@ -18,7 +18,8 @@
   "message": {
     "title": "ID control completed",
     "message": "The identity verification process has been completed",
-    "start": "Start a new identity verification"
+    "start": "Start a new identity verification",
+    "close": "Close App"
   },
   "back": {
     "title": "Process Cancelled",
@@ -39,7 +40,8 @@
       "notAvailable": "Fingerprint authentication not available",
       "notRegistred": "Fingerprint auth available, but no fingerprint registered on the device",
       "notDetectFingerprintDevice": "Cannot detect fingerprint device",
-      "cancelled": "Fingerprint cancelled"
+      "cancelled": "Fingerprint cancelled",
+      "notFingerprint": "Not detect fingerprint device"
     }
   }
 }
