@@ -18,7 +18,8 @@
         SCANNER: 'scanner',
         MESSAGE: 'message',
         ID: 'identification',
-        FINGERPRINT: 'fingerprint'
+        FINGERPRINT: 'fingerprint',
+        AFTERSETTING: 'aftersetting'
       });
   });
 })();

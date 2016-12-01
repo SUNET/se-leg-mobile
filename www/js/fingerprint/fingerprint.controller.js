@@ -37,13 +37,13 @@
        * @return {withFingerprint:base64EncodedString, withPassword:boolean}
        */
       function successCallback(result) {
-        console.log("successCallback(): " + JSON.stringify(result));
+        //console.log("successCallback(): " + JSON.stringify(result));
         if (result.withFingerprint) {
-          console.log("Successfully authenticated using a fingerprint");
+          //console.log("Successfully authenticated using a fingerprint");
           $state.go(SE_LEG_VIEWS.MESSAGE);
         } else if (result.withPassword) {
           $state.go(SE_LEG_VIEWS.MESSAGE);
-          console.log("Authenticated with backup password");
+          //console.log("Authenticated with backup password");
         }
       }
 
@@ -51,7 +51,6 @@
         if (error === "Cancelled") {
           $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'fingerprint.error.cancelled'});
         } else {
-          console.log(error); // "Fingerprint authentication not available"
           $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'fingerprint.error.notAvailable'});
         }
       }

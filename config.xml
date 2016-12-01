@@ -86,4 +86,5 @@
     </platform>
     <icon src="resources/android/icon/drawable-xhdpi-icon.png" />
     <plugin name="cordova-plugin-android-fingerprint-auth" spec="~0.3.3" />
+    <plugin name="com.phonegap.plugins.nativesettingsopener" spec="https://github.com/selahssea/Cordova-open-native-settings.git" />
 </widget>

@@ -29,13 +29,53 @@
        * Request camera permission and display the scanner when granted.
        */
       function scan() {
-        PermissionsHandlerFactory.grantPermissionsAndPerformAction({
-          action: 'CAMERA',
-          onSuccess: showBarScanner,
-          onFailure: function () {
-            closeApp(true);
+
+        FingerprintAuth.isAvailable(isAvailableSuccess, isAvailableError);
+
+
+        /**
+         * @return {
+         *      isAvailable:boolean,
+         *      isHardwareDetected:boolean,
+         *      hasEnrolledFingerprints:boolean
+         *   }
+         */
+        function isAvailableSuccess(result) {
+          console.log("FingerprintAuth available: " + JSON.stringify(result));
+          if (result.isHardwareDetected) {
+            if (!result.isAvailable) {
+              //console.log("Fingerprint auth available, but no fingerprint registered on the device");
+              //$state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'fingerprint.error.notRegistred'});
+              if (typeof cordova.plugins.settings.openSetting != undefined)
+                cordova.plugins.settings.openSetting("security", function () {
+                  console.log(
+                    "opened nfc settings")
+                },
+                  function () {
+                    console.log(
+                      "failed to open nfc settings")
+                  });
+              $state.go(SE_LEG_VIEWS.AFTERSETTING);
+
+            } else {
+              PermissionsHandlerFactory.grantPermissionsAndPerformAction({
+                action: 'CAMERA',
+                onSuccess: showBarScanner,
+                onFailure: function () {
+                  closeApp(true);
+                }
+              });
+            }
+          } else {
+            $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'fingerprint.error.notFingerprint'});
           }
-        });
+        }
+
+        function isAvailableError(message) {
+          // fingerprint auth isn't available
+          //console.log("isAvailableError(): " + message);
+          $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'fingerprint.error.notDetectFingerprintDevice'});
+        }
 
         /**
          * Open the scanner.
