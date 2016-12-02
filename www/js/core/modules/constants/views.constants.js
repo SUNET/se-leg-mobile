@@ -19,7 +19,7 @@
         MESSAGE: 'message',
         ID: 'identification',
         FINGERPRINT: 'fingerprint',
-        AFTERSETTING: 'aftersetting'
+        FINGERPRINTVERIFICATION: 'fingerprintVerification'
       });
   });
 })();

@@ -1,5 +1,5 @@
 /**
- * After Setting module.
+ * Fingerprint Verification module.
  * @param {type} angular
  * * @returns {angular.module}
  * @author Maria Villalba <mavillalba@emergya.com>
@@ -14,7 +14,7 @@
   ], function (ng) {
     'use strict';
 
-    var moduleName = 'app.aftersetting';
+    var moduleName = 'app.fingerprintVerification';
 
     ng.module(moduleName, []);
 

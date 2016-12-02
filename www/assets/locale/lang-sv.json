@@ -41,7 +41,17 @@
       "notRegistred": "Fingerprint auth available, but no fingerprint registered on the device",
       "notDetectFingerprintDevice": "Cannot detect fingerprint device",
       "cancelled": "Fingerprint cancelled",
-      "notFingerprint": "Not detect fingerprint device"
+      "notFingerprint": "If you haven't detect fingerprint device, you cant't continue the process"
     }
+  },
+  "security": {
+    "error": {
+      "errorOpenSecurity": "Failed to open security settings"
+    }
+  },
+  "fingerprintVerification": {
+    "title": "Fingerprint Verification",
+    "message": "if you have introduced your fingerprint, you can continue the process",
+    "continue": "Continue"
   }
 }

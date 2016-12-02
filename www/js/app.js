@@ -13,7 +13,7 @@
     './identification/main',
     './message/main',
     './fingerprint/main',
-    './aftersettings/main',
+    './fingerprintVerification/main',
     // Here application widgets
     './widgets/main'// Yeoman hook. Define section. Do not remove this comment.
   ],
@@ -30,7 +30,7 @@
           'app.identification',
           'app.message',
           'app.fingerprint',
-          'app.aftersetting',
+          'app.fingerprintVerification',
           'app.widgets'// Yeoman hook. Dependencies section. Do not remove this comment.
         ])
         .config(Config);
