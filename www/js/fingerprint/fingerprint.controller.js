@@ -37,13 +37,10 @@
        * @return {withFingerprint:base64EncodedString, withPassword:boolean}
        */
       function successCallback(result) {
-        //console.log("successCallback(): " + JSON.stringify(result));
         if (result.withFingerprint) {
-          //console.log("Successfully authenticated using a fingerprint");
           $state.go(SE_LEG_VIEWS.MESSAGE);
         } else if (result.withPassword) {
           $state.go(SE_LEG_VIEWS.MESSAGE);
-          //console.log("Authenticated with backup password");
         }
       }
 
