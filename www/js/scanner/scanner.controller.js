@@ -5,24 +5,38 @@
  */
 
 (function () {
-  define(['./scanner.module'], function (moduleName) {
+  define(['./scanner.module', 'text!./scanner-modal.html'], function (moduleName, modalTemplate) {
     'use strict';
     angular.module(moduleName)
       .controller('ScannerController', ScannerController);
     /* @ngInject */
-    function ScannerController($cordovaBarcodeScanner, $ionicPopup, $scope, $state, $translate,
+    function ScannerController($cordovaBarcodeScanner, $ionicPopup, $ionicModal, $scope, $state, $translate,
       PermissionsHandlerFactory, SE_LEG_VIEWS) {
 
       var vm = this;
       vm.scanData = '';
+      vm.modalMessage = "modal.message";
+      vm.modalTitleText = "modal.title";
 
       vm.scan = scan;
 
       $scope.$on('$ionicView.enter', scan);
 
+      // Execute action on hide modal
+      $scope.$on('modal.hidden', function () {
+        if (typeof cordova.plugins.settings.openSetting != undefined)
+          cordova.plugins.settings.openSetting("security", function () {
+          },
+            function () {
+              $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'security.error.errorOpenSecurity'});
+            });
+        $state.go(SE_LEG_VIEWS.FINGERPRINTVERIFICATION);
+      });
+
       activate();
 
       function activate() {
+
       }
 
       /**
@@ -43,14 +57,12 @@
         console.log("FingerprintAuth available: " + JSON.stringify(result));
         if (result.isHardwareDetected) {
           if (!result.isAvailable) {
-            if (typeof cordova.plugins.settings.openSetting != undefined)
-              cordova.plugins.settings.openSetting("security", function () {
-              },
-                function () {
-                  $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'security.error.errorOpenSecurity'});
-                });
-            $state.go(SE_LEG_VIEWS.FINGERPRINTVERIFICATION);
+            $scope.modal = $ionicModal.fromTemplate(modalTemplate, {
+              scope: $scope,
+              animation: 'slide-in-up'
+            });
 
+            $scope.modal.show();
           } else {
             PermissionsHandlerFactory.grantPermissionsAndPerformAction({
               action: 'CAMERA',

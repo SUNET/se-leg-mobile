@@ -1,0 +1,47 @@
+
+/*
+    Created on : 02-dic-2016, 13:29:17
+    Author     : mavillalba
+*/
+
+.scanner-modal{
+  width: 50%;
+  min-height: 150px !important;
+  margin: auto;
+  padding-top: 10px;
+  top: 20%;
+  right: 20%;
+  bottom: 60%;
+  left: 20%;
+  min-height: 240px;
+  width: 60%;
+}
+
+.modal-title{
+  margin-top: 4px;
+  color: inherit;
+  text-align: center;
+  font-size: 14px !important;
+  line-height: 32px !important;
+  height: 30px;
+  color: #4A4A4A;
+  text-align: center !important;
+  margin-top: 6px !important;
+  font-family: SourceSansProRegular, sans-serif !important;
+}
+
+.modal-message-container{
+  color: black;
+  background: white;
+  position: static;
+  bottom: auto;
+  text-align: center;
+}
+
+.scanner-modal ion-header-bar {
+  position: static; }
+
+.modal-message{
+  padding: 20px 5px;
+  font-family: SourceSansProRegular, sans-serif !important;
+}

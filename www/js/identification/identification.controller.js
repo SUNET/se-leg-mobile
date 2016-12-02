@@ -97,8 +97,8 @@
       function correctFormat() {
 
         if (!UtilsFactory.isEmpty(vm.nationaIdNumber)) {
-          vm.nationaIdNumber.trim();
-          if (isValidFormat(vm.nationaIdNumber)) {
+          var nationaIdNumber = vm.nationaIdNumber.toString();
+          if (isValidFormat(nationaIdNumber)) {
             return true;
           }
         }

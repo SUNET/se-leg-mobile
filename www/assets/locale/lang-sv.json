@@ -53,5 +53,9 @@
     "title": "Fingerprint Verification",
     "message": "if you have introduced your fingerprint, you can continue the process",
     "continue": "Continue"
+  },
+  "modal": {
+    "title": "Fingerprint Verification",
+    "message": "No fingerprint registered on the device"
   }
 }
