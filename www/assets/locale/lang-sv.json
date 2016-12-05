@@ -19,7 +19,7 @@
     "title": "leg-kontroll slutförd",
     "message": "Processen för leg-kontroll har slutförts",
     "start": "Starta en ny leg-kontroll",
-    "close": "Close App"
+    "close": "Stäng App"
   },
   "back": {
     "title": "Processen har avbrutits",
@@ -37,25 +37,25 @@
   },
   "fingerprint": {
     "error": {
-      "notAvailable": "Fingerprint authentication not available",
-      "notRegistred": "Fingerprint auth available, but no fingerprint registered on the device",
-      "notDetectFingerprintDevice": "Cannot detect fingerprint device",
-      "cancelled": "Fingerprint cancelled",
-      "notFingerprint": "If you haven't detect fingerprint device, you cant't continue the process"
+      "notAvailable": "Fingeravtrycksfunktion ej tillgänglig",
+      "notRegistred": "Fingeravtrycksfunktion tillgängligt men ditt fingeravtryck är ej registrerat i enheten",
+      "notDetectFingerprintDevice": "Kan ej detektera fingeravtrycksfunktion",
+      "cancelled": "Fingeravtryckskontroll avbruten",
+      "notFingerprint": "Du kan inte fortsätta legitimationskontrollen om din enhet saknar fingeravtrycksfunktion"
     }
   },
   "security": {
     "error": {
-      "errorOpenSecurity": "Failed to open security settings"
+      "errorOpenSecurity": "Det gick inte att öppna säkerhetsinställningar"
     }
   },
   "fingerprintVerification": {
-    "title": "Fingerprint Verification",
-    "message": "if you have introduced your fingerprint, you can continue the process",
-    "continue": "Continue"
+    "title": "Fingeravtryckskontroll",
+    "message": "Du kan fortsätta signeringen om du har registrerat ditt fingeravtryck",
+    "continue": "Fortsätt"
   },
   "modal": {
-    "title": "Fingerprint Verification",
-    "message": "No fingerprint registered on the device"
+    "title": "Fingeravtryckskontroll",
+    "message": "Ditt fingeravtryck är ej registrerat i enheten"
   }
 }
