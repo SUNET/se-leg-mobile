@@ -57,5 +57,9 @@
   "modal": {
     "title": "Fingerprint Verification",
     "message": "No fingerprint registered on the device"
+  },
+  "connection": {
+    "title": "No Internet Connection",
+    "template": "Sorry, no Internet connectivity detected."
   }
 }

@@ -10,7 +10,8 @@
     angular.module(moduleName)
       .controller('IdentificationController', IdentificationController);
     /* @ngInject */
-    function IdentificationController(IdentificationService, $state, SE_LEG_VIEWS, UtilsFactory) {
+    function IdentificationController(IdentificationService, $state, SE_LEG_VIEWS, UtilsFactory, $ionicPopup,
+      $translate) {
 
       var vm = this;
       // Public attributes
@@ -19,11 +20,32 @@
       vm.m = undefined;
       vm.y = undefined;
       vm.serviceData = undefined;
+      vm.connected = true;
 
 
       // Public methods
       vm.send = send;
       vm.correctFormat = correctFormat;
+
+      activate();
+
+      function activate() {
+        /*
+         //Check connection here
+         */
+        if (navigator && navigator.connection && navigator.connection.type) {
+          if (navigator.connection.type === 'none') {
+            vm.connected = false;
+          }
+        }
+        if (!vm.connected) {
+          $ionicPopup.alert({
+            title: $translate.instant('connection.title'),
+            template: $translate.instant('connection.template')
+          });
+        }
+      }
+
 
       /*if (window.cordova && window.cordova.plugins.Keyboard) {
        window.cordova.plugins.Keyboard.disableScroll(true);
@@ -95,8 +117,7 @@
        *
        */
       function correctFormat() {
-
-        if (!UtilsFactory.isEmpty(vm.nationaIdNumber)) {
+        if (vm.connected && !UtilsFactory.isEmpty(vm.nationaIdNumber)) {
           var nationaIdNumber = vm.nationaIdNumber.toString();
           if (isValidFormat(nationaIdNumber)) {
             return true;

@@ -57,5 +57,9 @@
   "modal": {
     "title": "Fingeravtryckskontroll",
     "message": "Ditt fingeravtryck är ej registrerat i enheten"
+  },
+  "connection": {
+    "title": "Ingen internetanslutning",
+    "template": "Tyvärr hittades ingen internetanslutning"
   }
 }
