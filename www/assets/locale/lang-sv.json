@@ -1,10 +1,10 @@
 {
   "error": {
     "service": {
-      "generic": "Ett internt fel har uppstått. Vänligen starta om applikationen genom att trycka på Starta om",
-      "timeout": "Anslutningen har avbrutits. Vänligen starta om applikationen genom att trycka på Starta om",
+      "generic": "Ett internt fel har uppstått. Vänligen starta om applikationen genom att trycka på knappen nedan",
+      "timeout": "Anslutningen har avbrutits. Vänligen starta om applikationen genom att trycka på knappen nedan",
       "unauthorized": "Du saknar behörighet att utföra legitimationskontroll. Vänligen kontakta systemadministratören",
-      "networkError": "Anslutningen till servern misslyckades. Vänligen försök igen genom att trycka på Starta om",
+      "networkError": "Anslutningen till servern misslyckades. Vänligen försök igen genom att trycka på knappen nedan",
       "notFound": "Resurs kunde inte hittas",
       "methodNotAllowed": "Resursmetoden är inte tillåten"
     }
@@ -23,7 +23,7 @@
   },
   "back": {
     "title": "Processen har avbrutits",
-    "msg": "Processen har avbrutits. Vänligen försök igen genom att trycka på Starta om"
+    "msg": "Processen har avbrutits. Vänligen försök igen genom att trycka på knappen nedan"
   },
   "scanner": {
     "error": "QR-koden innehåller felaktig data. Vänligen förnya QR-koden"
