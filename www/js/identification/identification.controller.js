@@ -45,12 +45,6 @@
           });
         }
       }
-
-
-      /*if (window.cordova && window.cordova.plugins.Keyboard) {
-       window.cordova.plugins.Keyboard.disableScroll(true);
-       }*/
-
       /**
        * Send identification.
        */
@@ -120,9 +114,11 @@
         if (vm.connected && !UtilsFactory.isEmpty(vm.nationaIdNumber)) {
           var nationaIdNumber = vm.nationaIdNumber.toString();
           if (isValidFormat(nationaIdNumber)) {
+            document.getElementById("new-col-input").blur();
             return true;
           }
         }
+        document.getElementById("new-col-input").focus();
         return false;
       }
 
