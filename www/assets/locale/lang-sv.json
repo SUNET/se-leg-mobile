@@ -13,7 +13,8 @@
     "title": "Legitimationskontroll",
     "subtitle": "Ange personnumret för den person som skall kontrolleras",
     "send": "Skicka",
-    "message": "Personnummer"
+    "message": "Personnummer",
+    "placeholder": "YYYYMMDDXXXX"
   },
   "message": {
     "title": "leg-kontroll slutförd",
