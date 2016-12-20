@@ -28,6 +28,7 @@
       // Public methods
       vm.send = send;
       vm.correctFormat = correctFormat;
+      vm.hasInternetConnection = hasInternetConnection;
 
       activate();
 
@@ -52,6 +53,7 @@
           document.getElementById(inputIDSelector).blur();
           document.getElementById(inputIDSelector).focus();
         }, 500);
+
       }
       /**
        * Send identification.
@@ -130,6 +132,12 @@
         return false;
       }
 
+      /**
+       * Wrap of {@link UtilsFactory.hasConnectivity()}.
+       */
+      function hasInternetConnection() {
+        return UtilsFactory.hasConnectivity();
+      }
     }
   });
 })();

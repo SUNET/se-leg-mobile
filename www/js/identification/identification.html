@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="row send-identification-button">
-          <button class="button button-full seleg-button" type="submit" translate="identification.send" ng-disabled="!identificationCtrl.correctFormat()"></button>
+          <button class="button button-full seleg-button" type="submit" translate="identification.send" ng-disabled="!identificationCtrl.correctFormat() || !identificationCtrl.hasInternetConnection()"></button>
         </div>
       </form>
     </div>

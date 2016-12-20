@@ -23,6 +23,7 @@
       vm.isEmpty = isEmpty;
       vm.isNotEmpty = isNotEmpty;
       vm.isNumber = isNumber;
+      vm.hasConnectivity = hasConnectivity;
 
       return vm;
 
@@ -62,6 +63,22 @@
        */
       function isNumber(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
+      }
+
+      /**
+       * It checks if the device has internet connection.
+       * @returns {Boolean}
+       */
+      function hasConnectivity() {
+        var connected = true;
+        if (navigator && navigator.connection && navigator.connection.type) {
+
+          if (navigator.connection.type === 'none') {
+            connected = false;
+          }
+
+        }
+        return connected;
       }
     }
 
