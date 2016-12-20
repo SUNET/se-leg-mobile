@@ -42,6 +42,7 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
+    "cordova-plugin-network-information",
     "phonegap-plugin-barcodescanner",
     "cordova-plugin-android-permissions",
     "cordova-plugin-android-fingerprint-auth",
