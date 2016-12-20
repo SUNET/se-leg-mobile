@@ -13,7 +13,8 @@
     "title": "Identity verification",
     "subtitle": "Enter the national ID number of the person to be verified",
     "send": "Send",
-    "message": "National ID number"
+    "message": "National ID number",
+    "placeholder": "YYYYMMDDXXXX"
   },
   "message": {
     "title": "ID control completed",
