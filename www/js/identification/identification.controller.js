@@ -22,6 +22,8 @@
       vm.serviceData = undefined;
       vm.connected = true;
 
+      var inputIDSelector = 'new-col-input';
+
 
       // Public methods
       vm.send = send;
@@ -44,13 +46,13 @@
             template: $translate.instant('connection.template')
           });
         }
+
+        // @amoron: enabling the keyboard once the user enters
+        setTimeout(function () {
+          document.getElementById(inputIDSelector).blur();
+          document.getElementById(inputIDSelector).focus();
+        }, 500);
       }
-
-
-      /*if (window.cordova && window.cordova.plugins.Keyboard) {
-       window.cordova.plugins.Keyboard.disableScroll(true);
-       }*/
-
       /**
        * Send identification.
        */
@@ -120,9 +122,11 @@
         if (vm.connected && !UtilsFactory.isEmpty(vm.nationaIdNumber)) {
           var nationaIdNumber = vm.nationaIdNumber.toString();
           if (isValidFormat(nationaIdNumber)) {
+            document.getElementById(inputIDSelector).blur();
             return true;
           }
         }
+        document.getElementById(inputIDSelector).focus();
         return false;
       }
 

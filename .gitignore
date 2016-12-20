@@ -13,3 +13,4 @@ www/fonts/ionicons.*
 reports
 www/js/core/modules/config/config.constants.js
 www/lib
+phonegap-build/phonegap-profiles/*
