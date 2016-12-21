@@ -48,12 +48,6 @@
           });
         }
 
-        // @amoron: enabling the keyboard once the user enters
-        setTimeout(function () {
-          document.getElementById(inputIDSelector).blur();
-          document.getElementById(inputIDSelector).focus();
-        }, 500);
-
       }
       /**
        * Send identification.
