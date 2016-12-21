@@ -14,7 +14,7 @@
       .service('CommonService', CommonService);
 
     /* @ngInject */
-    function CommonService($log, $q, $http, $ionicLoading, $translate, $rootScope, CORE_CONFIGS) {
+    function CommonService($log, $q, $http, $ionicLoading, $translate, $rootScope, CORE_CONFIGS, UtilsFactory) {
       var service = this;
       service.className = '[CommonService]';
 
@@ -35,14 +35,7 @@
         /*
          //Check connection here
          */
-        var connected = true;
-        if (navigator && navigator.connection && navigator.connection.type) {
-
-          if (navigator.connection.type === 'none') {
-            connected = false;
-          }
-
-        }
+        var connected = UtilsFactory.hasConnectivity();
         if (connected) {
           $http({method: method, url: CORE_CONFIGS.BACKEND_URL + endpoint,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}, data: data, params: params,
