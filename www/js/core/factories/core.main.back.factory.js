@@ -56,10 +56,15 @@
                   navigator.app.exitApp();
                 }
               } else {
-                $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'back.msg'});
+                // message is empty
+                if ($ionicHistory.currentView().stateParams.errorScreen) {
+                  $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'back.msg'});
+                } else {
+                  // everithing was fine
+                  ; // do nothing (#183632)
+                }
               }
               break;
-
             default:
               $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'back.msg'});
               break;
