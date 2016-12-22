@@ -2,6 +2,7 @@
  * Fingerprint routes.
  * @param {type} angular
  * @author Maria Villalba <mavillalba@emergya.com>
+ * @author Alejandro Gomez <amoron@emergya.com>
  * @since Wen Nov 30 2016
  */
 
@@ -16,6 +17,10 @@
 
       $stateProvider.state('fingerprint', {
         url: '/fingerprint',
+        params: {
+          nin: null,
+          qr: null
+        },
         template: fingerprintTemplate,
         controller: 'FingerprintController',
         controllerAs: 'fingerprintCtrl'

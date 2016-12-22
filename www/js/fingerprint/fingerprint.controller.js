@@ -2,6 +2,7 @@
  * Fingerprint controller
  * @param {type} angular
  * @author Maria Villalba <mavillalba@emergya.com>
+ * @author Alejandro Gomez <amoron@emergya.com>
  */
 
 (function () {
@@ -10,11 +11,12 @@
     angular.module(moduleName)
       .controller('FingerprintController', FingerprintController);
     /* @ngInject */
-    function FingerprintController($scope, SE_LEG_VIEWS, $state) {
+    function FingerprintController($scope, SE_LEG_VIEWS, $state, FingerprintService) {
 
       var vm = this;
       vm.fingerprintData = '';
 
+      vm.serviceData = undefined;
       vm.fingerprint = fingerprint;
 
       $scope.$on('$ionicView.enter', fingerprint);
@@ -34,11 +36,17 @@
       }
 
       /**
-       * @return {withFingerprint:base64EncodedString, withPassword:boolean}
+       * @param result of the plugin.
        */
       function successCallback(result) {
         if (result.withFingerprint) {
-          $state.go(SE_LEG_VIEWS.MESSAGE);
+          vm.serviceData = "identity=" + $state.params.nin + "&qrcode=" + $state.params.qr
+          vm.serviceData = vm.serviceData.split(" ").join("");
+          FingerprintService.sendByPost(vm.serviceData).then(function (data) {
+            $state.go(SE_LEG_VIEWS.MESSAGE);
+          }).catch(function (err) {
+            $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: err.errorMessage});
+          });
         } else if (result.withPassword) {
           $state.go(SE_LEG_VIEWS.MESSAGE);
         }

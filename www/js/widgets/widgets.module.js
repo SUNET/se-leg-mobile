@@ -5,13 +5,18 @@
  * @since Mon Nov 14 2016
  */
 (function () {
-    define([
-            'angular'// Yeoman hook. Define section. Do not remove this comment.
-        ],
-        function (angular) {
-            'use strict';
-            return angular.module('app.widgets', [
-                // Yeoman hook. Dependencies section. Do not remove this comment.
-            ]);
-        });
+  define([
+    'angular'// Yeoman hook. Define section. Do not remove this comment.
+  ],
+    function (ng) {
+      'use strict';
+      var moduleName = 'app.widgets';
+
+      ng.module(moduleName,
+        [
+          'app.widgets.focusMe'
+        ]);
+
+      return moduleName;
+    });
 })();

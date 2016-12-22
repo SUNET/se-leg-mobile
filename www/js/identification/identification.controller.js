@@ -2,6 +2,7 @@
  * Identification controller
  * @param {type} angular
  * @author Maria Villalba <mavillalba@emergya.com>
+ * @author Alejandro Gomez <amoron@emergya.com>
  */
 
 (function () {
@@ -10,7 +11,7 @@
     angular.module(moduleName)
       .controller('IdentificationController', IdentificationController);
     /* @ngInject */
-    function IdentificationController(IdentificationService, $state, SE_LEG_VIEWS, UtilsFactory, $ionicPopup,
+    function IdentificationController($state, SE_LEG_VIEWS, UtilsFactory, $ionicPopup,
       $translate) {
 
       var vm = this;
@@ -19,7 +20,6 @@
       vm.d = undefined;
       vm.m = undefined;
       vm.y = undefined;
-      vm.serviceData = undefined;
       vm.connected = true;
 
       var inputIDSelector = 'new-col-input';
@@ -48,25 +48,13 @@
           });
         }
 
-        // @amoron: enabling the keyboard once the user enters
-        setTimeout(function () {
-          document.getElementById(inputIDSelector).blur();
-          document.getElementById(inputIDSelector).focus();
-        }, 500);
-
       }
       /**
        * Send identification.
        */
       function send() {
         if (vm.nationaIdNumber) {
-          vm.serviceData = "identity=" + vm.nationaIdNumber + "&qrcode=" + $state.params.scanner
-          vm.serviceData = vm.serviceData.split(" ").join("");
-          IdentificationService.post(vm.serviceData).then(function (data) {
-            $state.go(SE_LEG_VIEWS.FINGERPRINT);
-          }).catch(function (err) {
-            $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: err.errorMessage});
-          });
+          $state.go(SE_LEG_VIEWS.FINGERPRINT, {nin: vm.nationaIdNumber, qr: $state.params.scanner});
         }
       }
 
