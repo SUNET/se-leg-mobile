@@ -9,7 +9,7 @@
     'angular',
     './core/main',
     // Application modules.
-    './scanner/main',
+    './components/scanner/main',
     './identification/main',
     './message/main',
     './fingerprint/main',

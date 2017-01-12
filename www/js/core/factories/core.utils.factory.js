@@ -3,6 +3,7 @@
  *
  * @param {type} angular
  * @author Maria Villalba <mavillalba@emergya.com>
+ * @author Alejandro Gomez <amoron@emergya.com>
  * @since Tue Nov 22 2016
  */
 
@@ -15,7 +16,7 @@
       .factory('UtilsFactory', UtilsFactory);
 
     /* @ngInject */
-    function UtilsFactory() {
+    function UtilsFactory($ionicPopup, $translate) {
 
       var vm = this;
       vm.className = '[UtilsFactory]';
@@ -24,6 +25,7 @@
       vm.isNotEmpty = isNotEmpty;
       vm.isNumber = isNumber;
       vm.hasConnectivity = hasConnectivity;
+      vm.closeApp = closeApp;
 
       return vm;
 
@@ -79,6 +81,24 @@
 
         }
         return connected;
+      }
+
+      /**
+       * It closes the app showing an error if it's defined.
+       * @param {type} error to be shown (can be undefined). Error should be a JSON {title:XX,text:YY}.
+       */
+      function closeApp(error) {
+        if (!isEmpty(error) && error.title && error.text) {
+          var modal = $ionicPopup.alert({
+            title: $translate.instant(error.title),
+            template: $translate.instant(error.text)
+          });
+          modal.then(function () {
+            navigator.app.exitApp();
+          });
+        } else {
+          navigator.app.exitApp();
+        }
       }
     }
 
