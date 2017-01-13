@@ -20,14 +20,14 @@
       activate();
 
       function activate() {
-        onEnter();
+        MainFactory.handleNextComponent();
       }
 
       /**
        * Method to be executed once the user accesses to the scanner component.
        */
       function onEnter() {
-        MainFactory.handleCurrentComponent();
+        ;
       }
 
     }

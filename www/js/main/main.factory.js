@@ -21,9 +21,17 @@
 
       initializeWorkflow();
 
-      factory.handleCurrentComponent = handleCurrentComponent;
-      factory.goBack = goBack;
+      factory.handleNextComponent = handleNextComponent;
+      factory.handlePreviousComponent = handlePreviousComponent;
 
+
+      ////////////////////
+      // Public methods //
+      ////////////////////
+
+      /**
+       * It inializes the app configured workflow.
+       */
       function initializeWorkflow() {
         // TODO: hardcoded, it should come from a JSON file
         appWorkflow = [
@@ -33,20 +41,24 @@
         ];
       }
 
-      function getNextComponent() {
-        var component = undefined;
-        if (currentComponent < appWorkflow.length - 1) {
-          currentComponent++;
-          component = appWorkflow[currentComponent];
+      /**
+       * It gets the previous component and sends the user into it.
+       * If I am in the first component, the App will be closed.
+       */
+      function handlePreviousComponent() {
+        var component = getPreviousComponent()
+        if (component !== undefined) {
+          $state.go(component.url, component.parameters);
+        } else {
+          UtilsFactory.closeApp();
         }
-        return component;
       }
 
-      function goBack() {
-        currentComponent--;
-      }
-
-      function handleCurrentComponent() {
+      /**
+       * It gets the next component and sends the user into it.
+       * If there is no next component, TODO: what happens?
+       */
+      function handleNextComponent() {
         var component = getNextComponent()
         if (component !== undefined) {
           $state.go(component.url, component.parameters);
@@ -56,7 +68,35 @@
         }
       }
 
+      //////////////////////
+      // Private methods //
+      //////////////////////
 
+      /**
+       * It retrieves the next component (if there is a new component).
+       * @returns JSON with a component information or undefined.
+       */
+      function getNextComponent() {
+        var component = undefined;
+        if (currentComponent < appWorkflow.length - 1) {
+          currentComponent++;
+          component = appWorkflow[currentComponent];
+        }
+        return component;
+      }
+
+      /**
+       * It retrieves the next component (if there is a new component).
+       * @returns JSON with a component information or undefined.
+       */
+      function getPreviousComponent() {
+        var component = undefined;
+        if (currentComponent - 1 >= 0) {
+          currentComponent--;
+          component = appWorkflow[currentComponent];
+        }
+        return component;
+      }
 
       return factory;
     }

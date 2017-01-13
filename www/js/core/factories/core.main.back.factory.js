@@ -39,7 +39,7 @@
       function commonBackBehaviour() {
 
         if ($ionicHistory.currentView()) {
-          MainFactory.goBack();
+
           var currentView = $ionicHistory.currentView().stateName;
 
           switch (currentView) {
