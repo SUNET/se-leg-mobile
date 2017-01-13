@@ -10,6 +10,7 @@
   define([
     // Here files modules internal files referencies.
     './fingerprint.routes',
+    './fingerprint.factory',
     './fingerprint.controller',
     './fingerprint.service'
       // ...

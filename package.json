@@ -46,6 +46,7 @@
     "phonegap-plugin-barcodescanner",
     "cordova-plugin-android-permissions",
     "cordova-plugin-android-fingerprint-auth",
+    "cordova-plugin-touch-id",
     {
       "locator": "https://github.com/selahssea/Cordova-open-native-settings.git",
       "id": "com.phonegap.plugins.nativesettingsopener"

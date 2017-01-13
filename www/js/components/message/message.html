@@ -1,0 +1,28 @@
+<ion-view view-title="Message">
+  <ion-content class="message-ion-content">
+
+    <!-- Message content head -->
+    <div class="message-content-header">
+      <div class="col">
+        <img class="seleg-logo" src="img/simbolo-seleg@2x.png"/>
+        <div class="text-center message-content-title">{{messageCtrl.title| translate}}</div>
+        <div class="text-center message-content-message">{{messageCtrl.msg|translate}}</div>
+      </div>
+    </div>
+
+    <!-- Message content -->
+    <div class="message-content">
+      <div class="col">
+        <i ng-if="!messageCtrl.errorScreen" class="icon ion-ios-checkmark-outline"></i>
+        <i ng-if="messageCtrl.errorScreen" class="icon ion-ios-close-outline"></i>
+      </div>
+    </div>
+
+    <div class="row start-button">
+      <button class="button button-full seleg-button" ng-if="!messageCtrl.fingerprint()" translate="message.start" ng-click="messageCtrl.start()"></button>
+      <button class="button button-full seleg-button" ng-if="messageCtrl.fingerprint()" translate="message.close" ng-click="messageCtrl.closeApp()"></button>
+    </div>
+
+  </ion-content>
+</ion-view>
+

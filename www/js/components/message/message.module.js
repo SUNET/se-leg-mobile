@@ -1,10 +1,10 @@
 /**
- * Scanner module.
+ * Message module.
  * @param {type} angular
  * @returns {angular.module}
  * @author Maria Villalba <mavillalba@emergya.com>
  * @author Alejandro Gomez <amoron@emergya.com>
- * @since Mon Nov 14 2016
+ * @since Wed Nov 16 2016
  */
 
 
@@ -15,12 +15,10 @@
   ], function (ng) {
     'use strict';
 
-    var moduleName = 'app.scanner';
+    var moduleName = 'app.message';
 
-    ng.module(moduleName, ['ngCordova']);
+    ng.module(moduleName, []);
 
     return moduleName;
   });
 })();
-
-

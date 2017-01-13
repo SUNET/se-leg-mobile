@@ -12,9 +12,9 @@
     './main/main',
     // components
     './components/scanner/main',
+    './components/message/main',
     // Application modules.
     './identification/main',
-    './message/main',
     './fingerprint/main',
     './fingerprintVerification/main',
     // Here application widgets

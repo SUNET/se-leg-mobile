@@ -16,7 +16,7 @@
       .factory('UtilsFactory', UtilsFactory);
 
     /* @ngInject */
-    function UtilsFactory($ionicPopup, $translate) {
+    function UtilsFactory($ionicPopup, $translate, SE_LEG_GLOBAL) {
 
       var vm = this;
       vm.className = '[UtilsFactory]';
@@ -26,6 +26,7 @@
       vm.isNumber = isNumber;
       vm.hasConnectivity = hasConnectivity;
       vm.closeApp = closeApp;
+      vm.getPlatform = getPlatform;
 
       return vm;
 
@@ -99,6 +100,31 @@
         } else {
           navigator.app.exitApp();
         }
+      }
+
+      /**
+       * Gets actual device platform string name.
+       * @returns the platform name (defined in SE_LEG_GLOBAL.PLATFORMS)
+       */
+      function getPlatform() {
+        var platform = SE_LEG_GLOBAL.PLATFORMS.UNKNOWN;
+        // if it's ionic stack
+        if (ionic && ionic.Platform) {
+          if (ionic.Platform.isAndroid()) {
+            platform = SE_LEG_GLOBAL.PLATFORMS.ANDROID;
+          } else if (ionic.Platform.isIOS()) {
+            platform = SE_LEG_GLOBAL.PLATFORMS.IOS;
+          }
+        } else if (cordova && cordova.platform) {
+          // if the platform couldn't be resolved previously (not Ionic
+          var cordovaPlatform = device.platform.toUpperCase();
+          if (cordovaPlatform === SE_LEG_GLOBAL.PLATFORMS.ANDROID) {
+            platform = SE_LEG_GLOBAL.PLATFORMS.ANDROID;
+          } else if (cordovaPlatform === SE_LEG_GLOBAL.PLATFORMS.IOS) {
+            platform = SE_LEG_GLOBAL.PLATFORMS.IOS;
+          }
+        }
+        return platform;
       }
     }
 

@@ -42,7 +42,8 @@
       "notRegistred": "Fingeravtrycksfunktion tillgängligt men ditt fingeravtryck är ej registrerat i enheten",
       "notDetectFingerprintDevice": "Kan ej detektera fingeravtrycksfunktion",
       "cancelled": "Fingeravtryckskontroll avbruten",
-      "notFingerprint": "Du kan inte fortsätta legitimationskontrollen om din enhet saknar fingeravtrycksfunktion"
+      "notFingerprint": "Du kan inte fortsätta legitimationskontrollen om din enhet saknar fingeravtrycksfunktion",
+      "notFingerprintTitle": "Fingeravtrycksfunktion enhet hittades inte"
     }
   },
   "security": {

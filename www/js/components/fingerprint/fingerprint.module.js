@@ -1,10 +1,9 @@
 /**
- * Scanner module.
+ * Fingerprint module.
  * @param {type} angular
- * @returns {angular.module}
+ * * @returns {angular.module}
  * @author Maria Villalba <mavillalba@emergya.com>
- * @author Alejandro Gomez <amoron@emergya.com>
- * @since Mon Nov 14 2016
+ * @since Wen Nov 30 2016
  */
 
 
@@ -15,12 +14,10 @@
   ], function (ng) {
     'use strict';
 
-    var moduleName = 'app.scanner';
+    var moduleName = 'app.fingerprint';
 
-    ng.module(moduleName, ['ngCordova']);
+    ng.module(moduleName, []);
 
     return moduleName;
   });
 })();
-
-

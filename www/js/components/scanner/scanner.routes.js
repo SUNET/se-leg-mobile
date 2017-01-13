@@ -2,6 +2,7 @@
  * Scanner routes.
  * @param {type} angular
  * @author Maria Villalba <mavillalba@emergya.com>
+ * @author Alejandro Gomez <amoron@emergya.com>
  * @since Mon Nov 14 2016
  */
 

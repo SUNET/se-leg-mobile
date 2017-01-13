@@ -2,6 +2,7 @@
  * Scanner controller
  * @param {type} angular
  * @author Maria Villalba <mavillalba@emergya.com>
+ * @author Alejandro Gomez <amoron@emergya.com>
  */
 
 (function () {
@@ -23,7 +24,7 @@
       activate();
 
       function activate() {
-        // Execute action on hide modal
+        // TODO: THIS SHOULD BE MOVED TO THE FINGERPRINT MOdULE Execute action on hide modal
         $scope.$on('modal.hidden', function () {
           if (typeof cordova.plugins.settings.openSetting != undefined) {
             cordova.plugins.settings.openSetting("security", function () {
