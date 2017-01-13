@@ -1,12 +1,10 @@
 /**
- * Fingerprint module.
+ * Data module.
  * @param {type} angular
- * * @returns {angular.module}
- * @author Maria Villalba <mavillalba@emergya.com>
- * @since Wen Nov 30 2016
+ * @returns {angular.module}
+ * @author Alejandro Gomez <amoron@emergya.com>
+ * @since Jan 12 2017
  */
-
-
 (function () {
 
   define([
@@ -14,10 +12,12 @@
   ], function (ng) {
     'use strict';
 
-    var moduleName = 'app.fingerprint';
+    var moduleName = 'app.data';
 
     ng.module(moduleName, []);
 
     return moduleName;
   });
 })();
+
+

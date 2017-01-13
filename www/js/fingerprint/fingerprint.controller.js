@@ -11,34 +11,46 @@
     angular.module(moduleName)
       .controller('FingerprintController', FingerprintController);
     /* @ngInject */
-    function FingerprintController($scope, SE_LEG_VIEWS, $state, FingerprintService) {
+    function FingerprintController($scope, SE_LEG_VIEWS, $state, FingerprintService, FingerprintFactory,
+      UtilsFactory) {
 
       var vm = this;
       vm.fingerprintData = '';
 
       vm.serviceData = undefined;
-      vm.fingerprint = fingerprint;
+      vm.fingerprint = fingerprintProcess;
 
-      $scope.$on('$ionicView.enter', fingerprint);
+      $scope.$on('$ionicView.enter', showView);
 
+      /**
+       * Main method to decide which fingerprint view will be shown.
+       */
+      function showView() {
+        if (UtilsFactory.getCurrentState() === SE_LEG_VIEWS.FINGERPRINTVERIFICATION) {
+          fingerprintVerification();
+        } else {
+          fingerprintProcess();
+        }
+      }
 
+      /**
+       * Method to start the fingerprint process.
+       */
+      function fingerprintProcess() {
+        FingerprintFactory.authenticateFingerprint()
+          .then(function (result) {
 
-      function fingerprint() {
-        // it is available
-        var client_id = "Your client ID";
-        var client_secret = "A very secret client secret (once per device)";
+          })
+          .catch(function (error) {
 
-        FingerprintAuth.show({
-          clientId: client_id,
-          clientSecret: client_secret,
-          disableBackup: true
-        }, successCallback, errorCallback);
+          });
       }
 
       /**
        * @param result of the plugin.
        */
       function successCallback(result) {
+        // TODO: REVIEW FROM HERE
         if (result.withFingerprint) {
           vm.serviceData = "identity=" + $state.params.nin + "&qrcode=" + $state.params.qr
           vm.serviceData = vm.serviceData.split(" ").join("");

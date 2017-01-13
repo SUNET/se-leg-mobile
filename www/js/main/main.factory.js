@@ -11,11 +11,13 @@
       .module(moduleName)
       .factory('MainFactory', MainFactory);
     /* @ngInject */
-    function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerPrintFactory) {
+    function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerPrintFactory, ScannerFactory, MessageFactory,
+      ModalFactory) {
       var factory = this;
 
       // internal variables
       var appWorkflow = [];
+      var usedModules = {};
       var currentComponent = -1;
 
       initializeWorkflow();
@@ -32,36 +34,65 @@
        * It inializes the app configured workflow.
        */
       function initializeWorkflow() {
+        loadWorkflow();
+        // once the workflow is loaded, we have to initialize it
+        for (var index in appWorkflow) {
+          appWorkflow[index].processed = false;
+          if (typeof appWorkflow[index].backAllowed === undefined) {
+            // by default the back is allowed
+            appWorkflow[index].backAllowed = true;
+          }
+          // getting the module name we are using
+          if (!usedModules[appWorkflow[index].url]) {
+            usedModules[appWorkflow[index].url] = appWorkflow[index].factory;
+          }
+        }
+      }
+
+      /**
+       * It loads the wofklow in the appWorkflow attribute.
+       */
+      function loadWorkflow() {
         // TODO: hardcoded, it should come from a JSON file?
         appWorkflow = [
           {
             url: SE_LEG_VIEWS.MESSAGE,
-            params: {title: 'message.title', msg: 'message.description'},
-            actions: [
-              {
-                // <button class="button button-full seleg-button" ng-if="!messageCtrl.fingerprint()" translate="message.start" ng-click="messageCtrl.start()"></button>
-                // <button class="button button-full seleg-button" ng-if="messageCtrl.fingerprint()" translate="message.close" ng-click="messageCtrl.closeApp()"></button>
-              }
-            ]
+            params: {
+              title: 'message.title',
+              msg: 'message.description',
+              buttonOptions: [
+                {
+                  condition: FingerPrintFactory.isReady,
+                  text: 'message.close',
+                  onClick: function () {
+                    UtilsFactory.closeApp();
+                  }
+                },
+                {
+                  condition: true,
+                  text: 'message.start',
+                  onClick: handleNextComponent
+                }
+              ]
+            },
+            factory: MessageFactory
           },
           {// QR-SCANNER
             url: SE_LEG_VIEWS.SCANNER,
             preconditions: function () {
               var deferred = $q.defer();
-              FingerPrintFactory.existsFingerprintDevice()
+              // checking the fingerprint and sending to the confirmation screen
+              FingerPrintFactory.checkFingerPrintRegistered(true)
                 .then(function (result) {
-                  deferred.resolve();
+                  deferred.resolve(result);
                 })
                 .catch(function (error) {
-                  deferred.reject({
-                    errorFn: function () {
-                      UtilsFactory.closeApp({title: 'fingerprint.error.notFingerprintTitle',
-                        text: 'fingerprint.error.notFingerprint'});
-                    }
-                  });
+                  deferred.reject(error);
                 });
               return deferred.promise;
-            }
+            },
+            backAllowed: false,
+            factory: ScannerFactory
           }
         ];
       }
@@ -73,20 +104,24 @@
       function handlePreviousComponent() {
         var component = getPreviousComponent();
         if (component !== undefined) {
-          if (component.preconditions) {
-            component.preconditions()
-              .then(function () {
-                $state.go(component.url, component.params);
-              })
-              .catch(function (error) {
-                if (error && error.errorFn) {
-                  error.errorFn();
-                } else {
-                  UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
-                }
-              });
+          if (!component.backAllowed) {
+            UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'BACK NOT ALLOWED'});
           } else {
-            $state.go(component.url, component.params);
+            if (component.preconditions) {
+              component.preconditions()
+                .then(function () {
+                  $state.go(component.url, component.params);
+                })
+                .catch(function (error) {
+                  if (error && error.errorFn) {
+                    error.errorFn();
+                  } else {
+                    UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
+                  }
+                });
+            } else {
+              $state.go(component.url, component.params);
+            }
           }
         } else {
           UtilsFactory.closeApp();

@@ -17,7 +17,10 @@
     function ScannerFactory($q, $cordovaBarcodeScanner, PermissionsHandlerFactory) {
       var factory = this;
 
+      var ready = false;
+
       factory.scan = scan;
+      factory.isReady = isReady;
       factory.allowNeededPermissions = allowNeededPermissions;
 
 
@@ -30,6 +33,7 @@
         PermissionsHandlerFactory.grantPermissionsAndPerformAction({
           action: 'SCANNER',
           onSuccess: function () {
+            ready = true;
             deferred.resolve();
           },
           onFailure: function () {
@@ -61,6 +65,14 @@
             deferred.reject(error);
           });
         return deferred.promise;
+      }
+
+      /**
+       * It checks if the factory is ready to be used.
+       * @returns {Boolean} true if the factory is ready to be used.
+       */
+      function isReady() {
+        return ready;
       }
 
       return factory;

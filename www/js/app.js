@@ -10,13 +10,14 @@
     './core/main',
     // Main app module
     './main/main',
+    // data module
+    './data/main',
     // components
     './components/scanner/main',
     './components/message/main',
     // Application modules.
     './identification/main',
     './fingerprint/main',
-    './fingerprintVerification/main',
     // Here application widgets
     './widgets/main'// Yeoman hook. Define section. Do not remove this comment.
   ],
@@ -30,6 +31,7 @@
           'ionic',
           'app.core',
           'app.main',
+          'app.data',
           'app.scanner',
           'app.identification',
           'app.message',

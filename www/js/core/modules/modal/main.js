@@ -1,15 +1,14 @@
 /**
- * Fingerprint component module.
+ * Modal module.
  * @param {type} angular
- * @author Maria Villalba <mavillalba@emergya.com>
  * @author Alejandro Gomez <amoron@emergya.com>
- * @since Wen Nov 30 2016
+ * @since Jan 12 2017
  */
 
 (function () {
   define([
     // Here files modules internal files referencies.
-    './fingerpint.factory'
+    './modal.factory',
       // ...
   ], function () {
   });

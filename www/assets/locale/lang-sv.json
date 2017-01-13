@@ -43,7 +43,9 @@
       "notDetectFingerprintDevice": "Kan ej detektera fingeravtrycksfunktion",
       "cancelled": "Fingeravtryckskontroll avbruten",
       "notFingerprint": "Du kan inte fortsätta legitimationskontrollen om din enhet saknar fingeravtrycksfunktion",
-      "notFingerprintTitle": "Fingeravtrycksfunktion enhet hittades inte"
+      "notFingerprintTitle": "Fingeravtrycksfunktion enhet hittades inte",
+      "notFIngerprintRegisteredTitle": "Fingeravtryckskontroll",
+      "notFingerprintRegistered": "Ditt fingeravtryck är ej registrerat i enheten"
     }
   },
   "security": {
@@ -55,10 +57,6 @@
     "title": "Fingeravtryckskontroll",
     "message": "Du kan fortsätta signeringen om du har registrerat ditt fingeravtryck",
     "continue": "Fortsätt"
-  },
-  "modal": {
-    "title": "Fingeravtryckskontroll",
-    "message": "Ditt fingeravtryck är ej registrerat i enheten"
   },
   "connection": {
     "title": "Ingen internetanslutning",

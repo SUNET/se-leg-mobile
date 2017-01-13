@@ -11,13 +11,20 @@
     angular.module(moduleName)
       .controller('MessageController', MessageController);
     /* @ngInject */
-    function MessageController($state, SE_LEG_VIEWS, $translate) {
+    function MessageController($state, $translate, SE_LEG_VIEWS, MainFactory) {
 
       var vm = this;
 
       vm.errorScreen = false;
       vm.msg = 'message.message';
       vm.title = 'message.title';
+      // by default
+      vm.buttonOptions = [{
+          text: 'message.next',
+          onClick: function () {
+            MainFactory.handleNextComponent();
+          }
+        }];
 
       // Public methods
       vm.start = start;
@@ -31,6 +38,7 @@
        */
       function activate() {
         if ($state.params) {
+          // initialization of the parameters
           if ($state.params.errorScreen) {
             vm.errorScreen = $state.params.errorScreen;
           }
@@ -41,6 +49,10 @@
 
           if ($state.params.msg) {
             vm.msg = $state.params.msg;
+          }
+
+          if ($state.params.buttonOptions) {
+            vm.buttonOptions = $state.params.buttonOptions;
           }
         }
       }

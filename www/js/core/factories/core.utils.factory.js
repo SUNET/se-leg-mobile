@@ -16,19 +16,20 @@
       .factory('UtilsFactory', UtilsFactory);
 
     /* @ngInject */
-    function UtilsFactory($ionicPopup, $translate, SE_LEG_GLOBAL) {
+    function UtilsFactory($ionicPopup, $translate, $ionicHistory, SE_LEG_GLOBAL) {
 
-      var vm = this;
-      vm.className = '[UtilsFactory]';
+      var factory = this;
+      factory.className = '[UtilsFactory]';
 
-      vm.isEmpty = isEmpty;
-      vm.isNotEmpty = isNotEmpty;
-      vm.isNumber = isNumber;
-      vm.hasConnectivity = hasConnectivity;
-      vm.closeApp = closeApp;
-      vm.getPlatform = getPlatform;
+      factory.isEmpty = isEmpty;
+      factory.isNotEmpty = isNotEmpty;
+      factory.isNumber = isNumber;
+      factory.hasConnectivity = hasConnectivity;
+      factory.closeApp = closeApp;
+      factory.getPlatform = getPlatform;
+      factory.getCurrentState = getCurrentState;
 
-      return vm;
+      return factory;
 
 
       // Implementations ////
@@ -125,6 +126,14 @@
           }
         }
         return platform;
+      }
+
+      /**
+       * It returns the current ionic view.
+       * @returns String with the current ionic view.
+       */
+      function getCurrentState() {
+        return $ionicHistory.currentView().stateName;
       }
     }
 

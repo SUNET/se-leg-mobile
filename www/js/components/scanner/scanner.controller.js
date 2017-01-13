@@ -16,8 +16,6 @@
 
       var vm = this;
       vm.scanData = '';
-      vm.modalMessage = "modal.message";
-      vm.modalTitleText = "modal.title";
 
       $scope.$on('$ionicView.enter', onEnter);
 

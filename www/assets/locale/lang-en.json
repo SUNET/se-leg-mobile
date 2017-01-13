@@ -43,7 +43,9 @@
       "notDetectFingerprintDevice": "Cannot detect fingerprint device",
       "cancelled": "Fingerprint cancelled",
       "notFingerprint": "If you haven't detect fingerprint device, you cant't continue the process",
-      "notFingerprintTitle": "Fingeprint device not found"
+      "notFingerprintTitle": "Fingeprint device not found",
+      "notFIngerprintRegisteredTitle": "Fingerprint Verification",
+      "notFingerprintRegistered": "No fingerprint registered on the device"
     }
   },
   "security": {
@@ -55,10 +57,6 @@
     "title": "Fingerprint Verification",
     "message": "if you have introduced your fingerprint, you can continue the process",
     "continue": "Continue"
-  },
-  "modal": {
-    "title": "Fingerprint Verification",
-    "message": "No fingerprint registered on the device"
   },
   "connection": {
     "title": "No Internet Connection",

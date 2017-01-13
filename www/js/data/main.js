@@ -1,17 +1,14 @@
 /**
- * Message component module.
+ * Data module with all the temporal data of the app.
  * @param {type} angular
- * @author Maria Villalba <mavillalba@emergya.com>
  * @author Alejandro Gomez <amoron@emergya.com>
- * @since Wed Nov 16 2016
+ * @since Jan 12 2017
  */
 
 (function () {
   define([
     // Here files modules internal files referencies.
-    './message.routes',
-    './message.factory',
-    './message.controller'
+    './data.factory'
       // ...
   ], function () {
   });

@@ -7,26 +7,34 @@
  */
 
 (function () {
-  define(['./fingerprint.module', 'text!./fingerprint.html'], function (module, fingerprintTemplate) {
-    'use strict';
-    angular.module(module).config(config);
+  define(['./fingerprint.module', 'text!./views/fingerprint.html', 'text!./views/fingerprintVerification.html'],
+    function (module, fingerprintTemplate, finerprintVerificationTemplate) {
+      'use strict';
+      angular.module(module).config(config);
 
-    /* As a angular module config, here it's not possible inject constants services, only providers.*/
-    /* @ngInject */
-    function config($stateProvider) {
+      /* As a angular module config, here it's not possible inject constants services, only providers.*/
+      /* @ngInject */
+      function config($stateProvider, SE_LEG_VIEWS) {
 
-      $stateProvider.state('fingerprint', {
-        url: '/fingerprint',
-        params: {
-          nin: null,
-          qr: null
-        },
-        template: fingerprintTemplate,
-        controller: 'FingerprintController',
-        controllerAs: 'fingerprintCtrl'
-      });
-    }
-  });
+        $stateProvider.state(SE_LEG_VIEWS.FINGERPRINT, {
+          url: '/' + SE_LEG_VIEWS.FINGERPRINT,
+          params: {
+            nin: null,
+            qr: null
+          },
+          template: fingerprintTemplate,
+          controller: 'FingerprintController',
+          controllerAs: 'fingerprintCtrl'
+        });
+
+        $stateProvider.state(SE_LEG_VIEWS.FINGERPRINTVERIFICATION, {
+          url: '/' + SE_LEG_VIEWS.FINGERPRINTVERIFICATION,
+          template: finerprintVerificationTemplate,
+          controller: 'FingerprintController',
+          controllerAs: 'fingerprintCtrl'
+        });
+      }
+    });
 })();
 
 
