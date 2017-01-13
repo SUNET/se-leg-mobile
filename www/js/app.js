@@ -8,8 +8,11 @@
   define([
     'angular',
     './core/main',
-    // Application modules.
+    // Main app module
+    './main/main',
+    // components
     './components/scanner/main',
+    // Application modules.
     './identification/main',
     './message/main',
     './fingerprint/main',
@@ -26,6 +29,7 @@
         .module(moduleName, [
           'ionic',
           'app.core',
+          'app.main',
           'app.scanner',
           'app.identification',
           'app.message',

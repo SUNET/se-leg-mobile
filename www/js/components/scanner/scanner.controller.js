@@ -20,21 +20,20 @@
 
       $scope.$on('$ionicView.enter', onEnter);
 
-      // Execute action on hide modal
-      $scope.$on('modal.hidden', function () {
-        if (typeof cordova.plugins.settings.openSetting != undefined)
-          cordova.plugins.settings.openSetting("security", function () {
-          },
-            function () {
-              $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'security.error.errorOpenSecurity'});
-            });
-        $state.go(SE_LEG_VIEWS.FINGERPRINTVERIFICATION);
-      });
-
       activate();
 
       function activate() {
-
+        // Execute action on hide modal
+        $scope.$on('modal.hidden', function () {
+          if (typeof cordova.plugins.settings.openSetting != undefined) {
+            cordova.plugins.settings.openSetting("security", function () {
+            },
+              function () {
+                $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'security.error.errorOpenSecurity'});
+              });
+          }
+          $state.go(SE_LEG_VIEWS.FINGERPRINTVERIFICATION);
+        });
       }
 
       /**

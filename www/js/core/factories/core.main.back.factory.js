@@ -14,7 +14,7 @@
       .factory('MainBackFactory', MainBackFactory);
 
     /* @ngInject */
-    function MainBackFactory($state, $ionicPlatform, $ionicHistory, SE_LEG_VIEWS) {
+    function MainBackFactory($state, $ionicPlatform, $ionicHistory, SE_LEG_VIEWS, MainFactory) {
       var factory = this;
       factory.init = init;
 
@@ -39,7 +39,7 @@
       function commonBackBehaviour() {
 
         if ($ionicHistory.currentView()) {
-
+          MainFactory.goBack();
           var currentView = $ionicHistory.currentView().stateName;
 
           switch (currentView) {
