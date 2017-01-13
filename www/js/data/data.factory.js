@@ -14,8 +14,6 @@
     function DataFactory() {
       var factory = this;
 
-
-
       return factory;
     }
   });

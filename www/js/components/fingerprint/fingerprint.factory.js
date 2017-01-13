@@ -17,11 +17,16 @@
     function FingerPrintFactory($q, $state, SE_LEG_GLOBAL, SE_LEG_VIEWS, UtilsFactory, ModalFactory) {
       var factory = this;
       var ready = false;
+      var isFingerprintValid = false;
+
+      // Public methods
       factory.existsFingerprintDevice = existsFingerprintDevice;
       factory.existsFingerprintRegistered = existsFingerprintRegistered;
       factory.checkFingerPrintRegistered = checkFingerPrintRegistered;
       factory.authenticateFingerprint = authenticateFingerprint;
       factory.isReady = isReady;
+
+      return factory;
       /**
        * It checks the device has the needed hardware.
        * @returns {$q@call;defer.promise}
@@ -153,6 +158,7 @@
             clientSecret: client_secret,
             disableBackup: true
           }, function (result) {
+            isFingerprintValid = true;
             deferred.resolve(result);
           }, function (error) {
             deferred.reject(error);
@@ -174,7 +180,14 @@
         return ready;
       }
 
-      return factory;
+      /**
+       * It returns if the fingerprint is valid.
+       * @returns true if the user authenticates with his fingerprint.
+       */
+      function isFingerPrintValid() {
+        return isFingerPrintValid;
+      }
+
     }
   });
 })();

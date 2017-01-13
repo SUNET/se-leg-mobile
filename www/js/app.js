@@ -15,9 +15,9 @@
     // components
     './components/scanner/main',
     './components/message/main',
-    // Application modules.
+    './components/fingerprint/main',
+    // Another app modules.
     './identification/main',
-    './fingerprint/main',
     // Here application widgets
     './widgets/main'// Yeoman hook. Define section. Do not remove this comment.
   ],
