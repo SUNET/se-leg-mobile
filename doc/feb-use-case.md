@@ -29,7 +29,7 @@ From the perspective of the mobile app, without distinguishing different parts i
 8. Driver's license scan failure
   * 8a  & 8b like 2a & 2b
   * 8c. As a user, when the scan is successful, I want to be informed of such.
-9. As a user, when the app has my identification data and my account data, I want it to send that information, so that my account is vetted.
+9. As a user, when the app has my identification data and my account data, I want it to send that information to the backend, so that my account may be vetted.
 10. Vetting fails
   * 10a & 10b as 2a & 2b
 11. As a user, when the vetting process finishes successfully, I want to be informed of it.
