@@ -111,6 +111,7 @@
             if (component.preconditions) {
               component.preconditions()
                 .then(function () {
+                  currentComponent--;
                   $state.go(component.state, component.params);
                 })
                 .catch(function (error) {
@@ -121,6 +122,7 @@
                   }
                 });
             } else {
+              currentComponent--;
               $state.go(component.state, component.params);
             }
           }
@@ -139,6 +141,7 @@
           if (component.preconditions) {
             component.preconditions()
               .then(function () {
+                currentComponent++;
                 $state.go(component.state, component.params);
               })
               .catch(function (error) {
@@ -149,6 +152,7 @@
                 }
               });
           } else {
+            currentComponent++;
             $state.go(component.state, component.params);
           }
         } else {
@@ -168,8 +172,7 @@
       function getNextComponent() {
         var component = undefined;
         if (currentComponent < appWorkflow.length - 1) {
-          currentComponent++;
-          component = appWorkflow[currentComponent];
+          component = appWorkflow[currentComponent + 1];
         }
         return component;
       }
@@ -181,8 +184,7 @@
       function getPreviousComponent() {
         var component = undefined;
         if (currentComponent - 1 >= 0) {
-          currentComponent--;
-          component = appWorkflow[currentComponent];
+          component = appWorkflow[currentComponent - 1];
         }
         return component;
       }
