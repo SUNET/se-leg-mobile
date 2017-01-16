@@ -36,7 +36,6 @@
           'app.identification',
           'app.message',
           'app.fingerprint',
-          'app.fingerprintVerification',
           'app.widgets'// Yeoman hook. Dependencies section. Do not remove this comment.
         ])
         .config(Config);

@@ -98,7 +98,7 @@
        */
       function checkFingerPrintRegistered(showContinueScreen) {
         var deferred = $q.defer();
-        FingerPrintFactory.existsFingerprintRegistered()
+        existsFingerprintRegistered()
           .then(function (result) {
             deferred.resolve(result);
           })

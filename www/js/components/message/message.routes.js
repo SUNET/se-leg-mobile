@@ -16,11 +16,12 @@
     function config($stateProvider, SE_LEG_VIEWS) {
 
       $stateProvider.state(SE_LEG_VIEWS.MESSAGE, {
-        url: '/' + SE_LEG_VIEWS.MESSAGE,
+        url: 'sss/' + SE_LEG_VIEWS.MESSAGE,
         params: {
           errorScreen: false,
           msg: undefined,
           title: undefined,
+          buttonOptions: undefined
         },
         template: messageTemplate,
         controller: 'MessageController',

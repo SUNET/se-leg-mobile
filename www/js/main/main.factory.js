@@ -56,10 +56,10 @@
         // TODO: hardcoded, it should come from a JSON file?
         appWorkflow = [
           {
-            url: SE_LEG_VIEWS.MESSAGE,
+            state: SE_LEG_VIEWS.MESSAGE,
             params: {
               title: 'message.title',
-              msg: 'message.description',
+              msg: 'message.message',
               buttonOptions: [
                 {
                   condition: FingerPrintFactory.isReady,
@@ -71,14 +71,15 @@
                 {
                   condition: true,
                   text: 'message.start',
-                  onClick: handleNextComponent
+                  onClick: handleNextComponent,
+                  default: true
                 }
               ]
             },
             factory: MessageFactory
           },
           {// QR-SCANNER
-            url: SE_LEG_VIEWS.SCANNER,
+            state: SE_LEG_VIEWS.SCANNER,
             preconditions: function () {
               var deferred = $q.defer();
               // checking the fingerprint and sending to the confirmation screen
@@ -110,7 +111,7 @@
             if (component.preconditions) {
               component.preconditions()
                 .then(function () {
-                  $state.go(component.url, component.params);
+                  $state.go(component.state, component.params);
                 })
                 .catch(function (error) {
                   if (error && error.errorFn) {
@@ -120,7 +121,7 @@
                   }
                 });
             } else {
-              $state.go(component.url, component.params);
+              $state.go(component.state, component.params);
             }
           }
         } else {
@@ -138,7 +139,7 @@
           if (component.preconditions) {
             component.preconditions()
               .then(function () {
-                $state.go(component.url, component.params);
+                $state.go(component.state, component.params);
               })
               .catch(function (error) {
                 if (error.errorFn) {
@@ -148,7 +149,7 @@
                 }
               });
           } else {
-            $state.go(component.url, component.params);
+            $state.go(component.state, component.params);
           }
         } else {
           // TODO: SHOULD BE TRANSLATED

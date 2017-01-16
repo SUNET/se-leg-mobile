@@ -10,7 +10,6 @@
     // Here files modules internal files referencies.
     './main.routes',
     './main.factory',
-    './configuration.factory',
     './main.controller'
       // ...
   ], function () {

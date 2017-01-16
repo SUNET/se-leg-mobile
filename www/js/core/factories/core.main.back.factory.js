@@ -14,7 +14,7 @@
       .factory('MainBackFactory', MainBackFactory);
 
     /* @ngInject */
-    function MainBackFactory($state, $ionicPlatform, $ionicHistory, SE_LEG_VIEWS, MainFactory) {
+    function MainBackFactory($state, $ionicPlatform, $ionicHistory, SE_LEG_VIEWS) {
       var factory = this;
       factory.init = init;
 

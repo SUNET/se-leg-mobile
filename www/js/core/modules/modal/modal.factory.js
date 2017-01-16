@@ -5,7 +5,7 @@
  * @since Jan 12 2017
  */
 (function () {
-  define(['./modal.module', 'text!./modal.factory'], function (moduleName, modalTemplate) {
+  define(['./modal.module', 'text!./modal.html'], function (moduleName, modalTemplate) {
     'use strict';
 
     angular
@@ -13,7 +13,7 @@
       .factory('ModalFactory', ModalFactory);
 
     /* @ngInject */
-    function ModalFactory($scope, $ionicModal) {
+    function ModalFactory($rootScope, $ionicModal) {
       var factory = this;
 
       var defaultConfig = {
@@ -43,15 +43,15 @@
         }
 
         // TODO: CUSTOMIZE THE TEXT?
-        $scope[config.id] = $ionicModal.fromTemplate(modalTemplate, {
-          scope: $scope,
+        $rootScope[config.id] = $ionicModal.fromTemplate(modalTemplate, {
+          scope: $rootScope,
           animation: config.animation
         });
-        $scope[config.id].show();
+        $rootScope[config.id].show();
         // if some onHideFn was defined, we have to register it
         if (config.onHideFn) {
           // Execute action on hide modal
-          $scope.$on(config.id + '.hidden', config.onHideFn);
+          $rootScope.$on(config.id + '.hidden', config.onHideFn);
         }
       }
 

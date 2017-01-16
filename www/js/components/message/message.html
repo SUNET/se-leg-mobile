@@ -19,8 +19,7 @@
     </div>
 
     <div class="row start-button">
-      <button class="button button-full seleg-button" ng-if="!messageCtrl.fingerprint()" translate="message.start" ng-click="messageCtrl.start()"></button>
-      <button class="button button-full seleg-button" ng-if="messageCtrl.fingerprint()" translate="message.close" ng-click="messageCtrl.closeApp()"></button>
+      <button class="button button-full seleg-button" ng-click="messageCtrl.getCurrentButton().onClick()">{{messageCtrl.getCurrentButton().text | translate}}</button>
     </div>
 
   </ion-content>
