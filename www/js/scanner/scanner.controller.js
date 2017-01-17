@@ -43,7 +43,9 @@
        * Request camera permission and display the scanner when granted.
        */
       function scan() {
-        FingerprintAuth.isAvailable(isAvailableSuccess, isAvailableError);
+        //FingerprintAuth.isAvailable(isAvailableSuccess, isAvailableError);
+        $state.go(SE_LEG_VIEWS.ID, {scanner: 'hola amijo'});
+
       }
 
       /**
