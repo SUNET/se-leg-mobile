@@ -78,10 +78,14 @@
 
 //Send button
 .place-send-identification-button {
-  position: absolute;
-  bottom: 5%;
-  left: 10%;
-  right: 10%;
+  //position: absolute;
+  //bottom: 5%;
+  //left: 10%;
+  //right: 10%;
+  position: inherit;
+  margin-top: 35%;
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
 
