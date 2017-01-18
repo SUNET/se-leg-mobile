@@ -1,6 +1,5 @@
 /*
-    Created on : 18-nov-2016, 12:26:30
-    Author     : mavillalba
+    Created on : 18-jan-2017
     Author     : fjfernandez
 */
 
@@ -22,6 +21,7 @@
     font-size: $secondary-title-size;
     margin-top: 5%;
     line-height: 18px;
+    padding: 0 5%;
   }
 }
 
@@ -78,14 +78,8 @@
 
 //Send button
 .place-send-identification-button {
-  //position: absolute;
-  //bottom: 5%;
-  //left: 10%;
-  //right: 10%;
   position: inherit;
   margin-top: 35%;
   margin-right: 10%;
   margin-left: 10%;
 }
-
-

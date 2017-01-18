@@ -1,59 +1,54 @@
 /*
-    Created on : 21-nov-2016, 16:58:09
-    Author     : mavillalba
+    Created on : 18/01/2017
+    Author     : fjfernandez
 */
-.message-ion-content{
-  .message-content-header {
-    height: 44vh;
-    text-align: center;
 
-    .message-content-title {
-      color: #023754;
-      font-size: 28px;
-      height: 31px;
-      margin-top: 14px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      padding: 0 25px 0 25px;
-      font-weight: bold;
-      line-height: 28px;
-    }
+//First Block (Titles)
+.message-content-header {
+  text-align: center;
+  margin-bottom: 10%;
 
-    .message-content-message{
-      color: #023754;
-      margin-top: 30px;
-      font-size: 18px;
-      height: 46px;
-      padding: 0 40px 0 40px;
-    }
-
+  .message-content-title {
+    font-size: $main-title-size;
+    font-weight: bold;
+    color: $main-title-color;
+    margin-top: 10%;
+    line-height: 28px
   }
 
-  .message-content {
-    height: 37vh;
-    text-align: center;
-
-    .div-col{
-      width: 100%;
-      height: 100%;
-      padding-left: 50px;
-    }
-
-    i{
-      color: #22a7f0;
-      font-size: 190px;
-      -webkit-text-stroke: 4.5px #eceff1;
-    }
-
+  .message-content-message{
+    color: $main-title-color;
+    font-size: $secondary-title-size;
+    margin-top: 5%;
+    line-height: 18px;
+    padding: 0 5%;
   }
+}
 
-  .start-button {
-    height: 84px;
-    padding: 0;
-    margin: 0;
+//Tick Icon
+.place-message-icon{
+  width: 100%;
+  padding: 0 10%;
+  text-align: center;
+  line-height: 150px;
+
+  i{
+    color: $icon-tick-enable;
+    font-size: 150px;
+    -webkit-text-stroke: 3.5px #eceff1; //Reduce the icon border, it is not posible to use a scss variable. It produces an error.
   }
+}
 
+//Start button
+.place-start-button {
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+  right: 10%;
 
-
+  button{
+    @media (max-width: $small-devices-width){
+      font-size: 14px !important;
+    }
+  }
 }
