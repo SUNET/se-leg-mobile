@@ -18,20 +18,8 @@
       vm.fingerprintData = '';
 
       vm.serviceData = undefined;
-      vm.fingerprint = fingerprintProcess;
 
-      $scope.$on('$ionicView.enter', showView);
-
-      /**
-       * Main method to decide which fingerprint view will be shown.
-       */
-      function showView() {
-        if (UtilsFactory.getCurrentState() === SE_LEG_VIEWS.FINGERPRINTVERIFICATION) {
-          fingerprintVerification();
-        } else {
-          fingerprintProcess();
-        }
-      }
+      $scope.$on('$ionicView.enter', fingerprintProcess);
 
       /**
        * Method to start the fingerprint process.

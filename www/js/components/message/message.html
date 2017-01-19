@@ -1,27 +1,23 @@
 <ion-view view-title="Message">
-  <ion-content class="message-ion-content">
+  <ion-content overflow-scroll="false" scroll="false">
 
     <!-- Message content head -->
     <div class="message-content-header">
-      <div class="col">
-        <img class="seleg-logo" src="img/simbolo-seleg@2x.png"/>
-        <div class="text-center message-content-title">{{messageCtrl.title| translate}}</div>
-        <div class="text-center message-content-message">{{messageCtrl.msg|translate}}</div>
-      </div>
+      <div class="seleg-logo"></div>
+      <div class="text-center message-content-title">{{messageCtrl.title| translate}}</div>
+      <div class="text-center message-content-message">{{messageCtrl.msg|translate}}</div>
     </div>
 
-    <!-- Message content -->
-    <div class="message-content">
-      <div class="col">
-        <i ng-if="!messageCtrl.errorScreen" class="icon ion-ios-checkmark-outline"></i>
-        <i ng-if="messageCtrl.errorScreen" class="icon ion-ios-close-outline"></i>
-      </div>
+    <!-- Message Icon -->
+    <div class="place-message-icon">
+      <i ng-if="!messageCtrl.errorScreen" class="icon ion-ios-checkmark-outline"></i>
+      <i ng-if="messageCtrl.errorScreen" class="icon ion-ios-close-outline"></i>
     </div>
 
-    <div class="row start-button">
+    <!-- Start button -->
+    <div class="place-start-button">
       <button class="button button-full seleg-button" ng-click="messageCtrl.getCurrentButton().onClick()">{{messageCtrl.getCurrentButton().text | translate}}</button>
     </div>
 
   </ion-content>
 </ion-view>
-

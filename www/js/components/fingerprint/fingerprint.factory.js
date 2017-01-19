@@ -18,14 +18,12 @@
       var factory = this;
       var ready = false;
       var isFingerprintValid = false;
-
       // Public methods
       factory.existsFingerprintDevice = existsFingerprintDevice;
       factory.existsFingerprintRegistered = existsFingerprintRegistered;
       factory.checkFingerPrintRegistered = checkFingerPrintRegistered;
       factory.authenticateFingerprint = authenticateFingerprint;
       factory.isReady = isReady;
-
       return factory;
       /**
        * It checks the device has the needed hardware.
@@ -94,9 +92,10 @@
       /**
        * It checks if there is a fingeprint registered and also shows a conirmation screen (if configured).
        * @param showContinueScreen flag to know if a confirmation screen will be shown or not.
+       * @param continueScreenConfig with all the configuration for the nextScreen,
        * @returns {$q@call;defer.promise}
        */
-      function checkFingerPrintRegistered(showContinueScreen) {
+      function checkFingerPrintRegistered(showContinueScreen, continueScreenConfig) {
         var deferred = $q.defer();
         existsFingerprintRegistered()
           .then(function (result) {
@@ -129,7 +128,49 @@
                       });
                   }
                   if (showContinueScreen) {
-                    $state.go(SE_LEG_VIEWS.FINGERPRINTVERIFICATION);
+                    if (continueScreenConfig === undefined) {
+                      continueScreenConfig = {
+                        params: {}
+                      };
+                    }
+
+                    if (!continueScreenConfig.state) {
+                      continueScreenConfig.state = SE_LEG_VIEWS.MESSAGE;
+                    }
+
+                    if (!continueScreenConfig.params.title) {
+                      continueScreenConfig.params.title = 'fingerprintVerification.title';
+                    }
+
+                    if (!continueScreenConfig.params.msg) {
+                      continueScreenConfig.params.msg = 'fingerprintVerification.message';
+                    }
+
+                    if (!continueScreenConfig.params.onClick) {
+                      continueScreenConfig.params.onClick = function () {
+                        $state.go(SE_LEG_VIEWS.SCANNER);
+                      };
+                    }
+
+                    if (!continueScreenConfig.params.textButton) {
+                      continueScreenConfig.params.textButton = 'fingerprintVerification.continue';
+                    }
+
+
+                    $state.go(continueScreenConfig.state, {
+                      title: continueScreenConfig.params.title,
+                      msg: continueScreenConfig.params.message,
+                      buttonOptions: [
+                        {
+                          condition: true,
+                          text: continueScreenConfig.params.textButton,
+                          onClick: function () {
+                            continueScreenConfig.params.onClick();
+                          },
+                          default: true
+                        }
+                      ]
+                    });
                   }
                 }
               });
@@ -147,12 +188,10 @@
        */
       function authenticateFingerprint() {
         var deferred = $q.defer();
-
         if (UtilsFactory.getPlatform() === SE_LEG_GLOBAL.PLATFORMS.ANDROID) {
           // it is available
           var client_id = "Your client ID";
           var client_secret = "A very secret client secret (once per device)";
-
           FingerprintAuth.show({
             clientId: client_id,
             clientSecret: client_secret,

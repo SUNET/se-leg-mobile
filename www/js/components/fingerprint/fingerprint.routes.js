@@ -7,11 +7,10 @@
  */
 
 (function () {
-  define(['./fingerprint.module', 'text!./views/fingerprint.html', 'text!./views/fingerprintVerification.html'],
-    function (module, fingerprintTemplate, fingerprintVerificationTemplate) {
+  define(['./fingerprint.module', 'text!./fingerprint.html]'],
+    function (module, fingerprintTemplate) {
       'use strict';
       angular.module(module).config(config);
-
       /* As a angular module config, here it's not possible inject constants services, only providers.*/
       /* @ngInject */
       function config($stateProvider, SE_LEG_VIEWS) {
@@ -26,15 +25,7 @@
           controller: 'FingerprintController',
           controllerAs: 'fingerprintCtrl'
         });
-
-        $stateProvider.state(SE_LEG_VIEWS.FINGERPRINTVERIFICATION, {
-          url: '/' + SE_LEG_VIEWS.FINGERPRINTVERIFICATION,
-          template: fingerprintVerificationTemplate,
-          controller: 'FingerprintController',
-          controllerAs: 'fingerprintCtrl'
-        });
       }
+
     });
 })();
-
-
