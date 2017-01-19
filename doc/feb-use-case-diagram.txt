@@ -1,0 +1,63 @@
+
+@startuml
+autonumber
+actor User
+entity backend
+title Use case: Proofing ID through driver's license
+
+User -> User: Start app
+alt initial checks failure
+    rnote over User
+        inform user of failure
+        and show a "exit app" button
+    end rnote
+    User ->x Exit: close app
+else initial checks success
+    rnote over User
+        Show screen with usage instructions
+        and a "Scan QR-code" button
+    end rnote
+end
+User -> User: Start QR-code scanner
+User -> User: Scan QR-code
+alt QR-code scan failure
+    rnote over User
+        inform user of failure
+        and show a "exit app" / "restart process" button
+    end rnote
+    User ->x Exit: close app
+else QR-code scan success
+    rnote over User
+        Show screen with instructions for next steps
+        and a "Scan Driver's license" button
+    end rnote
+end
+User -> User: Start driver's license scanner
+User -> User: Scan Dirver's license
+alt driver's license scan failure
+    rnote over User
+        inform user of failure and show
+        an "exit app" / "restart process" button
+    end rnote
+    User ->x Exit: close app
+else driver's license scan success
+    User -> backend: Send data
+    rnote over User
+        inform user of success and show
+        a spinner while waiting for the backend
+    end rnote
+end
+alt backend failure
+    backend -> User: Send error response
+    rnote over User
+        inform user of failure and show
+        an "exit app" / "restart process" button
+    end rnote
+else backend success
+    backend -> User: Send success response
+    rnote over User
+        inform user of success and show
+        an "exit app" button
+    end rnote
+end
+@enduml
