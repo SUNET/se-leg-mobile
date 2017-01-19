@@ -1,103 +1,76 @@
 /*
-    Created on : 18-nov-2016, 12:26:30
-    Author     : mavillalba
+    Created on : 18-jan-2017
+    Author     : fjfernandez
 */
 
+//First Block (Titles)
 .identification-content-header {
-  text-align: center;
-  margin-bottom: 56px;
+  @extend %content-header;
 
   .identification-content-title {
-    color: #023754;
-    font-size: 28px;
-    height: 31px;
-    margin-top: 14px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    padding: 0 25px 0 25px;
-    font-weight: bold;
-    line-height: 28px;
+    @extend %content-title;
   }
 
   .message-content-message{
-    color: #023754;
-    margin-top: 30px;
-    font-size: 18px;
-    height: 46px;
-    padding: 0 40px 0 40px;
-  }
-
-}
-
-
-.identification-content {
-  label {
-    background: #FFF;
-    margin: 0 auto;
-    padding-bottom: 0;
-    margin-left: 25px;
-    padding-left: 0px;
-    border-left-width: 0px;
-    margin-right: 0px;
-    width: 280px;
-    height: 48px;
-    border-radius: 2px;
-    padding-top: 0px;
-  }
-
-  item-input {
-    padding-bottom: 0px;
-  }
-
-  input {
-    padding-bottom: 0;
-    padding-right: 0;
-    font-size: 15px;
-    color: rgba(0, 0, 0, 0.55);
-    font-weight: normal;
-    border-radius: 2px;
-  }
-
-  @include input-placeholder {
-    font-size: 15px;
-    color: rgba(0, 0, 0, 0.55);
-    font-weight: normal;
-  }
-
-  .send-identification-form-container {
-    margin-bottom: 144px;
-
-    .form-col{
-      width: 90%;
-    }
-
-    .style-not-disable{
-      color: #22a7f0;
-      font-size: 50px;
-      padding-right: 33px;
-    }
-
-    .style-disable{
-      color: #b0bec5;
-      font-size: 50px;
-      padding-right: 33px;
-    }
-
-    .message-form-container{
-      padding-left: 35px;
-      color: #78909c;
-      font-size: 13px;
-      text-transform: uppercase;
-    }
-
-  }
-
-  .send-identification-button {
-    height: 84px;
-    padding: 0;
-    margin: 0;
+    @extend %content-message;
   }
 }
 
+//Second Block (Form)
+.input-message-title{
+  padding-left: 10%;
+  color: $imput-label-color;
+  font-size: $input-message-size;
+  text-transform: uppercase;
+}
 
+//Group nesting
+.place-input-label-button{
+  width: 100%;
+  padding: 0 10%;
+
+  //Input and label
+  .place-label-and-input{
+    width: 80%;
+    display: inline-block;
+
+    input{
+      border-radius: 2px;
+      font-size: 15px;
+      color: $input-font-color;
+      font-weight: normal;
+    }
+  }
+
+  //Icon
+  .place-tick-icon{
+    width: 18%;
+    display: inline-block;
+    font-size: 45px;
+    vertical-align: middle;
+    text-align: right;
+
+    .tick-enable{
+      color: $icon-tick-enable;
+    }
+
+    .tick-disable{
+      color: $icon-tick-disable;
+    }
+  }
+}
+
+//Mixing used for the place holder
+@include input-placeholder {
+  font-size: 15px;
+  color: $input-font-color;
+  font-weight: normal;
+}
+
+//Send button
+.place-send-identification-button {
+  position: inherit;
+  margin-top: 35%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
