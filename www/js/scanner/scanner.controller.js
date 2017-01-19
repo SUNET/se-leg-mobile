@@ -43,11 +43,10 @@
        * Request camera permission and display the scanner when granted.
        */
       function scan() {
-        //FingerprintAuth.isAvailable(isAvailableSuccess, isAvailableError);
+        FingerprintAuth.isAvailable(isAvailableSuccess, isAvailableError);
         //$state.go(SE_LEG_VIEWS.ID, {scanner: 'hola amijo'});
-        $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: false, msg: 'fingerprint.error.notFingerprint'});
-
-
+        //$state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: false, msg: 'fingerprint.error.notFingerprint'});
+        $state.go(SE_LEG_VIEWS.FINGERPRINTVERIFICATION);
       }
 
       /**
@@ -123,8 +122,6 @@
           navigator.app.exitApp();
         }
       }
-
-
     }
   });
 })();

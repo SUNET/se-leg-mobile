@@ -1,40 +1,31 @@
 /*
-    Created on : 02-dic-2016, 10:20:08
-    Author     : mavillalba
-*/
+ *    Created on : 19/01/2017
+ *    Author     : fjfernandez
+ */
 
-.fingerprint-verification-ion-content{
-  .fingerprint-verification-content-header {
-    height: 80%;
-    text-align: center;
+//First Block (Titles)
+.fingerprintVerification-content-header {
+    @extend %content-header;
 
-    .fingerprint-verification-content-title {
-      color: #023754;
-      font-size: 28px;
-      height: 31px;
-      margin-top: 14px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      padding: 0 25px 0 25px;
-      font-weight: bold;
-      line-height: 28px;
+    .fingerprintVerification-content-title {
+        @extend %content-title;
     }
 
-    .fingerprint-verification-content-message{
-      color: #023754;
-      margin-top: 30px;
-      font-size: 18px;
-      height: 46px;
-      padding: 0 40px 0 40px;
+    .fingerprintVerification-content-message{
+        @extend %content-message;
     }
-
-  }
-
-  .continue-button {
-    height: 84px;
-    padding: 0;
-    margin: 0;
-  }
 }
 
+//Continue button
+.place-continue-button {
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    right: 10%;
+
+    button{
+        @media (max-width: $small-devices-width){
+            font-size: 18px !important; //The word is not so long.
+        }
+    }
+}

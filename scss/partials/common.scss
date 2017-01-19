@@ -1,9 +1,9 @@
 /*
-    Created on : 18-nov-2016, 12:33:22 // 17/01/2017
-    Author     : mavillalba
-    Author     : fjfernandez
-*/
+ *    Created on : 19-jan-2017
+ *   Author      : fjfernandez.
+ */
 
+//Set the application font
 body,
 ion-header-bar,
 ion-content,
@@ -13,10 +13,12 @@ button {
   font-family: $main-app-font, sans-serif !important;
 }
 
+//Set the background color of the app
 ion-content{
   background-color: $main-bg-color;
 }
 
+//Set the main logo
 .seleg-logo{
   background-image: url($seleg-main-logo);
   background-repeat: no-repeat;
@@ -25,6 +27,29 @@ ion-content{
   margin-top: 15%;
 }
 
+//Extends for the another partials
+%content-header {
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+%content-title {
+  font-size: $main-title-size;
+  font-weight: bold;
+  color: $main-title-color;
+  margin-top: 10%;
+  line-height: 28px;
+}
+
+%content-message{
+  color: $main-title-color;
+  font-size: $secondary-title-size;
+  margin-top: 5%;
+  line-height: 18px;
+  padding: 0 5%;
+}
+
+//Buttons
 .button.button-full {
   background-color: $send-button-bg;
   height: 60px;
@@ -41,4 +66,3 @@ ion-content{
   border: solid 1px $icon-tick-disable !important;
   color: $send-button-disable-font !important;
 }
-

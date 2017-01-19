@@ -5,23 +5,14 @@
 
 //First Block (Titles)
 .message-content-header {
-  text-align: center;
-  margin-bottom: 10%;
+  @extend %content-header;
 
   .message-content-title {
-    font-size: $main-title-size;
-    font-weight: bold;
-    color: $main-title-color;
-    margin-top: 10%;
-    line-height: 28px
+    @extend %content-title;
   }
 
   .message-content-message{
-    color: $main-title-color;
-    font-size: $secondary-title-size;
-    margin-top: 5%;
-    line-height: 18px;
-    padding: 0 5%;
+    @extend %content-message;
   }
 }
 
