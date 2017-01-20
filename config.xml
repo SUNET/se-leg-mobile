@@ -37,8 +37,8 @@
   <plugin name="ionic-plugin-keyboard" source="npm" spec="2.2.1"/>
   <plugin name="cordova-plugin-permissionScope" source="git" spec="https://github.com/natete/cordova-plugin-permissionScope.git"/>
   <plugin name="cordova-plugin-android-permissions" source="npm" spec="0.10.0"/>
-  <plugin name="cordova-plugin-android-fingerprint-auth" spec="~0.3.3"/>
   <plugin name="cordova-plugin-touch-id" spec="~3.1.2"/>
+  <plugin name="cordova-plugin-android-fingerprint-auth" source="git" spec="https://github.com/natete/cordova-plugin-android-fingerprint-auth.git"/>
   <plugin name="com.phonegap.plugins.nativesettingsopener" spec="https://github.com/selahssea/Cordova-open-native-settings.git"/>
   <platform name="android">
     <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png"/>
