@@ -12,14 +12,38 @@
       .controller('FingerprintController', FingerprintController);
     /* @ngInject */
     function FingerprintController($scope, SE_LEG_VIEWS, $state, FingerprintService, FingerprintFactory,
-      UtilsFactory) {
+      MainFactory, UtilsFactory) {
 
       var vm = this;
       vm.fingerprintData = '';
-
       vm.serviceData = undefined;
+      // by default actions
+      var onFingerprintValidationSuccess = function (result) {
+        MainFactory.handleNextComponent();
+      };
+      var onFingerprintValidationFailure = function (error) {
+        UtilsFactory.closeApp({title: 'fingerprintVerification.error.title', text: 'fingerprintVerification.error.text'
+        });
+      };
+      $scope.$on('$ionicView.enter', onEnter);
 
-      $scope.$on('$ionicView.enter', fingerprintProcess);
+
+      /**
+       * Method called once the user accesses to the module.
+       */
+      function onEnter() {
+        if ($state.params) {
+          // initialization of the parameters
+          if ($state.params.onFingerprintValidationSuccess) {
+            onFingerprintValidationSuccess = $state.params.onFingerprintValidationSuccess;
+          }
+
+          if ($state.params.onFingerprintValidationFailure) {
+            onFingerprintValidationFailure = $state.params.onFingerprintValidationFailure;
+          }
+        }
+        fingerprintProcess();
+      }
 
       /**
        * Method to start the fingerprint process.
@@ -27,7 +51,7 @@
       function fingerprintProcess() {
         FingerprintFactory.authenticateFingerprint()
           .then(function (result) {
-
+            onFingerprintValidationSuccess(result);
           })
           .catch(function (error) {
 

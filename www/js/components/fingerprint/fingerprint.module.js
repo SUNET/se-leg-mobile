@@ -1,7 +1,7 @@
 /**
  * Fingerprint module.
  * @param {type} angular
- * * @returns {angular.module}
+ * @returns {angular.module}
  * @author Maria Villalba <mavillalba@emergya.com>
  * @since Wen Nov 30 2016
  */

@@ -7,7 +7,7 @@
  */
 
 (function () {
-  define(['./fingerprint.module', 'text!./fingerprint.html]'],
+  define(['./fingerprint.module', 'text!./fingerprint.html'],
     function (module, fingerprintTemplate) {
       'use strict';
       angular.module(module).config(config);
@@ -18,8 +18,8 @@
         $stateProvider.state(SE_LEG_VIEWS.FINGERPRINT, {
           url: '/' + SE_LEG_VIEWS.FINGERPRINT,
           params: {
-            nin: null,
-            qr: null
+            onFingerprintValidationSuccess: undefined,
+            onFingerprintValidationFailure: undefined
           },
           template: fingerprintTemplate,
           controller: 'FingerprintController',

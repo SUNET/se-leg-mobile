@@ -10,8 +10,6 @@
     './core/main',
     // Main app module
     './main/main',
-    // data module
-    './data/main',
     // components
     './components/scanner/main',
     './components/message/main',
@@ -31,7 +29,6 @@
           'ionic',
           'app.core',
           'app.main',
-          'app.data',
           'app.scanner',
           'app.identification',
           'app.message',

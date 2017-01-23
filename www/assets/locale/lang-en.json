@@ -56,7 +56,11 @@
   "fingerprintVerification": {
     "title": "Fingerprint Verification",
     "message": "if you have introduced your fingerprint, you can continue the process",
-    "continue": "Continue"
+    "continue": "Continue",
+    "error": {
+      "title": "Fingerprint Verification",
+      "message": "Fingerprint validation failed"
+    }
   },
   "connection": {
     "title": "No Internet Connection",

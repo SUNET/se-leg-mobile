@@ -12,7 +12,7 @@
   ], function (ng) {
     'use strict';
 
-    var moduleName = 'app.data';
+    var moduleName = 'app.core.data';
 
     ng.module(moduleName, []);
 

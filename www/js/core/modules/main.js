@@ -15,7 +15,9 @@
     // Permissions
     './permissions/main',
     // Modals
-    './modal/main'
+    './modal/main',
+    // Data
+    './data/main'
   ], function () {
   });
 })();

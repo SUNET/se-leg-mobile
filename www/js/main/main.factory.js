@@ -80,6 +80,14 @@
           },
           {// QR-SCANNER
             state: SE_LEG_VIEWS.SCANNER,
+            params: {
+              onFingerprintValidationSuccess: function () {
+
+              },
+              onFingerprintValidationFailure: function () {
+
+              }
+            },
             preconditions: function () {
               var deferred = $q.defer();
               // checking the fingerprint and sending to the confirmation screen
@@ -93,7 +101,10 @@
               return deferred.promise;
             },
             backAllowed: false,
-            factory: ScannerFactory
+            factory: ScannerFactory,
+            onErrorFn: function () {
+
+            }
           }
         ];
       }
@@ -115,8 +126,8 @@
                   $state.go(component.state, component.params);
                 })
                 .catch(function (error) {
-                  if (error && error.errorFn) {
-                    error.errorFn();
+                  if (error && error.onErrorFn) {
+                    error.onErrorFn();
                   } else {
                     UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
                   }
@@ -145,8 +156,8 @@
                 $state.go(component.state, component.params);
               })
               .catch(function (error) {
-                if (error.errorFn) {
-                  error.errorFn();
+                if (error.onErrorFn) {
+                  error.onErrorFn();
                 } else {
                   UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
                 }

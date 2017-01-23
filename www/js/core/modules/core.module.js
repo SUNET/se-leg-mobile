@@ -19,7 +19,8 @@
       'app.core.constants',
       'app.core.langs',
       'app.core.permissions',
-      'app.core.modal'
+      'app.core.modal',
+      'app.core.data'
     ]);
 
     return moduleName;

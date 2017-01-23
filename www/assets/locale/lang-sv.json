@@ -56,7 +56,11 @@
   "fingerprintVerification": {
     "title": "Fingeravtryckskontroll",
     "message": "Du kan fortsätta signeringen om du har registrerat ditt fingeravtryck",
-    "continue": "Fortsätt"
+    "continue": "Fortsätt",
+    "error": {
+      "title": "Fingeravtryckskontroll",
+      "message": "Fingeravtryck validering misslyckades"
+    }
   },
   "connection": {
     "title": "Ingen internetanslutning",

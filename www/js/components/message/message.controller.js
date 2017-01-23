@@ -40,6 +40,9 @@
       function activate() {
       }
 
+      /**
+       * Once the user accesses to the module, the by default initialization parameters.
+       */
       function onEnter() {
         if ($state.params) {
           // initialization of the parameters
