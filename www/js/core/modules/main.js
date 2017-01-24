@@ -13,7 +13,9 @@
     // Constants Module.
     './constants/main',
     // Permissions
-    './permissions/main'
+    './permissions/main',
+    // Fingerprint Scanner
+    './fingerprintScanner/main'
   ], function () {
   });
 })();

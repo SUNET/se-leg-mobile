@@ -11,7 +11,7 @@
     angular.module(moduleName)
       .controller('FingerprintController', FingerprintController);
     /* @ngInject */
-    function FingerprintController($scope, SE_LEG_VIEWS, $state, FingerprintService) {
+    function FingerprintController($scope, SE_LEG_VIEWS, $state, FingerprintService, FingerprintScannerFactory) {
 
       var vm = this;
       vm.fingerprintData = '';
@@ -24,15 +24,10 @@
 
 
       function fingerprint() {
-        // it is available
-        var client_id = "Your client ID";
-        var client_secret = "A very secret client secret (once per device)";
 
-        FingerprintAuth.show({
-          clientId: client_id,
-          clientSecret: client_secret,
-          disableBackup: true
-        }, successCallback, errorCallback);
+        FingerprintScannerFactory.verifyFingerprint()
+          .then(successCallback)
+          .catch(errorCallback);
       }
 
       /**

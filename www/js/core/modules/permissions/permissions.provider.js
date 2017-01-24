@@ -24,7 +24,7 @@
                 var _PermissionsStrategyFactory;
 
                 var permissionsPerAction = undefined;
-                var actionNames = {}
+                var actionNames = {};
 
                 this.setConfigObject = setConfigObject;
 
