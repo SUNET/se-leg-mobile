@@ -12,7 +12,7 @@
       .factory('MainFactory', MainFactory);
     /* @ngInject */
     function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerPrintFactory, ScannerFactory, MessageFactory,
-      ModalFactory, DataFactory) {
+      DataFactory, ModalFactory) {
       var factory = this;
 
       // internal variables
@@ -53,6 +53,7 @@
        * It loads the wofklow in the appWorkflow attribute.
        */
       function loadWorkflow() {
+        /* @worfklow */
         // TODO: hardcoded, it should come from a JSON file?
         appWorkflow = [
           {
@@ -71,29 +72,33 @@
               return deferred.promise;
             },
             backAllowed: false,
-            onErrorFn: function () {
-              // defining the next component
-              var component = {
-                state: SE_LEG_VIEWS.MESSAGE,
-                params: {
-                  title: 'message.title',
-                  errorScreen: true,
-                  msg: 'security.error.errorOpenSecurity',
-                  buttonOptions: [
-                    {
-                      condition: true,
-                      text: 'message.start',
-                      onClick: function () {
-                        goToPosition(0);
-                      },
-                      default: true
-                    }
-                  ]
-                },
-                backAllowed: false
-              };
-              // sending the user to the component
-              goToComponent(component);
+            onErrorFn: function (error) {
+              if (error.isHardwareDetected && !error.isAvailable) {
+                showScannerErrorModalIfNoFingerprintDetected(error);
+              } else {
+                // defining the next component
+                var component = {
+                  state: SE_LEG_VIEWS.MESSAGE,
+                  params: {
+                    title: 'message.title',
+                    errorScreen: true,
+                    msg: 'security.error.errorOpenSecurity',
+                    buttonOptions: [
+                      {
+                        condition: true,
+                        text: 'message.start',
+                        onClick: function () {
+                          goToPosition(0);
+                        },
+                        default: true
+                      }
+                    ]
+                  },
+                  backAllowed: false
+                };
+                // sending the user to the component
+                goToComponent(component);
+              }
             },
             factory: ScannerFactory
           },
@@ -178,6 +183,40 @@
             }
           }
         ];
+
+        /**
+         * Function to handle the error in the scanner if there is no fingerprint registered.
+         * @param error detected.
+         */
+        function showScannerErrorModalIfNoFingerprintDetected(error) {
+          ModalFactory.showModal(
+            {
+              title: 'fingerprint.error.notFingerprintRegisteredTitle',
+              text: 'fingerprint.error.notFingerprintRegisteredTitle',
+              id: SE_LEG_VIEWS.FINGERPRINT,
+              onHideFn: function () {
+                if (cordova.plugins && cordova.plugins.settings && typeof cordova.plugins.settings.openSetting
+                  != undefined) {
+                  cordova.plugins.settings.openSetting("security", function () {},
+                    function () {
+                      $state.go(SE_LEG_VIEWS.MESSAGE,
+                        {
+                          errorScreen: true,
+                          title: 'message.title',
+                          msg: 'security.error.errorOpenSecurity',
+                          buttonOptions: [
+                            {
+                              text: 'message.start',
+                              onClick: function () {
+                                goToPosition(0);
+                              }
+                            }]
+                        });
+                    });
+                }
+              }
+            });
+        }
       }
 
       /**
