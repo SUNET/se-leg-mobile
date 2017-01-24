@@ -27,7 +27,22 @@
         } else {
           // An error occurred
           vm.scanData = 'Error: ' + error;
-          $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'scanner.error'});
+          $state.go(SE_LEG_VIEWS.MESSAGE,
+            {
+              errorScreen: true,
+              msg: 'scanner.error',
+              buttonOptions: [
+                {
+                  condition: true,
+                  default: true,
+                  text: 'message.close',
+                  onClick: function () {
+                    UtilsFactory.closeApp();
+                  }
+                }
+              ]
+            }
+          );
         }
       };
       $scope.$on('$ionicView.enter', onEnter);
