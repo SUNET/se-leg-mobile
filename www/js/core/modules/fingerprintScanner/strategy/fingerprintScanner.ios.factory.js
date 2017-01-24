@@ -29,7 +29,7 @@
           var deferred = $q.defer();
 
           window.plugins.touchid.isAvailable(function () {
-            deferred.resolve({isHardwareDetected: true, isAvailable: false});
+            deferred.resolve({ isHardwareDetected: true, isAvailable: true });
           }, deferred.reject);
 
           return deferred.promise;
@@ -42,9 +42,12 @@
         function verifyFingerprint() {
           var deferred = $q.defer();
 
-          window.plugins.touchid.verifyFingerprintWithCustomPasswordFallback($translate.instant('fingerprintVerification.title'), function (msg) {
-            deferred.resolve({withFingerprint: msg});
-          }, deferred.reject);
+          window.plugins.touchid.verifyFingerprint(
+            $translate.instant('fingerprintVerification.title'),
+            function () {
+              deferred.resolve({ withFingerprint: true });
+            },
+            deferred.reject);
 
           return deferred.promise;
         }
