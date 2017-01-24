@@ -16,6 +16,7 @@
     function ModalFactory($rootScope, $ionicModal) {
       var factory = this;
 
+      var modals = {};
       var defaultConfig = {
         id: 'modal',
         animation: 'slide-in-up'
@@ -42,12 +43,24 @@
           config.id = defaultConfig.id;
         }
 
-        // TODO: CUSTOMIZE THE TEXT?
-        $rootScope[config.id] = $ionicModal.fromTemplate(modalTemplate, {
-          scope: $rootScope,
+        if (!config.text) {
+          config.text = 'hola';
+        }
+
+        if (!config.title) {
+          config.title = 'TITEL';
+        }
+
+        // creating an isolated $scope
+        var $scope = $rootScope.$new();
+        $scope.text = config.text;
+        $scope.title = config.title;
+
+        modals[config.id] = $ionicModal.fromTemplate(modalTemplate, {
+          scope: $scope,
           animation: config.animation
         });
-        $rootScope[config.id].show();
+        modals[config.id].show();
         // if some onHideFn was defined, we have to register it
         if (config.onHideFn) {
           // Execute action on hide modal

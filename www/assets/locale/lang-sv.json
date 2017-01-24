@@ -44,7 +44,7 @@
       "cancelled": "Fingeravtryckskontroll avbruten",
       "notFingerprint": "Du kan inte fortsätta legitimationskontrollen om din enhet saknar fingeravtrycksfunktion",
       "notFingerprintTitle": "Fingeravtrycksfunktion enhet hittades inte",
-      "notFIngerprintRegisteredTitle": "Fingeravtryckskontroll",
+      "notFingerprintRegisteredTitle": "Fingeravtryckskontroll",
       "notFingerprintRegistered": "Ditt fingeravtryck är ej registrerat i enheten"
     }
   },

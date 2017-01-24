@@ -44,7 +44,7 @@
       "cancelled": "Fingerprint cancelled",
       "notFingerprint": "If you haven't detect fingerprint device, you cant't continue the process",
       "notFingerprintTitle": "Fingeprint device not found",
-      "notFIngerprintRegisteredTitle": "Fingerprint Verification",
+      "notFingerprintRegisteredTitle": "Fingerprint Verification",
       "notFingerprintRegistered": "No fingerprint registered on the device"
     }
   },
