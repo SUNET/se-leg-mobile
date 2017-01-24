@@ -33,7 +33,7 @@
         // once the workflow is loaded, we have to initialize it
         for (var index in appWorkflow) {
           appWorkflow[index].processed = false;
-          if (typeof appWorkflow[index].backAllowed === undefined) {
+          if (typeof appWorkflow[index].backAllowed === 'undefined') {
             // by default the back is allowed
             appWorkflow[index].backAllowed = true;
           }
@@ -195,7 +195,7 @@
               id: SE_LEG_VIEWS.FINGERPRINT,
               onHideFn: function () {
                 if (cordova.plugins && cordova.plugins.settings && typeof cordova.plugins.settings.openSetting
-                  != undefined) {
+                  != 'undefined') {
                   cordova.plugins.settings.openSetting("security", function () {},
                     function () {
                       $state.go(SE_LEG_VIEWS.MESSAGE,
