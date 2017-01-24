@@ -11,7 +11,7 @@
       .controller('ScannerController', ScannerController);
     /* @ngInject */
     function ScannerController($cordovaBarcodeScanner, $ionicPopup, $ionicModal, $scope, $state, $translate,
-      PermissionsHandlerFactory, SE_LEG_VIEWS) {
+      FingerprintScannerFactory,PermissionsHandlerFactory, SE_LEG_VIEWS) {
 
       var vm = this;
       vm.scanData = '';
@@ -43,7 +43,10 @@
        * Request camera permission and display the scanner when granted.
        */
       function scan() {
-        FingerprintAuth.isAvailable(isAvailableSuccess, isAvailableError);
+        FingerprintScannerFactory
+          .isAvailable()
+          .then(isAvailableSuccess)
+          .catch(isAvailableError);
       }
 
       /**
@@ -54,7 +57,6 @@
        *   }
        */
       function isAvailableSuccess(result) {
-        console.log("FingerprintAuth available: " + JSON.stringify(result));
         if (result.isHardwareDetected) {
           if (!result.isAvailable) {
             $scope.modal = $ionicModal.fromTemplate(modalTemplate, {

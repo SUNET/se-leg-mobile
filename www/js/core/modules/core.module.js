@@ -18,7 +18,8 @@
     ng.module(moduleName, [
       'app.core.constants',
       'app.core.langs',
-      'app.core.permissions'
+      'app.core.permissions',
+      'app.core.fingerprintScanner'
     ]);
 
     return moduleName;
