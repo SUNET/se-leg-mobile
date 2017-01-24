@@ -29,7 +29,7 @@
           var deferred = $q.defer();
 
           window.plugins.touchid.isAvailable(function () {
-            deferred.resolve({isHardwareDetected: true, isAvailable: false});
+            deferred.resolve({isHardwareDetected: true, isAvailable: true});
           }, deferred.reject);
 
           return deferred.promise;
