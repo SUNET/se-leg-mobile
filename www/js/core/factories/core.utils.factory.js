@@ -96,10 +96,24 @@
             template: $translate.instant(error.text)
           });
           modal.then(function () {
-            navigator.app.exitApp();
+            closeAppWithoutError();
           });
         } else {
+          closeAppWithoutError();
+        }
+      }
+
+      // private function
+      /**
+       * Function to close the app depending on the app platform.
+       */
+      function closeAppWithoutError() {
+        if (navigator && navigator.app) {
           navigator.app.exitApp();
+        } else {
+          if (ionic && ionic.Platform) {
+            ionic.Platform.exitApp();
+          }
         }
       }
 

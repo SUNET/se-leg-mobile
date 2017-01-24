@@ -12,11 +12,18 @@
       .controller('ScannerController', ScannerController);
     /* @ngInject */
     function ScannerController($ionicModal, $scope, $state, $translate,
-      SE_LEG_VIEWS, ScannerFactory, UtilsFactory) {
+      SE_LEG_VIEWS, ScannerFactory, UtilsFactory, MainFactory) {
 
       var vm = this;
       vm.scanData = '';
-
+      // by default actions
+      var onScannerValidationSuccess = function (result) {
+        MainFactory.handleNextComponent();
+      };
+      var onScannerValidationFailure = function (error) {
+        UtilsFactory.closeApp({title: 'fingerprintVerification.error.title', text: 'fingerprintVerification.error.text'
+        });
+      };
       $scope.$on('$ionicView.enter', onEnter);
 
       activate();

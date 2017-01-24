@@ -1,13 +1,13 @@
 /**
- * Scanner routes.
+ * Identification routes.
  * @param {type} angular
  * @author Maria Villalba <mavillalba@emergya.com>
  * @author Alejandro Gomez <amoron@emergya.com>
- * @since Mon Nov 14 2016
+ * @since Fry Nov 18 2016
  */
 
 (function () {
-  define(['./scanner.module', 'text!./scanner.html'], function (module, scannerTemplate) {
+  define(['./identification.module', 'text!./identification.html'], function (module, identificationTemplate) {
     'use strict';
     angular.module(module).config(config);
 
@@ -15,17 +15,15 @@
     /* @ngInject */
     function config($stateProvider, SE_LEG_VIEWS) {
 
-      $stateProvider.state(SE_LEG_VIEWS.SCANNER, {
-        url: '/' + SE_LEG_VIEWS.SCANNER,
+      $stateProvider.state(SE_LEG_VIEWS.ID, {
+        url: '/' + SE_LEG_VIEWS.ID,
         params: {
-          onScannerValidationSuccess: undefined,
-          onScannerValidationFailure: undefined
+          scanner: null
         },
-        template: scannerTemplate,
-        controller: 'ScannerController',
-        controllerAs: 'scannerCtrl'
+        template: identificationTemplate,
+        controller: 'IdentificationController',
+        controllerAs: 'identificationCtrl'
       });
-
     }
   });
 })();

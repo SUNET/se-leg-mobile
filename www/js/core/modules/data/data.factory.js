@@ -11,8 +11,15 @@
       .module(moduleName)
       .factory('DataFactory', DataFactory);
     /* @ngInject */
-    function DataFactory() {
+    function DataFactory($q) {
       var factory = this;
+
+      function hasQRInformation() {
+        var deferred = $q.defer();
+        // TODO: IMPLEMENT IT
+        deferred.resolve();
+        return deferred.promise;
+      }
 
       return factory;
     }

@@ -17,7 +17,6 @@
     function FingerPrintFactory($q, $state, SE_LEG_GLOBAL, SE_LEG_VIEWS, UtilsFactory, ModalFactory) {
       var factory = this;
       var ready = false;
-      var isFingerprintValid = false;
       // Public methods
       factory.existsFingerprintDevice = existsFingerprintDevice;
       factory.existsFingerprintRegistered = existsFingerprintRegistered;
@@ -38,10 +37,10 @@
                 ready = true;
                 deferred.resolve(result);
               } else {
-                deferred.reject();
+                deferred.reject(result);
               }
             }, function (error) {
-              deferred.reject();
+              deferred.reject(error);
             });
           } else {
             deferred.reject();
@@ -50,10 +49,12 @@
           if (window.plugins && window.plugins.touchid) {
             window.plugins.touchid.isAvailable(
               function (result) {
-                deferred.resolve(result);
+                var response = {isHardwareDetected: true, isAvailable: false};
+                deferred.resolve(response);
               }, // success handler: TouchID available
               function (msg) {
-                deferred.reject();
+                var response = {isHardwareDetected: false, isAvailable: false};
+                deferred.reject(response);
               } // error handler: no TouchID available
             );
           } else {
@@ -80,7 +81,9 @@
                 deferred.resolve(result);
               }
             } else if (UtilsFactory.getPlatform() === SE_LEG_GLOBAL.PLATFORMS.IOS) {
-              ; // TODO: IOS
+              window.plugins.touchid.isAvailable(function () {
+                deferred.resolve({isHardwareDetected: true, isAvailable: true});
+              }, deferred.reject);
             } else {
               deferred.reject();
             }
@@ -100,86 +103,91 @@
         existsFingerprintRegistered()
           .then(function (result) {
             deferred.resolve(result);
+            handleFingerprintSuccess(showContinueScreen, continueScreenConfig);
           })
           .catch(function (error) {
-            ModalFactory.showModal(
-              {
-                title: 'error.fingerprint.notFIngerprintRegisteredTitle',
-                text: 'error.fingerprint.notFIngerprintRegisteredTitle',
-                id: SE_LEG_VIEWS.FINGERPRINTVERIFICATION,
-                onHideFn: function () {
-                  if (cordova.plugins && cordova.plugins.settings && typeof cordova.plugins.settings.openSetting
-                    != undefined) {
-                    cordova.plugins.settings.openSetting("security", function () {},
-                      function () {
-                        $state.go(SE_LEG_VIEWS.MESSAGE,
-                          {
-                            errorScreen: true,
-                            title: 'SECURITY TITLE',
-                            msg: 'security.error.errorOpenSecurity',
-                            buttonOptions: [
-                              {
-                                text: 'message.close',
-                                onClick: function () {
-                                  UtilsFactory.closeApp();
-                                }
-                              }]
-                          });
-                      });
-                  }
-                  if (showContinueScreen) {
-                    if (continueScreenConfig === undefined) {
-                      continueScreenConfig = {
-                        params: {}
-                      };
-                    }
 
-                    if (!continueScreenConfig.state) {
-                      continueScreenConfig.state = SE_LEG_VIEWS.MESSAGE;
-                    }
-
-                    if (!continueScreenConfig.params.title) {
-                      continueScreenConfig.params.title = 'fingerprintVerification.title';
-                    }
-
-                    if (!continueScreenConfig.params.msg) {
-                      continueScreenConfig.params.msg = 'fingerprintVerification.message';
-                    }
-
-                    if (!continueScreenConfig.params.onClick) {
-                      continueScreenConfig.params.onClick = function () {
-                        $state.go(SE_LEG_VIEWS.SCANNER);
-                      };
-                    }
-
-                    if (!continueScreenConfig.params.textButton) {
-                      continueScreenConfig.params.textButton = 'fingerprintVerification.continue';
-                    }
-
-
-                    $state.go(continueScreenConfig.state, {
-                      title: continueScreenConfig.params.title,
-                      msg: continueScreenConfig.params.message,
-                      buttonOptions: [
-                        {
-                          condition: true,
-                          text: continueScreenConfig.params.textButton,
-                          onClick: function () {
-                            continueScreenConfig.params.onClick();
-                          },
-                          default: true
-                        }
-                      ]
-                    });
-                  }
-                }
-              });
             deferred.reject({errorFn: function () {
                 ; /* DO NOTHING */
               }
             });
           });
         return deferred.promise;
+      }
+
+      function handleFingerprintSuccess(showContinueScreen, continueScreenConfig) {
+        ModalFactory.showModal(
+          {
+            title: 'error.fingerprint.notFIngerprintRegisteredTitle',
+            text: 'error.fingerprint.notFIngerprintRegisteredTitle',
+            id: SE_LEG_VIEWS.FINGERPRINTVERIFICATION,
+            onHideFn: function () {
+              if (cordova.plugins && cordova.plugins.settings && typeof cordova.plugins.settings.openSetting
+                != undefined) {
+                cordova.plugins.settings.openSetting("security", function () {},
+                  function () {
+                    $state.go(SE_LEG_VIEWS.MESSAGE,
+                      {
+                        errorScreen: true,
+                        title: 'SECURITY TITLE',
+                        msg: 'security.error.errorOpenSecurity',
+                        buttonOptions: [
+                          {
+                            text: 'message.close',
+                            onClick: function () {
+                              UtilsFactory.closeApp();
+                            }
+                          }]
+                      });
+                  });
+              }
+              if (showContinueScreen) {
+                if (continueScreenConfig === undefined) {
+                  continueScreenConfig = {
+                    params: {}
+                  };
+                }
+
+                if (!continueScreenConfig.state) {
+                  continueScreenConfig.state = SE_LEG_VIEWS.MESSAGE;
+                }
+
+                if (!continueScreenConfig.params.title) {
+                  continueScreenConfig.params.title = 'fingerprintVerification.title';
+                }
+
+                if (!continueScreenConfig.params.msg) {
+                  continueScreenConfig.params.msg = 'fingerprintVerification.message';
+                }
+
+                if (!continueScreenConfig.params.onClick) {
+                  continueScreenConfig.params.onClick = function () {
+                    $state.go(SE_LEG_VIEWS.SCANNER);
+                  };
+                }
+
+                if (!continueScreenConfig.params.textButton) {
+                  continueScreenConfig.params.textButton = 'fingerprintVerification.continue';
+                }
+
+
+                $state.go(continueScreenConfig.state, {
+                  title: continueScreenConfig.params.title,
+                  msg: continueScreenConfig.params.message,
+                  buttonOptions: [
+                    {
+                      condition: true,
+                      text: continueScreenConfig.params.textButton,
+                      onClick: function () {
+                        continueScreenConfig.params.onClick();
+                      },
+                      default: true
+                    }
+                  ]
+                });
+              }
+            }
+          });
       }
 
       /**
@@ -194,16 +202,18 @@
           var client_secret = "A very secret client secret (once per device)";
           FingerprintAuth.show({
             clientId: client_id,
-            clientSecret: client_secret,
-            disableBackup: true
+            clientSecret: client_secret
           }, function (result) {
-            isFingerprintValid = true;
             deferred.resolve(result);
           }, function (error) {
             deferred.reject(error);
           });
         } else if (UtilsFactory.getPlatform() === SE_LEG_GLOBAL.PLATFORMS.IOS) {
-          ; // TODO: IOS
+          window.plugins.touchid.verifyFingerprintWithCustomPasswordFallback($translate.instant(
+            'fingerprintVerification.title'), function (msg) {
+            deferred.resolve({withFingerprint: msg});
+          }, deferred.reject);
+
         } else {
           deferred.reject();
         }
@@ -217,14 +227,6 @@
        */
       function isReady() {
         return ready;
-      }
-
-      /**
-       * It returns if the fingerprint is valid.
-       * @returns true if the user authenticates with his fingerprint.
-       */
-      function isFingerPrintValid() {
-        return isFingerPrintValid;
       }
 
     }

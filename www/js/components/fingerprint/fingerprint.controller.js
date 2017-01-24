@@ -54,7 +54,7 @@
             onFingerprintValidationSuccess(result);
           })
           .catch(function (error) {
-
+            onFingerprintValidationFailure(error);
           });
       }
 

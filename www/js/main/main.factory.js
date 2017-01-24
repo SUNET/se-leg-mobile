@@ -12,7 +12,7 @@
       .factory('MainFactory', MainFactory);
     /* @ngInject */
     function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerPrintFactory, ScannerFactory, MessageFactory,
-      ModalFactory) {
+      ModalFactory, DataFactory) {
       var factory = this;
 
       // internal variables
@@ -56,42 +56,12 @@
         // TODO: hardcoded, it should come from a JSON file?
         appWorkflow = [
           {
-            state: SE_LEG_VIEWS.MESSAGE,
-            params: {
-              title: 'message.title',
-              msg: 'message.message',
-              buttonOptions: [
-                {
-                  condition: FingerPrintFactory.isReady,
-                  text: 'message.close',
-                  onClick: function () {
-                    UtilsFactory.closeApp();
-                  }
-                },
-                {
-                  condition: true,
-                  text: 'message.start',
-                  onClick: handleNextComponent,
-                  default: true
-                }
-              ]
-            },
-            factory: MessageFactory
-          },
-          {// QR-SCANNER
+            // first view
             state: SE_LEG_VIEWS.SCANNER,
-            params: {
-              onFingerprintValidationSuccess: function () {
-
-              },
-              onFingerprintValidationFailure: function () {
-
-              }
-            },
             preconditions: function () {
               var deferred = $q.defer();
               // checking the fingerprint and sending to the confirmation screen
-              FingerPrintFactory.checkFingerPrintRegistered(true)
+              FingerPrintFactory.checkFingerPrintRegistered(false)
                 .then(function (result) {
                   deferred.resolve(result);
                 })
@@ -101,9 +71,110 @@
               return deferred.promise;
             },
             backAllowed: false,
-            factory: ScannerFactory,
             onErrorFn: function () {
-
+              // defining the next component
+              var component = {
+                state: SE_LEG_VIEWS.MESSAGE,
+                params: {
+                  title: 'message.title',
+                  errorScreen: true,
+                  msg: 'security.error.errorOpenSecurity',
+                  buttonOptions: [
+                    {
+                      condition: true,
+                      text: 'message.start',
+                      onClick: function () {
+                        goToPosition(0);
+                      },
+                      default: true
+                    }
+                  ]
+                },
+                backAllowed: false
+              };
+              // sending the user to the component
+              goToComponent(component);
+            },
+            factory: ScannerFactory
+          },
+          {
+            // second view
+            state: SE_LEG_VIEWS.ID,
+            preconditions: function () {
+              var deferred = $q.defer();
+              DataFactory.hasQRInformation()
+                .then(function (result) {
+                  deferred.resolve(result);
+                })
+                .catch(function (error) {
+                  deferred.reject(error);
+                });
+              return deferred.promise;
+            },
+            backAllowed: false,
+            onErrorFn: function () {
+              // If this is executed, the application was hacked
+              UtilsFactory.closeApp();
+            }//,
+            //factory: IDfactory
+          },
+          {
+            // third view: FINGERPRINT
+            state: SE_LEG_VIEWS.FINGEPRINT,
+            params: {
+              // once the fingerprint is validated.
+              onFingerprintValidationSuccess: function () {
+                // defining the next component
+                var component = {
+                  state: SE_LEG_VIEWS.MESSAGE,
+                  params: {
+                    title: 'message.title',
+                    msg: 'message.message',
+                    buttonOptions: [
+                      {
+                        condition: true,
+                        text: 'message.start',
+                        onClick: goToComponent(0),
+                        default: true
+                      }
+                    ]
+                  },
+                  backAllowed: false
+                };
+                // sending the user to the component
+                goToComponent(component);
+              },
+              // if the fingeprint validation failed or it was cancelled.
+              onFingerprintValidationFailure: function (error) {
+                // on error, sending to the
+                var messageError = 'fingerprint.error.notAvailable';
+                // if it was cancelled, the message will change
+                if (error === "Cancelled") {
+                  messageError = 'fingerprint.error.cancelled';
+                }
+                // defining the next component
+                var component = {
+                  state: SE_LEG_VIEWS.MESSAGE,
+                  params: {
+                    title: 'back.title',
+                    msg: messageError,
+                    buttonOptions: [
+                      {
+                        condition: true,
+                        default: true,
+                        text: 'message.close',
+                        onClick: function () {
+                          UtilsFactory.closeApp();
+                        }
+                      }
+                    ]
+                  },
+                  factory: MessageFactory
+                };
+                // sending the user to the component
+                goToComponent(component);
+              },
+              factory: FingerPrintFactory
             }
           }
         ];
@@ -123,18 +194,18 @@
               component.preconditions()
                 .then(function () {
                   currentComponent--;
-                  $state.go(component.state, component.params);
+                  goToComponent(component);
                 })
                 .catch(function (error) {
-                  if (error && error.onErrorFn) {
-                    error.onErrorFn();
+                  if (component.onErrorFn) {
+                    component.onErrorFn(error);
                   } else {
                     UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
                   }
                 });
             } else {
               currentComponent--;
-              $state.go(component.state, component.params);
+              goToComponent(component);
             }
           }
         } else {
@@ -153,24 +224,25 @@
             component.preconditions()
               .then(function () {
                 currentComponent++;
-                $state.go(component.state, component.params);
+                goToComponent(component);
               })
               .catch(function (error) {
-                if (error.onErrorFn) {
-                  error.onErrorFn();
+                if (component.onErrorFn) {
+                  component.onErrorFn(error);
                 } else {
                   UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
                 }
               });
           } else {
             currentComponent++;
-            $state.go(component.state, component.params);
+            goToComponent(component);
           }
         } else {
           // TODO: SHOULD BE TRANSLATED
           UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
         }
       }
+
 
       //////////////////////
       // Private methods //
@@ -198,6 +270,32 @@
           component = appWorkflow[currentComponent - 1];
         }
         return component;
+      }
+
+      /**
+       * It goes to the component with the position required.
+       * It avoids the PRECONDITIONS.
+       * @param position to get the component.
+       */
+      function goToPosition(position) {
+        if (position >= 0 && position <= appWorkflow.length) {
+          currentComponent = position - 1;
+          handleNextComponent();
+        }
+      }
+
+      /**
+       * It goes to the provides component.
+       * @param component where we want to navigate.
+       */
+      function goToComponent(component) {
+        if (component !== undefined && component.state) {
+          if (component.params) {
+            $state.go(component.state, component.params);
+          } else {
+            $state.go(component.state);
+          }
+        }
       }
 
       return factory;
