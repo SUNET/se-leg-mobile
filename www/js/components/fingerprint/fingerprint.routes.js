@@ -17,9 +17,9 @@
 
         $stateProvider.state(SE_LEG_VIEWS.FINGERPRINT, {
           url: '/' + SE_LEG_VIEWS.FINGERPRINT,
+          // needed to by-pass data to the controller through the $stateProvider
           params: {
-            onFingerprintValidationSuccess: undefined,
-            onFingerprintValidationFailure: undefined
+            data: {}
           },
           template: fingerprintTemplate,
           controller: 'FingerprintController',

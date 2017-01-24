@@ -17,8 +17,9 @@
 
       $stateProvider.state(SE_LEG_VIEWS.ID, {
         url: '/' + SE_LEG_VIEWS.ID,
+        // needed to by-pass data to the controller through the $stateProvider
         params: {
-          scanner: null
+          data: {}
         },
         template: identificationTemplate,
         controller: 'IdentificationController',

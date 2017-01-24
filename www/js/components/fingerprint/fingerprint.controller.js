@@ -32,13 +32,13 @@
        * Method called once the user accesses to the module.
        */
       function onEnter() {
-        if ($state.params) {
+        if ($state.params && $state.params.data) {
           // initialization of the parameters
-          if ($state.params.onFingerprintValidationSuccess) {
+          if ($state.params.data.onFingerprintValidationSuccess) {
             onFingerprintValidationSuccess = $state.params.onFingerprintValidationSuccess;
           }
 
-          if ($state.params.onFingerprintValidationFailure) {
+          if ($state.params.data.onFingerprintValidationFailure) {
             onFingerprintValidationFailure = $state.params.onFingerprintValidationFailure;
           }
         }

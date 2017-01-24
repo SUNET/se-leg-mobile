@@ -21,31 +21,36 @@
         MainFactory.handleNextComponent();
       };
       var onScannerValidationFailure = function (error) {
-        UtilsFactory.closeApp({title: 'fingerprintVerification.error.title', text: 'fingerprintVerification.error.text'
-        });
+        if (error === 'cancelled') {
+          UtilsFactory.closeApp({title: 'fingerprintVerification.error.title',
+            text: 'fingerprintVerification.error.text'});
+        } else {
+          // An error occurred
+          vm.scanData = 'Error: ' + error;
+          $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'scanner.error'});
+        }
       };
       $scope.$on('$ionicView.enter', onEnter);
 
       activate();
 
       function activate() {
-        // TODO: THIS SHOULD BE MOVED TO THE FINGERPRINT MOdULE Execute action on hide modal
-        $scope.$on('modal.hidden', function () {
-          if (typeof cordova.plugins.settings.openSetting != undefined) {
-            cordova.plugins.settings.openSetting("security", function () {
-            },
-              function () {
-                $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'security.error.errorOpenSecurity'});
-              });
-          }
-          $state.go(SE_LEG_VIEWS.FINGERPRINTVERIFICATION);
-        });
       }
 
       /**
        * Method to be executed once the user accesses to the scanner component.
        */
       function onEnter() {
+        if ($state.params && $state.params.data) {
+          // initialization of the parameters
+          if ($state.params.data.onScannerValidationSuccess) {
+            onScannerValidationSuccess = $state.params.onScannerValidationSuccess;
+          }
+
+          if ($state.params.data.onScannerValidationFailure) {
+            onScannerValidationFailure = $state.params.onScannerValidationFailure;
+          }
+        }
         ScannerFactory.allowNeededPermissions()
           .then(function (result) {
             scan();
@@ -62,17 +67,13 @@
         ScannerFactory
           .scan()
           .then(function (result) {
-            // Barcode data is here
+            // TODO: REFACTOR
             vm.scanData = result.text;
-            $state.go(SE_LEG_VIEWS.ID, {scanner: vm.scanData});
+            onScannerValidationSuccess(result);
           }, function (error) {
-            if (error === 'cancelled') {
-              closeApp(true);
-            } else {
-              // An error occurred
-              vm.scanData = 'Error: ' + error;
-              $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'scanner.error'});
-            }
+            // REFACTOR
+            onScannerValidationFailure(error);
+//            }
           });
       }
 

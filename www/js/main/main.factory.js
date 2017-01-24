@@ -14,18 +14,13 @@
     function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerPrintFactory, ScannerFactory, MessageFactory,
       DataFactory, ModalFactory) {
       var factory = this;
-
       // internal variables
       var appWorkflow = [];
       var usedModules = {};
       var currentComponent = -1;
-
       initializeWorkflow();
-
       factory.handleNextComponent = handleNextComponent;
       factory.handlePreviousComponent = handlePreviousComponent;
-
-
       ////////////////////
       // Public methods //
       ////////////////////
@@ -98,6 +93,11 @@
                 };
                 // sending the user to the component
                 goToComponent(component);
+              }
+            },
+            params: {
+              onScannerValidationSuccess: function (result) {
+                MainFactory.handleNextComponent();
               }
             },
             factory: ScannerFactory
@@ -183,7 +183,6 @@
             }
           }
         ];
-
         /**
          * Function to handle the error in the scanner if there is no fingerprint registered.
          * @param error detected.
@@ -330,9 +329,9 @@
       function goToComponent(component) {
         if (component !== undefined && component.state) {
           if (component.params) {
-            $state.go(component.state, component.params);
+            $state.go(component.state, {data: component.params});
           } else {
-            $state.go(component.state);
+            $state.go(component.state, {data: {}});
           }
         }
       }

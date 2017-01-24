@@ -17,15 +17,15 @@
 
       $stateProvider.state(SE_LEG_VIEWS.SCANNER, {
         url: '/' + SE_LEG_VIEWS.SCANNER,
+        // needed to by-pass data to the controller through the $stateProvider
         params: {
-          onScannerValidationSuccess: undefined,
-          onScannerValidationFailure: undefined
+          data: {}
         },
         template: scannerTemplate,
         controller: 'ScannerController',
         controllerAs: 'scannerCtrl'
-      });
-
+      }
+      );
     }
   });
 })();

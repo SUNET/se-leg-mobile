@@ -44,21 +44,21 @@
        * Once the user accesses to the module, the by default initialization parameters.
        */
       function onEnter() {
-        if ($state.params) {
+        if ($state.params && $state.params.data) {
           // initialization of the parameters
-          if ($state.params.errorScreen) {
+          if ($state.params.data.errorScreen) {
             vm.errorScreen = $state.params.errorScreen;
           }
 
-          if ($state.params.title) {
+          if ($state.params.datatitle) {
             vm.title = $state.params.title;
           }
 
-          if ($state.params.msg) {
+          if ($state.params.data.msg) {
             vm.msg = $state.params.msg;
           }
 
-          if ($state.params.buttonOptions) {
+          if ($state.params.data.buttonOptions) {
             vm.buttonOptions = $state.params.buttonOptions;
             var i = 0;
             while (byDefaultIndex === -1 && i < vm.buttonOptions.length) {

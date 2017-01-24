@@ -17,11 +17,9 @@
 
       $stateProvider.state(SE_LEG_VIEWS.MESSAGE, {
         url: '/' + SE_LEG_VIEWS.MESSAGE,
+        // needed to by-pass data to the controller through the $stateProvider
         params: {
-          errorScreen: false,
-          msg: undefined,
-          title: undefined,
-          buttonOptions: undefined
+          data: {}
         },
         template: messageTemplate,
         controller: 'MessageController',

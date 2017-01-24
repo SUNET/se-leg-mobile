@@ -54,7 +54,7 @@
        */
       function send() {
         if (vm.nationaIdNumber) {
-          $state.go(SE_LEG_VIEWS.FINGERPRINT, {nin: vm.nationaIdNumber, qr: $state.params.scanner});
+          $state.go(SE_LEG_VIEWS.FINGERPRINT, {nin: vm.nationaIdNumber, qr: $state.params.data.scanner});
         }
       }
 
