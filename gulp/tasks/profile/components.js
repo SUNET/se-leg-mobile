@@ -6,6 +6,9 @@ var config = require(global.GULP_DIR + '/gulp.config');
 
 var fsExtra = require('fs-extra');
 
+/**
+ * Copies the selected components folders into the project folder.
+ */
 module.exports = {
   dep: [],
   fn: function (gulp, done) {

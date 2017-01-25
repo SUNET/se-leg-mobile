@@ -4,7 +4,7 @@ var utils = require(global.GULP_DIR + '/utils');
 var config = require(global.GULP_DIR + '/gulp.config');
 
 /**
- * Copy the workflow file of the selected profile.
+ * Copy the content workflow file of the selected profile into the main.factory file in the project folder.
  */
 module.exports = {
   dep: [],

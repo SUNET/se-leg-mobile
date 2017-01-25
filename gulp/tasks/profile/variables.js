@@ -4,7 +4,7 @@ var config = require(global.GULP_DIR + '/gulp.config');
 var fsExtra = require('fs-extra');
 
 /**
- * Copy the theme variables file of the selected profile.
+ * Copy the theme variables file of the selected profile into the project folder.
  */
 module.exports = {
   dep: [],

@@ -4,7 +4,7 @@ var config = require(global.CONFIG_PATH || global.GULP_DIR + '/gulp.config');
 var args = require('yargs').argv;
 
 /**
- * Builds selected profile.
+ * Builds selected profile according to the corresponding configuration json file.
  */
 module.exports = {
   dep: [],
