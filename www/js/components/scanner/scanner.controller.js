@@ -11,22 +11,22 @@
     angular.module(moduleName)
       .controller('ScannerController', ScannerController);
     /* @ngInject */
-    function ScannerController($ionicModal, $scope, $state, $translate,
-      SE_LEG_VIEWS, ScannerFactory, UtilsFactory, MainFactory) {
+    function ScannerController($ionicModal, $scope, $state, SE_LEG_VIEWS, ScannerFactory, UtilsFactory, MainFactory,
+      DataFactory) {
 
       var vm = this;
-      vm.scanData = '';
+
       // by default actions
       vm.onScannerValidationSuccess = function (result) {
         MainFactory.handleNextComponent();
       };
       vm.onScannerValidationFailure = function (error) {
+        // error handle
         if (error === 'cancelled') {
           UtilsFactory.closeApp({title: 'fingerprintVerification.error.title',
             text: 'fingerprintVerification.error.text'});
         } else {
           // An error occurred
-          vm.scanData = 'Error: ' + error;
           $state.go(SE_LEG_VIEWS.MESSAGE,
             {
               errorScreen: true,
@@ -56,6 +56,9 @@
        * Method to be executed once the user accesses to the scanner component.
        */
       function onEnter() {
+        // clearing previous data
+        DataFactory.clear(SE_LEG_VIEWS.SCANNER);
+
         if ($state.params && $state.params.data) {
           // initialization of the parameters
           if ($state.params.data.onScannerValidationSuccess) {
@@ -82,72 +85,15 @@
         ScannerFactory
           .scan()
           .then(function (result) {
-            // TODO: REFACTOR
-            vm.scanData = result.text;
+            // saving the associated data
+            DataFactory.save(SE_LEG_VIEWS.SCANNER, result.text);
             vm.onScannerValidationSuccess(result);
           }, function (error) {
-            // REFACTOR
+            // removing the associated data
+            DataFactory.clear(SE_LEG_VIEWS.SCANNER);
             vm.onScannerValidationFailure(error);
-//            }
           });
       }
-
-      /**
-       * @return {
-       *      isAvailable:boolean,
-       *      isHardwareDetected:boolean,
-       *      hasEnrolledFingerprints:boolean
-       *   }
-       */
-      function isAvailableSuccess(result) {
-        console.log("FingerprintAuth available: " + JSON.stringify(result));
-        if (result.isHardwareDetected) {
-          if (!result.isAvailable) {
-            $scope.modal = $ionicModal.fromTemplate(modalTemplate, {
-              scope: $scope,
-              animation: 'slide-in-up'
-            });
-
-            $scope.modal.show();
-          } else {
-
-//            PermissionsHandlerFactory.grantPermissionsAndPerformAction({
-//              action: 'CAMERA',
-//              onSuccess: showBarScanner,
-//              onFailure: function () {
-//                closeApp(true);
-//              }
-//            });
-          }
-        } else {
-          $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'fingerprint.error.notFingerprint'});
-        }
-      }
-
-      function isAvailableError(message) {
-        // fingerprint auth isn't available
-        $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'fingerprint.error.notDetectFingerprintDevice'});
-      }
-
-      function onCancel() {
-        closeApp(true);
-      }
-
-      /**
-       * It closes the app.
-       * @param hasError boolean to know if the app should be closed with/without errors.
-       */
-      function closeApp(hasError) {
-        var error = undefined;
-        if (hasError) {
-          error = {title: 'permissions.error', text: 'permissions.invalid.camera'};
-        }
-        UtilsFactory.closeApp(error);
-      }
-
-
-
-
     }
   });
 })();
