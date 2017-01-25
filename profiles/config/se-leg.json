@@ -1,0 +1,9 @@
+{
+  "theme": "se-leg",
+  "workflow": "se-leg",
+  "constants": {
+
+  },
+  "appName": "SE-LEG",
+  "components": ["scanner", "identification", "fingerprint", "message"]
+}

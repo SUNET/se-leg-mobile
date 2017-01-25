@@ -1,0 +1,7 @@
+/**
+ * Default Workflow
+ * It loads the wofklow in the appWorkflow attribute.
+ */
+function loadWorkflow() {
+  appWorkflow = [];
+}
