@@ -47,7 +47,9 @@
             function () {
               deferred.resolve({ withFingerprint: true });
             },
-            deferred.reject);
+            function () {
+              deferred.reject('Cancelled');
+            });
 
           return deferred.promise;
         }
