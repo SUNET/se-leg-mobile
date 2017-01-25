@@ -17,10 +17,10 @@
       var vm = this;
       vm.scanData = '';
       // by default actions
-      var onScannerValidationSuccess = function (result) {
+      vm.onScannerValidationSuccess = function (result) {
         MainFactory.handleNextComponent();
       };
-      var onScannerValidationFailure = function (error) {
+      vm.onScannerValidationFailure = function (error) {
         if (error === 'cancelled') {
           UtilsFactory.closeApp({title: 'fingerprintVerification.error.title',
             text: 'fingerprintVerification.error.text'});
@@ -59,11 +59,11 @@
         if ($state.params && $state.params.data) {
           // initialization of the parameters
           if ($state.params.data.onScannerValidationSuccess) {
-            onScannerValidationSuccess = $state.params.onScannerValidationSuccess;
+            vm.onScannerValidationSuccess = $state.params.data.onScannerValidationSuccess;
           }
 
           if ($state.params.data.onScannerValidationFailure) {
-            onScannerValidationFailure = $state.params.onScannerValidationFailure;
+            vm.onScannerValidationFailure = $state.params.data.onScannerValidationFailure;
           }
         }
         ScannerFactory.allowNeededPermissions()
@@ -84,10 +84,10 @@
           .then(function (result) {
             // TODO: REFACTOR
             vm.scanData = result.text;
-            onScannerValidationSuccess(result);
+            vm.onScannerValidationSuccess(result);
           }, function (error) {
             // REFACTOR
-            onScannerValidationFailure(error);
+            vm.onScannerValidationFailure(error);
 //            }
           });
       }

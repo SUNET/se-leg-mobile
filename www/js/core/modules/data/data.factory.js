@@ -14,6 +14,12 @@
     function DataFactory($q) {
       var factory = this;
 
+      factory.hasQRInformation = hasQRInformation;
+
+      /**
+       * It checkts if the QR information is stored.
+       * @returns {$q@call;defer.promise}
+       */
       function hasQRInformation() {
         var deferred = $q.defer();
         // TODO: IMPLEMENT IT

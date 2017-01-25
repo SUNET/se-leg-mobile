@@ -12,9 +12,9 @@
     'use strict';
     angular
       .module(moduleName)
-      .factory('FingerPrintFactory', FingerPrintFactory);
+      .factory('FingerprintFactory', FingerprintFactory);
     /* @ngInject */
-    function FingerPrintFactory($q, $state, SE_LEG_GLOBAL, SE_LEG_VIEWS, UtilsFactory, ModalFactory) {
+    function FingerprintFactory($q, $state, SE_LEG_GLOBAL, SE_LEG_VIEWS, UtilsFactory, ModalFactory) {
       var factory = this;
       var ready = false;
       // Public methods
@@ -40,7 +40,7 @@
                 deferred.reject(result);
               }
             }, function (error) {
-              deferred.resolve({isHardwareDetected: true, isAvailable: true});//deferred.reject(error);
+              deferred.reject(error);
             });
           } else {
             deferred.reject();
@@ -83,7 +83,14 @@
             } else if (UtilsFactory.getPlatform() === SE_LEG_GLOBAL.PLATFORMS.IOS) {
               window.plugins.touchid.isAvailable(function () {
                 deferred.resolve({isHardwareDetected: true, isAvailable: true});
-              }, deferred.reject);
+              }, function (error) {
+                // fingerprint not registered
+                if (error.code === -7) {
+                  deferred.resolve({isHardwareDetected: true, isAvailable: false});
+                } else {
+                  deferred.reject();
+                }
+              });
             } else {
               deferred.reject();
             }
@@ -106,11 +113,10 @@
             handleFingerprintSuccess(showContinueScreen, continueScreenConfig);
           })
           .catch(function (error) {
-
-            deferred.resolve();//deferred.reject({errorFn: function () {
-            //    ; /* DO NOTHING */
-            //}
-            //});
+            deferred.reject({errorFn: function () {
+                //    ; /* DO NOTHING */
+              }
+            });
           });
         return deferred.promise;
       }
@@ -181,15 +187,17 @@
             clientId: client_id,
             clientSecret: client_secret
           }, function (result) {
-            deferred.resolve(result);//deferred.resolve(result);
+            deferred.resolve(result);
           }, function (error) {
-            deferred.resolve();//deferred.reject(error);
+            deferred.reject(error);
           });
         } else if (UtilsFactory.getPlatform() === SE_LEG_GLOBAL.PLATFORMS.IOS) {
           window.plugins.touchid.verifyFingerprintWithCustomPasswordFallback($translate.instant(
             'fingerprintVerification.title'), function () {
             deferred.resolve({withFingerprint: true});
-          }, deferred.reject);
+          }, function () {
+            deferred.reject('Cancelled');
+          });
         } else {
           deferred.reject();
         }

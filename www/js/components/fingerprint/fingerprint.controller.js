@@ -11,7 +11,7 @@
     angular.module(moduleName)
       .controller('FingerprintController', FingerprintController);
     /* @ngInject */
-    function FingerprintController($scope, SE_LEG_VIEWS, $state, FingerprintService, FingerprintFactory,
+    function FingerprintController($scope, $state, SE_LEG_VIEWS, FingerprintService, FingerprintFactory,
       MainFactory, UtilsFactory) {
 
       var vm = this;
@@ -27,6 +27,14 @@
       };
       $scope.$on('$ionicView.enter', onEnter);
 
+      activate();
+
+      /**
+       * Needed activation functionalities.
+       */
+      function activate() {
+
+      }
 
       /**
        * Method called once the user accesses to the module.
@@ -35,11 +43,11 @@
         if ($state.params && $state.params.data) {
           // initialization of the parameters
           if ($state.params.data.onFingerprintValidationSuccess) {
-            onFingerprintValidationSuccess = $state.params.onFingerprintValidationSuccess;
+            onFingerprintValidationSuccess = $state.params.data.onFingerprintValidationSuccess;
           }
 
           if ($state.params.data.onFingerprintValidationFailure) {
-            onFingerprintValidationFailure = $state.params.onFingerprintValidationFailure;
+            onFingerprintValidationFailure = $state.params.data.onFingerprintValidationFailure;
           }
         }
         fingerprintProcess();
@@ -73,14 +81,6 @@
           });
         } else if (result.withPassword) {
           $state.go(SE_LEG_VIEWS.MESSAGE);
-        }
-      }
-
-      function errorCallback(error) {
-        if (error === "Cancelled") {
-          $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'fingerprint.error.cancelled'});
-        } else {
-          $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: 'fingerprint.error.notAvailable'});
         }
       }
 

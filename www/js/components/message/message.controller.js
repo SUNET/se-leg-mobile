@@ -47,19 +47,19 @@
         if ($state.params && $state.params.data) {
           // initialization of the parameters
           if ($state.params.data.errorScreen) {
-            vm.errorScreen = $state.params.errorScreen;
+            vm.errorScreen = $state.params.data.errorScreen;
           }
 
-          if ($state.params.datatitle) {
-            vm.title = $state.params.title;
+          if ($state.params.data.title) {
+            vm.title = $state.params.data.title;
           }
 
           if ($state.params.data.msg) {
-            vm.msg = $state.params.msg;
+            vm.msg = $state.params.data.msg;
           }
 
           if ($state.params.data.buttonOptions) {
-            vm.buttonOptions = $state.params.buttonOptions;
+            vm.buttonOptions = $state.params.data.buttonOptions;
             var i = 0;
             while (byDefaultIndex === -1 && i < vm.buttonOptions.length) {
               if (vm.buttonOptions[i].default) {

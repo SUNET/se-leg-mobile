@@ -11,14 +11,18 @@
       .module(moduleName)
       .factory('MainFactory', MainFactory);
     /* @ngInject */
-    function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerPrintFactory, ScannerFactory, MessageFactory,
+    function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerprintFactory, ScannerFactory, MessageFactory,
       DataFactory, ModalFactory) {
       var factory = this;
+
       // internal variables
       var appWorkflow = [];
       var usedModules = {};
       var currentComponent = -1;
+
       initializeWorkflow();
+
+
       factory.handleNextComponent = handleNextComponent;
       factory.handlePreviousComponent = handlePreviousComponent;
       ////////////////////
@@ -57,7 +61,7 @@
             preconditions: function () {
               var deferred = $q.defer();
               // checking the fingerprint and sending to the confirmation screen
-              FingerPrintFactory.checkFingerPrintRegistered(false)
+              FingerprintFactory.checkFingerPrintRegistered(false)
                 .then(function (result) {
                   deferred.resolve(result);
                 })
@@ -97,7 +101,7 @@
             },
             params: {
               onScannerValidationSuccess: function (result) {
-                MainFactory.handleNextComponent();
+                handleNextComponent();
               }
             },
             factory: ScannerFactory
@@ -120,12 +124,11 @@
             onErrorFn: function () {
               // If this is executed, the application was hacked
               UtilsFactory.closeApp();
-            }//,
-            //factory: IDfactory
+            }
           },
           {
             // third view: FINGERPRINT
-            state: SE_LEG_VIEWS.FINGEPRINT,
+            state: SE_LEG_VIEWS.FINGERPRINT,
             params: {
               // once the fingerprint is validated.
               onFingerprintValidationSuccess: function () {
@@ -163,6 +166,7 @@
                   params: {
                     title: 'back.title',
                     msg: messageError,
+                    errorSreen: true,
                     buttonOptions: [
                       {
                         condition: true,
@@ -179,7 +183,7 @@
                 // sending the user to the component
                 goToComponent(component);
               },
-              factory: FingerPrintFactory
+              factory: FingerprintFactory
             }
           }
         ];

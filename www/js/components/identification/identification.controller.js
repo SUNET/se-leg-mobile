@@ -11,8 +11,7 @@
     angular.module(moduleName)
       .controller('IdentificationController', IdentificationController);
     /* @ngInject */
-    function IdentificationController($state, SE_LEG_VIEWS, UtilsFactory, $ionicPopup,
-      $translate) {
+    function IdentificationController($state, $ionicPopup, SE_LEG_VIEWS, UtilsFactory, MainFactory) {
 
       var vm = this;
       // Public attributes
@@ -21,17 +20,13 @@
       vm.m = undefined;
       vm.y = undefined;
       vm.connected = true;
-
       var inputIDSelector = 'new-col-input';
-
 
       // Public methods
       vm.send = send;
       vm.correctFormat = correctFormat;
       vm.hasInternetConnection = hasInternetConnection;
-
       activate();
-
       function activate() {
         /*
          //Check connection here
@@ -54,7 +49,8 @@
        */
       function send() {
         if (vm.nationaIdNumber) {
-          $state.go(SE_LEG_VIEWS.FINGERPRINT, {nin: vm.nationaIdNumber, qr: $state.params.data.scanner});
+          //$state.go(SE_LEG_VIEWS.FINGERPRINT, {nin: vm.nationaIdNumber, qr: $state.params.data.scanner});
+          MainFactory.handleNextComponent();
         }
       }
 
@@ -95,9 +91,7 @@
           vm.d = parseInt(format.substr(6, 2));
           vm.m = parseInt(format.substr(4, 2));
           vm.y = parseInt(format.substr(0, 4));
-
           vm.number = format.substr(8, 4);
-
           if (isCorrectDate() && UtilsFactory.isNumber(vm.number)) {
             return true;
           }
