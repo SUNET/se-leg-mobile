@@ -28,9 +28,17 @@
         function isAvailable() {
           var deferred = $q.defer();
 
-          window.plugins.touchid.isAvailable(function () {
-            deferred.resolve({ isHardwareDetected: true, isAvailable: true });
-          }, deferred.reject);
+          window.plugins.touchid.isAvailable(
+            function () {
+              deferred.resolve({ isHardwareDetected: true, isAvailable: true });
+            }, 
+            function(error) {
+              if (error.code === -7) {
+                deferred.resolve({ isHardwareDetected: true, isAvailable: false });
+              } else {
+                deferred.reject();
+              }
+            });
 
           return deferred.promise;
         }
