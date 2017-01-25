@@ -17,6 +17,7 @@
       var vm = this;
       vm.fingerprintData = '';
       vm.serviceData = undefined;
+
       // by default actions
       var onFingerprintValidationSuccess = function (result) {
         MainFactory.handleNextComponent();
@@ -65,6 +66,8 @@
             onFingerprintValidationFailure(error);
           });
       }
+
+      // TODO: REFACTOR FROM HERE
 
       /**
        * @param result of the plugin.
