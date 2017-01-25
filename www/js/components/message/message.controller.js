@@ -17,8 +17,10 @@
       vm.errorScreen = false;
       vm.msg = 'message.message';
       vm.title = 'message.title';
+
       var byDefaultIndex = -1;
       var firstLoad = true;
+
       // by default
       vm.buttonOptions = [{
           text: 'message.next',
@@ -28,12 +30,13 @@
           default: true
         }];
       // Public methods
-      vm.start = start;
-      vm.closeApp = closeApp;
-      vm.fingerprint = fingerprint;
       vm.getCurrentButton = getCurrentButton;
+
       activate();
+
       $scope.$on('$ionicView.enter', onEnter);
+
+
       /**
        * Method executed once the module is used.
        */
@@ -106,30 +109,6 @@
         }
         return button;
       }
-
-      // TODO: REMOVE FROM HERE
-
-
-      /**
-       * Start a new vet
-       */
-      function start() {
-        $state.go(SE_LEG_VIEWS.SCANNER);
-      }
-
-      /**
-       * Close App
-       */
-      function closeApp() {
-        if (navigator && navigator.app) {
-          navigator.app.exitApp();
-        }
-      }
-
-      function fingerprint() {
-        return vm.msg === "fingerprint.error.notFingerprint";
-      }
-
     }
   });
 })();
