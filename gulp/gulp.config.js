@@ -21,10 +21,13 @@ function getConfig() {
     target: global.BASE_DIR
   };
 
+  config.constantsPath = global.BASE_DIR + '/www/js/core/modules/config/json';
+
   config.imagesPath = global.BASE_DIR + '/www/img';
 
   config.profilesFolders = {
     config: profilesFolder + 'config',
+    constants: profilesFolder + 'constants',
     images: profilesFolder + 'img',
     plugins: profilesFolder + 'plugins',
     resources: profilesFolder + 'resources',

@@ -19,6 +19,7 @@ module.exports = {
     plugins.sequence.use(gulp)(
       [
         'profile:components',
+        'profile:constants',
         'profile:config-xml',
         'profile:images',
         'profile:resources',

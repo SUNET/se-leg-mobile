@@ -11,9 +11,11 @@ module.exports = {
   fn: function (gulp, done) {
     utils.log('*** Filling config constants ***');
 
-    var imagesPath = [config.profilesFolders.images, global.profileConfig.images, '*.png'].join('/');
+    var constantsPath = [config.profilesFolders.constants, global.profileConfig.constants, '*.json'].join('/');
 
-    return gulp.src(config)
-      .pipe(gulp.dest(config.imagesPath));
+    console.log(constantsPath);
+
+    return gulp.src(constantsPath)
+      .pipe(gulp.dest(config.constantsPath));
   }
 };
