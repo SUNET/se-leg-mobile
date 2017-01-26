@@ -6,10 +6,15 @@ function getConfig() {
 
   var config = {};
 
+  config.appJs = {
+    source: global.BASE_DIR + '/www/js/dev.app.js',
+    target: global.BASE_DIR + '/www/js'
+  };
+
   config.componentsFolder = {
     source: global.BASE_DIR + '/components',
     target: global.BASE_DIR + '/www/js/components'
-  }
+  };
 
   config.configXml = {
     source: profilesFolder + 'config.xml',
@@ -17,11 +22,14 @@ function getConfig() {
   };
 
   config.profilesFolders = {
-    theme: profilesFolder + 'themes',
-    workflow: profilesFolder + 'workflow',
     config: profilesFolder + 'config',
-    plugins: profilesFolder + 'plugins'
+    plugins: profilesFolder + 'plugins',
+    resources: profilesFolder + 'resources',
+    theme: profilesFolder + 'themes',
+    workflow: profilesFolder + 'workflow'
   };
+
+  config.resourcesPath = global.BASE_DIR + '/resources';
 
   config.variablesFilename = 'variables.scss';
   config.variablesFolder = global.BASE_DIR + '/scss/partials';
@@ -38,4 +46,6 @@ function getConfig() {
       removeComments: true
     }
   };
+
+  return config;
 }

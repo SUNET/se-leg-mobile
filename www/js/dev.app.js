@@ -11,10 +11,6 @@
     // Main app module
     './main/main',
     // Components main files
-'./components/scanner/main',
-'./components/identification/main',
-'./components/fingerprint/main',
-'./components/message/main',
     // Another app modules.
     // Here application widgets
     './widgets/main'// Yeoman hook. Define section. Do not remove this comment.
@@ -30,10 +26,6 @@
           'app.core',
           'app.main',
           // Components modules
-'app.scanner',
-'app.identification',
-'app.fingerprint',
-'app.message',
           'app.widgets'// Yeoman hook. Dependencies section. Do not remove this comment.
         ])
         .config(Config);

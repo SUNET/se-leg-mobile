@@ -1,5 +1,6 @@
 global.GULP_DIR = __dirname + '/gulp';
 global.BASE_DIR = __dirname;
+global.CONFIG_PATH = __dirname + '/gulp/gulp.config';
 
 var plugins = require('gulp-load-plugins')({ lazy: true });
 
@@ -15,7 +16,6 @@ var fs = require('fs');
 var replace = require('gulp-replace-task');
 
 plugins.requireTasks({
-  // separator: '-',
   path: __dirname + '/gulp/tasks',
   gulp: gulp
 });

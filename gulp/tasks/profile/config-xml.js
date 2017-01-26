@@ -13,7 +13,9 @@ module.exports = {
 
 };
 
-// TODO change widget-id, appName and other things that need to be changed on config.xml
+/**
+ * Configures the config.xml file adding the plugins needed according to the components needs, app name.
+ */
 function taskFunction(gulp, done) {
   utils.log('*** Profiling config.xml ***');
 
@@ -23,7 +25,7 @@ function taskFunction(gulp, done) {
 
   var pluginsTags = getPluginTags(requestedPlugins);
 
-  return addPluginsToConfigXml(pluginsTags);
+  return fillPluginXml(pluginsTags);
 
   ///////////////////////
   // Auxiliary Methods //
@@ -34,7 +36,12 @@ function taskFunction(gulp, done) {
    * @returns {string[]} the list of requested plugins avoiding duplications.
    */
   function getRequestedPlugins(components) {
-    return _.uniq(components.map(extractPluginsFromComponent));
+
+    var requestedPlugins = components.map(extractPluginsFromComponent);
+
+    var flattenRequestedPlugins = [].concat.apply([], requestedPlugins);
+
+    return _.uniq(flattenRequestedPlugins);
   }
 
   /**
@@ -71,9 +78,13 @@ function taskFunction(gulp, done) {
    * @returns {string} the string that represents a tag that follows Cordova requirements.
    */
   function convertPluginObjectToPluginTag(pluginObject) {
-    var closingTag = getClosingPluginTag(pluginObject);
+    return pluginObject
+      .map(function (plugin) {
+        var closingTag = getClosingPluginTag(plugin);
 
-    return ['<plugin name=', pluginObject.name, ' source=', pluginObject.source, ' spec=', pluginObject.spec, closingTag].join('"');
+        return ['<plugin name=', plugin.name, ' source=', plugin.source, ' spec=', plugin.spec, closingTag].join('"');
+      })
+      .join('\n');
   }
 
   /**
@@ -102,17 +113,26 @@ function taskFunction(gulp, done) {
   }
 
   /**
-   * Adds the list of plugins to the template config.xml file and copies the result to the project folder.
+   * Fills the config.xml template with the list of plugins, the app name and the app id and then copies the result
+   * to the project folder.
    * @param pluginTags the list of plugins to be added.
    */
-  function addPluginsToConfigXml(pluginTags) {
+  function fillPluginXml(pluginTags) {
     return gulp.src(config.configXml.source)
       .pipe(plugins.replaceTask(
         {
           patterns: [
             {
-              match: /<plugins-placeholder \/>/g,
+              match: /<plugins-placeholder\/>/g,
               replacement: pluginTags.join('\n')
+            },
+            {
+              match: 'appName',
+              replacement: global.profileConfig.appName
+            },
+            {
+              match: 'appId',
+              replacement: global.profileConfig.appId
             }
           ]
         }

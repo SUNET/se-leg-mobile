@@ -1,9 +1,11 @@
 {
+  "appId": "com.amoron.se_leg",
+  "appName": "SE-LEG",
+  "components": ["scanner", "identification", "fingerprint", "message"],
+  "constants": {
+  },
+  "icon": "se-leg",
   "theme": "se-leg",
   "workflow": "se-leg",
-  "constants": {
-
-  },
-  "appName": "SE-LEG",
-  "components": ["scanner", "identification", "fingerprint", "message"]
+  "splash": "default"
 }

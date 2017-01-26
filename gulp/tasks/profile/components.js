@@ -18,13 +18,48 @@ module.exports = {
 
     components.forEach(copyComponentFolder);
 
+    addComponentsToApp(components);
+
+    /**
+     * Copies the component folder into the project folder excluding the configComponent file.
+     * @param component
+     */
     function copyComponentFolder(component) {
-      var source = config.componentsFolder.source + component;
-      var target = config.componentsFolder.target;
+      var source = [config.componentsFolder.source, component].join('/');
+      var target = [config.componentsFolder.target, component].join('/');
+
+      fsExtra.mkdirsSync(target);
 
       fsExtra.copySync(source, target);
 
-      return del(config.componentsFolder.target + '/**/configComponent.js');
+      del.sync(config.componentsFolder.target + '/**/configComponent.json');
+    }
+
+    /**
+     * Fill the app.js template file with modules and main files of the selected components.
+     * @param {string[]} components the components to be added.
+     */
+    function addComponentsToApp(components) {
+      var componentsMainFiles = [];
+      var componentsModuleNames = [];
+
+      components.forEach(function (component) {
+        componentsMainFiles.push('\'./components/' + component + '/main\',');
+        componentsModuleNames.push('\'app.' + component + '\',');
+      });
+
+      return gulp.src(config.appJs.source)
+        .pipe(plugins.insertLines({
+          after: '// Components main files',
+          lineAfter: componentsMainFiles.join('\n')
+        }))
+        .pipe(plugins.insertLines({
+          after: '// Components modules',
+          lineAfter: componentsModuleNames.join('\n')
+        }))
+        .pipe(plugins.rename('app.js'))
+        .pipe(gulp.dest(config.appJs.target))
+        .on('end', done);
     }
   }
 };
