@@ -21,8 +21,11 @@ function getConfig() {
     target: global.BASE_DIR
   };
 
+  config.imagesPath = global.BASE_DIR + '/www/img';
+
   config.profilesFolders = {
     config: profilesFolder + 'config',
+    images: profilesFolder + 'img',
     plugins: profilesFolder + 'plugins',
     resources: profilesFolder + 'resources',
     theme: profilesFolder + 'themes',

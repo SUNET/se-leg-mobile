@@ -11,7 +11,7 @@ module.exports = {
   fn: function (gulp, done) {
     utils.log('*** Copying workflow ***');
 
-    var workflow = fs.readFileSync([config.profilesFolders.workflow, global.profileConfig.workflow, config.workflowFilename].join('/'));
+    var workflow = fs.readFileSync([config.profilesFolders.workflow, global.profileConfig.workflow, config.workflowFilename].join('/'), 'utf-8');
 
     return gulp.src(config.workflowSource)
       .pipe(plugins.replaceTask(

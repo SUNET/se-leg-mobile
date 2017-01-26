@@ -20,6 +20,7 @@ module.exports = {
       [
         'profile:components',
         'profile:config-xml',
+        'profile:images',
         'profile:resources',
         'profile:variables',
         'profile:workflow'

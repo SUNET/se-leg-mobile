@@ -5,7 +5,9 @@
   "constants": {
   },
   "icon": "se-leg",
+  "images": "se-leg",
   "theme": "se-leg",
   "workflow": "se-leg",
-  "splash": "default"
+  "splash": "default",
+  "version": "1.0.0"
 }

@@ -133,6 +133,10 @@ function taskFunction(gulp, done) {
             {
               match: 'appId',
               replacement: global.profileConfig.appId
+            },
+            {
+              match: 'version',
+              replacement: global.profileConfig.version
             }
           ]
         }
