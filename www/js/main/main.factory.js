@@ -22,12 +22,14 @@
 
       initializeWorkflow();
 
-
-      factory.handleNextComponent = handleNextComponent;
-      factory.handlePreviousComponent = handlePreviousComponent;
       ////////////////////
       // Public methods //
       ////////////////////
+      factory.handleNextComponent = handleNextComponent;
+      factory.handlePreviousComponent = handlePreviousComponent;
+      factory.getCurrentComponent = getCurrentComponent;
+      factory.getPreviousComponent = getPreviousComponent;
+      factory.getNextComponent = getNextComponent;
 
       /**
        * It inializes the app configured workflow.
@@ -285,10 +287,17 @@
         }
       }
 
-
-      //////////////////////
-      // Private methods //
-      //////////////////////
+      /**
+       * It retrieves the current component or undefined.
+       * @returns the current component.
+       */
+      function getCurrentComponent() {
+        var component = undefined;
+        if (currentComponent < appWorkflow.length) {
+          component = appWorkflow[currentComponent];
+        }
+        return component;
+      }
 
       /**
        * It retrieves the next component (if there is a new component).
@@ -313,6 +322,10 @@
         }
         return component;
       }
+
+      //////////////////////
+      // Private methods //
+      //////////////////////
 
       /**
        * It goes to the component with the position required.
