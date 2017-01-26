@@ -26,8 +26,8 @@ This file looks like:
  * **components:** the list of components being used. It is a precondition to have a folder named as each of the components and a configComponent.json file inside this folder. [More on components configuration.]()
  * **constants:** here you define where to find the files with the constants to be used in your app. You can use either the default ones by setting this to _default_ or define your owns. To do so you just need to add at least a production.json file to a folder with your profile name inside the _profiles/config_ folder.You can add as much as environments you plan to use (i.e. dev, demo, etc).
  * **icon:** here you define the icon app you want your app to display. Again you can use the _default_ icon or you can add your own _icon.png_ file in your folder inside the _profiles/resources_ folder.
-  * **images:** here you define the images that your app is using. Again you can use the defaults or add your owns under a folder with your profile name under _profiles/img_.
-  * **theme:** here you can define the stylesheet your app. You can use the _default_ or create your own _variables.scss_ file and place it under your folder in _profiles/themes_. [More on theming]()
-  * **workflow:** here you define the workflow you want your app to use. To define your own workflow just place a _workflow_ file with the function that defines your workflow in your folder under _profiles/workflow_ folder. [More on defining workflows]()
-  * **splash:** here you define the splash image you want your app to display. Again you can use the _default_ splash image or you can add your own _splash.png_ file in your folder inside the _profiles/resources_ folder.
-  * **version:** the current version of your app.
+ * **images:** here you define the images that your app is using. Again you can use the defaults or add your owns under a folder with your profile name under _profiles/img_.
+ * **theme:** here you can define the stylesheet your app. You can use the _default_ or create your own _variables.scss_ file and place it under your folder in _profiles/themes_. [More on theming]()
+ * **workflow:** here you define the workflow you want your app to use. To define your own workflow just place a _workflow_ file with the function that defines your workflow in your folder under _profiles/workflow_ folder. [More on defining workflows]()
+ * **splash:** here you define the splash image you want your app to display. Again you can use the _default_ splash image or you can add your own _splash.png_ file in your folder inside the _profiles/resources_ folder.
+ * **version:** the current version of your app.
