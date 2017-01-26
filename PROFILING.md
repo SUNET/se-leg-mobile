@@ -31,3 +31,13 @@ This file looks like:
  * **workflow:** here you define the workflow you want your app to use. To define your own workflow just place a _workflow_ file with the function that defines your workflow in your folder under _profiles/workflow_ folder. [More on defining workflows]()
  * **splash:** here you define the splash image you want your app to display. Again you can use the _default_ splash image or you can add your own _splash.png_ file in your folder inside the _profiles/resources_ folder.
  * **version:** the current version of your app.
+
+ Once you have your config file ready you can run the profile:build gulp task to apply your profile to the app. This app will run the following subtasks:
+
+ * **profile:components** this task is responsible of copy all the components listed in the _config.json_ file into the components folder of the app. [More on components.]()
+ * **profile:config-xml** this task is responsible of creating a valid config.xml file that includes the plugins that the selected components need and the name, id and version of the app.
+ * **profile:constants** this task is responsible of copying your constants files into the corresponding app folder.
+ * **profile:images** this task is responsible of copying your image files into the corresponding app folder.
+ * **profile:resources** this task is responsible of copying the icon and splash image files you have defined into the corresponding app folder.
+ * **profile:variables** this task is responsible of copying the stylesheet you have defined to be used as your theme into the corresponding app folder.
+ * **profile:workflow** this task is responsible of inserting the function you have defined as your workflow into the _data.factory.js_ file where it will be used.
