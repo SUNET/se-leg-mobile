@@ -17,7 +17,9 @@
     // Modals
     './modal/main',
     // Data
-    './data/main'
+    './data/main',
+    // Sender
+    './sender/main'
   ], function () {
   });
 })();

@@ -1,19 +1,18 @@
 /**
- * Fingeprint service
+ * Sender service
  * @param {type} angular
- * @author Maria Villalba <mavillalba@emergya.com>
  * @author Alejandro Gomez <amoron@emergya.com>
  */
 
 
 (function () {
-  define(['./fingerprint.module'], function (module) {
+  define(['./sender.module'], function (module) {
     'use strict';
 
-    angular.module(module).service('FingerprintService', FingerprintService);
+    angular.module(module).service('SenderService', SenderService);
 
     /* @ngInject */
-    function FingerprintService($log, $q, CommonService, SE_LEG_GLOBAL, $state, SE_LEG_VIEWS) {
+    function SenderService($q, CommonService, SE_LEG_GLOBAL) {
 
       var service = this;
 
