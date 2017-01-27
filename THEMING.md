@@ -1,4 +1,4 @@
-#000000ng
+# Theming
 
 Themes in SE-leg are defined in a single stylesheet where you can redefine the _Sass_ variables used throughout the application. The variables being used are:
 
