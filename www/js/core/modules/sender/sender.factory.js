@@ -13,10 +13,10 @@
       .factory('SenderFactory', SenderFactory);
 
     /* @ngInject */
-    function SenderFactory(SenderService, UtilsFactory, DataFactory) {
+    function SenderFactory(SenderService, UtilsFactory, DataFactory, SenderCustomProcessDataFactory) {
       var factory = this;
 
-      var internalFactory = undefined;
+      var internalFactory = SenderCustomProcessDataFactory;
 
       factory.configureFactory = configureFactory;
       factory.send = send;
@@ -30,7 +30,7 @@
       }
 
       /**
-       * It configured the newFactory as the internal factory to be used.
+       * It configures the newFactory as the internal factory to be used.
        * The factory should have a method called getProcessedData and that method should retrieve the data to be sent.
        * @param newFactory to be used.
        * @returns true if the factory was successfully configured.
@@ -55,9 +55,10 @@
       function getProcessedData() {
         var data = undefined;
         if (internalFactory === undefined) {
+          // by default way
           data = UtilsFactory.jsonToQueryString(DataFactory.getAll());
         } else {
-          data = internalFactory.getProcessedData(DataFactory.getAll());
+          data = internalFactory.getProcessedData();
         }
         return data;
       }

@@ -9,6 +9,7 @@
   define([
     // Here files modules internal files referencies.
     './sender.factory',
+    './sender.custom.process.data.factory',
     './sender.service',
       // ...
   ], function () {
