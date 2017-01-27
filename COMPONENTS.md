@@ -8,6 +8,6 @@ Components are the views that you can use to compose your application. Component
 }
 ```
 
-All the plugins must be present in the _plugins.json_ file ([More on Plugins]())
+All the plugins must be present in the _plugins.json_ file ([More on Plugins](PLUGINS.md))
 
 You can add your own components by following the same structure as the default ones.
