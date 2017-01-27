@@ -41,7 +41,7 @@ Each plugin implementation is defined by:
 * **source:** the source of the plugin (usually npm or git).
 * **variables:** optional field to define the variables to be passed to a plugin. Each variable is a _name/value_ pair.
 
-With this information the corresponding gulp task will create the plugin tag to be inserted in config.xml.
+With this information the corresponding gulp task will create the plugin tag to be inserted in _config.xml_.
 
 ```
 <plugin name="phonegap-plugin-barcodescanner" source="npm" spec="6.0.3">
