@@ -4,6 +4,7 @@
  */
 var processedData = '';
 
+//
 var savedData = DataFactory.getAll();
 
 // getting the info we need

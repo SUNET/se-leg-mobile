@@ -37,7 +37,7 @@
        * @returns the processed data.
        */
       function getCustomProcessedData() {
-        /** @getCustomProcessedData */
+        /** @@get-custom-processed-data-placeholder */
       }
 
       return factory;
