@@ -13,8 +13,54 @@
       .factory('SenderFactory', SenderFactory);
 
     /* @ngInject */
-    function SenderFactory() {
+    function SenderFactory(SenderService, UtilsFactory, DataFactory) {
       var factory = this;
+
+      var internalFactory = undefined;
+
+      factory.configureFactory = configureFactory;
+      factory.send = send;
+
+      /**
+       * It sends the information prepared by the internalFactory.
+       * @returns {$q@call;defer.promise}
+       */
+      function send() {
+        return SenderService.sendByPost(getProcessedData());
+      }
+
+      /**
+       * It configured the newFactory as the internal factory to be used.
+       * The factory should have a method called getProcessedData and that method should retrieve the data to be sent.
+       * @param newFactory to be used.
+       * @returns true if the factory was successfully configured.
+       */
+      function configureFactory(newFactory) {
+        var configured = false;
+        if (newFactory !== undefined && newFactory.getProcessedData && typeof newFactory.getProcessedData
+          === 'function') {
+          internalFactory = newFactory;
+        }
+        return configured;
+      }
+
+      /////////////////////
+      // Private methods //
+      /////////////////////
+
+      /**
+       * Internal function that prepares the data to be sent (by default) or using a defined internalFactory.
+       * @returns the processed data.
+       */
+      function getProcessedData() {
+        var data = undefined;
+        if (internalFactory === undefined) {
+          data = UtilsFactory.jsonToQueryString(DataFactory.getAll());
+        } else {
+          data = internalFactory.getProcessedData(DataFactory.getAll());
+        }
+        return data;
+      }
 
       return factory;
 

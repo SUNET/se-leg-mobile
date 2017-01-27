@@ -22,14 +22,14 @@
 
       /**
        *
-       * @param {String} barcode token.
-       * @returns
+       * @param data to be sent
+       * @returns {$q@call;defer.promise}
        */
-      function sendByPost(token) {
+      function sendByPost(data) {
         var deferred = $q.defer();
 
         CommonService
-          .call(SE_LEG_GLOBAL.METHODS.POST, SE_LEG_GLOBAL.ENDPOINTS.RESULT, token, 'Error into the application.')
+          .call(SE_LEG_GLOBAL.METHODS.POST, SE_LEG_GLOBAL.ENDPOINTS.RESULT, data, 'Error in the application.')
           .then(function (data) {
             deferred.resolve(data);
           })

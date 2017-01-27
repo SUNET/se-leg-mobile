@@ -28,6 +28,7 @@
       factory.closeApp = closeApp;
       factory.getPlatform = getPlatform;
       factory.getCurrentState = getCurrentState;
+      factory.jsonToQueryString = jsonToQueryString;
 
       return factory;
 
@@ -148,6 +149,49 @@
        */
       function getCurrentState() {
         return $ionicHistory.currentView().stateName;
+      }
+
+      /**
+       * It converts a JSON into a query string.
+       * @param json to be converted.
+       * @returns query string.
+       */
+      function jsonToQueryString(json) {
+        var queryString = '';
+        if (!angular.isUndefined(json) && angular.isObject(json)) {
+          for (var key in json) {
+            if (queryString !== '') {
+              queryString += '&';
+            }
+            queryString += getQueryStringKeyValueFromJSONNode(key, json[key]);
+          }
+        }
+        return queryString;
+      }
+
+      /////////////////////
+      // Private methods //
+      /////////////////////
+
+      /**
+       * It retrieves a query string value from a given json value.
+       * @param key to be used in the query string.
+       * @param value to be transformed to query string value.
+       * @returns a query string value from a json value.
+       */
+      function getQueryStringKeyValueFromJSONNode(key, value) {
+        var stringValue = '';
+        if (angular.isArray(value)) {
+          for (var i = 0; i < value.length; i++) {
+            if (i > 0) {
+              stringValue += '&';
+            }
+            stringValue += key + '[]=' + value[i];
+          }
+        } else {
+          stringValue = key + '=' + value;
+        }
+        return stringValue;
       }
     }
 
