@@ -2,7 +2,7 @@
 
 Components are the views that you can use to compose your application. Components live in the _components_ folder. A component must have a _configComponent.json_ file to define the plugins the component needs.
 
-```
+```json
 {
   "plugins": ["fingerPrint"]
 }

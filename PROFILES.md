@@ -6,7 +6,7 @@ The project has a folder called profiles. This is where profiles live. To define
 
 This file looks like:
 
-```
+```json
 {
    "appId": "com.sunet.se_leg",
    "appName": "SE-LEG",

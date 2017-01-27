@@ -2,7 +2,7 @@
 
 Themes in SE-leg are defined in a single stylesheet where you can redefine the _Sass_ variables used throughout the application. The variables being used are:
 
-```
+```scss
 //Colors
 $main-bg-color: #000000;
 $main-title-color: #000000;

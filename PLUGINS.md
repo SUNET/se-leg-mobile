@@ -2,7 +2,7 @@
 
 SE-leg uses a set of common Cordova plugins that are already added to the base _config.xml_ file. There are, though a set of plugins that are only needed by some components. This plugins are registered in the _plugins.json_ file in the _profiles/plugins_ folder. If you need to add more plugins for your own components you should add them here.
 
-```
+```json
 {
   "fingerPrint": [
     {
