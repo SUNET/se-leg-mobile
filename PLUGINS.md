@@ -43,7 +43,7 @@ Each plugin implementation is defined by:
 
 With this information the corresponding gulp task will create the plugin tag to be inserted in _config.xml_.
 
-```
+```xml
 <plugin name="phonegap-plugin-barcodescanner" source="npm" spec="6.0.3">
     <variable name="CAMERA_USAGE_DESCRIPTION" value="Allow your camera to scan the QR" />
 </plugin>
