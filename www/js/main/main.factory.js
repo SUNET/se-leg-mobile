@@ -12,7 +12,7 @@
       .factory('MainFactory', MainFactory);
     /* @ngInject */
     function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerprintFactory, ScannerFactory, MessageFactory,
-      DataFactory, ModalFactory) {
+      DataFactory, ModalFactory, SenderFactory) {
       var factory = this;
 
       // internal variables
@@ -151,8 +151,19 @@
                   },
                   backAllowed: false
                 };
-                // sending the user to the component
-                goToComponent(component);
+                // sending the data
+                SenderFactory.send()
+                  .then(function (data) {
+                    // sending the user to the component
+                    goToComponent(component);
+                  })
+                  .catch(function (err) {
+                    component.params.errorScreen = true;
+                    component.params.msg = 'fingerprintVerification.error.message';
+                    component.params.title = 'fingerprintVerification.error.title';
+                    // sending the user to the component
+                    goToComponent(component);
+                  });
               },
               // if the fingeprint validation failed or it was cancelled.
               onFingerprintValidationFailure: function (error) {

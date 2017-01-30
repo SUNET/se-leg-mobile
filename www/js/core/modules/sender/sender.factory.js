@@ -37,8 +37,7 @@
        */
       function configureFactory(newFactory) {
         var configured = false;
-        if (newFactory !== undefined && newFactory.getProcessedData && typeof newFactory.getProcessedData
-          === 'function') {
+        if (newFactory !== undefined && typeof newFactory.getProcessedData === 'function') {
           internalFactory = newFactory;
         }
         return configured;
@@ -59,6 +58,10 @@
           data = UtilsFactory.jsonToQueryString(DataFactory.getAll());
         } else {
           data = internalFactory.getProcessedData();
+        }
+        // protecting by default action
+        if (data === undefined) {
+          data = UtilsFactory.jsonToQueryString(DataFactory.getAll());
         }
         return data;
       }
