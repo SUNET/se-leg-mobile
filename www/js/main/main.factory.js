@@ -12,7 +12,7 @@
       .factory('MainFactory', MainFactory);
     /* @ngInject */
     function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerprintFactory, ScannerFactory, MessageFactory,
-      DataFactory, ModalFactory, SenderFactory) {
+                         DataFactory, ModalFactory, SenderFactory) {
       var factory = this;
 
       // internal variables
@@ -50,12 +50,13 @@
         }
       }
 
+
       /**
+       * SE-LEG Workflow
        * It loads the wofklow in the appWorkflow attribute.
        */
       function loadWorkflow() {
-        /* @worfklow */
-        // TODO: hardcoded, it should come from a JSON file?
+
         appWorkflow = [
           {
             // first view
@@ -213,7 +214,8 @@
               onHideFn: function () {
                 if (cordova.plugins && cordova.plugins.settings && typeof cordova.plugins.settings.openSetting
                   != 'undefined') {
-                  cordova.plugins.settings.openSetting("security", function () {},
+                  cordova.plugins.settings.openSetting("security", function () {
+                    },
                     function () {
                       $state.go(SE_LEG_VIEWS.MESSAGE,
                         {
@@ -235,6 +237,7 @@
         }
       }
 
+
       /**
        * It gets the previous component and sends the user into it.
        * If I am in the first component, the App will be closed.
@@ -243,7 +246,7 @@
         var component = getPreviousComponent();
         if (component !== undefined) {
           if (!component.backAllowed) {
-            UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'BACK NOT ALLOWED'});
+            UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'BACK NOT ALLOWED' });
           } else {
             if (component.preconditions) {
               component.preconditions()
@@ -255,7 +258,7 @@
                   if (component.onErrorFn) {
                     component.onErrorFn(error);
                   } else {
-                    UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
+                    UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR' });
                   }
                 });
             } else {
@@ -285,7 +288,7 @@
                 if (component.onErrorFn) {
                   component.onErrorFn(error);
                 } else {
-                  UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
+                  UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR' });
                 }
               });
           } else {
@@ -294,7 +297,7 @@
           }
         } else {
           // TODO: SHOULD BE TRANSLATED
-          UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
+          UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR' });
         }
       }
 
@@ -357,9 +360,9 @@
       function goToComponent(component) {
         if (component !== undefined && component.state) {
           if (component.params) {
-            $state.go(component.state, {data: component.params});
+            $state.go(component.state, { data: component.params });
           } else {
-            $state.go(component.state, {data: {}});
+            $state.go(component.state, { data: {} });
           }
         }
       }

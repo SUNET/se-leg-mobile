@@ -2,8 +2,9 @@
 @import "seleg-mixins";
 @import "partials/variables";
 @import "partials/common";
-@import "partials/identification";
-@import "partials/message";
-@import "partials/fingerVerification";
-@import "partials/scanner";
+// Components styles
+@import "../www/js/components/scanner";
+@import "../www/js/components/identification";
+@import "../www/js/components/fingerprint";
+@import "../www/js/components/message";
 // Yeoman hook. Do not remove this comment.

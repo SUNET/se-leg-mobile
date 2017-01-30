@@ -23,6 +23,7 @@ module.exports = {
         'profile:config-xml',
         'profile:images',
         'profile:resources',
+        'profile:sass',
         'profile:variables',
         'profile:workflow'
       ], done

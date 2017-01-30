@@ -2,7 +2,9 @@ module.exports = getConfig();
 
 function getConfig() {
 
+  var mainScssFile = 'se-leg.scss';
   var profilesFolder = global.BASE_DIR + '/profiles/';
+  var scssFolder = global.BASE_DIR + '/scss';
 
   var config = {};
 
@@ -37,8 +39,14 @@ function getConfig() {
 
   config.resourcesPath = global.BASE_DIR + '/resources';
 
+  config.scss = {
+    mainFile: mainScssFile,
+    source: scssFolder + '/dev.' + mainScssFile,
+    target: scssFolder
+  };
+
   config.variablesFilename = 'variables.scss';
-  config.variablesFolder = global.BASE_DIR + '/scss/partials';
+  config.variablesFolder = scssFolder + '/partials';
 
   config.workflowFilename = 'workflow';
   config.workflowSource = global.BASE_DIR + '/www/js/main/dev.main.factory.js';

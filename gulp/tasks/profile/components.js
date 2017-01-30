@@ -16,11 +16,7 @@ module.exports = {
 
     var components = global.profileConfig.components;
 
-    components.forEach(function (component) {
-      copyComponentFolder(component);
-
-      addScssImport(component);
-    });
+    components.forEach(copyComponentFolder);
 
     addComponentsToApp(components);
 
@@ -37,14 +33,6 @@ module.exports = {
       fsExtra.copySync(source, target);
 
       del.sync(config.componentsFolder.target + '/**/configComponent.json');
-    }
-
-    /**
-     * Add the scss import for the given component.
-     * @param component
-     */
-    function addScssImport(component) {
-      // TODO: implement and refactor stylesheets to live inside the component folder.
     }
 
     /**

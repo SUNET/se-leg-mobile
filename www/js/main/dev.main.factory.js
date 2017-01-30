@@ -11,19 +11,25 @@
       .module(moduleName)
       .factory('MainFactory', MainFactory);
     /* @ngInject */
-    function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerPrintFactory, ScannerFactory, MessageFactory,
-      DataFactory, ModalFactory) {
+    function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerprintFactory, ScannerFactory, MessageFactory,
+                         DataFactory, ModalFactory, SenderFactory) {
       var factory = this;
+
       // internal variables
       var appWorkflow = [];
       var usedModules = {};
       var currentComponent = -1;
+
       initializeWorkflow();
-      factory.handleNextComponent = handleNextComponent;
-      factory.handlePreviousComponent = handlePreviousComponent;
+
       ////////////////////
       // Public methods //
       ////////////////////
+      factory.handleNextComponent = handleNextComponent;
+      factory.handlePreviousComponent = handlePreviousComponent;
+      factory.getCurrentComponent = getCurrentComponent;
+      factory.getPreviousComponent = getPreviousComponent;
+      factory.getNextComponent = getNextComponent;
 
       /**
        * It inializes the app configured workflow.
@@ -44,6 +50,7 @@
         }
       }
 
+
       /* @@workflow-placeholder */
 
       /**
@@ -54,7 +61,7 @@
         var component = getPreviousComponent();
         if (component !== undefined) {
           if (!component.backAllowed) {
-            UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'BACK NOT ALLOWED'});
+            UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'BACK NOT ALLOWED' });
           } else {
             if (component.preconditions) {
               component.preconditions()
@@ -66,7 +73,7 @@
                   if (component.onErrorFn) {
                     component.onErrorFn(error);
                   } else {
-                    UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
+                    UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR' });
                   }
                 });
             } else {
@@ -96,7 +103,7 @@
                 if (component.onErrorFn) {
                   component.onErrorFn(error);
                 } else {
-                  UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
+                  UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR' });
                 }
               });
           } else {
@@ -105,14 +112,21 @@
           }
         } else {
           // TODO: SHOULD BE TRANSLATED
-          UtilsFactory.closeApp({title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR'});
+          UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR' });
         }
       }
 
-
-      //////////////////////
-      // Private methods //
-      //////////////////////
+      /**
+       * It retrieves the current component or undefined.
+       * @returns the current component.
+       */
+      function getCurrentComponent() {
+        var component = undefined;
+        if (currentComponent < appWorkflow.length) {
+          component = appWorkflow[currentComponent];
+        }
+        return component;
+      }
 
       /**
        * It retrieves the next component (if there is a new component).
@@ -138,6 +152,10 @@
         return component;
       }
 
+      //////////////////////
+      // Private methods //
+      //////////////////////
+
       /**
        * It goes to the component with the position required.
        * It avoids the PRECONDITIONS.
@@ -157,9 +175,9 @@
       function goToComponent(component) {
         if (component !== undefined && component.state) {
           if (component.params) {
-            $state.go(component.state, {data: component.params});
+            $state.go(component.state, { data: component.params });
           } else {
-            $state.go(component.state, {data: {}});
+            $state.go(component.state, { data: {} });
           }
         }
       }
