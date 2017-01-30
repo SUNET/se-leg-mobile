@@ -18,6 +18,7 @@
       factory.get = get;
       factory.clear = clear;
       factory.clearAll = clearAll;
+      factory.getAll = getAll;
 
       var data = {};
 
@@ -73,6 +74,14 @@
         if (component !== undefined && data !== undefined) {
           data[component] = data;
         }
+      }
+
+      /**
+       * It gets all the saved data.
+       * @returns all the associated data.
+       */
+      function getAll() {
+        return data;
       }
 
       return factory;

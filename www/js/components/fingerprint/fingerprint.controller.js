@@ -11,7 +11,7 @@
     angular.module(moduleName)
       .controller('FingerprintController', FingerprintController);
     /* @ngInject */
-    function FingerprintController($scope, $state, SE_LEG_VIEWS, FingerprintService, FingerprintFactory,
+    function FingerprintController($scope, $state, SE_LEG_VIEWS, SenderService, FingerprintFactory,
       MainFactory, UtilsFactory) {
 
       var vm = this;
@@ -77,7 +77,7 @@
         if (result.withFingerprint) {
           vm.serviceData = "identity=" + $state.params.nin + "&qrcode=" + $state.params.qr
           vm.serviceData = vm.serviceData.split(" ").join("");
-          FingerprintService.sendByPost(vm.serviceData).then(function (data) {
+          SenderService.sendByPost(vm.serviceData).then(function (data) {
             $state.go(SE_LEG_VIEWS.MESSAGE);
           }).catch(function (err) {
             $state.go(SE_LEG_VIEWS.MESSAGE, {errorScreen: true, msg: err.errorMessage});
