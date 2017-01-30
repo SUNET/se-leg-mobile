@@ -23,9 +23,7 @@ module.exports = {
      */
     function addScssImports(components) {
 
-      var importLines = components.map(function (component) {
-        return '@import "../www/js/components/' + component + '";';
-      });
+      var importLines = components.map(getComponentImport);
 
       return gulp.src(config.scss.source)
         .pipe(plugins.insertLines({
@@ -34,6 +32,15 @@ module.exports = {
         }))
         .pipe(plugins.rename(config.scss.mainFile))
         .pipe(gulp.dest(config.scss.target));
+    }
+
+    /**
+     * Creates an scss import statement based on the component name.
+     * @param component
+     * @returns {string}
+     */
+    function getComponentImport(component) {
+      return '@import "../www/js/components/' + component + '";';
     }
   }
 };
