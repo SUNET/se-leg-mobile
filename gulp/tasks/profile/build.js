@@ -24,6 +24,7 @@ module.exports = {
         'profile:images',
         'profile:resources',
         'profile:sass',
+        'profile:sender',
         'profile:variables',
         'profile:workflow'
       ], done

@@ -7,6 +7,7 @@
   "images": "se-leg",
   "theme": "se-leg",
   "workflow": "se-leg",
+  "sender": "se-leg",
   "splash": "default",
   "version": "1.0.0"
 }

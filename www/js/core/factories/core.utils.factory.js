@@ -158,7 +158,7 @@
        */
       function jsonToQueryString(json) {
         var queryString = '';
-        if (!angular.isUndefined(json) && angular.isObject(json)) {
+        if (angular.isObject(json)) {
           for (var key in json) {
             if (queryString !== '') {
               queryString += '&';

@@ -33,6 +33,7 @@ function getConfig() {
     images: profilesFolder + 'img',
     plugins: profilesFolder + 'plugins',
     resources: profilesFolder + 'resources',
+    sender: profilesFolder + 'sender',
     theme: profilesFolder + 'themes',
     workflow: profilesFolder + 'workflow'
   };
@@ -44,6 +45,11 @@ function getConfig() {
     source: scssFolder + '/dev.' + mainScssFile,
     target: scssFolder
   };
+
+  config.senderFilename = 'sender';
+  config.senderSource = global.BASE_DIR + '/www/js/core/modules/sender/dev.sender.custom.process.data.factory.js';
+  config.senderTargetFilename = 'sender.custom.process.data.factory.js';
+  config.senderTargetFolder = global.BASE_DIR + '/www/js/core/modules/sender';
 
   config.variablesFilename = 'variables.scss';
   config.variablesFolder = scssFolder + '/partials';
