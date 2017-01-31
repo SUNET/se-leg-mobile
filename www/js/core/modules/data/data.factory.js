@@ -68,11 +68,11 @@
       /**
        * It saves the given data associated to the given component.
        * @param component to associate the information.
-       * @param data to be saved.
+       * @param dataToBeSaved to be saved.
        */
-      function save(component, data) {
-        if (component !== undefined && data !== undefined) {
-          data[component] = data;
+      function save(component, dataToBeSaved) {
+        if (component !== undefined && dataToBeSaved !== undefined) {
+          data[component] = dataToBeSaved;
         }
       }
 
