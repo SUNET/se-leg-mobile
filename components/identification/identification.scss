@@ -1,0 +1,76 @@
+/*
+    Created on : 18-jan-2017
+    Author     : fjfernandez
+*/
+
+//First Block (Titles)
+.identification-content-header {
+  @extend %content-header;
+
+  .identification-content-title {
+    @extend %content-title;
+  }
+
+  .message-content-message {
+    @extend %content-message;
+  }
+}
+
+//Second Block (Form)
+.input-message-title {
+  padding-left: 10%;
+  color: $imput-label-color;
+  font-size: $input-message-size;
+  text-transform: uppercase;
+}
+
+//Group nesting
+.place-input-label-button {
+  width: 100%;
+  padding: 0 10%;
+
+  //Input and label
+  .place-label-and-input {
+    width: 80%;
+    display: inline-block;
+
+    input {
+      border-radius: 2px;
+      font-size: 15px;
+      color: $input-font-color;
+      font-weight: normal;
+    }
+  }
+
+  //Icon
+  .place-tick-icon {
+    width: 18%;
+    display: inline-block;
+    font-size: 45px;
+    vertical-align: middle;
+    text-align: right;
+
+    .tick-enable {
+      color: $icon-tick-enable;
+    }
+
+    .tick-disable {
+      color: $icon-tick-disable;
+    }
+  }
+}
+
+//Mixing used for the place holder
+@include input-placeholder {
+  font-size: 15px;
+  color: $input-font-color;
+  font-weight: normal;
+}
+
+//Send button
+.place-send-identification-button {
+  position: inherit;
+  margin-top: 35%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
