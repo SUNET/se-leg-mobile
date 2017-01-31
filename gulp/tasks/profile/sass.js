@@ -40,7 +40,7 @@ module.exports = {
      * @returns {string}
      */
     function getComponentImport(component) {
-      return '@import "../www/js/components/' + component + '";';
+      return '@import "../www/js/components/' + component + '/' + component + '";';
     }
   }
 };
