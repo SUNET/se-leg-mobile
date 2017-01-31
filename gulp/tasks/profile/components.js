@@ -16,6 +16,8 @@ module.exports = {
 
     var components = global.profileConfig.components;
 
+    fsExtra.removeSync(config.componentsFolder.target);
+
     components.forEach(copyComponentFolder);
 
     addComponentsToApp(components);
