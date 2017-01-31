@@ -245,4 +245,9 @@ gulp.task('profile', function () {
     .pipe(gulp.dest('./www/js/core/modules/constants'));
 });
 
-gulp.task('profile:ionic-resources', plugins.shell.task(['ionic resources']));
+gulp.task('profile:ionic-resources', plugins.shell.task(
+  [
+    'ionic platform add ios',
+    'ionic platform add android',
+    'ionic resources'
+  ]));
