@@ -92,7 +92,9 @@
                     {
                       condition: true,
                       text: 'message.start',
-                      onClick: goToComponent(0),
+                      onClick: function() {
+                        goToPosition(0);
+                      },
                       default: true
                     }
                   ]

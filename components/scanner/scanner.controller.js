@@ -11,8 +11,7 @@
     angular.module(moduleName)
       .controller('ScannerController', ScannerController);
     /* @ngInject */
-    function ScannerController($ionicModal, $scope, $state, SE_LEG_VIEWS, ScannerFactory, UtilsFactory, MainFactory,
-      DataFactory) {
+    function ScannerController($scope, $state, SE_LEG_VIEWS, ScannerFactory, UtilsFactory, MainFactory, DataFactory) {
 
       var vm = this;
 
@@ -23,8 +22,7 @@
       vm.onScannerValidationFailure = function (error) {
         // error handle
         if (error === 'cancelled') {
-          UtilsFactory.closeApp({title: 'fingerprintVerification.error.title',
-            text: 'fingerprintVerification.error.text'});
+          UtilsFactory.closeApp();
         } else {
           // An error occurred
           $state.go(SE_LEG_VIEWS.MESSAGE,

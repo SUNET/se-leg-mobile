@@ -35,6 +35,8 @@
         // Configure the max pages to save in cache
         $ionicConfigProvider.views.maxCache(1);
 
+        $ionicConfigProvider.views.swipeBackEnabled(false);
+
         // configuring the permissions to be handled
         PermissionsProvider.setConfigObject(SELEG_PERMISSIONS);
       }

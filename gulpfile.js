@@ -187,7 +187,7 @@ gulp.task('copy-js', ['add-main-dependencies'], function () {
     .pipe(gulp.dest(config.dest.js));
 });
 
-gulp.task('inject-css-dev', ['sass:minify'], function () {
+gulp.task('inject-css-dev', ['sass'], function () {
 
   var target = gulp.src('./www/index.html');
   var sources = gulp.src('./www/css/*.css', { read: false });
@@ -245,4 +245,4 @@ gulp.task('profile', function () {
     .pipe(gulp.dest('./www/js/core/modules/constants'));
 });
 
-gulp.task('profile:ionic-resouces', plugins.shell.task(['ionic resources']));
+gulp.task('profile:ionic-resources', plugins.shell.task(['ionic resources']));

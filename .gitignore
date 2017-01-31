@@ -7,10 +7,18 @@ www/css/
 nbproject
 dist/
 npm-debug.log
-www/js/main.js
 www/fonts/ionicons.*
 .DS_Store
 reports
-www/js/core/modules/config/config.constants.js
 www/lib
+
+# Files overwritten with gulp
+www/js/core/modules/config/config.constants.js
+www/js/main.js
+www/js/app.js
+www/js/main/main.factory.js
+config.xml
 phonegap-build/phonegap-profiles/*
+scss/partials/variables.scss
+secss/se-leg.scss
+www/js/core/modules/sender/sender.custom.process.data.factory.js
