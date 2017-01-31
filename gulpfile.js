@@ -38,8 +38,18 @@ gulp.task('sass', function () {
     .pipe(plugins.sass())
     .pipe(plugins.autoprefixer({ browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4'] }))
     .pipe(plugins.concat('styles.css'))
+    .pipe(gulp.dest(config.dest.css));
+});
+
+gulp.task('sass:minify', function () {
+  plugins.util.log(plugins.util.colors.blue('Compiling SASS'));
+  return gulp.src(config.origin.mainSass)
+    .pipe(plugins.plumber())
+    .pipe(plugins.sass())
+    .pipe(plugins.autoprefixer({ browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4'] }))
+    .pipe(plugins.concat('styles.css'))
     .pipe(gulp.dest(config.dest.css))
-    .pipe(plugins.cleanCss())
+    .pipe(plugins.cleanCss({ processImport: false }))
     .pipe(plugins.concat('styles.min.css'))
     .pipe(gulp.dest(config.dest.css));
 });
@@ -50,7 +60,7 @@ gulp.task('copyPlugins', function () {
     .pipe(gulp.dest('./www/assets/locale/i18n/'));
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', ['sass'], function () {
   gulp.watch(config.origin.allSass, ['sass']);
 });
 
@@ -100,7 +110,7 @@ gulp.task('git-check', function (done) {
 });
 
 // Generate a zip file.
-gulp.task('zip', gulpsync.sync(['clean-dist', 'copy-app', 'remove-zips']), function () {
+gulp.task('zip', gulpsync.sync([['profile:build', 'clean-dist'], 'copy-app', 'remove-zips']), function () {
   return gulp.src([
     'dist/build/www/**',
     'dist/build/resources/**',
@@ -153,7 +163,7 @@ gulp.task('copy-android-splash', [], function () {
 gulp.task('copy-config', function () {
   // Get the environment from the command line
   var env = plugins.util.env.env || 'development';
-  var appName = 'se-leg-mobile-' + env;
+  var appName = global.profileConfig.appName + '-' + env;
 
   return gulp.src(['./config.xml'])
     .pipe(plugins.cheerio({
@@ -177,11 +187,11 @@ gulp.task('copy-js', ['add-main-dependencies'], function () {
     .pipe(gulp.dest(config.dest.js));
 });
 
-gulp.task('inject-css-dev', ['sass'], function () {
+gulp.task('inject-css-dev', ['sass:minify'], function () {
 
   var target = gulp.src('./www/index.html');
   var sources = gulp.src('./www/css/*.css', { read: false });
-  del('./www/css/**/*.min.css');
+  // del('./www/css/**/*.min.css');
 
   return target.pipe(plugins.inject(sources, { relative: true }))
     .pipe(gulp.dest('./www'));
@@ -234,3 +244,5 @@ gulp.task('profile', function () {
     }))
     .pipe(gulp.dest('./www/js/core/modules/constants'));
 });
+
+gulp.task('profile:ionic-resouces', plugins.shell.task(['ionic resources']));

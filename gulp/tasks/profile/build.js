@@ -1,6 +1,6 @@
 var utils = require(global.GULP_DIR + '/utils');
 var config = require(global.CONFIG_PATH || global.GULP_DIR + '/gulp.config');
-var plugins = require('gulp-load-plugins')({lazy: true});
+var plugins = require('gulp-load-plugins')({ lazy: true });
 
 var args = require('yargs').argv;
 
@@ -12,7 +12,7 @@ module.exports = {
   fn: function (gulp, done) {
     utils.log('*** Building profiled app ***');
 
-    var profileName = typeof args.theme === 'string' ? args.theme : 'default';
+    var profileName = typeof args.theme === 'string' ? args.theme : typeof  process.env.theme === 'string' ? process.env.theme : 'default';
 
     global.profileConfig = require(config.profilesFolders.config + '/' + profileName + '.json');
 
@@ -20,14 +20,16 @@ module.exports = {
       [
         'profile:components',
         'profile:constants',
-        'profile:config-xml',
         'profile:images',
         'profile:resources',
         'profile:sass',
         'profile:sender',
         'profile:variables',
         'profile:workflow'
-      ], done
-    )
+      ],
+      'profile:ionic-resources',
+      'profile:config-xml',
+      done
+    );
   }
 };

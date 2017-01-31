@@ -13,8 +13,6 @@ module.exports = {
 
     var constantsPath = [config.profilesFolders.constants, global.profileConfig.constants, '*.json'].join('/');
 
-    console.log(constantsPath);
-
     return gulp.src(constantsPath)
       .pipe(gulp.dest(config.constantsPath));
   }
