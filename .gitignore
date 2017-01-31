@@ -23,5 +23,4 @@ phonegap-build/phonegap-profiles/*
 scss/partials/variables.scss
 scss/se-leg.scss
 www/js/core/modules/sender/sender.custom.process.data.factory.js
-resources/android/**/*
-resources/ios/**/*
+resources
