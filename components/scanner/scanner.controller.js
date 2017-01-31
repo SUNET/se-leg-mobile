@@ -16,9 +16,8 @@
       var vm = this;
 
       // by default actions
-      vm.onScannerValidationSuccess = function (result) {
-        MainFactory.handleNextComponent();
-      };
+      vm.onScannerValidationSuccess = MainFactory.handleNextComponent;
+
       vm.onScannerValidationFailure = function (error) {
         // error handle
         if (error === 'cancelled') {
@@ -68,9 +67,7 @@
           }
         }
         ScannerFactory.allowNeededPermissions()
-          .then(function (result) {
-            scan();
-          })
+          .then(scan)
           .catch(function (error) {
             closeApp(true);
           });
