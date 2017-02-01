@@ -1,7 +1,7 @@
 var utils = require(global.GULP_DIR + '/utils');
 var config = require(global.CONFIG_PATH || global.GULP_DIR + '/gulp.config');
 var plugins = require('gulp-load-plugins')({ lazy: true });
-
+var fsExtra = require('fs-extra');
 var args = require('yargs').argv;
 
 /**
@@ -15,6 +15,9 @@ module.exports = {
     var profileName = typeof args.theme === 'string' ? args.theme : typeof  process.env.theme === 'string' ? process.env.theme : 'default';
 
     global.profileConfig = require(config.profilesFolders.config + '/' + profileName + '.json');
+
+    fsExtra.ensureDirSync('hooks');
+    fsExtra.copySync(config.configXml.source, config.configXml.target + '/config.xml');
 
     plugins.sequence.use(gulp)(
       [
