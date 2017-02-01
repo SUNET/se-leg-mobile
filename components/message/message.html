@@ -15,7 +15,7 @@
     </div>
 
     <!-- Start button -->
-    <div class="place-start-button">
+    <div class="place-start-button" ng-if="messageCtrl.getCurrentButton()">
       <button class="button button-full seleg-button" ng-click="messageCtrl.getCurrentButton().onClick()">{{messageCtrl.getCurrentButton().text | translate}}</button>
     </div>
 

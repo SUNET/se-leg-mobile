@@ -24,7 +24,8 @@
   },
   "back": {
     "title": "Process Cancelled",
-    "msg": "The process has been cancelled. Please try again by pressing Restart"
+    "msg": "The process has been cancelled. Please try again by pressing restart",
+    "msgIos": "The process has been cancelled. Please, close the app and try again."
   },
   "scanner": {
     "error": "The QR code contains invalid data. Please renew the QR code"

@@ -33,7 +33,7 @@
   ], function (angular, appName, ngCordova) {
     'use strict';
     angular.module(appName)
-      .run(function ($ionicPlatform, MainBackFactory, MainFactory) {
+      .run(function ($ionicHistory, $ionicPlatform, $rootScope, MainBackFactory, MainFactory, UtilsFactory, SE_LEG_GLOBAL) {
         $ionicPlatform.ready(function () {
 
           // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -47,13 +47,22 @@
           // Show app in normal screen with status bar
           ionic.Platform.fullScreen(false, true);
 
+          $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
+            if (!toParams.handled && UtilsFactory.getPlatform() === SE_LEG_GLOBAL.PLATFORMS.IOS) {
+              event.preventDefault();
+              MainFactory.handlePreviousComponent();
+            }
+          });
+
+          $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
+            $ionicHistory.viewHistory().currentView.stateParams.handled = false;
+          });
+
           $ionicPlatform.registerBackButtonAction(function (e) {
             e.preventDefault();
             e.stopPropagation();
 
-            if (!MainFactory.getPreviousComponent()) {
-              navigator.app.exitApp();
-            }
+            MainFactory.handlePreviousComponent();
           }, 100);
         });
 

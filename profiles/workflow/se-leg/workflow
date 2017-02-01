@@ -167,16 +167,19 @@
                   function () {
                     $state.go(SE_LEG_VIEWS.MESSAGE,
                       {
-                        errorScreen: true,
-                        title: 'message.title',
-                        msg: 'security.error.errorOpenSecurity',
-                        buttonOptions: [
-                          {
-                            text: 'message.start',
-                            onClick: function () {
-                              goToPosition(0);
+                        data: {
+                          errorScreen: true,
+                          title: 'message.title',
+                          msg: 'security.error.errorOpenSecurity',
+                          buttonOptions: [
+                            {
+                              text: 'message.start',
+                              onClick: function () {
+                                goToPosition(0);
+                              }
                             }
-                          }]
+                          ]
+                        }
                       });
                   });
               }

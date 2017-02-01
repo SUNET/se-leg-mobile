@@ -10,9 +10,10 @@
     angular
       .module(moduleName)
       .factory('MainFactory', MainFactory);
+
     /* @ngInject */
     function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerprintFactory, ScannerFactory, MessageFactory,
-                         DataFactory, ModalFactory, SenderFactory) {
+                         DataFactory, ModalFactory, SenderFactory, $ionicConfig) {
       var factory = this;
 
       // internal variables
@@ -58,11 +59,13 @@
        * If I am in the first component, the App will be closed.
        */
       function handlePreviousComponent() {
-        var component = getPreviousComponent();
-        if (component !== undefined) {
-          if (!component.backAllowed) {
-            UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'BACK NOT ALLOWED' });
-          } else {
+        if (factory.getCurrentComponent().backAllowed) {
+          var component = getPreviousComponent();
+
+          if (component !== undefined) {
+
+            handleBackAllowed(component);
+
             if (component.preconditions) {
               component.preconditions()
                 .then(function () {
@@ -80,10 +83,14 @@
               currentComponent--;
               goToComponent(component);
             }
+          } else {
+            UtilsFactory.closeApp();
           }
         } else {
-          UtilsFactory.closeApp();
+          UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'BACK NOT ALLOWED' });
         }
+
+
       }
 
       /**
@@ -93,6 +100,8 @@
       function handleNextComponent() {
         var component = getNextComponent();
         if (component !== undefined) {
+          handleBackAllowed(component);
+
           if (component.preconditions) {
             component.preconditions()
               .then(function () {
@@ -175,10 +184,22 @@
       function goToComponent(component) {
         if (component !== undefined && component.state) {
           if (component.params) {
-            $state.go(component.state, { data: component.params });
+            $state.go(component.state, { data: component.params, handled: true });
           } else {
-            $state.go(component.state, { data: {} });
+            $state.go(component.state, { data: {}, handled: true });
           }
+        }
+      }
+
+      /**
+       *
+       * @param component
+       */
+      function handleBackAllowed(component) {
+        if (component.backAllowed) {
+          $ionicConfig.views.swipeBackEnabled(true);
+        } else {
+          $ionicConfig.views.swipeBackEnabled(false);
         }
       }
 

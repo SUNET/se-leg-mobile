@@ -16,7 +16,7 @@
       .factory('UtilsFactory', UtilsFactory);
 
     /* @ngInject */
-    function UtilsFactory($ionicPopup, $translate, $ionicHistory, SE_LEG_GLOBAL) {
+    function UtilsFactory($ionicConfig, $ionicPopup, $translate, $ionicHistory, $state, SE_LEG_GLOBAL, SE_LEG_VIEWS) {
 
       var factory = this;
       factory.className = '[UtilsFactory]';
@@ -61,6 +61,7 @@
       function isNotEmpty(obj) {
         return !isEmpty(obj);
       }
+
       /**
        * Checks number value.
        * @param {type} n
@@ -109,12 +110,22 @@
        * Function to close the app depending on the app platform.
        */
       function closeAppWithoutError() {
-        if (navigator && navigator.app) {
-          navigator.app.exitApp();
-        } else {
-          if (ionic && ionic.Platform) {
-            ionic.Platform.exitApp();
-          }
+        if (getPlatform() === SE_LEG_GLOBAL.PLATFORMS.IOS) {
+          cordova.plugins.Keyboard.close();
+
+          $ionicConfig.views.swipeBackEnabled(false);
+
+          $state.go(SE_LEG_VIEWS.MESSAGE,
+            {
+              data: {
+                errorScreen: true,
+                title: 'back.title',
+                msg: 'back.msgIos',
+                buttonOptions: []
+              }
+            });
+        } else if (ionic && ionic.Platform) {
+          ionic.Platform.exitApp();
         }
       }
 

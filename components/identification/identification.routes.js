@@ -19,7 +19,8 @@
         url: '/' + SE_LEG_VIEWS.ID,
         // needed to by-pass data to the controller through the $stateProvider
         params: {
-          data: {}
+          data: {},
+          handled: false
         },
         template: identificationTemplate,
         controller: 'IdentificationController',

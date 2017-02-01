@@ -17,7 +17,10 @@
       $stateProvider.state('main', {
         url: '/',
         controller: 'MainController',
-        controllerAs: 'mainCtrl'
+        controllerAs: 'mainCtrl',
+        params: {
+          handled: true
+        }
       });
 
       $urlRouterProvider.otherwise('/');

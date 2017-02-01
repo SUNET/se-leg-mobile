@@ -34,8 +34,9 @@
 
       activate();
 
-      $scope.$on('$ionicView.enter', onEnter);
+      $scope.$on('$ionicView.beforeEnter', beforeEnter);
 
+      $scope.$on('$ionicView.enter', cordova.plugins.Keyboard.close);
 
       /**
        * Method executed once the module is used.
@@ -46,7 +47,7 @@
       /**
        * Once the user accesses to the module, the by default initialization parameters.
        */
-      function onEnter() {
+      function beforeEnter() {
         if ($state.params && $state.params.data) {
           // initialization of the parameters
           if ($state.params.data.errorScreen) {
