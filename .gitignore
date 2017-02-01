@@ -25,3 +25,4 @@ scss/se-leg.scss
 www/js/core/modules/sender/sender.custom.process.data.factory.js
 resources
 !profiles/resources
+!profiles/plugins
