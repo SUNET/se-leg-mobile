@@ -24,7 +24,8 @@
   },
   "back": {
     "title": "Process Cancelled",
-    "msg": "The process has been cancelled. Please try again by pressing Restart"
+    "msg": "The process has been cancelled. Please try again by pressing restart",
+    "msgIos": "The process has been cancelled. Please, close the app and try again."
   },
   "scanner": {
     "error": "The QR code contains invalid data. Please renew the QR code"
@@ -42,7 +43,10 @@
       "notRegistred": "Fingerprint auth available, but no fingerprint registered on the device",
       "notDetectFingerprintDevice": "Cannot detect fingerprint device",
       "cancelled": "Fingerprint cancelled",
-      "notFingerprint": "If you haven't detect fingerprint device, you cant't continue the process"
+      "notFingerprint": "If you haven't detect fingerprint device, you cant't continue the process",
+      "notFingerprintTitle": "Fingeprint device not found",
+      "notFingerprintRegisteredTitle": "Fingerprint Verification",
+      "notFingerprintRegistered": "No fingerprint registered on the device"
     }
   },
   "security": {
@@ -53,11 +57,11 @@
   "fingerprintVerification": {
     "title": "Fingerprint Verification",
     "message": "if you have introduced your fingerprint, you can continue the process",
-    "continue": "Continue"
-  },
-  "modal": {
-    "title": "Fingerprint Verification",
-    "message": "No fingerprint registered on the device"
+    "continue": "Continue",
+    "error": {
+      "title": "Fingerprint Verification",
+      "message": "Fingerprint validation failed"
+    }
   },
   "connection": {
     "title": "No Internet Connection",

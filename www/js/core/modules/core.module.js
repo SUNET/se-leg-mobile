@@ -19,7 +19,9 @@
       'app.core.constants',
       'app.core.langs',
       'app.core.permissions',
-      'app.core.fingerprintScanner'
+      'app.core.modal',
+      'app.core.data',
+      'app.core.sender'
     ]);
 
     return moduleName;

@@ -24,7 +24,8 @@
   },
   "back": {
     "title": "Processen har avbrutits",
-    "msg": "Processen har avbrutits. Vänligen försök igen genom att trycka på knappen nedan"
+    "msg": "Processen har avbrutits. Vänligen försök igen genom att trycka på knappen nedan",
+    "msgIos": "Processen har avbrutits. Stäng appen och försök igen"
   },
   "scanner": {
     "error": "QR-koden innehåller felaktig data. Vänligen förnya QR-koden"
@@ -42,7 +43,10 @@
       "notRegistred": "Fingeravtrycksfunktion tillgängligt men ditt fingeravtryck är ej registrerat i enheten",
       "notDetectFingerprintDevice": "Kan ej detektera fingeravtrycksfunktion",
       "cancelled": "Fingeravtryckskontroll avbruten",
-      "notFingerprint": "Du kan inte fortsätta legitimationskontrollen om din enhet saknar fingeravtrycksfunktion"
+      "notFingerprint": "Du kan inte fortsätta legitimationskontrollen om din enhet saknar fingeravtrycksfunktion",
+      "notFingerprintTitle": "Fingeravtrycksfunktion enhet hittades inte",
+      "notFingerprintRegisteredTitle": "Fingeravtryckskontroll",
+      "notFingerprintRegistered": "Ditt fingeravtryck är ej registrerat i enheten"
     }
   },
   "security": {
@@ -53,11 +57,11 @@
   "fingerprintVerification": {
     "title": "Fingeravtryckskontroll",
     "message": "Du kan fortsätta signeringen om du har registrerat ditt fingeravtryck",
-    "continue": "Fortsätt"
-  },
-  "modal": {
-    "title": "Fingeravtryckskontroll",
-    "message": "Ditt fingeravtryck är ej registrerat i enheten"
+    "continue": "Fortsätt",
+    "error": {
+      "title": "Fingeravtryckskontroll",
+      "message": "Fingeravtryck validering misslyckades"
+    }
   },
   "connection": {
     "title": "Ingen internetanslutning",

@@ -27,6 +27,11 @@
         },
         ENDPOINTS: {
           RESULT: '/vetting-result'
+        },
+        PLATFORMS: {
+          ANDROID: 'ANDROID',
+          IOS: 'IOS',
+          UNKOWN: 'UNKNOWN'
         }
       });
   });
