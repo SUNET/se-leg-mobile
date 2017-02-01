@@ -17,6 +17,7 @@ www/js/core/modules/config/config.constants.js
 www/js/main.js
 www/js/app.js
 www/js/main/main.factory.js
+www/res
 config.xml
 components
 phonegap-build/phonegap-profiles/*
