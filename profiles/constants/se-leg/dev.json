@@ -1,0 +1,5 @@
+{
+  "backendUrl": "http://10.35.1.123:444/op",
+  "connectionTimeout": 30000,
+  "defaultLanguage": "en"
+}

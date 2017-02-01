@@ -1,14 +1,30 @@
-var gulp = require('gulp');
+global.GULP_DIR = __dirname + '/gulp';
+global.BASE_DIR = __dirname;
+global.CONFIG_PATH = __dirname + '/gulp/gulp.config';
+
+var plugins = require('gulp-load-plugins')({ lazy: true });
+
+var gulp = global.GULP || require('gulp');
 var bower = require('bower');
 var sh = require('shelljs');
 var args = require('yargs').argv;
 var config = require('./gulp.config')();
 var merge = require('merge-stream');
-var plugins = require('gulp-load-plugins')({lazy: true});
 var gulpsync = require('gulp-sync')(gulp);
 var del = require('del');
 var fs = require('fs');
 var replace = require('gulp-replace-task');
+
+plugins.requireTasks({
+  path: __dirname + '/gulp/tasks',
+  gulp: gulp
+});
+
+/**
+ * Prints out the list  of available tasks.
+ */
+gulp.task('default', plugins.shell.task(['gulp --tasks']));
+
 
 /**
  * Compiles, autoprefixes, minifies and concats all styles.
@@ -20,10 +36,20 @@ gulp.task('sass', function () {
   return gulp.src(config.origin.mainSass)
     .pipe(plugins.plumber())
     .pipe(plugins.sass())
-    .pipe(plugins.autoprefixer({browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4']}))
+    .pipe(plugins.autoprefixer({ browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4'] }))
+    .pipe(plugins.concat('styles.css'))
+    .pipe(gulp.dest(config.dest.css));
+});
+
+gulp.task('sass:minify', function () {
+  plugins.util.log(plugins.util.colors.blue('Compiling SASS'));
+  return gulp.src(config.origin.mainSass)
+    .pipe(plugins.plumber())
+    .pipe(plugins.sass())
+    .pipe(plugins.autoprefixer({ browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4'] }))
     .pipe(plugins.concat('styles.css'))
     .pipe(gulp.dest(config.dest.css))
-    .pipe(plugins.cleanCss())
+    .pipe(plugins.cleanCss({ processImport: false }))
     .pipe(plugins.concat('styles.min.css'))
     .pipe(gulp.dest(config.dest.css));
 });
@@ -34,7 +60,7 @@ gulp.task('copyPlugins', function () {
     .pipe(gulp.dest('./www/assets/locale/i18n/'));
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', ['sass'], function () {
   gulp.watch(config.origin.allSass, ['sass']);
 });
 
@@ -53,7 +79,7 @@ function analyzeJshint() {
   return gulp.src(config.origin.alljs)
     .pipe(plugins.if(args.verbose, plugins.print()))
     .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter('jshint-stylish', {verbose: true}))
+    .pipe(plugins.jshint.reporter('jshint-stylish', { verbose: true }))
     .pipe(plugins.jshint.reporter('fail'));
 }
 
@@ -77,27 +103,27 @@ gulp.task('git-check', function (done) {
       '\n  Git, the version control system, is required to download Ionic.',
       '\n  Download git here:', plugins.util.colors.cyan('http://git-scm.com/downloads') + '.',
       '\n  Once git is installed, run \'' + plugins.util.colors.cyan('gulp install') + '\' again.'
-      );
+    );
     process.exit(1);
   }
   done();
 });
 
 // Generate a zip file.
-gulp.task('zip', gulpsync.sync(['clean-dist', 'copy-app', 'remove-zips']), function () {
+gulp.task('zip', gulpsync.sync([['profile:build', 'clean-dist'], 'copy-app', 'remove-zips']), function () {
   return gulp.src([
     'dist/build/www/**',
     'dist/build/resources/**',
     'dist/build/config.xml',
     'dist/build/icon-*.png'
-  ], {base: "dist/build/"})
-      .pipe(plugins.zip('se-leg-mobile.zip'))
-      .pipe(gulp.dest('dist'));
+  ], { base: "dist/build/" })
+    .pipe(plugins.zip('se-leg-mobile.zip'))
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('clean-dist', function () {
-  return gulp.src('dist', {read: false})
-      .pipe(plugins.clean());
+  return gulp.src('dist', { read: false })
+    .pipe(plugins.clean());
 });
 
 gulp.task('remove-zips', function () {
@@ -107,78 +133,78 @@ gulp.task('remove-zips', function () {
 
 // Copy the app to the dist folder
 gulp.task('copy-app', gulpsync.sync(['copy-libs', 'copy-fonts', 'inject-css-dev', 'copy-config', 'copy-resources',
-     'copy-android-splash', 'copy-js'
-    ]),
-    function () {
-      return gulp.src(config.origin.devCommons)
-          .pipe(gulp.dest('dist/build/www'));
-});
+    'copy-android-splash', 'copy-js'
+  ]),
+  function () {
+    return gulp.src(config.origin.devCommons)
+      .pipe(gulp.dest('dist/build/www'));
+  });
 
 gulp.task('copy-libs', [], function () {
-  return gulp.src(config.stringDependencies, {base: '.'})
-      .pipe(gulp.dest(config.dest.build));
+  return gulp.src(config.stringDependencies, { base: '.' })
+    .pipe(gulp.dest(config.dest.build));
 });
 
 gulp.task('copy-fonts', [], function () {
   return gulp.src(config.origin.devFonts)
-      .pipe(gulp.dest(config.dest.fonts));
+    .pipe(gulp.dest(config.dest.fonts));
 });
 
 gulp.task('copy-resources', [], function () {
   return gulp.src('./resources/**/*')
-      .pipe(gulp.dest('dist/build/resources'));
+    .pipe(gulp.dest('dist/build/resources'));
 });
 
 gulp.task('copy-android-splash', [], function () {
-    return gulp.src('./resources/android/splash/**/*')
-        .pipe(gulp.dest('dist/build/www/res/screen/android'));
+  return gulp.src('./resources/android/splash/**/*')
+    .pipe(gulp.dest('dist/build/www/res/screen/android'));
 });
 
 gulp.task('copy-config', function () {
   // Get the environment from the command line
   var env = plugins.util.env.env || 'development';
-  var appName = 'se-leg-mobile-' + env;
+  var appName = global.profileConfig.appName + '-' + env;
 
   return gulp.src(['./config.xml'])
-      .pipe(plugins.cheerio({
-        run: function ($) {
-          // get the version number from package.json
-          $('name').text(appName);
-        },
-        parserOptions: {
-          xmlMode: true
-        }
-      }))
-      .pipe(gulp.dest('dist/build'));
+    .pipe(plugins.cheerio({
+      run: function ($) {
+        // get the version number from package.json
+        $('name').text(appName);
+      },
+      parserOptions: {
+        xmlMode: true
+      }
+    }))
+    .pipe(gulp.dest('dist/build'));
 
 });
 
 gulp.task('copy-js', ['add-main-dependencies'], function () {
   return gulp.src(config.origin.alljs)
-      .pipe(plugins.ngAnnotate({
-        single_quotes: true
-      }))
-      .pipe(gulp.dest(config.dest.js));
+    .pipe(plugins.ngAnnotate({
+      single_quotes: true
+    }))
+    .pipe(gulp.dest(config.dest.js));
 });
 
 gulp.task('inject-css-dev', ['sass'], function () {
 
   var target = gulp.src('./www/index.html');
-  var sources = gulp.src('./www/css/*.css', {read: false});
-  del('./www/css/**/*.min.css');
+  var sources = gulp.src('./www/css/*.css', { read: false });
+  // del('./www/css/**/*.min.css');
 
-  return target.pipe(plugins.inject(sources, {relative: true}))
-      .pipe(gulp.dest('./www'));
+  return target.pipe(plugins.inject(sources, { relative: true }))
+    .pipe(gulp.dest('./www'));
 });
 
 gulp.task('add-main-dependencies', function () {
-    return gulp.src('./www/js/devMain.js')
-        .pipe(plugins.insertLines({
-            'after': /var paths;/,
-            'lineAfter': '\tpaths = ' + config.requireDependencies
-        }))
-        .pipe(plugins.rename('main.js'))
-        .pipe(gulp.dest('./www/js/'));
+  return gulp.src('./www/js/devMain.js')
+    .pipe(plugins.insertLines({
+      'after': /var paths;/,
+      'lineAfter': '\tpaths = ' + config.requireDependencies
+    }))
+    .pipe(plugins.rename('main.js'))
+    .pipe(gulp.dest('./www/js/'));
 });
 
 
@@ -186,35 +212,42 @@ gulp.task('add-main-dependencies', function () {
 //@See config core module.
 //@example gulp profile --env production
 gulp.task('profile', function () {
-    // Get the environment from the command line
-    var env = (plugins.util.env.env === undefined) ? 'dev' : plugins.util.env.env;
+  // Get the environment from the command line
+  var env = (plugins.util.env.env === undefined) ? 'dev' : plugins.util.env.env;
 
-    if (env === 'demo') {
-        env = 'demo';
-    }
+  if (env === 'demo') {
+    env = 'demo';
+  }
 
-    // Read the settings from the right file
-    var filename = env + '.json';
+  // Read the settings from the right file
+  var filename = env + '.json';
 
-    var settings = JSON.parse(fs.readFileSync('./www/js/core/modules/config/json/' + filename, 'utf8'));
+  var settings = JSON.parse(fs.readFileSync('./www/js/core/modules/config/json/' + filename, 'utf8'));
 
-    // Replace each placeholder with the correct value for the variable.
-    gulp.src('./www/js/core/modules/config/template/config.constants.js')
-        .pipe(replace({
-            patterns: [
-                {
-                    match: 'backendUrl',
-                    replacement: settings.backendUrl
-                },
-                {
-                    match: 'connectionTimeout',
-                    replacement: settings.connectionTimeout
-                },
-                {
-                    match: 'defaultLanguage',
-                    replacement: settings.defaultLanguage
-                }
-            ]
-        }))
-        .pipe(gulp.dest('./www/js/core/modules/constants'));
+  // Replace each placeholder with the correct value for the variable.
+  gulp.src('./www/js/core/modules/config/template/config.constants.js')
+    .pipe(replace({
+      patterns: [
+        {
+          match: 'backendUrl',
+          replacement: settings.backendUrl
+        },
+        {
+          match: 'connectionTimeout',
+          replacement: settings.connectionTimeout
+        },
+        {
+          match: 'defaultLanguage',
+          replacement: settings.defaultLanguage
+        }
+      ]
+    }))
+    .pipe(gulp.dest('./www/js/core/modules/constants'));
 });
+
+gulp.task('profile:ionic-resources', plugins.shell.task(
+  [
+    'ionic platform add ios',
+    'ionic platform add android',
+    'ionic resources'
+  ]));

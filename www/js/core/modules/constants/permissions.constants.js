@@ -24,7 +24,17 @@
           IOS: [{
               requestMethod: 'requestCameraPermission',
               permission: 'Camera'
-            }]}
+            }]},
+        SCANNER: {
+          ANDROID: [
+            'android.permission.CAMERA',
+            'android.permission.FLASHLIGHT'
+          ],
+          IOS: [{
+              requestMethod: 'requestCameraPermission',
+              permission: 'Camera'
+            }]
+        }
       });
   });
 })();

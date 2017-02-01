@@ -1,0 +1,78 @@
+/**
+ * iOS fingerprint scanner factory handler.
+ * Uses https://github.com/EddyVerbruggen/cordova-plugin-touch-id
+ *
+ * @param {string} moduleName
+ * @author Ignacio González <igonzalez@emergya.com>
+ */
+(function () {
+  define(['./../fingerprint.module'],
+    function (moduleName) {
+      'use strict';
+
+      angular
+        .module(moduleName)
+        .factory('FingerprintScannerIosFactory', FingerprintScannerIosFactory);
+
+      /* @ngInject */
+      function FingerprintScannerIosFactory($q, $translate) {
+        var factory = {};
+
+        factory.isAvailable = isAvailable;
+        factory.verifyFingerprint = verifyFingerprint;
+
+        /**
+         * Checks whether the fingerprint scanner is available in the device.
+         * @returns {Promise}
+         */
+        function isAvailable() {
+          var deferred = $q.defer();
+
+          if (typeof window.plugins.touchid !== 'undefined') {
+
+            window.plugins.touchid.isAvailable(
+              function () {
+                deferred.resolve({ isHardwareDetected: true, isAvailable: true });
+              },
+              function (error) {
+                if (error.code === -7) {
+                  deferred.resolve({ isHardwareDetected: true, isAvailable: false });
+                } else {
+                  deferred.reject();
+                }
+              });
+          } else {
+            deferred.reject();
+          }
+
+          return deferred.promise;
+        }
+
+        /**
+         * Scans the fingerprint.
+         * @returns {Promise}
+         */
+        function verifyFingerprint() {
+          var deferred = $q.defer();
+
+          if (typeof window.plugins.touchid !== 'undefined') {
+
+            window.plugins.touchid.verifyFingerprint(
+              $translate.instant('fingerprintVerification.title'),
+              function () {
+                deferred.resolve({ withFingerprint: true });
+              },
+              function () {
+                deferred.reject('Cancelled');
+              });
+          } else {
+            deferred.reject();
+          }
+
+          return deferred.promise;
+        }
+
+        return factory;
+      }
+    });
+})();
