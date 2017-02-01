@@ -34,7 +34,7 @@
   ], function (angular, appName, ngCordova) {
     'use strict';
     angular.module(appName)
-      .run(function ($ionicPlatform, MainBackFactory, $rootScope) {
+      .run(function ($ionicPlatform, MainBackFactory, MainFactory) {
         $ionicPlatform.ready(function () {
 
           // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -47,11 +47,19 @@
 
           // Show app in normal screen with status bar
           ionic.Platform.fullScreen(false, true);
+
+          $ionicPlatform.registerBackButtonAction(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (!MainFactory.getPreviousComponent()) {
+              navigator.app.exitApp();
+            }
+          }, 100);
         });
 
         // Detect back button to cancel screen if trying to go back (Android only)
-        MainBackFactory.init();
-
+        //MainBackFactory.init();
       });
 
     // bootstraps angular application. Use this instead of using ng-app

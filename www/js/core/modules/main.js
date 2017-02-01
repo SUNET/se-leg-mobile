@@ -14,8 +14,12 @@
     './constants/main',
     // Permissions
     './permissions/main',
-    // Fingerprint Scanner
-    './fingerprintScanner/main'
+    // Modals
+    './modal/main',
+    // Data
+    './data/main',
+    // Sender
+    './sender/main'
   ], function () {
   });
 })();

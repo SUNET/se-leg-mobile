@@ -25,7 +25,7 @@ module.exports = function () {
 
   var indexDependencies = {
     RequireJS: '/lib/requirejs/require'
-  }
+  };
 
   function getStringDependencies() {
     var result = [];
