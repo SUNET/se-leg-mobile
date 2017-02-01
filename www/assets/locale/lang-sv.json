@@ -25,7 +25,7 @@
   "back": {
     "title": "Processen har avbrutits",
     "msg": "Processen har avbrutits. Vänligen försök igen genom att trycka på knappen nedan",
-    "msgIos": "Processen har avbrutits. Please, close the app and try again."
+    "msgIos": "Processen har avbrutits. Stäng appen och försök igen"
   },
   "scanner": {
     "error": "QR-koden innehåller felaktig data. Vänligen förnya QR-koden"
