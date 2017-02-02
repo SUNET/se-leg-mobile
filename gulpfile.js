@@ -35,30 +35,30 @@ gulp.task('default', plugins.shell.task(['gulp --tasks']));
 gulp.task('sass', function () {
   plugins.util.log(plugins.util.colors.blue('Compiling SASS'));
   return gulp.src(config.origin.mainSass)
-      .pipe(plugins.plumber())
-      .pipe(plugins.sass())
-      .pipe(plugins.autoprefixer({ browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4'] }))
-      .pipe(plugins.concat('styles.css'))
-      .pipe(gulp.dest(config.dest.css));
+    .pipe(plugins.plumber())
+    .pipe(plugins.sass())
+    .pipe(plugins.autoprefixer({ browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4'] }))
+    .pipe(plugins.concat('styles.css'))
+    .pipe(gulp.dest(config.dest.css));
 });
 
 gulp.task('sass:minify', function () {
   plugins.util.log(plugins.util.colors.blue('Compiling SASS'));
   return gulp.src(config.origin.mainSass)
-      .pipe(plugins.plumber())
-      .pipe(plugins.sass())
-      .pipe(plugins.autoprefixer({ browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4'] }))
-      .pipe(plugins.concat('styles.css'))
-      .pipe(gulp.dest(config.dest.css))
-      .pipe(plugins.cleanCss({ processImport: false }))
-      .pipe(plugins.concat('styles.min.css'))
-      .pipe(gulp.dest(config.dest.css));
+    .pipe(plugins.plumber())
+    .pipe(plugins.sass())
+    .pipe(plugins.autoprefixer({ browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4'] }))
+    .pipe(plugins.concat('styles.css'))
+    .pipe(gulp.dest(config.dest.css))
+    .pipe(plugins.cleanCss({ processImport: false }))
+    .pipe(plugins.concat('styles.min.css'))
+    .pipe(gulp.dest(config.dest.css));
 });
 
 gulp.task('copyPlugins', function () {
   return gulp
-      .src('./node_modules/angular-i18n/*.js')
-      .pipe(gulp.dest('./www/assets/locale/i18n/'));
+    .src('./node_modules/angular-i18n/*.js')
+    .pipe(gulp.dest('./www/assets/locale/i18n/'));
 });
 
 gulp.task('watch', ['sass'], function () {
@@ -78,32 +78,32 @@ gulp.task('analyze', function () {
 });
 function analyzeJshint() {
   return gulp.src(config.origin.alljs)
-      .pipe(plugins.if(args.verbose, plugins.print()))
-      .pipe(plugins.jshint())
-      .pipe(plugins.jshint.reporter('jshint-stylish', { verbose: true }))
-      .pipe(plugins.jshint.reporter('fail'));
+    .pipe(plugins.if(args.verbose, plugins.print()))
+    .pipe(plugins.jshint())
+    .pipe(plugins.jshint.reporter('jshint-stylish', { verbose: true }))
+    .pipe(plugins.jshint.reporter('fail'));
 }
 
 function analyzeJscs() {
   return gulp.src(config.origin.alljs)
-      .pipe(plugins.jscs())
-      .pipe(plugins.jscsStylish());
+    .pipe(plugins.jscs())
+    .pipe(plugins.jscsStylish());
 }
 
 gulp.task('install', ['git-check'], function () {
   return bower.commands.install()
-      .on('log', function (data) {
-        plugins.util.log('bower', plugins.util.colors.cyan(data.id), data.message);
-      });
+    .on('log', function (data) {
+      plugins.util.log('bower', plugins.util.colors.cyan(data.id), data.message);
+    });
 });
 
 gulp.task('git-check', function (done) {
   if (!sh.which('git')) {
     console.log(
-        '  ' + plugins.util.colors.red('Git is not installed.'),
-        '\n  Git, the version control system, is required to download Ionic.',
-        '\n  Download git here:', plugins.util.colors.cyan('http://git-scm.com/downloads') + '.',
-        '\n  Once git is installed, run \'' + plugins.util.colors.cyan('gulp install') + '\' again.'
+      '  ' + plugins.util.colors.red('Git is not installed.'),
+      '\n  Git, the version control system, is required to download Ionic.',
+      '\n  Download git here:', plugins.util.colors.cyan('http://git-scm.com/downloads') + '.',
+      '\n  Once git is installed, run \'' + plugins.util.colors.cyan('gulp install') + '\' again.'
     );
     process.exit(1);
   }
@@ -118,13 +118,13 @@ gulp.task('zip', gulpsync.sync([['profile:build', 'clean-dist'], 'copy-app', 're
     'dist/build/config.xml',
     'dist/build/icon-*.png'
   ], { base: "dist/build/" })
-      .pipe(plugins.zip('se-leg-mobile.zip'))
-      .pipe(gulp.dest('dist'));
+    .pipe(plugins.zip('se-leg-mobile.zip'))
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('clean-dist', function () {
   return gulp.src('dist', { read: false })
-      .pipe(plugins.clean());
+    .pipe(plugins.clean());
 });
 
 gulp.task('remove-zips', function () {
@@ -134,6 +134,7 @@ gulp.task('remove-zips', function () {
 
 // Copy the app to the dist folder
 gulp.task('copy-app', gulpsync.sync(
+  [
     'copy-android-splash',
     [
       'copy-libs',
@@ -142,30 +143,31 @@ gulp.task('copy-app', gulpsync.sync(
       'copy-config',
       'copy-resources',
       'copy-js'
-    ]),
-    function () {
-      return gulp.src(config.origin.devCommons)
-          .pipe(gulp.dest('dist/build/www'));
-    });
+    ]
+  ]),
+  function () {
+    return gulp.src(config.origin.devCommons)
+      .pipe(gulp.dest('dist/build/www'));
+  });
 
 gulp.task('copy-libs', [], function () {
   return gulp.src(config.stringDependencies, { base: '.' })
-      .pipe(gulp.dest(config.dest.build));
+    .pipe(gulp.dest(config.dest.build));
 });
 
 gulp.task('copy-fonts', [], function () {
   return gulp.src(config.origin.devFonts)
-      .pipe(gulp.dest(config.dest.fonts));
+    .pipe(gulp.dest(config.dest.fonts));
 });
 
 gulp.task('copy-resources', [], function () {
   return gulp.src('./resources/**/*')
-      .pipe(gulp.dest('dist/build/resources'));
+    .pipe(gulp.dest('dist/build/resources'));
 });
 
 gulp.task('copy-android-splash', [], function () {
   return gulp.src('./resources/android/splash/**/*')
-      .pipe(gulp.dest('./www/res/screen/android'));
+    .pipe(gulp.dest('./www/res/screen/android'));
 });
 
 gulp.task('copy-config', function () {
@@ -174,25 +176,25 @@ gulp.task('copy-config', function () {
   var appName = global.profileConfig.appName + '-' + env;
 
   return gulp.src(['./config.xml'])
-      .pipe(plugins.cheerio({
-        run: function ($) {
-          // get the version number from package.json
-          $('name').text(appName);
-        },
-        parserOptions: {
-          xmlMode: true
-        }
-      }))
-      .pipe(gulp.dest('dist/build'));
+    .pipe(plugins.cheerio({
+      run: function ($) {
+        // get the version number from package.json
+        $('name').text(appName);
+      },
+      parserOptions: {
+        xmlMode: true
+      }
+    }))
+    .pipe(gulp.dest('dist/build'));
 
 });
 
 gulp.task('copy-js', ['add-main-dependencies'], function () {
   return gulp.src(config.origin.alljs)
-      .pipe(plugins.ngAnnotate({
-        single_quotes: true
-      }))
-      .pipe(gulp.dest(config.dest.js));
+    .pipe(plugins.ngAnnotate({
+      single_quotes: true
+    }))
+    .pipe(gulp.dest(config.dest.js));
 });
 
 gulp.task('inject-css-dev', ['sass'], function () {
@@ -202,17 +204,17 @@ gulp.task('inject-css-dev', ['sass'], function () {
   // del('./www/css/**/*.min.css');
 
   return target.pipe(plugins.inject(sources, { relative: true }))
-      .pipe(gulp.dest('./www'));
+    .pipe(gulp.dest('./www'));
 });
 
 gulp.task('add-main-dependencies', function () {
   return gulp.src('./www/js/devMain.js')
-      .pipe(plugins.insertLines({
-        'after': /var paths;/,
-        'lineAfter': '\tpaths = ' + config.requireDependencies
-      }))
-      .pipe(plugins.rename('main.js'))
-      .pipe(gulp.dest('./www/js/'));
+    .pipe(plugins.insertLines({
+      'after': /var paths;/,
+      'lineAfter': '\tpaths = ' + config.requireDependencies
+    }))
+    .pipe(plugins.rename('main.js'))
+    .pipe(gulp.dest('./www/js/'));
 });
 
 
@@ -234,23 +236,23 @@ gulp.task('profile', function () {
 
   // Replace each placeholder with the correct value for the variable.
   gulp.src('./www/js/core/modules/config/template/config.constants.js')
-      .pipe(replace({
-        patterns: [
-          {
-            match: 'backendUrl',
-            replacement: settings.backendUrl
-          },
-          {
-            match: 'connectionTimeout',
-            replacement: settings.connectionTimeout
-          },
-          {
-            match: 'defaultLanguage',
-            replacement: settings.defaultLanguage
-          }
-        ]
-      }))
-      .pipe(gulp.dest('./www/js/core/modules/constants'));
+    .pipe(replace({
+      patterns: [
+        {
+          match: 'backendUrl',
+          replacement: settings.backendUrl
+        },
+        {
+          match: 'connectionTimeout',
+          replacement: settings.connectionTimeout
+        },
+        {
+          match: 'defaultLanguage',
+          replacement: settings.defaultLanguage
+        }
+      ]
+    }))
+    .pipe(gulp.dest('./www/js/core/modules/constants'));
 });
 
 gulp.task('profile:platform-android', function (done) {
@@ -260,7 +262,7 @@ gulp.task('profile:platform-android', function (done) {
     done();
   } else {
     return gulp.src('*.json', { read: false })
-        .pipe(plugins.shell(['ionic platform add android']));
+      .pipe(plugins.shell(['ionic platform add android']));
   }
 });
 
@@ -271,7 +273,7 @@ gulp.task('profile:platform-ios', function (done) {
     done();
   } else {
     return gulp.src('*.json', { read: false })
-        .pipe(plugins.shell(['ionic platform add ios']));
+      .pipe(plugins.shell(['ionic platform add ios']));
   }
 });
 
@@ -279,5 +281,5 @@ gulp.task('profile:ionic-resources', function () {
   utils.log('*** Generating icon and splash ***');
 
   return gulp.src('*.json', { read: false })
-      .pipe(plugins.shell(['ionic resources']));
+    .pipe(plugins.shell(['ionic resources']));
 });
