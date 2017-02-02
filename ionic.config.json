@@ -2,7 +2,7 @@
   "name": "se-leg",
   "app_id": "com.amoron.se_leg",
   "gulpStartupTasks": [
-    "startup"
+    "watch"
   ],
   "watchPatterns": [
     "www/**/*",
