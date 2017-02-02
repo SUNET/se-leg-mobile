@@ -3,7 +3,6 @@ platforms/
 www/css/
 plugins/
 .idea
-www/css/
 nbproject
 dist/
 npm-debug.log
