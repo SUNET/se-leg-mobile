@@ -8,7 +8,7 @@ Mobile application developed in Ionic using [requionic](https://www.npmjs.com/pa
   - [Working in an emulator](#working-in-an-emulator)
   - [Working with a connected USB device](working-with-a-connected-usb-device)
   - [App Workflow](#app-workflow)
-  - [Profile the application](#profiling)
+  - [Profile the application](#profile-the-application)
   
 ## Requirements
 
