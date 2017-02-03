@@ -5,9 +5,9 @@
   "constants": "se-leg",
   "icon": "se-leg",
   "images": "se-leg",
-  "theme": "se-leg",
-  "workflow": "se-leg",
   "sender": "se-leg",
   "splash": "se-leg",
-  "version": "1.0.0"
+  "theme": "se-leg",
+  "version": "1.0.0",
+  "workflow": "se-leg"
 }

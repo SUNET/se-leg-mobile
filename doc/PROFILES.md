@@ -14,10 +14,11 @@ This file looks like:
    "constants": "se-leg",
    "icon": "se-leg",
    "images": "se-leg",
-   "theme": "se-leg",
-   "workflow": "default",
+   "sender": "se-leg",
    "splash": "default",
-   "version": "1.0.0"
+   "theme": "se-leg",
+   "version": "1.0.0",
+   "workflow": "default"
  }
  ```
 
@@ -29,10 +30,11 @@ This file looks like:
  * **constants:** here you define where to find the files with the constants to be used in your app. You can use either the default ones by setting this to _default_ or define your owns. To do so you just need to add at least a production.json file to a folder with your profile name inside the _profiles/config_ folder.You can add as much as environments you plan to use (i.e. dev, demo, etc).
  * **icon:** here you define the icon app you want your app to display. Again you can use the _default_ icon or you can add your own _icon.png_ file in your folder inside the _profiles/resources_ folder.
  * **images:** here you define the images that your app is using. Again you can use the defaults or add your owns under a folder with your profile name under _profiles/img_.
- * **theme:** here you can define the stylesheet your app. You can use the _default_ or create your own _variables.scss_ file and place it under your folder in _profiles/themes_. [More on theming](THEMING.md)
- * **workflow:** here you define the workflow you want your app to use. To define your own workflow just place a _workflow_ file with the function that defines your workflow in your folder under _profiles/workflow_ folder. [More on defining workflows](WORKFLOWS.md)
+ * **sender:** here you define the function that you want your app to use to process data prior to send it to server. [More on defining a sender](SENDERS.md)
  * **splash:** here you define the splash image you want your app to display. Again you can use the _default_ splash image or you can add your own _splash.png_ file in your folder inside the _profiles/resources_ folder.
+ * **theme:** here you can define the stylesheet your app. You can use the _default_ or create your own _variables.scss_ file and place it under your folder in _profiles/themes_. [More on theming](THEMING.md)
  * **version:** the current version of your app.
+ * **workflow:** here you define the workflow you want your app to use. To define your own workflow just place a _workflow_ file with the function that defines your workflow in your folder under _profiles/workflow_ folder. [More on defining workflows](WORKFLOWS.md)
 
  Once you have your config file ready you can run the profile:build gulp task to apply your profile to the app. This app will run the following subtasks:
 
@@ -41,5 +43,7 @@ This file looks like:
  * **profile:constants** this task is responsible of copying your constants files into the corresponding app folder.
  * **profile:images** this task is responsible of copying your image files into the corresponding app folder.
  * **profile:resources** this task is responsible of copying the icon and splash image files you have defined into the corresponding app folder.
+ * **profile:sass** this task is responsible of adding the corresponding import line of each components stylesheet into the main stylesheet template and copying it to the final file.
  * **profile:variables** this task is responsible of copying the stylesheet you have defined to be used as your theme into the corresponding app folder.
+ * **profile:sender** this task is responsible of inserting the function you have defined to process your data into the _sender.custom.process.data.factory.js_ file where it will be used.
  * **profile:workflow** this task is responsible of inserting the function you have defined as your workflow into the _data.factory.js_ file where it will be used.
