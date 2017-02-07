@@ -27,4 +27,4 @@ $button-font-size: 18px;
 $small-devices-width: 500px;
 ```
 
-By defining your owns you can change the lood & feel of the application.
+By defining your owns you can change the look & feel of the application.

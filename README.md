@@ -8,6 +8,7 @@ Mobile application developed in Ionic using [requionic](https://www.npmjs.com/pa
   - [Working in an emulator](#working-in-an-emulator)
   - [Working with a connected USB device](working-with-a-connected-usb-device)
   - [App Workflow](#app-workflow)
+  - [Profile the application](#profile-the-application)
   
 ## Requirements
 
@@ -143,3 +144,16 @@ $ ionic run
 ## App Workflow
 
 <img src="github-imgs/se-leg-workflow.png" />
+
+## Profile the application
+
+This application has been built to allow composition. There are four base components that you can mix and match in order to define your own workflow. Once you have developed your own app version you can run the provided gulp tasks to get your application. While you are developing you can use the instructions shown before to run the application in your emulator or device just adding the profile you want to use as a parameter to the command.
+
+```
+$ ionic emulate -c -l --theme=se-leg
+$ ionic run --theme=se-leg
+```
+
+
+[More on profiling](doc/PROFILES.md)
+
