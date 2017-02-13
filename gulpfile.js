@@ -269,7 +269,7 @@ gulp.task('profile:platform-android', function (done) {
 gulp.task('profile:platform-ios', function (done) {
   utils.log('*** Adding iOS platform ***');
 
-  if (fs.existsSync('./platforms/android')) {
+  if (fs.existsSync('./platforms/ios')) {
     done();
   } else {
     return gulp.src('*.json', { read: false })
