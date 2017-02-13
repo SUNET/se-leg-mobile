@@ -102,6 +102,7 @@
                 backAllowed: false
               };
               // sending the data
+              $ionicLoading.show();
               SenderFactory.send()
                 .then(function (data) {
                   // sending the user to the component
@@ -113,7 +114,8 @@
                   component.params.title = 'fingerprintVerification.error.title';
                   // sending the user to the component
                   goToComponent(component);
-                });
+                })
+                .finally($ionicLoading.hide);
             },
             // if the fingeprint validation failed or it was cancelled.
             onFingerprintValidationFailure: function (error) {

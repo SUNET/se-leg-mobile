@@ -12,8 +12,8 @@
       .factory('MainFactory', MainFactory);
 
     /* @ngInject */
-    function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerprintFactory, ScannerFactory, MessageFactory,
-                         DataFactory, ModalFactory, SenderFactory, $ionicConfig) {
+    function MainFactory($state, $q, $ionicConfig, $ionicLoading, UtilsFactory, SE_LEG_VIEWS, FingerprintFactory, ScannerFactory,
+                         MessageFactory, DataFactory, ModalFactory, SenderFactory) {
       var factory = this;
 
       // internal variables

@@ -111,7 +111,7 @@ gulp.task('git-check', function (done) {
 });
 
 // Generate a zip file.
-gulp.task('zip', gulpsync.sync([['profile:build', 'clean-dist'], 'copy-app', 'remove-zips']), function () {
+gulp.task('zip', gulpsync.sync([['profile:build', 'clean-dist'], 'profile', 'copy-app', 'remove-zips']), function () {
   return gulp.src([
     'dist/build/www/**',
     'dist/build/resources/**',
