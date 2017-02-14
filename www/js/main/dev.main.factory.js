@@ -12,8 +12,7 @@
       .factory('MainFactory', MainFactory);
 
     /* @ngInject */
-    function MainFactory($state, $q, UtilsFactory, SE_LEG_VIEWS, FingerprintFactory, ScannerFactory, MessageFactory,
-                         DataFactory, ModalFactory, SenderFactory, $ionicConfig) {
+    function MainFactory($state, $ionicConfig, UtilsFactory /* @@dependencies-placeholder */) {
       var factory = this;
 
       // internal variables
@@ -51,7 +50,10 @@
         }
       }
 
-
+      /**
+       * SE-LEG Workflow
+       * It loads the workflow in the appWorkflow attribute.
+       */
       /* @@workflow-placeholder */
 
       /**
