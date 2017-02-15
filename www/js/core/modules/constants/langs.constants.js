@@ -8,6 +8,7 @@
 (function () {
   define(['./constants.module'], function (moduleName) {
     'use strict';
+
     /**
      * Application views constants.
      * Here all views state constants.

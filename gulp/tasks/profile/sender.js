@@ -23,7 +23,7 @@ module.exports = {
           patterns: [
             {
               match: /\/\* @@dependencies-placeholder \*\//g,
-              replacement: ',' + sender.dependencies.toString()
+              replacement: sender.dependencies.toString()
             },
             {
               match: /\/\* @@get-custom-processed-data-placeholder \*\//g,
