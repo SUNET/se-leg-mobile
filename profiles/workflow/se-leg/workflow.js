@@ -62,13 +62,11 @@ function loadWorkflow() {
       state: SE_LEG_VIEWS.ID,
       preconditions: function () {
         var deferred = $q.defer();
-        DataFactory.hasQRInformation()
-          .then(function (result) {
-            deferred.resolve(result);
-          })
-          .catch(function (error) {
-            deferred.reject(error);
-          });
+
+        DataFactory.hasComponentData(SE_LEG_VIEWS.SCANNER)
+          .then(deferred.resolve)
+          .catch(deferred.reject);
+
         return deferred.promise;
       },
       backAllowed: false,

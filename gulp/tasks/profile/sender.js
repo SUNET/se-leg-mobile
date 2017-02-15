@@ -15,15 +15,19 @@ module.exports = {
 
     var senderPath = path.join(config.profilesFolders.sender, global.profileConfig.sender, config.senderFilename);
 
-    var sender = fs.readFileSync(senderPath, 'utf-8');
+    var sender = require(senderPath);
 
     return gulp.src(config.senderSource)
       .pipe(plugins.replaceTask(
         {
           patterns: [
             {
+              match: /\/\* @@dependencies-placeholder \*\//g,
+              replacement: ',' + sender.dependencies.toString()
+            },
+            {
               match: /\/\* @@get-custom-processed-data-placeholder \*\//g,
-              replacement: sender
+              replacement: sender.getProcessedData.toString()
             }
           ]
         })
