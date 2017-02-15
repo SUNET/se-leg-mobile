@@ -15,7 +15,7 @@ www/lib
 www/js/main.js
 www/js/app.js
 www/js/main/main.factory.js
-www/js/core/modules/modules/config/template/config.constants.js
+www/js/core/modules/config/template/config.constants.js
 www/js/core/modules/constants/constants.views.js
 config.xml
 components

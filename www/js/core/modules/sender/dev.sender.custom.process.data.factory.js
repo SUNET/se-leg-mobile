@@ -13,15 +13,18 @@
       .factory('SenderCustomProcessDataFactory', SenderCustomProcessDataFactory);
 
     /* @ngInject */
-    function SenderCustomProcessDataFactory(UtilsFactory, DataFactory, SE_LEG_VIEWS) {
+    function SenderCustomProcessDataFactory(/* @@dependencies-placeholder */) {
       var factory = this;
 
       factory.getProcessedData = getProcessedData;
 
+      /**
+       * Injected method from gulp.
+       * @returns the processed data.
+       */
       /* @@get-custom-processed-data-placeholder */
 
       return factory;
-
     }
   });
 })();

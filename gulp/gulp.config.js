@@ -46,7 +46,7 @@ function getConfig() {
     target: scssFolder
   };
 
-  config.senderFilename = 'sender';
+  config.senderFilename = 'sender.js';
   config.senderSource = global.BASE_DIR + '/www/js/core/modules/sender/dev.sender.custom.process.data.factory.js';
   config.senderTargetFilename = 'sender.custom.process.data.factory.js';
   config.senderTargetFolder = global.BASE_DIR + '/www/js/core/modules/sender';

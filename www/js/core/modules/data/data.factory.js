@@ -14,24 +14,30 @@
     function DataFactory($q) {
       var factory = this;
 
-      factory.save = save;
-      factory.get = get;
-      factory.clear = clear;
+      factory.hasComponentData = hasComponentData;
       factory.clearAll = clearAll;
-      factory.getAll = getAll;
+      factory.clear = clear;
+      factory.get = get;
+      factory.save = save;
 
       var data = {};
 
       factory.hasQRInformation = hasQRInformation;
 
       /**
-       * It checkts if the QR information is stored.
-       * @returns {$q@call;defer.promise}
+       * It checks if requested component data is stored.
+       * @param component the data to be checked.
+       * @returns {promise}
        */
-      function hasQRInformation() {
+      function hasComponentData(component) {
         var deferred = $q.defer();
-        // TODO: IMPLEMENT IT
-        deferred.resolve();
+
+        if (data[component]) {
+          deferred.resolve();
+        } else {
+          deferred.reject();
+        }
+
         return deferred.promise;
       }
 
@@ -60,7 +66,7 @@
       function get(component) {
         var componentData = undefined;
         if (component !== undefined && data[component]) {
-          component = data[component];
+          componentData = data[component];
         }
         return componentData;
       }
@@ -74,14 +80,6 @@
         if (component !== undefined && dataToBeSaved !== undefined) {
           data[component] = dataToBeSaved;
         }
-      }
-
-      /**
-       * It gets all the saved data.
-       * @returns all the associated data.
-       */
-      function getAll() {
-        return data;
       }
 
       return factory;
