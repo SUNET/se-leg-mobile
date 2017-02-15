@@ -3,7 +3,6 @@ platforms/
 www/css/
 plugins/
 .idea
-www/css/
 nbproject
 dist/
 npm-debug.log
@@ -13,10 +12,11 @@ reports
 www/lib
 
 # Files overwritten with gulp
-www/js/core/modules/config/config.constants.js
 www/js/main.js
 www/js/app.js
 www/js/main/main.factory.js
+www/js/core/modules/modules/config/template/config.constants.js
+www/js/core/modules/constants/constants.views.js
 config.xml
 components
 phonegap-build/phonegap-profiles/*
@@ -25,3 +25,4 @@ scss/se-leg.scss
 www/js/core/modules/sender/sender.custom.process.data.factory.js
 resources
 !profiles/resources
+!profiles/plugins

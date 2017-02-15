@@ -59,6 +59,7 @@
     "cordova-plugin-touch-id"
   ],
   "cordovaPlatforms": [
-    "android"
+    "android",
+    "ios"
   ]
 }

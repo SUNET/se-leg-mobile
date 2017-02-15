@@ -1,0 +1,28 @@
+{
+  "fingerPrint": [
+    {
+      "name": "cordova-plugin-touch-id",
+      "spec": "~3.2.0",
+      "source": "npm"
+    },
+    {
+      "name": "cordova-plugin-android-fingerprint-auth",
+      "spec": "https://github.com/natete/cordova-plugin-android-fingerprint-auth.git",
+      "source": "git"
+    }
+  ],
+  "barcodeScanner": [
+    {
+      "name": "phonegap-plugin-barcodescanner",
+      "spec": "6.0.3",
+      "source": "npm",
+      "variables": [
+        {
+          "name": "CAMERA_USAGE_DESCRIPTION",
+          "value": "Allow your camera to scan the QR"
+        }
+      ]
+    }
+  ]
+}
+

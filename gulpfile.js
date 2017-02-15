@@ -14,6 +14,7 @@ var gulpsync = require('gulp-sync')(gulp);
 var del = require('del');
 var fs = require('fs');
 var replace = require('gulp-replace-task');
+var utils = require(global.GULP_DIR + '/utils');
 
 plugins.requireTasks({
   path: __dirname + '/gulp/tasks',
@@ -132,8 +133,17 @@ gulp.task('remove-zips', function () {
 });
 
 // Copy the app to the dist folder
-gulp.task('copy-app', gulpsync.sync(['copy-libs', 'copy-fonts', 'inject-css-dev', 'copy-config', 'copy-resources',
-    'copy-android-splash', 'copy-js'
+gulp.task('copy-app', gulpsync.sync(
+  [
+    'copy-android-splash',
+    [
+      'copy-libs',
+      'copy-fonts',
+      'inject-css-dev',
+      'copy-config',
+      'copy-resources',
+      'copy-js'
+    ]
   ]),
   function () {
     return gulp.src(config.origin.devCommons)
@@ -157,7 +167,7 @@ gulp.task('copy-resources', [], function () {
 
 gulp.task('copy-android-splash', [], function () {
   return gulp.src('./resources/android/splash/**/*')
-    .pipe(gulp.dest('dist/build/www/res/screen/android'));
+    .pipe(gulp.dest('./www/res/screen/android'));
 });
 
 gulp.task('copy-config', function () {
@@ -198,7 +208,7 @@ gulp.task('inject-css-dev', ['sass'], function () {
 });
 
 gulp.task('add-main-dependencies', function () {
-  return gulp.src('./www/js/devMain.js')
+  return gulp.src('./www/js/dev.main.js')
     .pipe(plugins.insertLines({
       'after': /var paths;/,
       'lineAfter': '\tpaths = ' + config.requireDependencies
@@ -245,9 +255,31 @@ gulp.task('profile', function () {
     .pipe(gulp.dest('./www/js/core/modules/constants'));
 });
 
-gulp.task('profile:ionic-resources', plugins.shell.task(
-  [
-    'ionic platform add ios',
-    'ionic platform add android',
-    'ionic resources'
-  ]));
+gulp.task('profile:platform-android', function (done) {
+  utils.log('*** Adding Android platform ***');
+
+  if (fs.existsSync('./platforms/android')) {
+    done();
+  } else {
+    return gulp.src('*.json', { read: false })
+      .pipe(plugins.shell(['ionic platform add android']));
+  }
+});
+
+gulp.task('profile:platform-ios', function (done) {
+  utils.log('*** Adding iOS platform ***');
+
+  if (fs.existsSync('./platforms/android')) {
+    done();
+  } else {
+    return gulp.src('*.json', { read: false })
+      .pipe(plugins.shell(['ionic platform add ios']));
+  }
+});
+
+gulp.task('profile:ionic-resources', function () {
+  utils.log('*** Generating icon and splash ***');
+
+  return gulp.src('*.json', { read: false })
+    .pipe(plugins.shell(['ionic resources']));
+});
