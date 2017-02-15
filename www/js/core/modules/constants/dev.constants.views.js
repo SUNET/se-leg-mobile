@@ -15,11 +15,7 @@
     angular
       .module(moduleName)
       .constant('SE_LEG_VIEWS', {
-        SCANNER: 'scanner',
-        MESSAGE: 'message',
-        ID: 'identification',
-        FINGERPRINT: 'fingerprint',
-        FINGERPRINTVERIFICATION: 'fingerprintVerification'
+        /* @@views-placeholder */
       });
   });
 })();

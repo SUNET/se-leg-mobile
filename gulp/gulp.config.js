@@ -54,7 +54,13 @@ function getConfig() {
   config.variablesFilename = 'variables.scss';
   config.variablesFolder = scssFolder + '/partials';
 
-  config.workflowFilename = 'workflow';
+  config.views = {
+    source: global.BASE_DIR + '/www/js/core/modules/constants/dev.views.constants.js',
+    target: global.BASE_DIR + '/www/js/core/modules/constants/',
+    targetFilename: 'views.constants.js'
+  };
+
+  config.workflowFilename = 'workflow.js';
   config.workflowSource = global.BASE_DIR + '/www/js/main/dev.main.factory.js';
   config.workflowTargetFilename = 'main.factory.js';
   config.workflowTargetFolder = global.BASE_DIR + '/www/js/main';
