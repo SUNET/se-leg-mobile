@@ -111,7 +111,7 @@ gulp.task('git-check', function (done) {
 });
 
 // Generate a zip file.
-gulp.task('zip', gulpsync.sync([['profile:build', 'clean-dist'], 'copy-app', 'remove-zips']), function () {
+gulp.task('zip', gulpsync.sync([['profile:build', 'clean-dist'], 'profile', 'copy-app', 'remove-zips']), function () {
   return gulp.src([
     'dist/build/www/**',
     'dist/build/resources/**',
@@ -269,7 +269,7 @@ gulp.task('profile:platform-android', function (done) {
 gulp.task('profile:platform-ios', function (done) {
   utils.log('*** Adding iOS platform ***');
 
-  if (fs.existsSync('./platforms/android')) {
+  if (fs.existsSync('./platforms/ios')) {
     done();
   } else {
     return gulp.src('*.json', { read: false })

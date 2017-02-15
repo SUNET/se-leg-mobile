@@ -137,6 +137,14 @@ function taskFunction(gulp, done) {
             {
               match: 'version',
               replacement: global.profileConfig.version
+            },
+            {
+              match: 'androidVersionCode',
+              replacement: global.profileConfig.androidVersionCode
+            },
+            {
+              match: 'iosCFBundleVersion',
+              replacement: global.profileConfig.iosCFBundleVersion
             }
           ]
         }
