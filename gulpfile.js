@@ -208,7 +208,7 @@ gulp.task('inject-css-dev', ['sass'], function () {
 });
 
 gulp.task('add-main-dependencies', function () {
-  return gulp.src('./www/js/devMain.js')
+  return gulp.src('./www/js/dev.main.js')
     .pipe(plugins.insertLines({
       'after': /var paths;/,
       'lineAfter': '\tpaths = ' + config.requireDependencies

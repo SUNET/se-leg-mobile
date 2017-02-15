@@ -12,11 +12,11 @@ reports
 www/lib
 
 # Files overwritten with gulp
-www/js/core/modules/config/config.constants.js
 www/js/main.js
 www/js/app.js
 www/js/main/main.factory.js
-www/res
+www/js/core/modules/modules/config/template/config.constants.js
+www/js/core/modules/constants/constants.views.js
 config.xml
 components
 phonegap-build/phonegap-profiles/*
