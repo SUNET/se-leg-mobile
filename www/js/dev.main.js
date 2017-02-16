@@ -55,7 +55,9 @@
           });
 
           $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
-            $ionicHistory.viewHistory().currentView.stateParams.handled = false;
+            if ($ionicHistory.viewHistory().currentView) {
+              $ionicHistory.viewHistory().currentView.stateParams.handled = false;
+            }
           });
 
           $ionicPlatform.registerBackButtonAction(function (e) {

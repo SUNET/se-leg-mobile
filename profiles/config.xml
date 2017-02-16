@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="@@appId" version="@@version" xmlns="http://www.w3.org/ns/widgets"
+<widget id="@@appId"
+        version="@@version"
+        android-versionCode="@@androidVersionCode"
+        ios-CFBundleVersion="@@iosCFBundleVersion"
+        xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>@@appName</name>
     <description>
@@ -50,12 +54,6 @@
         <icon density="xhdpi" src="resources/android/icon/drawable-xhdpi-icon.png"/>
         <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png"/>
         <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png"/>
-        <splash density="ldpi" qualifier="land" src="www/res/screen/android/drawable-land-ldpi-screen.png"/>
-        <splash density="mdpi" qualifier="land" src="www/res/screen/android/drawable-land-mdpi-screen.png"/>
-        <splash density="hdpi" qualifier="land" src="www/res/screen/android/drawable-land-hdpi-screen.png"/>
-        <splash density="xhdpi" qualifier="land" src="www/res/screen/android/drawable-land-xhdpi-screen.png"/>
-        <splash density="xxhdpi" qualifier="land" src="www/res/screen/android/drawable-land-xxhdpi-screen.png"/>
-        <splash density="xxxhdpi" qualifier="land" src="www/res/screen/android/drawable-land-xxxhdpi-screen.png"/>
         <splash density="ldpi" qualifier="port" src="www/res/screen/android/drawable-port-ldpi-screen.png"/>
         <splash density="mdpi" qualifier="port" src="www/res/screen/android/drawable-port-mdpi-screen.png"/>
         <splash density="hdpi" qualifier="port" src="www/res/screen/android/drawable-port-hdpi-screen.png"/>
@@ -92,5 +90,4 @@
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640"/>
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320"/>
     </platform>
-    <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
 </widget>
