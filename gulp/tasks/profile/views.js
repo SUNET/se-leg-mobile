@@ -9,7 +9,7 @@ var fs = require('fs');
 module.exports = {
   dep: [],
   fn: function (gulp, done) {
-    utils.log('*** Filling config constants ***');
+    utils.log('*** Filling view constants ***');
 
     var components = global.profileConfig.components;
 
