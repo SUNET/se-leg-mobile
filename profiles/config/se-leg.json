@@ -9,5 +9,7 @@
   "splash": "se-leg",
   "theme": "se-leg",
   "version": "1.0.0",
+  "androidVersionCode": "1",
+  "iosCFBundleVersion": "0.0.1",
   "workflow": "se-leg"
 }

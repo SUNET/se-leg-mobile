@@ -18,6 +18,8 @@ This file looks like:
    "splash": "default",
    "theme": "se-leg",
    "version": "1.0.0",
+   "androidVersionCode": "1",
+   "iosCFBundleVersion": "0.0.1",
    "workflow": "default"
  }
  ```
@@ -34,6 +36,8 @@ This file looks like:
  * **splash:** here you define the splash image you want your app to display. Again you can use the _default_ splash image or you can add your own _splash.png_ file in your folder inside the _profiles/resources_ folder.
  * **theme:** here you can define the stylesheet your app. You can use the _default_ or create your own _variables.scss_ file and place it under your folder in _profiles/themes_. [More on theming](THEMING.md)
  * **version:** the current version of your app.
+ * **androidVersionCode:** here you define the android version for Play Store.
+ * **iosCFBundleVersion:** here you define the android version for App Store.
  * **workflow:** here you define the workflow you want your app to use. To define your own workflow just place a _workflow_ file with the function that defines your workflow in your folder under _profiles/workflow_ folder. [More on defining workflows](WORKFLOWS.md)
 
  Once you have your config file ready you can run the profile:build gulp task to apply your profile to the app. This app will run the following subtasks:
@@ -42,8 +46,10 @@ This file looks like:
  * **profile:config-xml** this task is responsible of creating a valid config.xml file that includes the plugins that the selected components need and the name, id and version of the app.
  * **profile:constants** this task is responsible of copying your constants files into the corresponding app folder.
  * **profile:images** this task is responsible of copying your image files into the corresponding app folder.
+ * **profies:langs** this task is responsible of inserting the available languages according to the lang json files.
  * **profile:resources** this task is responsible of copying the icon and splash image files you have defined into the corresponding app folder.
  * **profile:sass** this task is responsible of adding the corresponding import line of each components stylesheet into the main stylesheet template and copying it to the final file.
- * **profile:variables** this task is responsible of copying the stylesheet you have defined to be used as your theme into the corresponding app folder.
  * **profile:sender** this task is responsible of inserting the function you have defined to process your data into the _sender.custom.process.data.factory.js_ file where it will be used.
+ * **profile:variables** this task is responsible of copying the stylesheet you have defined to be used as your theme into the corresponding app folder.
+ * **profile:views** this task is responsible of inserting the views available in the app according to the defined components.
  * **profile:workflow** this task is responsible of inserting the function you have defined as your workflow into the _data.factory.js_ file where it will be used.

@@ -1,7 +1,7 @@
 var plugins = require('gulp-load-plugins')({lazy: true});
 var utils = require(global.GULP_DIR + '/utils');
 var config = require(global.GULP_DIR + '/gulp.config');
-var fs = require('fs');
+var path = require('path');
 
 /**
  * Copy the content workflow file of the selected profile into the main.factory file in the project folder.
@@ -11,15 +11,19 @@ module.exports = {
   fn: function (gulp, done) {
     utils.log('*** Copying workflow ***');
 
-    var workflow = fs.readFileSync([config.profilesFolders.workflow, global.profileConfig.workflow, config.workflowFilename].join('/'), 'utf-8');
+    var workflow = require(path.join(config.profilesFolders.workflow, global.profileConfig.workflow, config.workflowFilename));
 
     return gulp.src(config.workflowSource)
       .pipe(plugins.replaceTask(
         {
           patterns: [
             {
+              match: /\/\* @@dependencies-placeholder \*\//g,
+              replacement: ',' + workflow.dependencies.toString()
+            },
+            {
               match: /\/\* @@workflow-placeholder \*\//g,
-              replacement: workflow
+              replacement: workflow.loadWorkflow.toString()
             }
           ]
         })

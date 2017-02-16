@@ -27,6 +27,13 @@ function getConfig() {
 
   config.imagesPath = global.BASE_DIR + '/www/img';
 
+  config.langs = {
+    jsonPath: global.BASE_DIR + '/www/assets/locale',
+    source: global.BASE_DIR + '/www/js/core/modules/constants/dev.langs.constants.js',
+    target: global.BASE_DIR + '/www/js/core/modules/constants/',
+    targetFilename: 'langs.constants.js'
+  };
+
   config.profilesFolders = {
     config: profilesFolder + 'config',
     constants: profilesFolder + 'constants',
@@ -46,7 +53,7 @@ function getConfig() {
     target: scssFolder
   };
 
-  config.senderFilename = 'sender';
+  config.senderFilename = 'sender.js';
   config.senderSource = global.BASE_DIR + '/www/js/core/modules/sender/dev.sender.custom.process.data.factory.js';
   config.senderTargetFilename = 'sender.custom.process.data.factory.js';
   config.senderTargetFolder = global.BASE_DIR + '/www/js/core/modules/sender';
@@ -54,7 +61,13 @@ function getConfig() {
   config.variablesFilename = 'variables.scss';
   config.variablesFolder = scssFolder + '/partials';
 
-  config.workflowFilename = 'workflow';
+  config.views = {
+    source: global.BASE_DIR + '/www/js/core/modules/constants/dev.views.constants.js',
+    target: global.BASE_DIR + '/www/js/core/modules/constants/',
+    targetFilename: 'views.constants.js'
+  };
+
+  config.workflowFilename = 'workflow.js';
   config.workflowSource = global.BASE_DIR + '/www/js/main/dev.main.factory.js';
   config.workflowTargetFilename = 'main.factory.js';
   config.workflowTargetFolder = global.BASE_DIR + '/www/js/main';

@@ -1,5 +1,5 @@
 /**
- * Langs constants.
+ * Application view constants.
  *
  * @param {type} angular
  * @author Maria Villalba <mavillalba@emergya.com>
@@ -14,9 +14,8 @@
      */
     angular
       .module(moduleName)
-      .constant('SE_LEG_LANGS', {
-        en: 'English',
-        sv: 'svenska'
+      .constant('SE_LEG_VIEWS', {
+        /* @@views-placeholder */
       });
   });
 })();

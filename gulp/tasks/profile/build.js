@@ -24,11 +24,13 @@ module.exports = {
           'profile:components',
           'profile:constants',
           'profile:images',
+          'profile:langs',
           'profile:resources',
           'profile:sass',
           'profile:sender',
           'profile:variables',
-          'profile:workflow'
+          'profile:workflow',
+          'profile:views'
         ],
         'profile:config-xml',
         'profile:platform-android',

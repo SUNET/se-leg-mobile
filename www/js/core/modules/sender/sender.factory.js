@@ -13,7 +13,7 @@
       .factory('SenderFactory', SenderFactory);
 
     /* @ngInject */
-    function SenderFactory(SenderService, UtilsFactory, DataFactory, SenderCustomProcessDataFactory) {
+    function SenderFactory(SenderService, SenderCustomProcessDataFactory) {
       var factory = this;
 
       var internalFactory = SenderCustomProcessDataFactory;
@@ -26,44 +26,26 @@
        * @returns {$q@call;defer.promise}
        */
       function send() {
-        return SenderService.sendByPost(getProcessedData());
+        return SenderService.sendByPost(internalFactory.getProcessedData());
       }
 
       /**
        * It configures the newFactory as the internal factory to be used.
        * The factory should have a method called getProcessedData and that method should retrieve the data to be sent.
        * @param newFactory to be used.
-       * @returns true if the factory was successfully configured.
+       * @returns boolean true if the factory was successfully configured false otherwise.
        */
       function configureFactory(newFactory) {
         var configured = false;
-        if (newFactory !== undefined && typeof newFactory.getProcessedData === 'function') {
+
+        if (newFactory !== undefined
+          && typeof newFactory.getProcessedData === 'function') {
+
           internalFactory = newFactory;
+          configured = true;
         }
+
         return configured;
-      }
-
-      /////////////////////
-      // Private methods //
-      /////////////////////
-
-      /**
-       * Internal function that prepares the data to be sent (by default) or using a defined internalFactory.
-       * @returns the processed data.
-       */
-      function getProcessedData() {
-        var data = undefined;
-        if (internalFactory === undefined) {
-          // by default way
-          data = UtilsFactory.jsonToQueryString(DataFactory.getAll());
-        } else {
-          data = internalFactory.getProcessedData();
-        }
-        // protecting by default action
-        if (data === undefined) {
-          data = UtilsFactory.jsonToQueryString(DataFactory.getAll());
-        }
-        return data;
       }
 
       return factory;

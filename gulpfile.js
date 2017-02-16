@@ -111,7 +111,7 @@ gulp.task('git-check', function (done) {
 });
 
 // Generate a zip file.
-gulp.task('zip', gulpsync.sync([['profile:build', 'clean-dist'], 'copy-app', 'remove-zips']), function () {
+gulp.task('zip', gulpsync.sync([['profile:build', 'clean-dist'], 'profile', 'copy-app', 'remove-zips']), function () {
   return gulp.src([
     'dist/build/www/**',
     'dist/build/resources/**',
@@ -208,7 +208,7 @@ gulp.task('inject-css-dev', ['sass'], function () {
 });
 
 gulp.task('add-main-dependencies', function () {
-  return gulp.src('./www/js/devMain.js')
+  return gulp.src('./www/js/dev.main.js')
     .pipe(plugins.insertLines({
       'after': /var paths;/,
       'lineAfter': '\tpaths = ' + config.requireDependencies
@@ -222,20 +222,18 @@ gulp.task('add-main-dependencies', function () {
 //@See config core module.
 //@example gulp profile --env production
 gulp.task('profile', function () {
+  utils.log('*** Adding environment ***');
+
   // Get the environment from the command line
   var env = (plugins.util.env.env === undefined) ? 'dev' : plugins.util.env.env;
-
-  if (env === 'demo') {
-    env = 'demo';
-  }
 
   // Read the settings from the right file
   var filename = env + '.json';
 
-  var settings = JSON.parse(fs.readFileSync('./www/js/core/modules/config/json/' + filename, 'utf8'));
+  var settings = require('./www/js/core/modules/config/json/' + filename);
 
   // Replace each placeholder with the correct value for the variable.
-  gulp.src('./www/js/core/modules/config/template/config.constants.js')
+  gulp.src('./www/js/core/modules/config/template/dev.config.constants.js')
     .pipe(replace({
       patterns: [
         {
@@ -252,6 +250,7 @@ gulp.task('profile', function () {
         }
       ]
     }))
+    .pipe(plugins.rename('config.constants.js'))
     .pipe(gulp.dest('./www/js/core/modules/constants'));
 });
 
