@@ -27,6 +27,13 @@ function getConfig() {
 
   config.imagesPath = global.BASE_DIR + '/www/img';
 
+  config.langs = {
+    jsonPath: global.BASE_DIR + '/assets/locale',
+    source: global.BASE_DIR + '/www/js/core/modules/constants/dev.langs.constants.js',
+    target: global.BASE_DIR + '/www/js/core/modules/constants/',
+    targetFilename: 'langs.constants.js'
+  };
+
   config.profilesFolders = {
     config: profilesFolder + 'config',
     constants: profilesFolder + 'constants',

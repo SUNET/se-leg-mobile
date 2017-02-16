@@ -16,8 +16,7 @@
     angular
       .module(moduleName)
       .constant('SE_LEG_LANGS', {
-        en: 'English',
-        sv: 'svenska'
+        /* @@langs-placeholder */
       });
   });
 })();
