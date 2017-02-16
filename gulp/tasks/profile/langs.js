@@ -41,7 +41,7 @@ function getLanguageCodesFromJson() {
     .map(function (file) {
       var langCode = langCodeRegEx.exec(file)[1];
 
-      return langCode + ': \'' + isoLangs[langCode].name + '\'';
+      return langCode + ': \'' + isoLangs[langCode].nativeName + '\'';
     });
 
   return languageCodes;

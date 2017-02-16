@@ -24,6 +24,7 @@ module.exports = {
           'profile:components',
           'profile:constants',
           'profile:images',
+          'profile:langs',
           'profile:resources',
           'profile:sass',
           'profile:sender',

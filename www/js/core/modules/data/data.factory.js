@@ -22,8 +22,6 @@
 
       var data = {};
 
-      factory.hasQRInformation = hasQRInformation;
-
       /**
        * It checks if requested component data is stored.
        * @param component the data to be checked.
