@@ -4,8 +4,8 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-      "paradite",
-      "pasdite"
+      "e paradites",
+      "e pasdites"
     ],
     "DAY": [
       "e diel",
@@ -16,6 +16,15 @@ $provide.value("$locale", {
       "e premte",
       "e shtun\u00eb"
     ],
+    "ERANAMES": [
+      "para er\u00ebs s\u00eb re",
+      "er\u00ebs s\u00eb re"
+    ],
+    "ERAS": [
+      "p.e.r.",
+      "e.r."
+    ],
+    "FIRSTDAYOFWEEK": 0,
     "MONTH": [
       "janar",
       "shkurt",
@@ -53,14 +62,32 @@ $provide.value("$locale", {
       "N\u00ebn",
       "Dhj"
     ],
+    "STANDALONEMONTH": [
+      "Janar",
+      "Shkurt",
+      "Mars",
+      "Prill",
+      "Maj",
+      "Qershor",
+      "Korrik",
+      "Gusht",
+      "Shtator",
+      "Tetor",
+      "N\u00ebntor",
+      "Dhjetor"
+    ],
+    "WEEKENDRANGE": [
+      5,
+      6
+    ],
     "fullDate": "EEEE, d MMMM y",
     "longDate": "d MMMM y",
-    "medium": "d MMM y HH:mm:ss",
+    "medium": "d MMM y h:mm:ss a",
     "mediumDate": "d MMM y",
-    "mediumTime": "HH:mm:ss",
-    "short": "d.M.yy HH:mm",
+    "mediumTime": "h:mm:ss a",
+    "short": "d.M.yy h:mm a",
     "shortDate": "d.M.yy",
-    "shortTime": "HH:mm"
+    "shortTime": "h:mm a"
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "Lek",
@@ -92,6 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "sq",
+  "localeID": "sq",
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

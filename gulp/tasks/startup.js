@@ -14,10 +14,10 @@ module.exports = {
     plugins.sequence.use(gulp)(
         [
           'profile:build',
-          'copy-fonts',
-          'add-main-dependencies'
+          'copy:fonts',
+          'addMainDependencies'
         ],
-        'copy-android-splash',
+      'copy:androidSplash',
         done
     );
   }

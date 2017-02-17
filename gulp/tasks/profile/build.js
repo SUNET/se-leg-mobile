@@ -33,9 +33,9 @@ module.exports = {
           'profile:views'
         ],
         'profile:config-xml',
-        'profile:platform-android',
-        'profile:platform-ios',
-        'profile:ionic-resources',
+      'profile:platformAndroid',
+      'profile:platformIOS',
+      'profile:ionicResources',
         'profile:config-xml',
         done
     );

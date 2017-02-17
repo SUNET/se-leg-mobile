@@ -30,7 +30,7 @@
         ])
         .config(Config);
 
-      /* @ ngInject */
+      /* @ngInject */
       function Config($ionicConfigProvider, PermissionsProvider, SELEG_PERMISSIONS) {
         // Configure the max pages to save in cache
         $ionicConfigProvider.views.maxCache(1);

@@ -9,9 +9,10 @@
 (function () {
   define(['./scanner.module', 'text!./scanner.html'], function (module, scannerTemplate) {
     'use strict';
-    angular.module(module).config(config);
+    angular
+      .module(module)
+      .config(config);
 
-    /* As a angular module config, here it's not possible inject constants services, only providers.*/
     /* @ngInject */
     function config($stateProvider, SE_LEG_VIEWS) {
 

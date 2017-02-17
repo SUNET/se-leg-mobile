@@ -7,7 +7,7 @@
 
 (function () {
   define([
-    // Here files modules internal files referencies.
+    // Here files modules internal files references.
     './main.routes',
     './main.factory',
     './main.controller'

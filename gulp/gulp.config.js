@@ -1,16 +1,36 @@
+var path = require('path');
+
 module.exports = getConfig();
 
 function getConfig() {
 
+
+  var distFolder = global.BASE_DIR + '/dist';
+  var buildFolder = path.join(distFolder, 'build');
+  var jsFolder = global.BASE_DIR + '/www/js';
   var mainScssFile = 'se-leg.scss';
   var profilesFolder = global.BASE_DIR + '/profiles/';
+  var resourcesPath = global.BASE_DIR + '/resources';
   var scssFolder = global.BASE_DIR + '/scss';
 
   var config = {};
 
   config.appJs = {
     source: global.BASE_DIR + '/www/js/dev.app.js',
-    target: global.BASE_DIR + '/www/js'
+    target: jsFolder
+  };
+
+  config.buildFolder = buildFolder;
+
+  config.commons = {
+    source: [
+      path.join(global.BASE_DIR, '/www/**/*'),
+      '!' + path.join(jsFolder, '**/*.js'),
+      '!' + path.join(jsFolder, '**/*.gz'),
+      '!' + path.join(jsFolder, 'libs/**/*'),
+      '!' + path.join(global.BASE_DIR, '/www/lib/**/*')
+    ],
+    target: path.join(buildFolder, 'www')
   };
 
   config.componentsFolder = {
@@ -19,19 +39,60 @@ function getConfig() {
   };
 
   config.configXml = {
-    source: profilesFolder + 'config.xml',
+    result: path.join(global.BASE_DIR, 'config.xml'),
+    source: path.join(profilesFolder, 'config.xml'),
     target: global.BASE_DIR
   };
 
-  config.constantsPath = global.BASE_DIR + '/www/js/core/modules/config/json';
+  config.constants = {
+    jsonFolder: path.join(jsFolder + 'core/modules/config/json'),
+    source: path.join(jsFolder, 'core/modules/config/template/dev.config.constants.js'),
+    target: path.join(jsFolder, 'core/modules/constants'),
+    targetFileName: 'config.constants.js'
+  };
+
+  config.distFolder = distFolder;
+
+  config.environments = {
+    dev: 'dev',
+    demo: 'demo',
+    pro: 'pro'
+  };
+
+  config.fonts = {
+    source: global.BASE_DIR + '/www/lib/ionicons/fonts/*',
+    target: global.BASE_DIR + '/www/fonts/'
+  };
 
   config.imagesPath = global.BASE_DIR + '/www/img';
+
+  config.indexHtml = path.join(global.BASE_DIR, 'www/index.html');
+
+  config.js = {
+    source: [
+      path.join(jsFolder, '**/*.js'),
+      '!' + path.join(jsFolder + 'lib/**/*.js'),
+      '!' + path.join(jsFolder + '**/dev.*.js')
+    ],
+    target: path.join(buildFolder, 'www/js')
+  };
 
   config.langs = {
     jsonPath: global.BASE_DIR + '/www/assets/locale',
     source: global.BASE_DIR + '/www/js/core/modules/constants/dev.langs.constants.js',
     target: global.BASE_DIR + '/www/js/core/modules/constants/',
     targetFilename: 'langs.constants.js'
+  };
+
+  config.locale = {
+    source: path.join(global.BASE_DIR, 'node_modules/angular-i18n/*.js'),
+    target: path.join(global.BASE_DIR, 'www/assets/locale/i18n')
+  };
+
+  config.main = {
+    source: path.join(jsFolder, 'dev.main.js'),
+    target: jsFolder,
+    targetFilename: 'main.js'
   };
 
   config.profilesFolders = {
@@ -45,7 +106,18 @@ function getConfig() {
     workflow: profilesFolder + 'workflow'
   };
 
-  config.resourcesPath = global.BASE_DIR + '/resources';
+  config.requireDependencies = JSON.stringify(getDependencies());
+
+  config.resources = {
+    android: {
+      source: path.join(resourcesPath, 'android', 'splash', '**/*'),
+      target: path.join(global.BASE_DIR, 'www/res/screen/android')
+    },
+    source: [path.join(resourcesPath, '**/*'), '!' + path.join(resourcesPath, 'android/splash/**/*')],
+    target: path.join(buildFolder, 'resources')
+  };
+
+  config.resourcesPath = resourcesPath;
 
   config.scss = {
     mainFile: mainScssFile,
@@ -57,6 +129,18 @@ function getConfig() {
   config.senderSource = global.BASE_DIR + '/www/js/core/modules/sender/dev.sender.custom.process.data.factory.js';
   config.senderTargetFilename = 'sender.custom.process.data.factory.js';
   config.senderTargetFolder = global.BASE_DIR + '/www/js/core/modules/sender';
+
+  config.stringDependencies = getStringDependencies();
+
+  config.styles = {
+    autoprefixerOptions: { browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4'] },
+    glob: path.join(global.BASE_DIR, 'www/css/*.css'),
+    source: path.join(scssFolder, mainScssFile),
+    target: path.join(global.BASE_DIR, '/www/css'),
+    targetFilename: 'styles.css',
+    targetMinFilename: 'styles.min.css',
+    watchPaths: [path.join(scssFolder, '**/*.scss'), path.join(jsFolder, '**/*.scss')]
+  };
 
   config.variablesFilename = 'variables.scss';
   config.variablesFolder = scssFolder + '/partials';
@@ -72,6 +156,10 @@ function getConfig() {
   config.workflowTargetFilename = 'main.factory.js';
   config.workflowTargetFolder = global.BASE_DIR + '/www/js/main';
 
+  config.wwwFolder = path.join(global.BASE_DIR, 'www');
+
+  config.zipFiles = path.join(global.BASE_DIR, '/**/lib/**/*.gz');
+
   config.htmlmin = {
     options: {
       collapseWhitespace: true,
@@ -81,4 +169,45 @@ function getConfig() {
   };
 
   return config;
+}
+
+function getDependencies() {
+  return {
+    angular: '../lib/ionic/js/ionic.bundle.min',
+    text: '../lib/requirejs-text/text',
+    ngCordova: '../lib/ngCordova/dist/ng-cordova',
+    ngTranslate: '../lib/angular-translate/angular-translate',
+    ngTranslateLoaderStaticFiles: '../lib/angular-translate-loader-static-files/angular-translate-loader-static-files',
+    ngDynamicLocale: '../lib/angular-dynamic-locale/tmhDynamicLocale.min',
+    ngTranslateHandlerLog: '../lib/angular-translate-handler-log/angular-translate-handler-log',
+    ngTranslateStorageLocal: '../lib/angular-translate-storage-local/angular-translate-storage-local.min',
+    ngTranslateStorageCookie: '../lib/angular-translate-storage-cookie/angular-translate-storage-cookie.min',
+    ngCookies: '../lib/angular-cookies/angular-cookies.min',
+    ngSanitize: '../lib/angular-sanitize/angular-sanitize.min'
+  };
+}
+
+function getStringDependencies() {
+
+  var dependencies = getDependencies();
+
+  var indexDependencies = {
+    RequireJS: '/lib/requirejs/require'
+  };
+
+  var keys = Object.keys(dependencies);
+
+  var mappedDependencies = keys.map(function (key) {
+    var dependency = dependencies[key];
+    dependency = dependency.replace('..', '').replace('./', '/js/');
+    return 'www' + dependency + '.js';
+  });
+
+  var indexKeys = Object.keys(indexDependencies);
+
+  var mappedIndexDependencies = indexKeys.map(function (key) {
+    return 'www' + indexDependencies[key] + '.js';
+  });
+
+  return mappedDependencies.concat(mappedIndexDependencies);
 }

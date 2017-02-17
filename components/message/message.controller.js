@@ -8,10 +8,12 @@
 (function () {
   define(['./message.module'], function (moduleName) {
     'use strict';
-    angular.module(moduleName)
+    angular
+      .module(moduleName)
       .controller('MessageController', MessageController);
+
     /* @ngInject */
-    function MessageController($state, $scope, $translate, SE_LEG_VIEWS, MainFactory) {
+    function MessageController($state, $scope, MainFactory) {
 
       var vm = this;
       vm.errorScreen = false;

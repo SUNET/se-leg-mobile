@@ -7,8 +7,10 @@
 (function () {
   define(['./main.module'], function (moduleName) {
     'use strict';
-    angular.module(moduleName)
+    angular
+      .module(moduleName)
       .controller('MainController', MainController);
+
     /* @ngInject */
     function MainController($scope, $state, MainFactory, UtilsFactory) {
 

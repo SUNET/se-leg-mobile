@@ -8,8 +8,10 @@
 (function () {
   define(['./fingerprint.module'], function (moduleName) {
     'use strict';
-    angular.module(moduleName)
+    angular
+      .module(moduleName)
       .controller('FingerprintController', FingerprintController);
+
     /* @ngInject */
     function FingerprintController($scope, $state, SE_LEG_VIEWS, SenderService, FingerprintFactory,
       MainFactory, UtilsFactory) {

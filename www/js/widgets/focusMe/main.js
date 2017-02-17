@@ -5,7 +5,7 @@
  */
 (function () {
   define([
-    // Here files modules internal files referencies.
+    // Here files modules internal files references.
     './focus-me.directive'
       // ...
   ], function () {

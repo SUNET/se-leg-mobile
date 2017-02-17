@@ -8,7 +8,7 @@
 
 (function () {
   define([
-    // Here files modules internal files referencies.
+    // Here files modules internal files references.
     './fingerprint.routes',
     './fingerprint.factory',
     './fingerprint.controller',

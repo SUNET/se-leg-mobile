@@ -13,6 +13,7 @@
     angular
       .module(moduleName)
       .factory('FingerprintFactory', FingerprintFactory);
+
     /* @ngInject */
     function FingerprintFactory($q, $state, SE_LEG_VIEWS, FingerprintScannerStrategyFactory) {
       var factory = {};

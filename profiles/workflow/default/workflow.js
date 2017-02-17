@@ -59,7 +59,7 @@ function loadWorkflow() {
     },
     {
       // second view
-      state: SE_LEG_VIEWS.ID,
+      state: SE_LEG_VIEWS.IDENTIFICATION,
       preconditions: function () {
         var deferred = $q.defer();
         DataFactory.hasQRInformation()
