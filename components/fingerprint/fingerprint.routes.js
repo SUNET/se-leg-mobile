@@ -10,8 +10,10 @@
   define(['./fingerprint.module', 'text!./fingerprint.html'],
     function (module, fingerprintTemplate) {
       'use strict';
-      angular.module(module).config(config);
-      /* As a angular module config, here it's not possible inject constants services, only providers.*/
+      angular
+        .module(module)
+        .config(config);
+
       /* @ngInject */
       function config($stateProvider, SE_LEG_VIEWS) {
 

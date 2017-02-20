@@ -8,8 +8,10 @@
 (function () {
   define(['./scanner.module', 'text!./scanner-modal.html'], function (moduleName, modalTemplate) {
     'use strict';
-    angular.module(moduleName)
+    angular
+      .module(moduleName)
       .controller('ScannerController', ScannerController);
+
     /* @ngInject */
     function ScannerController($scope, $state, SE_LEG_VIEWS, ScannerFactory, UtilsFactory, MainFactory, DataFactory) {
 

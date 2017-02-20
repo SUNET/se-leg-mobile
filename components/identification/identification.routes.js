@@ -9,14 +9,15 @@
 (function () {
   define(['./identification.module', 'text!./identification.html'], function (module, identificationTemplate) {
     'use strict';
-    angular.module(module).config(config);
+    angular
+      .module(module)
+      .config(config);
 
-    /* As a angular module config, here it's not possible inject constants services, only providers.*/
     /* @ngInject */
     function config($stateProvider, SE_LEG_VIEWS) {
 
-      $stateProvider.state(SE_LEG_VIEWS.ID, {
-        url: '/' + SE_LEG_VIEWS.ID,
+      $stateProvider.state(SE_LEG_VIEWS.IDENTIFICATION, {
+        url: '/' + SE_LEG_VIEWS.IDENTIFICATION,
         // needed to by-pass data to the controller through the $stateProvider
         params: {
           data: {},

@@ -8,8 +8,10 @@
 (function () {
   define(['./identification.module'], function (moduleName) {
     'use strict';
-    angular.module(moduleName)
+    angular
+      .module(moduleName)
       .controller('IdentificationController', IdentificationController);
+
     /* @ngInject */
     function IdentificationController($ionicPopup, $translate, $scope, $state, SE_LEG_VIEWS, UtilsFactory, MainFactory,
       DataFactory) {

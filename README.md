@@ -18,7 +18,7 @@ If you want to contribute, you need to install:
   - Bower (>= 1.7.1)
   - Gulp (>= 3.9.0)
   - Cordova (>=6.2.0)
-  - Ionic (>= 1.7.12)
+  - Ionic (>= 2.1.0)
   - Andriod SDK (>= 22): For this dependency, you will need Java >= 7 (Java 8 is the best option).
   
 ### NodeJS Installation

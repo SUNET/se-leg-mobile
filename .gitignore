@@ -15,8 +15,9 @@ www/lib
 www/js/main.js
 www/js/app.js
 www/js/main/main.factory.js
-www/js/core/modules/config/template/config.constants.js
-www/js/core/modules/constants/constants.views.js
+www/js/core/modules/constants/views.constants.js
+www/js/core/modules/constants/langs.constants.js
+www/js/core/modules/constants/config.constants.js
 config.xml
 components
 phonegap-build/phonegap-profiles/*
@@ -24,5 +25,6 @@ scss/partials/variables.scss
 scss/se-leg.scss
 www/js/core/modules/sender/sender.custom.process.data.factory.js
 resources
-!profiles/resources
-!profiles/plugins
+!profiles/**/*
+www/assets/locale/i18n
+www/res

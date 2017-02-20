@@ -8,7 +8,7 @@
 
 (function () {
   define([
-    // Here files modules internal files referencies.
+    // Here files modules internal files references.
     './message.routes',
     './message.factory',
     './message.controller'
