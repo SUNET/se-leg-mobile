@@ -11,13 +11,14 @@ module.exports = {
     utils.log('*** Preparing files to be zipped ***');
 
     plugins.sequence.use(gulp)(
+      'environment',
       [
         'profile:build',
         'copy:locale',
         'copy:fonts',
+        'profile:constants',
         'clean:dist'
       ],
-      'environment',
       'copy:app',
       'clean:zips',
       done

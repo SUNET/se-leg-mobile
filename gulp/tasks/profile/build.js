@@ -20,24 +20,23 @@ module.exports = {
     fsExtra.copySync(config.configXml.source, config.configXml.target + '/config.xml');
 
     plugins.sequence.use(gulp)(
-        [
-          'profile:components',
-          'profile:constants',
-          'profile:images',
-          'profile:langs',
-          'profile:resources',
-          'profile:sass',
-          'profile:sender',
-          'profile:variables',
-          'profile:workflow',
-          'profile:views'
-        ],
-        'profile:config-xml',
-      'profile:platformAndroid',
-      'profile:platformIOS',
-      'profile:ionicResources',
-        'profile:config-xml',
-        done
+      [
+        'profile:components',
+        'profile:images',
+        'profile:langs',
+        'profile:resources',
+        'profile:sass',
+        'profile:sender',
+        'profile:variables',
+        'profile:workflow',
+        'profile:views'
+      ],
+      'profile:config-xml',
+      // 'profile:platformAndroid',
+      // 'profile:platformIOS',
+      // 'profile:ionicResources',
+      'profile:config-xml',
+      done
     );
   }
 };

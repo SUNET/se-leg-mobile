@@ -18,6 +18,7 @@ www/js/main/main.factory.js
 www/js/core/modules/constants/views.constants.js
 www/js/core/modules/constants/langs.constants.js
 www/js/core/modules/constants/config.constants.js
+www/js/core/modules/config/json
 config.xml
 components
 phonegap-build/phonegap-profiles/*
