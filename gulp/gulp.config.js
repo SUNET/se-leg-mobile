@@ -5,18 +5,18 @@ module.exports = getConfig();
 function getConfig() {
 
 
-  var distFolder = global.BASE_DIR + '/dist';
+  var distFolder = path.join(global.BASE_DIR, '/dist');
   var buildFolder = path.join(distFolder, 'build');
-  var jsFolder = global.BASE_DIR + '/www/js';
+  var jsFolder = path.join(global.BASE_DIR, '/www/js');
   var mainScssFile = 'se-leg.scss';
-  var profilesFolder = global.BASE_DIR + '/profiles/';
-  var resourcesPath = global.BASE_DIR + '/resources';
-  var scssFolder = global.BASE_DIR + '/scss';
+  var profilesFolder = path.join(global.BASE_DIR, '/profiles/');
+  var resourcesPath = path.join(global.BASE_DIR, '/resources');
+  var scssFolder = path.join(global.BASE_DIR, '/scss');
 
   var config = {};
 
   config.appJs = {
-    source: global.BASE_DIR + '/www/js/dev.app.js',
+    source: path.join(global.BASE_DIR, '/www/js/dev.app.js'),
     target: jsFolder
   };
 
@@ -25,29 +25,29 @@ function getConfig() {
   config.commons = {
     source: [
       path.join(global.BASE_DIR, '/www/**/*'),
-      '!' + path.join(jsFolder, '**/*.js'),
-      '!' + path.join(jsFolder, '**/*.gz'),
-      '!' + path.join(jsFolder, 'libs/**/*'),
+      '!' + path.join(jsFolder, '/**/*.js'),
+      '!' + path.join(jsFolder, '/**/*.gz'),
+      '!' + path.join(jsFolder, '/libs/**/*'),
       '!' + path.join(global.BASE_DIR, '/www/lib/**/*')
     ],
-    target: path.join(buildFolder, 'www')
+    target: path.join(buildFolder, '/www')
   };
 
   config.componentsFolder = {
-    source: global.BASE_DIR + '/components',
-    target: global.BASE_DIR + '/www/js/components'
+    source: path.join(global.BASE_DIR, '/components'),
+    target: path.join(global.BASE_DIR, '/www/js/components')
   };
 
   config.configXml = {
-    result: path.join(global.BASE_DIR, 'config.xml'),
-    source: path.join(profilesFolder, 'config.xml'),
+    result: path.join(global.BASE_DIR, '/config.xml'),
+    source: path.join(profilesFolder, '/config.xml'),
     target: global.BASE_DIR
   };
 
   config.constants = {
-    jsonFolder: path.join(jsFolder + 'core/modules/config/json'),
-    source: path.join(jsFolder, 'core/modules/config/template/dev.config.constants.js'),
-    target: path.join(jsFolder, 'core/modules/constants'),
+    jsonFolder: path.join(jsFolder + '/core/modules/config/json'),
+    source: path.join(jsFolder, '/core/modules/config/template/dev.config.constants.js'),
+    target: path.join(jsFolder, '/core/modules/constants'),
     targetFileName: 'config.constants.js'
   };
 
@@ -60,13 +60,13 @@ function getConfig() {
   };
 
   config.fonts = {
-    source: global.BASE_DIR + '/www/lib/ionicons/fonts/*',
-    target: global.BASE_DIR + '/www/fonts/'
+    source: path.join(global.BASE_DIR, '/www/lib/ionicons/fonts/*'),
+    target: path.join(global.BASE_DIR, '/www/fonts/')
   };
 
-  config.imagesPath = global.BASE_DIR + '/www/img';
+  config.imagesPath = path.join(global.BASE_DIR, '/www/img');
 
-  config.indexHtml = path.join(global.BASE_DIR, 'www/index.html');
+  config.indexHtml = path.join(global.BASE_DIR, '/www/index.html');
 
   config.js = {
     source: [
@@ -78,32 +78,32 @@ function getConfig() {
   };
 
   config.langs = {
-    jsonPath: global.BASE_DIR + '/www/assets/locale',
-    source: global.BASE_DIR + '/www/js/core/modules/constants/dev.langs.constants.js',
-    target: global.BASE_DIR + '/www/js/core/modules/constants/',
+    jsonPath: path.join(global.BASE_DIR, '/www/assets/locale'),
+    source: path.join(global.BASE_DIR, '/www/js/core/modules/constants/dev.langs.constants.js'),
+    target: path.join(global.BASE_DIR, '/www/js/core/modules/constants/'),
     targetFilename: 'langs.constants.js'
   };
 
   config.locale = {
-    source: path.join(global.BASE_DIR, 'node_modules/angular-i18n/*.js'),
-    target: path.join(global.BASE_DIR, 'www/assets/locale/i18n')
+    source: path.join(global.BASE_DIR, '/node_modules/angular-i18n/*.js'),
+    target: path.join(global.BASE_DIR, '/www/assets/locale/i18n')
   };
 
   config.main = {
-    source: path.join(jsFolder, 'dev.main.js'),
+    source: path.join(jsFolder, '/dev.main.js'),
     target: jsFolder,
     targetFilename: 'main.js'
   };
 
   config.profilesFolders = {
-    config: profilesFolder + 'config',
-    constants: profilesFolder + 'constants',
-    images: profilesFolder + 'img',
-    plugins: profilesFolder + 'plugins',
-    resources: profilesFolder + 'resources',
-    sender: profilesFolder + 'sender',
-    theme: profilesFolder + 'themes',
-    workflow: profilesFolder + 'workflow'
+    config: path.join(profilesFolder, '/config'),
+    constants: path.join(profilesFolder, '/constants'),
+    images: path.join(profilesFolder, '/img'),
+    plugins: path.join(profilesFolder, '/plugins'),
+    resources: path.join(profilesFolder, '/resources'),
+    sender: path.join(profilesFolder, '/sender'),
+    theme: path.join(profilesFolder, '/themes'),
+    workflow: path.join(profilesFolder, '/workflow')
   };
 
   config.requireDependencies = JSON.stringify(getDependencies());
@@ -111,10 +111,10 @@ function getConfig() {
   config.resources = {
     android: {
       source: path.join(resourcesPath, 'android', 'splash', '**/*'),
-      target: path.join(global.BASE_DIR, 'www/res/screen/android')
+      target: path.join(global.BASE_DIR, '/www/res/screen/android')
     },
-    source: [path.join(resourcesPath, '**/*'), '!' + path.join(resourcesPath, 'android/splash/**/*')],
-    target: path.join(buildFolder, 'resources')
+    source: [path.join(resourcesPath, '/**/*'), '!' + path.join(resourcesPath, '/android/splash/**/*')],
+    target: path.join(buildFolder, '/resources')
   };
 
   config.resourcesPath = resourcesPath;
@@ -126,47 +126,39 @@ function getConfig() {
   };
 
   config.senderFilename = 'sender.js';
-  config.senderSource = global.BASE_DIR + '/www/js/core/modules/sender/dev.sender.custom.process.data.factory.js';
+  config.senderSource = path.join(global.BASE_DIR, '/www/js/core/modules/sender/dev.sender.custom.process.data.factory.js');
   config.senderTargetFilename = 'sender.custom.process.data.factory.js';
-  config.senderTargetFolder = global.BASE_DIR + '/www/js/core/modules/sender';
+  config.senderTargetFolder = path.join(global.BASE_DIR, '/www/js/core/modules/sender');
 
   config.stringDependencies = getStringDependencies();
 
   config.styles = {
     autoprefixerOptions: { browsers: ['last 2 version', 'safari 5', 'ios 6', 'android 4'] },
-    glob: path.join(global.BASE_DIR, 'www/css/*.css'),
+    glob: path.join(global.BASE_DIR, '/www/css/*.css'),
     source: path.join(scssFolder, mainScssFile),
     target: path.join(global.BASE_DIR, '/www/css'),
     targetFilename: 'styles.css',
     targetMinFilename: 'styles.min.css',
-    watchPaths: [path.join(scssFolder, '**/*.scss'), path.join(jsFolder, '**/*.scss')]
+    watchPaths: [path.join(scssFolder, '/**/*.scss'), path.join(jsFolder, '/**/*.scss')]
   };
 
   config.variablesFilename = 'variables.scss';
   config.variablesFolder = scssFolder + '/partials';
 
   config.views = {
-    source: global.BASE_DIR + '/www/js/core/modules/constants/dev.views.constants.js',
-    target: global.BASE_DIR + '/www/js/core/modules/constants/',
+    source: path.join(global.BASE_DIR, '/www/js/core/modules/constants/dev.views.constants.js'),
+    target: path.join(global.BASE_DIR, '/www/js/core/modules/constants/'),
     targetFilename: 'views.constants.js'
   };
 
   config.workflowFilename = 'workflow.js';
-  config.workflowSource = global.BASE_DIR + '/www/js/main/dev.main.factory.js';
+  config.workflowSource = path.join(global.BASE_DIR, '/www/js/main/dev.main.factory.js');
   config.workflowTargetFilename = 'main.factory.js';
-  config.workflowTargetFolder = global.BASE_DIR + '/www/js/main';
+  config.workflowTargetFolder = path.join(global.BASE_DIR, '/www/js/main');
 
-  config.wwwFolder = path.join(global.BASE_DIR, 'www');
+  config.wwwFolder = path.join(global.BASE_DIR, '/www');
 
   config.zipFiles = path.join(global.BASE_DIR, '/**/lib/**/*.gz');
-
-  config.htmlmin = {
-    options: {
-      collapseWhitespace: true,
-      conservativeCollapse: true,
-      removeComments: true
-    }
-  };
 
   return config;
 }
