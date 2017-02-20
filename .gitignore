@@ -15,9 +15,9 @@ www/lib
 www/js/main.js
 www/js/app.js
 www/js/main/main.factory.js
-www/js/core/modules/config/template/config.constants.js
 www/js/core/modules/constants/views.constants.js
 www/js/core/modules/constants/langs.constants.js
+www/js/core/modules/constants/config.constants.js
 config.xml
 components
 phonegap-build/phonegap-profiles/*
