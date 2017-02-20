@@ -25,7 +25,6 @@ scss/partials/variables.scss
 scss/se-leg.scss
 www/js/core/modules/sender/sender.custom.process.data.factory.js
 resources
-!profiles/resources
-!profiles/plugins
+!profiles/**/*
 www/assets/locale/i18n
 www/res
