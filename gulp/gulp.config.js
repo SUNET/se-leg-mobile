@@ -48,7 +48,7 @@ function getConfig() {
     jsonFolder: path.join(jsFolder + '/core/modules/config/json'),
     source: path.join(jsFolder, '/core/modules/config/template/dev.config.constants.js'),
     target: path.join(jsFolder, '/core/modules/constants'),
-    targetFileName: 'config.constants.js'
+    targetFilename: 'config.constants.js'
   };
 
   config.distFolder = distFolder;
@@ -70,9 +70,9 @@ function getConfig() {
 
   config.js = {
     source: [
-      path.join(jsFolder, '**/*.js'),
-      '!' + path.join(jsFolder + 'lib/**/*.js'),
-      '!' + path.join(jsFolder + '**/dev.*.js')
+      path.join(jsFolder, '/**/*.js'),
+      '!' + path.join(jsFolder + '/lib/**/*.js'),
+      '!' + path.join(jsFolder + '/**/dev.*.js')
     ],
     target: path.join(buildFolder, 'www/js')
   };

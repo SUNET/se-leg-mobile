@@ -12,13 +12,14 @@ module.exports = {
     utils.log('*** Copying theme variables ***');
 
     plugins.sequence.use(gulp)(
-        [
-          'profile:build',
-          'copy:fonts',
-          'addMainDependencies'
-        ],
+      [
+        'profile:build',
+        'copy:fonts',
+        'addMainDependencies',
+        'profile:constants'
+      ],
       'copy:androidSplash',
-        done
+      done
     );
   }
 };
