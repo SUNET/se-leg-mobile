@@ -1,0 +1,70 @@
+{
+  "error": {
+    "service": {
+      "generic": "An internal error has occurred. Please restart the application by pressing Restart",
+      "timeout": "The connection has timed out. Please restart the application by pressing Restart",
+      "unauthorized": "You don’t have permission to perform identity verification. Please contact the system administrator",
+      "networkError": "Connection to the server failed. Please try again by pressing Restart",
+      "notFound": "Resource not found",
+      "methodNotAllowed": "Resource method not allowed"
+    }
+  },
+  "identification": {
+    "title": "Identity verification",
+    "subtitle": "Enter the national ID number of the person to be verified",
+    "send": "Send",
+    "message": "National ID number",
+    "placeholder": "YYYYMMDDXXXX"
+  },
+  "message": {
+    "title": "ID control completed",
+    "message": "The identity verification process has been completed",
+    "start": "Start a new identity verification",
+    "close": "Close App"
+  },
+  "back": {
+    "title": "Process Cancelled",
+    "msg": "The process has been cancelled. Please try again by pressing restart",
+    "msgIos": "The process has been cancelled. Please, close the app and try again."
+  },
+  "scanner": {
+    "error": "The QR code contains invalid data. Please renew the QR code"
+  },
+  "permissions": {
+    "error": "Permission error",
+    "invalid": {
+      "generic": "The action cannot be done until you grant the needed permissions.",
+      "camera": "The action cannot be done. You have to grant the camera and storage permissions before doing it."
+    }
+  },
+  "fingerprint": {
+    "error": {
+      "notAvailable": "Fingerprint authentication not available",
+      "notRegistred": "Fingerprint auth available, but no fingerprint registered on the device",
+      "notDetectFingerprintDevice": "Cannot detect fingerprint device",
+      "cancelled": "Fingerprint cancelled",
+      "notFingerprint": "If you haven't detect fingerprint device, you cant't continue the process",
+      "notFingerprintTitle": "Fingeprint device not found",
+      "notFingerprintRegisteredTitle": "Fingerprint Verification",
+      "notFingerprintRegistered": "No fingerprint registered on the device"
+    }
+  },
+  "security": {
+    "error": {
+      "errorOpenSecurity": "Failed to open security settings"
+    }
+  },
+  "fingerprintVerification": {
+    "title": "Fingerprint Verification",
+    "message": "if you have introduced your fingerprint, you can continue the process",
+    "continue": "Continue",
+    "error": {
+      "title": "Fingerprint Verification",
+      "message": "Fingerprint validation failed"
+    }
+  },
+  "connection": {
+    "title": "No Internet Connection",
+    "template": "Sorry, no Internet connectivity detected."
+  }
+}
