@@ -25,7 +25,10 @@
         MainFactory.handleNextComponent();
       };
       var onFingerprintValidationFailure = function (error) {
-        UtilsFactory.closeApp({title: 'fingerprintVerification.error.title', text: 'fingerprintVerification.error.text'
+        UtilsFactory.closeApp({
+          title: 'fingerprintVerification.error.title',
+          text: 'fingerprintVerification.error.text',
+          isError: true
         });
       };
       $scope.$on('$ionicView.enter', onEnter);

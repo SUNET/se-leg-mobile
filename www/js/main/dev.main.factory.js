@@ -78,7 +78,7 @@
                   if (component.onErrorFn) {
                     component.onErrorFn(error);
                   } else {
-                    UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR' });
+                    UtilsFactory.closeApp();
                   }
                 });
             } else {
@@ -89,7 +89,7 @@
             UtilsFactory.closeApp();
           }
         } else {
-          UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'BACK NOT ALLOWED' });
+          UtilsFactory.closeApp();
         }
 
 
@@ -114,7 +114,7 @@
                 if (component.onErrorFn) {
                   component.onErrorFn(error);
                 } else {
-                  UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR' });
+                  UtilsFactory.closeApp();
                 }
               });
           } else {
@@ -123,7 +123,7 @@
           }
         } else {
           // TODO: SHOULD BE TRANSLATED
-          UtilsFactory.closeApp({ title: 'MAIN ERROR', text: 'CUSTOMIZED MAIN ERROR' });
+          UtilsFactory.closeApp();
         }
       }
 

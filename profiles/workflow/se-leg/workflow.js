@@ -124,28 +124,8 @@ function loadWorkflow() {
           if (error === "Cancelled") {
             messageError = 'fingerprint.error.cancelled';
           }
-          // defining the next component
-          var component = {
-            state: SE_LEG_VIEWS.MESSAGE,
-            params: {
-              title: 'back.title',
-              msg: messageError,
-              errorSreen: true,
-              buttonOptions: [
-                {
-                  condition: true,
-                  default: true,
-                  text: 'message.close',
-                  onClick: function () {
-                    UtilsFactory.closeApp();
-                  }
-                }
-              ]
-            },
-            factory: MessageFactory
-          };
-          // sending the user to the component
-          goToComponent(component);
+
+          UtilsFactory.closeApp({ title: 'back.title', message: messageError, isError: true });
         },
         factory: FingerprintFactory
       }
