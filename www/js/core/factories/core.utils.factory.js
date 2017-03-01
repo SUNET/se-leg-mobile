@@ -92,24 +92,6 @@
        * @param {type} error to be shown (can be undefined). Error should be a JSON {title:XX,text:YY}.
        */
       function closeApp(error) {
-        if (!isEmpty(error) && error.title && error.text) {
-          var modal = $ionicPopup.alert({
-            title: $translate.instant(error.title),
-            template: $translate.instant(error.text)
-          });
-          modal.then(function () {
-            closeAppWithoutError();
-          });
-        } else {
-          closeAppWithoutError();
-        }
-      }
-
-      // private function
-      /**
-       * Function to close the app depending on the app platform.
-       */
-      function closeAppWithoutError() {
         if (getPlatform() === SE_LEG_GLOBAL.PLATFORMS.IOS) {
           cordova.plugins.Keyboard.close();
 
@@ -119,13 +101,34 @@
             {
               data: {
                 errorScreen: true,
-                title: 'back.title',
-                msg: 'back.msgIos',
+                title: error ? error.title || 'error.generic.title' : 'error.generic.title',
+                msg: error ? error.msessage || 'error.generic.message' : 'error.generic.message',
                 buttonOptions: []
               }
             });
-        } else if (ionic && ionic.Platform) {
-          ionic.Platform.exitApp();
+        } else {
+          cordova.plugins.Keyboard.close();
+
+          $ionicConfig.views.swipeBackEnabled(false);
+
+          $state.go(SE_LEG_VIEWS.MESSAGE,
+            {
+              data: {
+                errorScreen: true,
+                title: error ? error.title || 'error.generic.title' : 'error.generic.title',
+                msg: error ? error.msessage || 'error.generic.message' : 'error.generic.message',
+                buttonOptions: [
+                  {
+                    condition: true,
+                    text: 'message.close',
+                    onClick: function () {
+                      ionic && ionic.Platform && ionic.Platform.exitApp();
+                    },
+                    default: true
+                  }
+                ]
+              }
+            });
         }
       }
 
