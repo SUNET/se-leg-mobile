@@ -27,6 +27,7 @@
       factory.hasConnectivity = hasConnectivity;
       factory.closeApp = closeApp;
       factory.getPlatform = getPlatform;
+      factory.isIosPlatform = isIosPlatform;
       factory.getCurrentState = getCurrentState;
       factory.jsonToQueryString = jsonToQueryString;
 
@@ -89,9 +90,9 @@
 
       /**
        * It closes the app showing an error if it's defined.
-       * @param {type} error to be shown (can be undefined). Error should be a JSON {title:XX,text:YY}.
+       * @param {type} message to be shown (can be undefined). Error should be a JSON {title:XX,text:YY}.
        */
-      function closeApp(error) {
+      function closeApp(message) {
         if (getPlatform() === SE_LEG_GLOBAL.PLATFORMS.IOS) {
           cordova.plugins.Keyboard.close();
 
@@ -100,9 +101,9 @@
           $state.go(SE_LEG_VIEWS.MESSAGE,
             {
               data: {
-                errorScreen: true,
-                title: error ? error.title || 'error.generic.title' : 'error.generic.title',
-                msg: error ? error.msessage || 'error.generic.message' : 'error.generic.message',
+                errorScreen: message ? message.isError : true,
+                title: message ? message.title || 'error.generic.title' : 'error.generic.title',
+                msg: message ? message.msessage || 'error.generic.message' : 'error.generic.message',
                 buttonOptions: []
               }
             });
@@ -114,9 +115,9 @@
           $state.go(SE_LEG_VIEWS.MESSAGE,
             {
               data: {
-                errorScreen: true,
-                title: error ? error.title || 'error.generic.title' : 'error.generic.title',
-                msg: error ? error.msessage || 'error.generic.message' : 'error.generic.message',
+                errorScreen: message.isError,
+                title: message ? message.title || 'error.generic.title' : 'error.generic.title',
+                msg: message ? message.msessage || 'error.generic.message' : 'error.generic.message',
                 buttonOptions: [
                   {
                     condition: true,
@@ -155,6 +156,10 @@
           }
         }
         return platform;
+      }
+
+      function isIosPlatform() {
+        return getPlatform() === SE_LEG_GLOBAL.PLATFORMS.IOS;
       }
 
       /**

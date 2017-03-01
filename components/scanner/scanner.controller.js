@@ -26,22 +26,7 @@
           UtilsFactory.closeApp();
         } else {
           // An error occurred
-          $state.go(SE_LEG_VIEWS.MESSAGE,
-            {
-              errorScreen: true,
-              msg: 'scanner.error',
-              buttonOptions: [
-                {
-                  condition: true,
-                  default: true,
-                  text: 'message.close',
-                  onClick: function () {
-                    UtilsFactory.closeApp();
-                  }
-                }
-              ]
-            }
-          );
+          UtilsFactory.closeApp({ message: 'scanner.error', isError: true });
         }
       };
       $scope.$on('$ionicView.enter', onEnter);
@@ -71,7 +56,7 @@
         ScannerFactory.allowNeededPermissions()
           .then(scan)
           .catch(function (error) {
-            closeApp(true);
+            UtilsFactory.closeApp();
           });
       }
 
