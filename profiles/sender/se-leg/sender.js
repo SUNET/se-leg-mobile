@@ -9,7 +9,7 @@ function getProcessedData() {
   var preProcessedData = {};
 
   // getting the id
-  preProcessedData.identity = DataFactory.get(SE_LEG_VIEWS.ID);
+  preProcessedData.identity = DataFactory.get(SE_LEG_VIEWS.IDENTIFICATION);
   preProcessedData.qrcode = DataFactory.get(SE_LEG_VIEWS.SCANNER);
 
   // transforming into querystring

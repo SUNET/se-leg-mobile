@@ -36,7 +36,7 @@
        */
       function onEnter() {
         // clearing previous data
-        DataFactory.clear(SE_LEG_VIEWS.ID);
+        DataFactory.clear(SE_LEG_VIEWS.IDENTIFICATION);
         if ($state.params && $state.params.data) {
           // initialization of the parameters
           if ($state.params.formatHandler) {
@@ -59,7 +59,7 @@
       function send() {
         if (vm.nationaIdNumber && vm.correctFormat()) {
           // saving the associated data
-          DataFactory.save(SE_LEG_VIEWS.ID, vm.nationaIdNumber);
+          DataFactory.save(SE_LEG_VIEWS.IDENTIFICATION, vm.nationaIdNumber);
           MainFactory.handleNextComponent();
         }
       }

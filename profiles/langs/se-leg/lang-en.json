@@ -1,5 +1,9 @@
 {
   "error": {
+    "generic": {
+      "title": "Whoops, something went wrong",
+      "message": "Please, close the app and try again."
+    },
     "service": {
       "generic": "An internal error has occurred. Please restart the application by pressing Restart",
       "timeout": "The connection has timed out. Please restart the application by pressing Restart",
