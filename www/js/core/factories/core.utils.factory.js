@@ -16,7 +16,7 @@
       .factory('UtilsFactory', UtilsFactory);
 
     /* @ngInject */
-    function UtilsFactory($ionicConfig, $ionicPopup, $translate, $ionicHistory, $state, SE_LEG_GLOBAL, SE_LEG_VIEWS) {
+    function UtilsFactory($ionicConfig, $ionicHistory, $state, SE_LEG_GLOBAL, SE_LEG_VIEWS) {
 
       var factory = this;
       factory.className = '[UtilsFactory]';
@@ -103,7 +103,7 @@
               data: {
                 errorScreen: message ? message.isError : true,
                 title: message ? message.title || 'error.generic.title' : 'error.generic.title',
-                msg: message ? message.msessage || 'error.generic.message' : 'error.generic.message',
+                msg: message ? message.message || 'error.generic.message' : 'error.generic.message',
                 buttonOptions: []
               }
             });
@@ -115,9 +115,9 @@
           $state.go(SE_LEG_VIEWS.MESSAGE,
             {
               data: {
-                errorScreen: message.isError,
+                errorScreen: message ? message.isError : true,
                 title: message ? message.title || 'error.generic.title' : 'error.generic.title',
-                msg: message ? message.msessage || 'error.generic.message' : 'error.generic.message',
+                msg: message ? message.message || 'error.generic.message' : 'error.generic.message',
                 buttonOptions: [
                   {
                     condition: true,

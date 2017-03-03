@@ -8,8 +8,8 @@
   "sender": "se-leg",
   "splash": "se-leg",
   "theme": "se-leg",
-  "version": "0.0.1",
-  "androidVersionCode": "1",
-  "iosCFBundleVersion": "0.0.1",
+  "version": "0.0.3",
+  "androidVersionCode": "3",
+  "iosCFBundleVersion": "0.0.3",
   "workflow": "se-leg"
 }
