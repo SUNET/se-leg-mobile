@@ -6,7 +6,8 @@
 (function () {
   define([
     './widgets.module', // Yeoman hook. Define section. Do not remove this comment.
-    './focusMe/main'
+    './focusMe/main',
+    './header/main'
   ], function () {
   });
 })();

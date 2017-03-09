@@ -66,5 +66,8 @@
   "connection": {
     "title": "No Internet Connection",
     "template": "Sorry, no Internet connectivity detected."
+  },
+  "header": {
+    "help": "Help"
   }
 }

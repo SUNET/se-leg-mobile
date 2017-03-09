@@ -1,5 +1,9 @@
 {
   "error": {
+    "generic": {
+      "title": "Whoops, something went wrong",
+      "message": "Please, close the app and try again."
+    },
     "service": {
       "generic": "Ett internt fel har uppstått. Vänligen starta om applikationen genom att trycka på knappen nedan",
       "timeout": "Anslutningen har avbrutits. Vänligen starta om applikationen genom att trycka på knappen nedan",
@@ -66,5 +70,8 @@
   "connection": {
     "title": "Ingen internetanslutning",
     "template": "Tyvärr hittades ingen internetanslutning"
+  },
+  "header": {
+    "help": "Help"
   }
 }

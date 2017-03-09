@@ -17,7 +17,9 @@
             .constant('CORE_CONFIGS', {
                 BACKEND_URL: '@@backendUrl',
                 CONNECTION_TIMEOUT: '@@connectionTimeout',
-                DEFAULT_LANGUAGE: '@@defaultLanguage'
+                DEFAULT_LANGUAGE: '@@defaultLanguage',
+                HAS_HEADER: '@@hasHeader',
+                HEADER_OPTIONS: '@@headerOptions'
             });
 
     });

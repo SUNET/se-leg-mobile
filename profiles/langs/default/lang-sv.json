@@ -66,5 +66,8 @@
   "connection": {
     "title": "Ingen internetanslutning",
     "template": "Tyvärr hittades ingen internetanslutning"
+  },
+  "header": {
+    "help": "Help"
   }
 }

@@ -14,7 +14,8 @@
 
       ng.module(moduleName,
         [
-          'app.widgets.focusMe'
+          'app.widgets.focusMe',
+          'app.widgets.seLegHeader'
         ]);
 
       return moduleName;

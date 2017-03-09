@@ -17,7 +17,9 @@
             .constant('CORE_CONFIGS', {
                 BACKEND_URL: 'http://10.35.1.123:444/op',
                 CONNECTION_TIMEOUT: '30000',
-                DEFAULT_LANGUAGE: 'en'
+                DEFAULT_LANGUAGE: 'en',
+                HAS_HEADER: true,
+                HEADER_OPTIONS: '[{"title":"header.help","url":"http://www.google.com"}]'
             });
 
     });

@@ -1,4 +1,6 @@
 <ion-view view-title="Message">
+  <se-leg-header></se-leg-header>
+
   <ion-content overflow-scroll="false" scroll="false">
 
     <!-- Message content head -->
@@ -16,7 +18,9 @@
 
     <!-- Start button -->
     <div class="place-start-button" ng-if="messageCtrl.getCurrentButton()">
-      <button class="button button-full seleg-button" ng-click="messageCtrl.getCurrentButton().onClick()">{{messageCtrl.getCurrentButton().text | translate}}</button>
+      <button class="button button-full seleg-button" ng-click="messageCtrl.getCurrentButton().onClick()">
+        {{messageCtrl.getCurrentButton().text | translate}}
+      </button>
     </div>
 
   </ion-content>

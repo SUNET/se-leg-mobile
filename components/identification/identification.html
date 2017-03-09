@@ -1,4 +1,6 @@
 <ion-view view-title="Identification">
+  <se-leg-header></se-leg-header>
+
   <ion-content overflow-scroll="false" scroll="false">
 
     <!-- identification content head -->
@@ -22,21 +24,23 @@
           <label class="item item-input">
             <input id="new-col-input" type="number" ng-model="identificationCtrl.nationaIdNumber" autocomplete="off"
                    autocorrect="off" autocapitalize="off" spellcheck="false"
-                   placeholder="{{'identification.placeholder'| translate}}" focus-me />
+                   placeholder="{{'identification.placeholder'| translate}}" focus-me/>
           </label>
-          <input type="text" id="invalid-button-hidden" style="display:none" />
+          <input type="text" id="invalid-button-hidden" style="display:none"/>
         </div>
 
         <!--Group 2 Icon-->
         <div class="place-tick-icon">
-          <i class="icon ion-ios-checkmark-outline" ng-class="!identificationCtrl.correctFormat() ? 'tick-disable' : 'tick-enable'"></i>
+          <i class="icon ion-ios-checkmark-outline"
+             ng-class="!identificationCtrl.correctFormat() ? 'tick-disable' : 'tick-enable'"></i>
         </div>
 
       </div>
 
       <!-- Submit button -->
       <div class="place-send-identification-button">
-        <button class="button button-full seleg-button" type="submit" translate="identification.send" ng-disabled="!identificationCtrl.correctFormat() || !identificationCtrl.hasInternetConnection()"></button>
+        <button class="button button-full seleg-button" type="submit" translate="identification.send"
+                ng-disabled="!identificationCtrl.correctFormat() || !identificationCtrl.hasInternetConnection()"></button>
       </div>
 
     </form>
