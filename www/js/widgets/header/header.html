@@ -1,0 +1,14 @@
+<div class="bar bar-header se-leg-bar-header pull-right" ng-if="seLegHeaderCtrl.hasHeader">
+  <button class="button button-icon icon ion-navicon pull-right"
+          ng-click="seLegHeaderCtrl.isMenuOpened = !seLegHeaderCtrl.isMenuOpened">
+
+  </button>
+</div>
+
+<ul ng-if="seLegHeaderCtrl.hasHeader" class="header-options" ng-class="{'opened': seLegHeaderCtrl.isMenuOpened}">
+  <li ng-repeat="option in seLegHeaderCtrl.options" class="menu-item">
+    <div ng-click="seLegHeaderCtrl.openOption(option)">
+      {{option.title|translate}}
+    </div>
+  </li>
+</ul>

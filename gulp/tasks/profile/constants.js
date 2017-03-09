@@ -39,6 +39,14 @@ module.exports = {
             {
               match: 'defaultLanguage',
               replacement: settings.defaultLanguage
+            },
+            {
+              match: /'@@hasHeader'/g,
+              replacement: global.profileConfig.hasHeader
+            },
+            {
+              match: 'headerOptions',
+              replacement: global.profileConfig.headerOptions
             }
           ]
         }))

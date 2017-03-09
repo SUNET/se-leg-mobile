@@ -1,70 +1,77 @@
 {
-  "error": {
-    "service": {
-      "generic": "Ett internt fel har uppstått. Vänligen starta om applikationen genom att trycka på knappen nedan",
-      "timeout": "Anslutningen har avbrutits. Vänligen starta om applikationen genom att trycka på knappen nedan",
-      "unauthorized": "Du saknar behörighet att utföra legitimationskontroll. Vänligen kontakta systemadministratören",
-      "networkError": "Anslutningen till servern misslyckades. Vänligen försök igen genom att trycka på knappen nedan",
-      "notFound": "Resurs kunde inte hittas",
-      "methodNotAllowed": "Resursmetoden är inte tillåten"
-    }
-  },
-  "identification": {
-    "title": "Legitimationskontroll",
-    "subtitle": "Ange personnumret för den person som skall kontrolleras",
-    "send": "Skicka",
-    "message": "Personnummer",
-    "placeholder": "YYYYMMDDXXXX"
-  },
-  "message": {
-    "title": "leg-kontroll slutförd",
-    "message": "Processen för leg-kontroll har slutförts",
-    "start": "Starta en ny leg-kontroll",
-    "close": "Stäng App"
-  },
-  "back": {
-    "title": "Processen har avbrutits",
-    "msg": "Processen har avbrutits. Vänligen försök igen genom att trycka på knappen nedan",
-    "msgIos": "Processen har avbrutits. Stäng appen och försök igen"
-  },
-  "scanner": {
-    "error": "QR-koden innehåller felaktig data. Vänligen förnya QR-koden"
-  },
-  "permissions": {
-    "error": "Behörighetsproblem",
-    "invalid": {
-      "generic": "Åtgärden kan inte utföras förrän du beviljar de nödvändiga behörigheter",
-      "camera": "Åtgärden kan inte utföras. Du måste först bevilja behörigheter för kamera och lagring."
-    }
-  },
-  "fingerprint": {
     "error": {
-      "notAvailable": "Fingeravtrycksfunktion ej tillgänglig",
-      "notRegistred": "Fingeravtrycksfunktion tillgängligt men ditt fingeravtryck är ej registrerat i enheten",
-      "notDetectFingerprintDevice": "Kan ej detektera fingeravtrycksfunktion",
-      "cancelled": "Fingeravtryckskontroll avbruten",
-      "notFingerprint": "Du kan inte fortsätta legitimationskontrollen om din enhet saknar fingeravtrycksfunktion",
-      "notFingerprintTitle": "Fingeravtrycksfunktion enhet hittades inte",
-      "notFingerprintRegisteredTitle": "Fingeravtryckskontroll",
-      "notFingerprintRegistered": "Ditt fingeravtryck är ej registrerat i enheten"
-    }
-  },
-  "security": {
-    "error": {
-      "errorOpenSecurity": "Det gick inte att öppna säkerhetsinställningar"
-    }
-  },
-  "fingerprintVerification": {
-    "title": "Fingeravtryckskontroll",
-    "message": "Du kan fortsätta signeringen om du har registrerat ditt fingeravtryck",
-    "continue": "Fortsätt",
-    "error": {
+      "generic": {
+        "title": "Whoops, something went wrong",
+        "message": "Please, close the app and try again."
+      },
+      "service": {
+        "generic": "Ett internt fel har uppstått. Vänligen starta om applikationen genom att trycka på knappen nedan",
+        "timeout": "Anslutningen har avbrutits. Vänligen starta om applikationen genom att trycka på knappen nedan",
+        "unauthorized": "Du saknar behörighet att utföra legitimationskontroll. Vänligen kontakta systemadministratören",
+        "networkError": "Anslutningen till servern misslyckades. Vänligen försök igen genom att trycka på knappen nedan",
+        "notFound": "Resurs kunde inte hittas",
+        "methodNotAllowed": "Resursmetoden är inte tillåten"
+      }
+    },
+    "identification": {
+      "title": "Legitimationskontroll",
+      "subtitle": "Ange personnumret för den person som skall kontrolleras",
+      "send": "Skicka",
+      "message": "Personnummer",
+      "placeholder": "YYYYMMDDXXXX"
+    },
+    "message": {
+      "title": "leg-kontroll slutförd",
+      "message": "Processen för leg-kontroll har slutförts",
+      "start": "Starta en ny leg-kontroll",
+      "close": "Stäng App"
+    },
+    "back": {
+      "title": "Processen har avbrutits",
+      "msg": "Processen har avbrutits. Vänligen försök igen genom att trycka på knappen nedan",
+      "msgIos": "Processen har avbrutits. Stäng appen och försök igen"
+    },
+    "scanner": {
+      "error": "QR-koden innehåller felaktig data. Vänligen förnya QR-koden"
+    },
+    "permissions": {
+      "error": "Behörighetsproblem",
+      "invalid": {
+        "generic": "Åtgärden kan inte utföras förrän du beviljar de nödvändiga behörigheter",
+        "camera": "Åtgärden kan inte utföras. Du måste först bevilja behörigheter för kamera och lagring."
+      }
+    },
+    "fingerprint": {
+      "error": {
+        "notAvailable": "Fingeravtrycksfunktion ej tillgänglig",
+        "notRegistred": "Fingeravtrycksfunktion tillgängligt men ditt fingeravtryck är ej registrerat i enheten",
+        "notDetectFingerprintDevice": "Kan ej detektera fingeravtrycksfunktion",
+        "cancelled": "Fingeravtryckskontroll avbruten",
+        "notFingerprint": "Du kan inte fortsätta legitimationskontrollen om din enhet saknar fingeravtrycksfunktion",
+        "notFingerprintTitle": "Fingeravtrycksfunktion enhet hittades inte",
+        "notFingerprintRegisteredTitle": "Fingeravtryckskontroll",
+        "notFingerprintRegistered": "Ditt fingeravtryck är ej registrerat i enheten"
+      }
+    },
+    "security": {
+      "error": {
+        "errorOpenSecurity": "Det gick inte att öppna säkerhetsinställningar"
+      }
+    },
+    "fingerprintVerification": {
       "title": "Fingeravtryckskontroll",
-      "message": "Fingeravtryck validering misslyckades"
-    }
-  },
-  "connection": {
-    "title": "Ingen internetanslutning",
-    "template": "Tyvärr hittades ingen internetanslutning"
+      "message": "Du kan fortsätta signeringen om du har registrerat ditt fingeravtryck",
+      "continue": "Fortsätt",
+      "error": {
+        "title": "Fingeravtryckskontroll",
+        "message": "Fingeravtryck validering misslyckades"
+      }
+    },
+    "connection": {
+      "title": "Ingen internetanslutning",
+      "template": "Tyvärr hittades ingen internetanslutning"
+    },
+  "header": {
+    "help": "Help"
   }
-}
+  }
