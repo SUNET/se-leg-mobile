@@ -32,3 +32,25 @@
     }
   }
 }
+
+.about-modal {
+
+  .confirm-logo-container {
+    padding: 10vh 0 5vh 0;
+
+    .yubico-logo {
+      background: url($main-logo) no-repeat center;
+      background-size: contain;
+      height: 15vh;
+      margin: 0 auto 5vh;
+    }
+  }
+
+  .about-version-container {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    padding: 0 15px;
+    text-align: right;
+  }
+}

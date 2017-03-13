@@ -1,8 +1,8 @@
-<ion-popover-view view-title="About">
+<ion-popover-view view-title="About" class="about-modal">
 
   <ion-header-bar>
     <button class="button button-icon icon ion-close pull-right"
-            ng-click="closeAbout()">
+            ng-click="modal.remove()">
     </button>
 
   </ion-header-bar>
@@ -12,7 +12,7 @@
       <div class="yubico-logo"></div>
     </div>
 
-    <div class="about-proceed-container">
+    <div class="about-version-container">
       {{version}}
     </div>
 

@@ -12,7 +12,7 @@
       .controller('SeLegHeaderController', SeLegHeaderController);
 
     /* @ngInject */
-    function SeLegHeaderController($ionicPopover, CORE_CONFIGS) {
+    function SeLegHeaderController($scope, $ionicModal, CORE_CONFIGS) {
       var version;
 
       var vm = this;
@@ -31,7 +31,7 @@
       function activate() {
         cordova.getAppVersion.getVersionNumber()
           .then(function (result) {
-            version = result;
+            $scope.version = result;
           });
       }
 
@@ -43,16 +43,11 @@
       }
 
       function openAbout() {
-        vm.popover = $ionicPopover.fromTemplate(aboutTemplate, {
-          scope: {
-            closeAbout: function () {
-              vm.popover.remove();
-            },
-            version: version
-          }
+        $scope.modal = $ionicModal.fromTemplate(aboutTemplate, {
+          scope: $scope
         });
 
-        vm.popover.show();
+        $scope.modal.show();
       }
     }
   });
