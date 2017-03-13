@@ -18,8 +18,10 @@
     visibility: hidden;
     transition: opacity .3s ease-in-out 0s, visibility 0s linear .3s, z-index 0s linear .01s;
     z-index: -1;
-    background-color: rgba(0, 0, 0, .05);
+    background-color: rgba(0, 0, 0, .15);
     opacity: 0;
+    font-weight: bold;
+    color: gray;
   }
 
   &.opened {
@@ -45,6 +47,8 @@
     position: absolute;
     top: 5px;
     right: 5px;
+    width: 44px;
+    z-index: 10;
   }
 
   .about-logo-container {
