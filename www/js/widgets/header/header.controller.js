@@ -33,6 +33,8 @@
           .then(function (result) {
             $scope.version = result;
           });
+
+        $scope.about = CORE_CONFIGS.ABOUT;
       }
 
       function openOption(option) {

@@ -34,15 +34,27 @@
 }
 
 .about-modal {
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  margin: 0;
+  opacity: 1;
 
-  .confirm-logo-container {
+  .close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  .about-logo-container {
     padding: 10vh 0 5vh 0;
 
-    .yubico-logo {
+    .app-logo {
       background: url($main-logo) no-repeat center;
       background-size: contain;
       height: 15vh;
-      margin: 0 auto 5vh;
+      margin: 10vh auto 5vh;
     }
   }
 
@@ -52,5 +64,6 @@
     width: 100%;
     padding: 0 15px;
     text-align: right;
+    background-size: 0;
   }
 }
