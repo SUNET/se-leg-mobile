@@ -44,6 +44,7 @@
     <plugin name="cordova-plugin-android-permissions" source="npm" spec="0.10.0"/>
     <plugin name="com.phonegap.plugins.nativesettingsopener"
             spec="https://github.com/selahssea/Cordova-open-native-settings.git"/>
+    <plugin name="cordova-plugin-app-version" source="npm" speck="~0.1.9"/>
 
     <!--Profile Plugins-->
     <plugins-placeholder/>

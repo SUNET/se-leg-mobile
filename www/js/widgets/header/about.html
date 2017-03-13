@@ -1,0 +1,20 @@
+<ion-popover-view view-title="About">
+
+  <ion-header-bar>
+    <button class="button button-icon icon ion-close pull-right"
+            ng-click="closeAbout()">
+    </button>
+
+  </ion-header-bar>
+  <ion-content class="about-ion-content">
+
+    <div class="about-logo-container">
+      <div class="yubico-logo"></div>
+    </div>
+
+    <div class="about-proceed-container">
+      {{version}}
+    </div>
+
+  </ion-content>
+</ion-popover-view>
