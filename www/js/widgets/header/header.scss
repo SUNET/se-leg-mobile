@@ -38,7 +38,7 @@
   width: 100vw;
   top: 0;
   left: 0;
-  margin: 0;
+  margin: 0 !important;
   opacity: 1;
 
   .close-button {
@@ -55,6 +55,11 @@
       background-size: contain;
       height: 15vh;
       margin: 10vh auto 5vh;
+    }
+
+    .about-text {
+      padding: 0 10vw;
+      text-align: justify;
     }
   }
 

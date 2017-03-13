@@ -1,16 +1,14 @@
 <ion-popover-view view-title="About" class="about-modal">
 
-  <ion-header-bar>
-    <button class="button button-icon icon ion-close pull-right ion-ios-close-empty"
-            ng-click="modal.remove()">
-    </button>
+  <button class="button button-icon icon ion-close pull-right ion-ios-close-empty"
+          ng-click="modal.remove()">
+  </button>
 
-  </ion-header-bar>
   <ion-content class="about-ion-content">
 
     <div class="about-logo-container">
       <div class="app-logo"></div>
-      <p>{{about}}</p>
+      <p class="about-text">{{about}}</p>
     </div>
 
     <div class="about-version-container">
