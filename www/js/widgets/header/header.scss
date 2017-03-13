@@ -18,10 +18,10 @@
     visibility: hidden;
     transition: opacity .3s ease-in-out 0s, visibility 0s linear .3s, z-index 0s linear .01s;
     z-index: -1;
-    background-color: rgba(0, 0, 0, .15);
+    background-color: darkgray;
     opacity: 0;
     font-weight: bold;
-    color: gray;
+    color: white;
   }
 
   &.opened {
