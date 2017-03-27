@@ -93,44 +93,31 @@
        * @param {type} message to be shown (can be undefined). Error should be a JSON {title:XX,text:YY}.
        */
       function closeApp(message) {
-        if (getPlatform() === SE_LEG_GLOBAL.PLATFORMS.IOS) {
-          cordova.plugins.Keyboard.close();
+        var params = {
+          data: {
+            hideLogo: message ? message.hideLogo : false,
+            errorScreen: message ? message.isError : true,
+            title: message ? message.title || 'error.generic.title' : 'error.generic.title',
+            msg: message ? message.message || 'error.generic.message' : 'error.generic.message',
+            buttonOptions: []
+          }
+        };
 
-          $ionicConfig.views.swipeBackEnabled(false);
-
-          $state.go(SE_LEG_VIEWS.MESSAGE,
-            {
-              data: {
-                errorScreen: message ? message.isError : true,
-                title: message ? message.title || 'error.generic.title' : 'error.generic.title',
-                msg: message ? message.message || 'error.generic.message' : 'error.generic.message',
-                buttonOptions: []
-              }
-            });
-        } else {
-          cordova.plugins.Keyboard.close();
-
-          $ionicConfig.views.swipeBackEnabled(false);
-
-          $state.go(SE_LEG_VIEWS.MESSAGE,
-            {
-              data: {
-                errorScreen: message ? message.isError : true,
-                title: message ? message.title || 'error.generic.title' : 'error.generic.title',
-                msg: message ? message.message || 'error.generic.message' : 'error.generic.message',
-                buttonOptions: [
-                  {
-                    condition: true,
-                    text: 'message.close',
-                    onClick: function () {
-                      ionic && ionic.Platform && ionic.Platform.exitApp();
-                    },
-                    default: true
-                  }
-                ]
-              }
-            });
+        if (getPlatform() !== SE_LEG_GLOBAL.PLATFORMS.IOS) {
+          params.data.buttonOptions.push({
+            condition: true,
+            text: 'message.close',
+            onClick: function () {
+              ionic && ionic.Platform && ionic.Platform.exitApp();
+            },
+            default: true
+          });
         }
+
+        cordova.plugins.Keyboard.close();
+        $ionicConfig.views.swipeBackEnabled(false);
+
+        $state.go(SE_LEG_VIEWS.MESSAGE, params);
       }
 
       /**
