@@ -52,6 +52,10 @@
       function beforeEnter() {
         if ($state.params && $state.params.data) {
           // initialization of the parameters
+          if ($state.params.data.hideLogo) {
+            vm.hideLogo = $state.params.data.hideLogo;
+          }
+
           if ($state.params.data.errorScreen) {
             vm.errorScreen = $state.params.data.errorScreen;
           }
