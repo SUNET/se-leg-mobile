@@ -72,6 +72,7 @@
     "template": "Sorry, no Internet connectivity detected."
   },
   "header": {
-    "help": "Help"
+    "help": "Help",
+    "about": "About"
   }
 }

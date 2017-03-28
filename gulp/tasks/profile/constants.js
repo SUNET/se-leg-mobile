@@ -47,6 +47,10 @@ module.exports = {
             {
               match: 'headerOptions',
               replacement: global.profileConfig.headerOptions
+            },
+            {
+              match: 'about',
+              replacement: global.profileConfig.about
             }
           ]
         }))

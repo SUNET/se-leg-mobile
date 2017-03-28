@@ -5,7 +5,7 @@
 
     <!-- Message content head -->
     <div class="message-content-header">
-      <div class="seleg-logo"></div>
+      <div class="seleg-logo" ng-if="!messageCtrl.hideLogo"></div>
       <div class="text-center message-content-title">{{messageCtrl.title| translate}}</div>
       <div class="text-center message-content-message">{{messageCtrl.msg|translate}}</div>
     </div>

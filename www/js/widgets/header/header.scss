@@ -18,8 +18,10 @@
     visibility: hidden;
     transition: opacity .3s ease-in-out 0s, visibility 0s linear .3s, z-index 0s linear .01s;
     z-index: -1;
-    background-color: rgba(0, 0, 0, .05);
+    background-color: darkgray;
     opacity: 0;
+    font-weight: bold;
+    color: white;
   }
 
   &.opened {
@@ -30,5 +32,47 @@
       z-index: 1;
       transition-delay: 0s, 0s, .1s;
     }
+  }
+}
+
+.about-modal {
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  margin: 0 !important;
+  opacity: 1;
+
+  .close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 44px;
+    z-index: 10;
+  }
+
+  .about-logo-container {
+    padding: 10vh 0 5vh 0;
+
+    .app-logo {
+      background: url($main-logo) no-repeat center;
+      background-size: contain;
+      height: 15vh;
+      margin: 10vh auto 5vh;
+    }
+
+    .about-text {
+      padding: 0 10vw;
+      text-align: justify;
+    }
+  }
+
+  .about-version-container {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    padding: 0 15px;
+    text-align: right;
+    background-size: 0;
   }
 }

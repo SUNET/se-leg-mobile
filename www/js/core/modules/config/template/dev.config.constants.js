@@ -15,14 +15,13 @@
         angular
             .module(moduleName)
             .constant('CORE_CONFIGS', {
+                ABOUT: '@@about',
                 BACKEND_URL: '@@backendUrl',
                 CONNECTION_TIMEOUT: '@@connectionTimeout',
                 DEFAULT_LANGUAGE: '@@defaultLanguage',
                 HAS_HEADER: '@@hasHeader',
                 HEADER_OPTIONS: '@@headerOptions'
             });
-
     });
-
 })();
 
