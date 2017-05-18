@@ -11,7 +11,7 @@ module.exports = {
   fn: function (gulp, done) {
     utils.log('*** Generating icon and splash ***');
 
-    var resourcesSpawn = spawn('ionic', ['resources']);
+    var resourcesSpawn = spawn('ionic', ['cordova', 'resources']);
 
     resourcesSpawn.stdout.on('data', function (data) {
       console.log(data.toString());
