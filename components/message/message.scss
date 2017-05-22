@@ -27,6 +27,10 @@
     color: $icon-tick-enable;
     font-size: 150px;
     -webkit-text-stroke: 3.5px #eceff1; //Reduce the icon border, it is not posible to use a scss variable. It produces an error.
+
+    &.error {
+      color: red;
+    }
   }
 }
 
