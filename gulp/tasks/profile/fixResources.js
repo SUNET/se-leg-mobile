@@ -15,7 +15,7 @@ module.exports = {
         run: splitQualifierAndDensity,
         parserOptions: { xmlMode: true }
       }))
-      .pipe(config.configXml.target);
+      .pipe(gulp.dest(config.configXml.target));
   }
 };
 
