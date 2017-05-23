@@ -32,10 +32,12 @@ module.exports = {
         'profile:views'
       ],
       'profile:config-xml',
-      'profile:platformAndroid',
-      'profile:platformIOS',
+      [
+        'profile:platformAndroid',
+        'profile:platformIOS'
+      ],
       'profile:ionicResources',
-      // 'profile:config-xml',
+      'profile:fixResources',
       done
     );
   }
