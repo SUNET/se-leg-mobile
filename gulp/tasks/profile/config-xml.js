@@ -25,7 +25,7 @@ function taskFunction(gulp, done) {
 
   var pluginsTags = getPluginTags(requestedPlugins);
 
-  return fillPluginXml(pluginsTags);
+  return fillConfigXml(pluginsTags);
 
   ///////////////////////
   // Auxiliary Methods //
@@ -117,7 +117,7 @@ function taskFunction(gulp, done) {
    * to the project folder.
    * @param pluginTags the list of plugins to be added.
    */
-  function fillPluginXml(pluginTags) {
+  function fillConfigXml(pluginTags) {
     return gulp.src(config.configXml.source)
       .pipe(plugins.replaceTask(
         {
