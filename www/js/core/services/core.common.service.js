@@ -38,7 +38,7 @@
         var connected = UtilsFactory.hasConnectivity();
         if (connected) {
           $http({method: method, url: CORE_CONFIGS.BACKEND_URL + endpoint,
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}, data: data, params: params,
+            headers: {'Content-Type': 'application/json'}, data: data, params: params,
             timeout: CORE_CONFIGS.CONNECTION_TIMEOUT, cache: false})
             .then(function (response) {
               if (showSpinner) {

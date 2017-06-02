@@ -12,11 +12,8 @@ function getProcessedData() {
   preProcessedData.identity = DataFactory.get(SE_LEG_VIEWS.IDENTIFICATION);
   preProcessedData.qrcode = DataFactory.get(SE_LEG_VIEWS.SCANNER);
 
-  // transforming into querystring
-  processedData = UtilsFactory.jsonToQueryString(preProcessedData);
-
-  // replacing spaces
-  processedData = processedData.replace(' ', '');
+  // transforming into JSON
+  processedData = JSON.stringify(preProcessedData);
 
   return processedData;
 }
