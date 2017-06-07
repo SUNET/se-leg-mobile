@@ -30,6 +30,6 @@ function splitQualifierAndDensity($) {
     var density = densitySplit[1];
 
     $(element).attr('qualifier', qualifier);
-    $(element).attr('denisty', density);
+    $(element).attr('density', density);
   })
 }
