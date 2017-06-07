@@ -11,7 +11,7 @@ module.exports = {
     utils.log('*** Copying app ***');
 
     plugins.sequence.use(gulp)(
-      'copy:androidSplash',
+      // 'copy:androidSplash',
       [
         'copy:libs',
         'copy:fonts',
