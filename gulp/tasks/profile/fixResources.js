@@ -31,5 +31,6 @@ function splitQualifierAndDensity($) {
 
     $(element).attr('qualifier', qualifier);
     $(element).attr('density', density);
-  })
+    $(element).attr('src', $(element).attr('src').replace('xxx','xx'));
+  });
 }
