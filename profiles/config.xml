@@ -44,9 +44,9 @@
     <plugin name="cordova-plugin-android-permissions" source="npm" spec="0.10.0"/>
     <plugin name="com.phonegap.plugins.nativesettingsopener"
             spec="https://github.com/selahssea/Cordova-open-native-settings.git"/>
-    <plugin name="cordova-plugin-app-version" source="npm" speck="~0.1.9"/>
-  <plugin name="cordova-ios-plugin-no-export-compliance" source="git"
-          spec="https://github.com/mikaoelitiana/cordova-plugin-ios-no-export-compliance.git"/>
+    <plugin name="cordova-plugin-app-version" source="npm" spec="0.1.9"/>
+    <plugin name="cordova-ios-plugin-no-export-compliance" source="git"
+            spec="https://github.com/mikaoelitiana/cordova-plugin-ios-no-export-compliance.git"/>
 
     <!--Profile Plugins-->
     <plugins-placeholder/>

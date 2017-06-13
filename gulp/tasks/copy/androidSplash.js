@@ -9,7 +9,8 @@ module.exports = {
   fn: function (gulp, done) {
     utils.log('*** Copying android splash ***');
 
-    return gulp.src(config.resources.android.source)
+    return gulp
+      .src(config.resources.android.source)
       .pipe(gulp.dest(config.resources.android.target));
   }
 };

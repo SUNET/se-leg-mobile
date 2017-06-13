@@ -113,7 +113,7 @@ function getConfig() {
       source: path.join(resourcesPath, 'android', 'splash', '**/*'),
       target: path.join(global.BASE_DIR, '/www/res/screen/android')
     },
-    source: [path.join(resourcesPath, '/**/*'), '!' + path.join(resourcesPath, '/android/splash/**/*')],
+    source: [path.join(resourcesPath, '/**/*')],
     target: path.join(buildFolder, '/resources')
   };
 
