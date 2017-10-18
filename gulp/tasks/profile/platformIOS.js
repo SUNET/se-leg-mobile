@@ -14,7 +14,7 @@ module.exports = {
     if (fs.existsSync('./platforms/ios')) {
       done();
     } else {
-      var platformSpawn = spawn('ionic', ['cordova', 'platform', 'add', 'ios']);
+      var platformSpawn = spawn('ionic', ['platform', 'add', 'ios']);
 
       platformSpawn.stdout.on('data', function (data) {
         console.log(data.toString());
