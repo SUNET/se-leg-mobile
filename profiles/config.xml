@@ -24,7 +24,7 @@
     <preference name="android-build-tool" value="gradle"/>
     <preference name="SplashScreenDelay" value="3000"/>
     <preference name="AutoHideSplashScreen" value="true"/>
-    <preference name="SplashScreen" value="www/res/screen/android"/>
+    <preference name="SplashScreen" value="screen"/>
     <preference name="SplashMaintainAspectRatio" value="true"/>
     <preference name="ShowSplashScreenSpinner" value="false"/>
     <preference name="KeyboardDisplayRequiresUserAction" value="false"/>
